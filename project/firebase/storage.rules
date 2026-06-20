@@ -1,0 +1,72 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        firestored.get(/databases/(default)/documents/profiles/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isPartner() {
+      return isAuthenticated() &&
+        firestored.get(/databases/(default)/documents/profiles/$(request.auth.uid)).data.role == 'partner';
+    }
+
+    function isValidImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isValidSize() {
+      return request.resource.size < 5 * 1024 * 1024; // 5MB max
+    }
+
+    // Profile images
+    match /profiles/{userId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if isOwner(userId) || isAdmin();
+    }
+
+    // Partner documents (verification, certificates, etc.)
+    match /partners/{partnerId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isPartner() || isAdmin();
+    }
+
+    // Service images
+    match /services/{serviceId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Booking attachments (photos of work)
+    match /bookings/{bookingId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isValidImage() && isValidSize();
+    }
+
+    // Chat attachments
+    match /chat/{messageId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isValidSize();
+    }
+
+    // App assets (icons, banners, etc.)
+    match /assets/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Default deny
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
