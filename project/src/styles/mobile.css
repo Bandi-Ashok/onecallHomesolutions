@@ -392,6 +392,32 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--text);
 .partner-app .job-request-card h4 { font-size: 16px; margin-bottom: 8px; }
 .partner-app .job-request-card .request-details { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-light); margin-bottom: 12px; }
 .partner-app .job-request-card .request-actions { display: flex; gap: 8px; }
+.partner-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-white); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 8px 0; z-index: 100; }
+.partner-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px; text-decoration: none; color: var(--text-light); font-size: 11px; transition: all 0.2s; }
+.partner-nav-item.active { color: var(--accent); }
+.partner-page { padding-bottom: 80px; }
+.partner-page .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 16px; }
+.partner-page .availability-section { padding: 16px; }
+.partner-page .earnings-summary { padding: 24px; text-align: center; background: var(--primary); color: white; }
+.partner-page .earnings-summary .amount { font-size: 32px; font-weight: 800; }
+.partner-page .earnings-list { padding: 16px; }
+.partner-page .earning-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-white); border-radius: var(--radius); margin-bottom: 8px; }
+.partner-page .earning-icon { width: 40px; height: 40px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--success); }
+.partner-page .earning-item.penalty .earning-icon { color: var(--danger); }
+.partner-page .earning-info { flex: 1; }
+.partner-page .earning-info .type { font-size: 14px; font-weight: 600; text-transform: capitalize; }
+.partner-page .earning-info .desc { font-size: 12px; color: var(--text-light); }
+.partner-page .earning-item .amount { font-weight: 700; color: var(--success); }
+.partner-page .earning-item.penalty .amount { color: var(--danger); }
+.partner-page .history-list { padding: 16px; }
+.partner-page .history-card { background: var(--bg-white); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+.partner-page .history-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.partner-page .history-details .detail { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-light); margin-bottom: 4px; }
+.job-requests { padding: 16px; }
+.job-header, .job-details, .job-actions { display: flex; gap: 8px; }
+.job-details { flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-light); margin: 8px 0; }
+.job-header { justify-content: space-between; }
+.job-details .detail { display: flex; align-items: center; gap: 6px; }
 
 /* Admin App */
 .admin-app { display: flex; flex-direction: column; height: 100%; }
@@ -438,6 +464,19 @@ body { font-family: var(--font-sans); background: var(--bg); color: var(--text);
 .coupons-list .coupon-info { flex: 1; }
 .coupons-list .coupon-usage { text-align: right; font-size: 13px; color: var(--text-light); }
 .coupons-list .coupon-actions { display: flex; gap: 8px; }
+.admin-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-white); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 8px 0; z-index: 100; }
+.admin-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px; text-decoration: none; color: var(--text-light); font-size: 11px; transition: all 0.2s; }
+.admin-nav-item.active { color: var(--accent); }
+.admin-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 16px; }
+.admin-bookings-list { padding: 16px; }
+.admin-booking-card { background: var(--bg-white); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+.admin-booking-card .customer { font-size: 13px; color: var(--text-light); margin: 4px 0 8px; }
+.admin-booking-card .booking-details { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-light); }
+.admin-booking-card .status-select { padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 12px; background: var(--bg); }
+.coupon-form { display: flex; flex-direction: column; gap: 12px; padding: 16px; background: var(--bg-white); border-radius: var(--radius); margin: 16px; }
+.coupon-form input, .coupon-form select { padding: 12px; border: 1px solid var(--border); border-radius: var(--radius); }
+.broadcast-section input, .broadcast-section textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; }
+.admin-link { color: white; text-decoration: none; }
 
 /* Empty & Loading */
 .empty-state { text-align: center; padding: 48px 24px; color: var(--text-light); }
