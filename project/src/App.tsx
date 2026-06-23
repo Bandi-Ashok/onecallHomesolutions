@@ -1348,9 +1348,9 @@ function PartnerLayout() {
       <main className="partner-content"><Outlet /></main>
       <nav className="partner-nav">
         <Link to="/partner" className={`partner-nav-item ${location.pathname === '/partner' ? 'active' : ''}`}><Home size={20} /><span>Home</span></Link>
-        <Link to="/partner/jobs" className={`partner-nav-item ${location.pathname.startsWith('/partner/jobs') ? 'active' : ''}`}><Wrench size={20} /><span>Requests</span></Link>
-        <Link to="/partner/active" className={`partner-nav-item ${location.pathname.startsWith('/partner/active') ? 'active' : ''}`}><CheckCircle size={20} /><span>Active</span></Link>
-        <Link to="/partner/earnings" className={`partner-nav-item ${location.pathname.startsWith('/partner/earnings') ? 'active' : ''}`}><DollarSign size={20} /><span>Earnings</span></Link>
+        <Link to="/partner/jobs" className={`partner-nav-item ${location.pathname.startsWith('/partner/jobs') ? 'active' : ''}`}><Wrench size={20} /><span>Jobs</span></Link>
+        <Link to="/partner/withdrawals" className={`partner-nav-item ${location.pathname.startsWith('/partner/withdrawals') ? 'active' : ''}`}><DollarSign size={20} /><span>Money</span></Link>
+        <Link to="/partner/kyc" className={`partner-nav-item ${location.pathname.startsWith('/partner/kyc') ? 'active' : ''}`}><Shield size={20} /><span>KYC</span></Link>
       </nav>
     </div>
   )
@@ -1620,9 +1620,18 @@ function PartnerProfilePage() {
         </div>
       </div>
       <div className="menu-section">
-        <h3>Settings</h3>
+        <h3>Account</h3>
+        <div className="menu-list">
+          <Link to="/partner/kyc" className="menu-item"><Shield size={20} /><span>KYC Verification</span><ChevronRight size={18} /></Link>
+          <Link to="/partner/bank" className="menu-item"><DollarSign size={20} /><span>Bank Accounts</span><ChevronRight size={18} /></Link>
+          <Link to="/partner/withdrawals" className="menu-item"><Wallet size={20} /><span>Withdrawals</span><ChevronRight size={18} /></Link>
+        </div>
+      </div>
+      <div className="menu-section">
+        <h3>Quick Links</h3>
         <div className="menu-list">
           <Link to="/partner" className="menu-item"><Home size={20} /><span>Dashboard</span><ChevronRight size={18} /></Link>
+          <Link to="/partner/history" className="menu-item"><Clock size={20} /><span>Job History</span><ChevronRight size={18} /></Link>
         </div>
       </div>
       <button className="logout-btn" onClick={handleLogout}><LogOut size={20} /><span>Sign Out</span></button>
@@ -1653,8 +1662,11 @@ function AdminLayout() {
       <main className="admin-content"><Outlet /></main>
       <nav className="admin-nav">
         <Link to="/admin" className={`admin-nav-item ${location.pathname === '/admin' ? 'active' : ''}`}><BarChart3 size={20} /><span>Dashboard</span></Link>
-        <Link to="/admin/users" className={`admin-nav-item ${location.pathname.startsWith('/admin/users') ? 'active' : ''}`}><Users size={20} /><span>Users</span></Link>
-        <Link to="/admin/partners" className={`admin-nav-item ${location.pathname.startsWith('/admin/partners') ? 'active' : ''}`}><Wrench size={20} /><span>Partners</span></Link>
+        <Link to="/admin/applications" className={`admin-nav-item ${location.pathname.startsWith('/admin/applications') ? 'active' : ''}`}><Users size={20} /><span>Applications</span></Link>
+        <Link to="/admin/kyc" className={`admin-nav-item ${location.pathname.startsWith('/admin/kyc') ? 'active' : ''}`}><Shield size={20} /><span>KYC</span></Link>
+        <Link to="/admin/withdrawals" className={`admin-nav-item ${location.pathname.startsWith('/admin/withdrawals') ? 'active' : ''}`}><DollarSign size={20} /><span>Withdrawals</span></Link>
+        <Link to="/admin/categories" className={`admin-nav-item ${location.pathname.startsWith('/admin/categories') ? 'active' : ''}`}><Wrench size={20} /><span>Categories</span></Link>
+        <Link to="/admin/services" className={`admin-nav-item ${location.pathname.startsWith('/admin/services') ? 'active' : ''}`}><Wrench size={20} /><span>Services</span></Link>
         <Link to="/admin/bookings" className={`admin-nav-item ${location.pathname.startsWith('/admin/bookings') ? 'active' : ''}`}><Calendar size={20} /><span>Bookings</span></Link>
       </nav>
     </div>
@@ -2207,6 +2219,1124 @@ function Share2({ size }: { size: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
 }
 
+// ==================== PARTNER REGISTRATION ====================
+function PartnerRegistrationPage() {
+  const { user } = useAuth()
+  const navigate = useNavigate()
+  const [step, setStep] = useState(1)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [existingApp, setExistingApp] = useState<any>(null)
+
+  const [formData, setFormData] = useState({
+    full_name: '', phone: '', email: '', address: '', city: '', pincode: '',
+    experience_years: 0, service_categories: [] as string[], service_areas: [] as string[], about_me: ''
+  })
+
+  useEffect(() => { if (user) checkExisting() }, [user])
+
+  async function checkExisting() {
+    const { data } = await supabase.from('partner_applications').select('*').eq('user_id', user!.id).order('applied_at', { ascending: false }).limit(1).maybeSingle()
+    if (data) setExistingApp(data)
+  }
+
+  async function submitApplication() {
+    if (!formData.full_name || !formData.phone || formData.service_categories.length === 0) {
+      setError('Please fill all required fields')
+      return
+    }
+    setLoading(true)
+    setError('')
+    try {
+      const { error: insertError } = await supabase.from('partner_applications').insert({
+        user_id: user!.id,
+        ...formData,
+        status: 'applied'
+      })
+      if (insertError) throw insertError
+      showToast('Application submitted successfully!', 'success')
+      checkExisting()
+    } catch (err: any) {
+      setError(err.message)
+    }
+    setLoading(false)
+  }
+
+  if (!user) return <Navigate to="/auth" />
+  if (existingApp && existingApp.status !== 'rejected') {
+    return (
+      <div className="mobile-page">
+        <header className="page-header"><h1>Application Status</h1></header>
+        <div className="status-card">
+          <div className={`status-badge ${existingApp.status}`}>{existingApp.status.toUpperCase()}</div>
+          <h2>{existingApp.full_name}</h2>
+          <p>Applied: {formatDate(existingApp.applied_at)}</p>
+          {existingApp.status === 'approved' && (
+            <div className="success-box">
+              <CheckCircle size={32} style={{ color: 'var(--success)' }} />
+              <h3>Congratulations!</h3>
+              <p>Your application has been approved.</p>
+              <button className="btn btn-primary" onClick={() => navigate('/partner')}>Go to Dashboard</button>
+            </div>
+          )}
+          {existingApp.status === 'rejected' && (
+            <div className="error-box">
+              <AlertCircle size={32} style={{ color: 'var(--danger)' }} />
+              <h3>Application Rejected</h3>
+              <p>{existingApp.reject_reason || 'Please contact support for more information.'}</p>
+              <button className="btn btn-primary" onClick={() => setExistingApp(null)}>Apply Again</button>
+            </div>
+          )}
+          {existingApp.status === 'applied' && (
+            <div className="pending-box">
+              <Clock size={32} style={{ color: 'var(--warning)' }} />
+              <h3>Under Review</h3>
+              <p>We're reviewing your application. This usually takes 2-3 business days.</p>
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="mobile-page registration-page">
+      <header className="page-header with-back"><Link to="/" className="back-btn"><ArrowLeft size={20} /></Link><h1>Become a Partner</h1></header>
+
+      <div className="progress-bar">
+        <div className={`step ${step >= 1 ? 'active' : ''}`}>1</div>
+        <div className="line" style={{ background: step >= 2 ? 'var(--primary)' : '#ddd' }}></div>
+        <div className={`step ${step >= 2 ? 'active' : ''}`}>2</div>
+        <div className="line" style={{ background: step >= 3 ? 'var(--primary)' : '#ddd' }}></div>
+        <div className={`step ${step >= 3 ? 'active' : ''}`}>3</div>
+      </div>
+
+      {step === 1 && (
+        <div className="form-section">
+          <h2>Personal Details</h2>
+          <div className="form-group"><label>Full Name *</label><input type="text" value={formData.full_name} onChange={e => setFormData({...formData, full_name: e.target.value})} placeholder="Enter your full name" /></div>
+          <div className="form-group"><label>Phone Number *</label><input type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10)})} placeholder="10-digit mobile number" maxLength={10} /></div>
+          <div className="form-group"><label>Email</label><input type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} placeholder="your@email.com" /></div>
+          <div className="form-group"><label>Address *</label><textarea value={formData.address} onChange={e => setFormData({...formData, address: e.target.value})} placeholder="Complete address" rows={2} /></div>
+          <div className="form-row">
+            <div className="form-group"><label>City</label><input type="text" value={formData.city} onChange={e => setFormData({...formData, city: e.target.value})} placeholder="City" /></div>
+            <div className="form-group"><label>Pincode</label><input type="text" value={formData.pincode} onChange={e => setFormData({...formData, pincode: e.target.value.replace(/\D/g, '').slice(0, 6)})} placeholder="6-digit" maxLength={6} /></div>
+          </div>
+          <button className="btn btn-primary btn-block" onClick={() => setStep(2)}>Next: Service Details <ArrowRight size={18} /></button>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div className="form-section">
+          <h2>Service Details</h2>
+          <div className="form-group">
+            <label>Experience (Years)</label>
+            <input type="number" value={formData.experience_years} onChange={e => setFormData({...formData, experience_years: parseInt(e.target.value) || 0})} min="0" max="50" />
+          </div>
+          <div className="form-group">
+            <label>Service Categories *</label>
+            <div className="checkbox-grid">
+              {['cleaning', 'plumbing', 'electrical', 'painting', 'carpentry', 'pest-control', 'appliances', 'gardening'].map(cat => (
+                <label key={cat} className="checkbox-item">
+                  <input type="checkbox" checked={formData.service_categories.includes(cat)} onChange={e => {
+                    const cats = e.target.checked
+                      ? [...formData.service_categories, cat]
+                      : formData.service_categories.filter(c => c !== cat)
+                    setFormData({...formData, service_categories: cats})
+                  }} />
+                  <span>{iconMap[cat]} {cat.replace('-', ' ')}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+          <div className="form-group">
+            <label>Service Areas</label>
+            <div className="chip-input">
+              <input type="text" placeholder="Add area and press Enter" onKeyDown={e => {
+                if (e.key === 'Enter' && e.currentTarget.value.trim()) {
+                  setFormData({...formData, service_areas: [...formData.service_areas, e.currentTarget.value.trim()]})
+                  e.currentTarget.value = ''
+                }
+              }} />
+              <div className="chips">
+                {formData.service_areas.map(area => (
+                  <span key={area} className="chip removable" onClick={() => setFormData({...formData, service_areas: formData.service_areas.filter(a => a !== area)})}>{area} <X size={14} /></span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="form-group">
+            <label>About Yourself</label>
+            <textarea value={formData.about_me} onChange={e => setFormData({...formData, about_me: e.target.value})} placeholder="Tell us about your experience and skills..." rows={3} />
+          </div>
+          <div className="btn-row">
+            <button className="btn btn-secondary" onClick={() => setStep(1)}><ArrowLeft size={18} /> Back</button>
+            <button className="btn btn-primary" onClick={() => setStep(3)}>Review <ArrowRight size={18} /></button>
+          </div>
+        </div>
+      )}
+
+      {step === 3 && (
+        <div className="form-section">
+          <h2>Review Application</h2>
+          <div className="review-card">
+            <h3>Personal Details</h3>
+            <div className="review-row"><span>Name:</span><span>{formData.full_name}</span></div>
+            <div className="review-row"><span>Phone:</span><span>{formData.phone}</span></div>
+            {formData.email && <div className="review-row"><span>Email:</span><span>{formData.email}</span></div>}
+            <div className="review-row"><span>Address:</span><span>{formData.address}, {formData.city} - {formData.pincode}</span></div>
+          </div>
+          <div className="review-card">
+            <h3>Service Details</h3>
+            <div className="review-row"><span>Experience:</span><span>{formData.experience_years} years</span></div>
+            <div className="review-row"><span>Categories:</span><span>{formData.service_categories.join(', ')}</span></div>
+            <div className="review-row"><span>Areas:</span><span>{formData.service_areas.join(', ') || 'Not specified'}</span></div>
+          </div>
+          {error && <div className="error-message">{error}</div>}
+          <div className="btn-row">
+            <button className="btn btn-secondary" onClick={() => setStep(2)}><ArrowLeft size={18} /> Back</button>
+            <button className="btn btn-primary" onClick={submitApplication} disabled={loading}>{loading ? 'Submitting...' : 'Submit Application'}</button>
+          </div>
+        </div>
+      )}
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+// ==================== PARTNER KYC ====================
+function PartnerKYCPage() {
+  const { user, profile } = useAuth()
+  const [partner, setPartner] = useState<any>(null)
+  const [documents, setDocuments] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [uploading, setUploading] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0)
+
+  const docTypes = [
+    { key: 'aadhaar_front', label: 'Aadhaar Card (Front)', required: true },
+    { key: 'aadhaar_back', label: 'Aadhaar Card (Back)', required: true },
+    { key: 'pan_card', label: 'PAN Card', required: true },
+    { key: 'profile_photo', label: 'Profile Photo', required: true },
+    { key: 'bank_passbook', label: 'Bank Passbook / Cancelled Cheque', required: true }
+  ]
+
+  useEffect(() => { if (user && profile?.role === 'partner') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const { data: partnerData } = await partnerApi.getProfile(user!.id)
+      setPartner(partnerData)
+      if (partnerData) {
+        const { data: docs } = await supabase.from('kyc_documents').select('*').eq('partner_id', partnerData.id)
+        setDocuments(docs || [])
+      }
+    } catch {}
+    setLoading(false)
+  }
+
+  async function uploadDocument(docType: string, file: File) {
+    if (!partner) return
+    setUploading(true)
+    setUploadProgress(0)
+
+    try {
+      const fileExt = file.name.split('.').pop()
+      const fileName = `${user!.id}/${docType}.${fileExt}`
+
+      // Upload to Supabase Storage
+      const { error: uploadError } = await supabase.storage.from('kyc-documents').upload(fileName, file, { upsert: true })
+      if (uploadError) throw uploadError
+
+      const { data: urlData } = supabase.storage.from('kyc-documents').getPublicUrl(fileName)
+
+      // Save reference in database
+      const { error: dbError } = await supabase.from('kyc_documents').upsert({
+        partner_id: partner.id,
+        document_type: docType,
+        document_url: urlData.publicUrl
+      }, { onConflict: 'partner_id,document_type' })
+
+      if (dbError) throw dbError
+      showToast(`${docTypes.find(d => d.key === docType)?.label} uploaded!`, 'success')
+      load()
+    } catch (err: any) {
+      showToast(err.message || 'Upload failed', 'error')
+    }
+    setUploading(false)
+    setUploadProgress(0)
+  }
+
+  async function deleteDocument(docId: string) {
+    if (!confirm('Delete this document?')) return
+    try {
+      await supabase.from('kyc_documents').delete().eq('id', docId)
+      showToast('Document deleted', 'info')
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  if (!user || profile?.role !== 'partner') return <Navigate to="/auth" />
+  if (loading) return <div className="partner-page loading"><div className="spinner" /></div>
+
+  const verifiedCount = documents.filter(d => d.is_verified).length
+  const allUploaded = docTypes.every(dt => documents.some(d => d.document_type === dt.key))
+
+  return (
+    <div className="partner-page kyc-page">
+      <header className="page-header with-back"><Link to="/partner/profile" className="back-btn"><ArrowLeft size={20} /></Link><h1>KY Verification</h1></header>
+
+      <div className="kyc-status-card">
+        <div className="status-ring">
+          <div className="ring-progress" style={{ '--progress': `${(verifiedCount / docTypes.length) * 100}%` } as any}>
+            <span>{verifiedCount}/{docTypes.length}</span>
+          </div>
+        </div>
+        <h3>{verifiedCount === docTypes.length ? 'All Documents Verified!' : allUploaded ? 'Under Review' : 'Upload Pending'}</h3>
+        <p>{partner?.is_verified ? 'Your KYC is complete.' : 'Upload required documents to start receiving jobs.'}</p>
+      </div>
+
+      <div className="documents-list">
+        {docTypes.map(dt => {
+          const doc = documents.find(d => d.document_type === dt.key)
+          return (
+            <div key={dt.key} className="document-card">
+              <div className="doc-info">
+                <h4>{dt.label}</h4>
+                {dt.required && <span className="required-badge">Required</span>}
+                {doc && <span className={`status-badge ${doc.is_verified ? 'verified' : 'pending'}`}>{doc.is_verified ? 'Verified' : 'Pending'}</span>}
+              </div>
+              {doc ? (
+                <div className="doc-preview">
+                  <img src={doc.document_url} alt={dt.label} onClick={() => window.open(doc.document_url, '_blank')} />
+                  {!doc.is_verified && <button className="btn btn-sm btn-danger" onClick={() => deleteDocument(doc.id)}>Delete</button>}
+                  {doc.reject_reason && <p className="reject-reason">Rejected: {doc.reject_reason}</p>}
+                </div>
+              ) : (
+                <div className="upload-area">
+                  <label className="upload-btn">
+                    <input type="file" accept="image/*,.pdf" onChange={e => e.target.files?.[0] && uploadDocument(dt.key, e.target.files[0])} disabled={uploading} />
+                    {uploading ? <span className="spinner-sm" /> : <Plus size={20} />}
+                    <span>Upload</span>
+                  </label>
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+
+      {uploading && (
+        <div className="upload-overlay">
+          <div className="upload-modal">
+            <div className="spinner" />
+            <p>Uploading... {uploadProgress}%</p>
+          </div>
+        </div>
+      )}
+
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+// ==================== PARTNER BANK ACCOUNTS ====================
+function PartnerBankPage() {
+  const { user, profile } = useAuth()
+  const [banks, setBanks] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [showForm, setShowForm] = useState(false)
+  const [formData, setFormData] = useState({ account_holder_name: '', bank_name: '', account_number: '', confirm_account_number: '', ifsc_code: '', account_type: 'savings' })
+  const [formError, setFormError] = useState('')
+
+  useEffect(() => { if (user && profile?.role === 'partner') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const { data: partner } = await partnerApi.getProfile(user!.id)
+      if (partner) {
+        const { data } = await supabase.from('partner_bank_accounts').select('*').eq('partner_id', partner.id).order('created_at', { ascending: false })
+        setBanks(data || [])
+      }
+    } catch {}
+    setLoading(false)
+  }
+
+  async function addBank() {
+    setFormError('')
+    if (!formData.account_holder_name || !formData.bank_name || !formData.account_number) {
+      setFormError('Please fill all fields')
+      return
+    }
+    if (formData.account_number !== formData.confirm_account_number) {
+      setFormError('Account numbers do not match')
+      return
+    }
+    if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(formData.ifsc_code.toUpperCase())) {
+      setFormError('Invalid IFSC code format')
+      return
+    }
+
+    try {
+      const { data: partner } = await partnerApi.getProfile(user!.id)
+      if (partner) {
+        const { error } = await supabase.from('partner_bank_accounts').insert({
+          partner_id: partner.id,
+          ...formData,
+          ifsc_code: formData.ifsc_code.toUpperCase(),
+          is_primary: banks.length === 0
+        })
+        if (error) throw error
+        showToast('Bank account added!', 'success')
+        setShowForm(false)
+        setFormData({ account_holder_name: '', bank_name: '', account_number: '', confirm_account_number: '', ifsc_code: '', account_type: 'savings' })
+        load()
+      }
+    } catch (err: any) {
+      setFormError(err.message)
+    }
+  }
+
+  async function setPrimary(id: string) {
+    try {
+      const { data: partner } = await partnerApi.getProfile(user!.id)
+      if (partner) {
+        await supabase.from('partner_bank_accounts').update({ is_primary: false }).eq('partner_id', partner.id)
+        await supabase.from('partner_bank_accounts').update({ is_primary: true }).eq('id', id)
+        showToast('Primary account updated', 'success')
+        load()
+      }
+    } catch {}
+  }
+
+  async function deleteBank(id: string) {
+    if (!confirm('Delete this bank account?')) return
+    try {
+      await supabase.from('partner_bank_accounts').delete().eq('id', id)
+      showToast('Bank account deleted', 'info')
+      load()
+    } catch {}
+  }
+
+  if (!user || profile?.role !== 'partner') return <Navigate to="/auth" />
+  if (loading) return <div className="partner-page loading"><div className="spinner" /></div>
+
+  return (
+    <div className="partner-page bank-page">
+      <header className="page-header with-back"><Link to="/partner/profile" className="back-btn"><ArrowLeft size={20} /></Link><h1>Bank Accounts</h1></header>
+
+      <div className="bank-list">
+        {banks.length === 0 ? (
+          <div className="empty-state"><DollarSign size={48} /><h3>No bank accounts added</h3><p>Add a bank account to receive withdrawals</p></div>
+        ) : banks.map(b => (
+          <div key={b.id} className={`bank-card ${b.is_primary ? 'primary' : ''}`}>
+            {b.is_primary && <span className="primary-badge">Primary</span>}
+            <h3>{b.bank_name}</h3>
+            <p className="account-holder">{b.account_holder_name}</p>
+            <p className="account-number">****{b.account_number.slice(-4)}</p>
+            <p className="ifsc">IFSC: {b.ifsc_code}</p>
+            <div className="bank-actions">
+              {!b.is_primary && <button className="btn btn-sm btn-outline" onClick={() => setPrimary(b.id)}>Set Primary</button>}
+              <button className="btn btn-sm btn-danger" onClick={() => deleteBank(b.id)}>Delete</button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {showForm ? (
+        <div className="form-modal">
+          <div className="form-section">
+            <h3>Add Bank Account</h3>
+            <div className="form-group"><label>Account Holder Name</label><input type="text" value={formData.account_holder_name} onChange={e => setFormData({...formData, account_holder_name: e.target.value})} placeholder="Name as per bank records" /></div>
+            <div className="form-group"><label>Bank Name</label><input type="text" value={formData.bank_name} onChange={e => setFormData({...formData, bank_name: e.target.value})} placeholder="e.g., HDFC Bank" /></div>
+            <div className="form-group"><label>Account Number</label><input type="text" value={formData.account_number} onChange={e => setFormData({...formData, account_number: e.target.value.replace(/\D/g, '')})} placeholder="Enter account number" /></div>
+            <div className="form-group"><label>Confirm Account Number</label><input type="text" value={formData.confirm_account_number} onChange={e => setFormData({...formData, confirm_account_number: e.target.value.replace(/\D/g, '')})} placeholder="Re-enter account number" /></div>
+            <div className="form-group"><label>IFSC Code</label><input type="text" value={formData.ifsc_code} onChange={e => setFormData({...formData, ifsc_code: e.target.value.toUpperCase()})} placeholder="e.g., HDFC0001234" maxLength={11} /></div>
+            <div className="form-group"><label>Account Type</label>
+              <select value={formData.account_type} onChange={e => setFormData({...formData, account_type: e.target.value})}>
+                <option value="savings">Savings</option>
+                <option value="current">Current</option>
+              </select>
+            </div>
+            {formError && <div className="error-message">{formError}</div>}
+            <div className="btn-row">
+              <button className="btn btn-secondary" onClick={() => setShowForm(false)}>Cancel</button>
+              <button className="btn btn-primary" onClick={addBank}>Add Account</button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <button className="btn btn-primary btn-block floating-btn" onClick={() => setShowForm(true)}><Plus size={18} /> Add Bank Account</button>
+      )}
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+// ==================== PARTNER WITHDRAWALS ====================
+function PartnerWithdrawalsPage() {
+  const { user, profile } = useAuth()
+  const [partner, setPartner] = useState<any>(null)
+  const [banks, setBanks] = useState<any[]>([])
+  const [withdrawals, setWithdrawals] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [showForm, setShowForm] = useState(false)
+  const [amount, setAmount] = useState('')
+  const [selectedBank, setSelectedBank] = useState('')
+  const [formError, setFormError] = useState('')
+
+  useEffect(() => { if (user && profile?.role === 'partner') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const { data: partnerData } = await partnerApi.getProfile(user!.id)
+      setPartner(partnerData)
+      if (partnerData) {
+        const [banksRes, withdrawalsRes] = await Promise.all([
+          supabase.from('partner_bank_accounts').select('*').eq('partner_id', partnerData.id).eq('is_verified', true),
+          supabase.from('withdrawal_requests').select('*, bank:partner_bank_accounts(*)').eq('partner_id', partnerData.id).order('created_at', { ascending: false })
+        ])
+        setBanks(banksRes.data || [])
+        setWithdrawals(withdrawalsRes.data || [])
+        if (banksRes.data && banksRes.data.length > 0) setSelectedBank(banksRes.data[0].id)
+      }
+    } catch {}
+    setLoading(false)
+  }
+
+  async function requestWithdrawal() {
+    setFormError('')
+    const amt = parseFloat(amount)
+    if (!amt || amt < 100) { setFormError('Minimum withdrawal is ₹100'); return }
+    if (!selectedBank) { setFormError('Please select a bank account'); return }
+    if (amt > (partner?.wallet_balance || 0)) { setFormError('Insufficient balance'); return }
+
+    try {
+      const { error } = await supabase.from('withdrawal_requests').insert({
+        partner_id: partner.id,
+        bank_account_id: selectedBank,
+        amount: amt,
+        status: 'pending'
+      })
+      if (error) throw error
+      showToast('Withdrawal request submitted!', 'success')
+      setShowForm(false)
+      setAmount('')
+      load()
+    } catch (err: any) {
+      setFormError(err.message)
+    }
+  }
+
+  if (!user || profile?.role !== 'partner') return <Navigate to="/auth" />
+  if (loading) return <div className="partner-page loading"><div className="spinner" /></div>
+
+  return (
+    <div className="partner-page withdrawals-page">
+      <header className="page-header"><h1>Withdrawals</h1></header>
+
+      <div className="balance-card">
+        <p>Available Balance</p>
+        <h2>₹{(partner?.wallet_balance || 0).toLocaleString()}</h2>
+        <button className="btn btn-primary" onClick={() => setShowForm(true)} disabled={banks.length === 0 || (partner?.wallet_balance || 0) < 100}><DollarSign size={18} /> Request Withdrawal</button>
+        {banks.length === 0 && <p className="warning">Add a verified bank account first</p>}
+      </div>
+
+      {showForm && (
+        <div className="withdrawal-form">
+          <h3>Request Withdrawal</h3>
+          <div className="form-group"><label>Amount (Min ₹100)</label><input type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Enter amount" /></div>
+          <div className="form-group"><label>Bank Account</label>
+            <select value={selectedBank} onChange={e => setSelectedBank(e.target.value)}>
+              {banks.map(b => <option key={b.id} value={b.id}>{b.bank_name} ****{b.account_number.slice(-4)}</option>)}
+            </select>
+          </div>
+          {formError && <div className="error-message">{formError}</div>}
+          <div className="btn-row">
+            <button className="btn btn-secondary" onClick={() => setShowForm(false)}>Cancel</button>
+            <button className="btn btn-primary" onClick={requestWithdrawal}>Submit Request</button>
+          </div>
+        </div>
+      )}
+
+      <div className="withdrawals-list">
+        <h3>Withdrawal History</h3>
+        {withdrawals.length === 0 ? (
+          <div className="empty-state"><Clock size={32} /><p>No withdrawals yet</p></div>
+        ) : withdrawals.map(w => (
+          <div key={w.id} className="withdrawal-card">
+            <div className="w-header"><span className="amount">₹{w.amount.toLocaleString()}</span><span className={`status ${w.status}`}>{w.status}</span></div>
+            <p className="bank-info">{w.bank?.bank_name} ****{w.bank?.account_number?.slice(-4)}</p>
+            <p className="date">{formatDate(w.created_at)}</p>
+            {w.reject_reason && <p className="reject-reason">Rejected: {w.reject_reason}</p>}
+            {w.transaction_reference && <p className="txn-ref">Ref: {w.transaction_reference}</p>}
+          </div>
+        ))}
+      </div>
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+// ==================== ADMIN KYC VERIFICATION ====================
+function AdminKYCPage() {
+  const { user, profile } = useAuth()
+  const [pendingKYC, setPendingKYC] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedDoc, setSelectedDoc] = useState<any>(null)
+  const [rejectReason, setRejectReason] = useState('')
+
+  useEffect(() => { if (user && profile?.role === 'admin') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const { data } = await supabase.from('kyc_documents').select('*, partner:partners(*, user:profiles!user_id(*))').eq('is_verified', false).order('uploaded_at', { ascending: true })
+      setPendingKYC(data || [])
+    } catch {}
+    setLoading(false)
+  }
+
+  async function approveDoc(docId: string) {
+    try {
+      const { error } = await supabase.from('kyc_documents').update({ is_verified: true, verified_by: user!.id, verified_at: new Date().toISOString() }).eq('id', docId)
+      if (error) throw error
+      showToast('Document approved', 'success')
+      setSelectedDoc(null)
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  async function rejectDoc(docId: string) {
+    if (!rejectReason.trim()) { showToast('Please provide rejection reason', 'error'); return }
+    try {
+      const { error } = await supabase.from('kyc_documents').update({ is_verified: false, reject_reason: rejectReason, verified_by: user!.id, verified_at: new Date().toISOString() }).eq('id', docId)
+      if (error) throw error
+      showToast('Document rejected', 'info')
+      setSelectedDoc(null)
+      setRejectReason('')
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  if (!user || profile?.role !== 'admin') return <Navigate to="/auth" />
+  if (loading) return <div className="admin-page loading"><div className="spinner" /></div>
+
+  return (
+    <div className="admin-page kyc-admin-page">
+      <header className="page-header"><h1>KYC Verification</h1></header>
+
+      {pendingKYC.length === 0 ? (
+        <div className="empty-state"><CheckCircle size={48} /><h3>All caught up!</h3><p>No pending KYC documents</p></div>
+      ) : (
+        <div className="kyc-pending-list">
+          {pendingKYC.map(doc => (
+            <div key={doc.id} className="kyc-card" onClick={() => setSelectedDoc(doc)}>
+              <div className="kyc-preview"><img src={doc.document_url} alt={doc.document_type} /></div>
+              <div className="kyc-info">
+                <h4>{doc.document_type.replace('_', ' ').toUpperCase()}</h4>
+                <p>{doc.partner?.full_name || 'Unknown Partner'}</p>
+                <span className="upload-time">{formatRelativeTime(doc.uploaded_at)}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {selectedDoc && (
+        <div className="kyc-modal">
+          <div className="modal-content">
+            <button className="close-btn" onClick={() => { setSelectedDoc(null); setRejectReason('') }}><X size={24} /></button>
+            <img src={selectedDoc.document_url} alt="Document" className="full-doc" />
+            <div className="doc-details">
+              <h3>{selectedDoc.document_type.replace('_', ' ').toUpperCase()}</h3>
+              <p><strong>Partner:</strong> {selectedDoc.partner?.full_name}</p>
+              <p><strong>Phone:</strong> {selectedDoc.partner?.phone}</p>
+              <p><strong>Uploaded:</strong> {formatDate(selectedDoc.uploaded_at)}</p>
+            </div>
+            <div className="form-group">
+              <label>Rejection Reason (if rejecting)</label>
+              <input type="text" value={rejectReason} onChange={e => setRejectReason(e.target.value)} placeholder="e.g., Image unclear, document expired" />
+            </div>
+            <div className="btn-row">
+              <button className="btn btn-danger" onClick={() => rejectDoc(selectedDoc.id)}>Reject</button>
+              <button className="btn btn-success" onClick={() => approveDoc(selectedDoc.id)}>Approve</button>
+            </div>
+          </div>
+        </div>
+      )}
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+// ==================== ADMIN PARTNER APPLICATIONS ====================
+function AdminApplicationsPage() {
+  const { user, profile } = useAuth()
+  const [applications, setApplications] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [filter, setFilter] = useState('applied')
+  const [selectedApp, setSelectedApp] = useState<any>(null)
+  const [rejectReason, setRejectReason] = useState('')
+
+  useEffect(() => { if (user && profile?.role === 'admin') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const { data } = await supabase.from('partner_applications').select('*').order('applied_at', { ascending: false })
+      setApplications(data || [])
+    } catch {}
+    setLoading(false)
+  }
+
+  async function approveApplication(app: any) {
+    try {
+      // Create partner record
+      const { data: newPartner, error: partnerError } = await supabase.from('partners').insert({
+        user_id: app.user_id,
+        full_name: app.full_name,
+        phone: app.phone,
+        email: app.email,
+        address: app.address,
+        city: app.city,
+        pincode: app.pincode,
+        categories: app.service_categories,
+        is_verified: true,
+        is_available: true,
+        rating: 5.0
+      }).select().single()
+
+      if (partnerError) throw partnerError
+
+      // Update application status
+      await supabase.from('partner_applications').update({
+        status: 'approved',
+        reviewed_at: new Date().toISOString(),
+        reviewed_by: user!.id,
+        partner_id: newPartner.id
+      }).eq('id', app.id)
+
+      // Update user profile role
+      await supabase.from('profiles').update({ role: 'partner' }).eq('user_id', app.user_id)
+
+      showToast('Application approved!', 'success')
+      setSelectedApp(null)
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  async function rejectApplication(app: any) {
+    if (!rejectReason.trim()) { showToast('Please provide rejection reason', 'error'); return }
+    try {
+      await supabase.from('partner_applications').update({
+        status: 'rejected',
+        reviewed_at: new Date().toISOString(),
+        reviewed_by: user!.id,
+        reject_reason: rejectReason
+      }).eq('id', app.id)
+      showToast('Application rejected', 'info')
+      setSelectedApp(null)
+      setRejectReason('')
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  if (!user || profile?.role !== 'admin') return <Navigate to="/auth" />
+  if (loading) return <div className="admin-page loading"><div className="spinner" /></div>
+
+  const filtered = applications.filter(a => a.status === filter)
+
+  return (
+    <div className="admin-page applications-page">
+      <header className="page-header"><h1>Partner Applications</h1></header>
+
+      <div className="filter-panel">
+        {['applied', 'approved', 'rejected'].map(s => (
+          <button key={s} className={`chip ${filter === s ? 'active' : ''}`} onClick={() => setFilter(s)}>{s.charAt(0).toUpperCase() + s.slice(1)} ({applications.filter(a => a.status === s).length})</button>
+        ))}
+      </div>
+
+      {filtered.length === 0 ? (
+        <div className="empty-state"><Users size={48} /><h3>No {filter} applications</h3></div>
+      ) : (
+        <div className="applications-list">
+          {filtered.map(app => (
+            <div key={app.id} className="application-card" onClick={() => setSelectedApp(app)}>
+              <div className="app-header"><h3>{app.full_name}</h3><span className={`status ${app.status}`}>{app.status}</span></div>
+              <p className="phone">{app.phone}</p>
+              <p className="categories">{app.service_categories?.join(', ')}</p>
+              <p className="applied">Applied: {formatRelativeTime(app.applied_at)}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {selectedApp && (
+        <div className="application-modal">
+          <div className="modal-content">
+            <button className="close-btn" onClick={() => { setSelectedApp(null); setRejectReason('') }}><X size={24} /></button>
+            <h2>{selectedApp.full_name}</h2>
+            <div className="app-details">
+              <div className="detail-row"><span>Phone:</span><span>{selectedApp.phone}</span></div>
+              {selectedApp.email && <div className="detail-row"><span>Email:</span><span>{selectedApp.email}</span></div>}
+              <div className="detail-row"><span>Address:</span><span>{selectedApp.address}, {selectedApp.city} - {selectedApp.pincode}</span></div>
+              <div className="detail-row"><span>Experience:</span><span>{selectedApp.experience_years} years</span></div>
+              <div className="detail-row"><span>Categories:</span><span>{selectedApp.service_categories?.join(', ')}</span></div>
+              <div className="detail-row"><span>Service Areas:</span><span>{selectedApp.service_areas?.join(', ')}</span></div>
+              {selectedApp.about_me && <div className="detail-row full"><span>About:</span><span>{selectedApp.about_me}</span></div>}
+            </div>
+            {selectedApp.status === 'applied' && (
+              <>
+                <div className="form-group">
+                  <label>Rejection Reason (if rejecting)</label>
+                  <input type="text" value={rejectReason} onChange={e => setRejectReason(e.target.value)} placeholder="e.g., Insufficient experience" />
+                </div>
+                <div className="btn-row">
+                  <button className="btn btn-danger" onClick={() => rejectApplication(selectedApp)}>Reject</button>
+                  <button className="btn btn-success" onClick={() => approveApplication(selectedApp)}>Approve</button>
+                </div>
+              </>
+            )}
+            {selectedApp.status === 'rejected' && <p className="reject-reason">Rejection: {selectedApp.reject_reason}</p>}
+          </div>
+        </div>
+      )}
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+// ==================== ADMIN WITHDRAWAL MANAGEMENT ====================
+function AdminWithdrawalsPage() {
+  const { user, profile } = useAuth()
+  const [withdrawals, setWithdrawals] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [filter, setFilter] = useState('pending')
+  const [txnRef, setTxnRef] = useState('')
+
+  useEffect(() => { if (user && profile?.role === 'admin') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const { data } = await supabase.from('withdrawal_requests').select('*, partner:partners(*), bank:partner_bank_accounts(*)').order('created_at', { ascending: false })
+      setWithdrawals(data || [])
+    } catch {}
+    setLoading(false)
+  }
+
+  async function approveWithdrawal(w: any) {
+    try {
+      const { error } = await supabase.from('withdrawal_requests').update({
+        status: 'approved',
+        processed_at: new Date().toISOString(),
+        transaction_reference: txnRef
+      }).eq('id', w.id)
+      if (error) throw error
+      showToast('Withdrawal approved', 'success')
+      setTxnRef('')
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  async function rejectWithdrawal(w: any, reason: string) {
+    try {
+      await supabase.from('withdrawal_requests').update({ status: 'rejected', reject_reason: reason, processed_at: new Date().toISOString() }).eq('id', w.id)
+      // Refund to partner wallet
+      await supabase.from('partners').update({ wallet_balance: supabase.rpc('increment_wallet', { amount: w.amount }) }).eq('id', w.partner_id)
+      showToast('Withdrawal rejected, amount refunded', 'info')
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  async function markPaid(w: any) {
+    try {
+      await supabase.from('withdrawal_requests').update({ status: 'paid', processed_at: new Date().toISOString() }).eq('id', w.id)
+      showToast('Marked as paid', 'success')
+      load()
+    } catch {}
+  }
+
+  if (!user || profile?.role !== 'admin') return <Navigate to="/auth" />
+  if (loading) return <div className="admin-page loading"><div className="spinner" /></div>
+
+  const filtered = withdrawals.filter(w => w.status === filter)
+
+  return (
+    <div className="admin-page">
+      <header className="page-header"><h1>Withdrawal Requests</h1></header>
+
+      <div className="filter-panel">
+        {['pending', 'approved', 'paid', 'rejected'].map(s => (
+          <button key={s} className={`chip ${filter === s ? 'active' : ''}`} onClick={() => setFilter(s)}>{s} ({withdrawals.filter(w => w.status === s).length})</button>
+        ))}
+      </div>
+
+      {filtered.length === 0 ? (
+        <div className="empty-state"><DollarSign size={48} /><h3>No {filter} requests</h3></div>
+      ) : (
+        <div className="withdrawals-admin-list">
+          {filtered.map(w => (
+            <div key={w.id} className="withdrawal-admin-card">
+              <div className="w-header"><span className="partner-name">{w.partner?.full_name}</span><span className="amount">₹{w.amount.toLocaleString()}</span></div>
+              <p className="bank-info">{w.bank?.bank_name} ****{w.bank?.account_number?.slice(-4)}</p>
+              <p className="ifsc">IFSC: {w.bank?.ifsc_code}</p>
+              <p className="date">{formatDate(w.created_at)}</p>
+              {w.status === 'pending' && (
+                <div className="actions">
+                  <input type="text" placeholder="Transaction Reference" value={txnRef} onChange={e => setTxnRef(e.target.value)} />
+                  <div className="btn-row">
+                    <button className="btn btn-danger btn-sm" onClick={() => { const reason = prompt('Rejection reason:'); reason && rejectWithdrawal(w, reason) }}>Reject</button>
+                    <button className="btn btn-success btn-sm" onClick={() => approveWithdrawal(w)}>Approve</button>
+                  </div>
+                </div>
+              )}
+              {w.status === 'approved' && <button className="btn btn-primary btn-sm" onClick={() => markPaid(w)}>Mark as Paid</button>}
+              {w.transaction_reference && <p className="txn-ref">Ref: {w.transaction_reference}</p>}
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+// ==================== ADMIN CATEGORIES ====================
+function AdminCategoriesPage() {
+  const { user, profile } = useAuth()
+  const [categories, setCategories] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [showForm, setShowForm] = useState(false)
+  const [editingId, setEditingId] = useState<string | null>(null)
+  const [formData, setFormData] = useState({ name: '', slug: '', description: '', icon: '', display_order: 0 })
+  const [formError, setFormError] = useState('')
+
+  useEffect(() => { if (user && profile?.role === 'admin') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const { data } = await supabase.from('service_categories').select('*').order('display_order')
+      setCategories(data || [])
+    } catch {}
+    setLoading(false)
+  }
+
+  async function saveCategory() {
+    setFormError('')
+    if (!formData.name || !formData.slug) { setFormError('Name and slug are required'); return }
+    try {
+      if (editingId) {
+        await supabase.from('service_categories').update(formData).eq('id', editingId)
+        showToast('Category updated', 'success')
+      } else {
+        await supabase.from('service_categories').insert(formData)
+        showToast('Category created', 'success')
+      }
+      setShowForm(false)
+      setEditingId(null)
+      setFormData({ name: '', slug: '', description: '', icon: '', display_order: 0 })
+      load()
+    } catch (err: any) {
+      setFormError(err.message)
+    }
+  }
+
+  async function deleteCategory(id: string) {
+    if (!confirm('Delete this category? All services in this category will also be deleted.')) return
+    try {
+      await supabase.from('service_categories').delete().eq('id', id)
+      showToast('Category deleted', 'info')
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  if (!user || profile?.role !== 'admin') return <Navigate to="/auth" />
+  if (loading) return <div className="admin-page loading"><div className="spinner" /></div>
+
+  return (
+    <div className="admin-page">
+      <header className="page-header"><h1>Service Categories</h1><button className="btn btn-primary btn-sm" onClick={() => setShowForm(true)}><Plus size={16} /> Add</button></header>
+
+      {showForm && (
+        <div className="form-section">
+          <h3>{editingId ? 'Edit' : 'Add'} Category</h3>
+          <div className="form-row">
+            <div className="form-group"><label>Name</label><input type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="Cleaning" /></div>
+            <div className="form-group"><label>Slug</label><input type="text" value={formData.slug} onChange={e => setFormData({...formData, slug: e.target.value.toLowerCase().replace(/\s+/g, '-')})} placeholder="cleaning" /></div>
+          </div>
+          <div className="form-group"><label>Description</label><input type="text" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} placeholder="Brief description" /></div>
+          <div className="form-row">
+            <div className="form-group"><label>Icon (emoji)</label><input type="text" value={formData.icon} onChange={e => setFormData({...formData, icon: e.target.value})} placeholder="🧹" /></div>
+            <div className="form-group"><label>Order</label><input type="number" value={formData.display_order} onChange={e => setFormData({...formData, display_order: parseInt(e.target.value) || 0})} /></div>
+          </div>
+          {formError && <div className="error-message">{formError}</div>}
+          <div className="btn-row">
+            <button className="btn btn-secondary" onClick={() => { setShowForm(false); setEditingId(null); setFormData({ name: '', slug: '', description: '', icon: '', display_order: 0 }) }}>Cancel</button>
+            <button className="btn btn-primary" onClick={saveCategory}>Save</button>
+          </div>
+        </div>
+      )}
+
+      <div className="categories-list">
+        {categories.map(cat => (
+          <div key={cat.id} className="category-card">
+            <span className="cat-icon">{cat.icon || '📁'}</span>
+            <div className="cat-info"><h3>{cat.name}</h3><p>{cat.slug}</p></div>
+            <div className="cat-actions">
+              <button className="btn btn-sm btn-outline" onClick={() => { setFormData({ name: cat.name, slug: cat.slug, description: cat.description || '', icon: cat.icon || '', display_order: cat.display_order }); setEditingId(cat.id); setShowForm(true) }}>Edit</button>
+              <button className="btn btn-sm btn-danger" onClick={() => deleteCategory(cat.id)}>Delete</button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+// ==================== ADMIN SERVICES ====================
+function AdminServicesPage() {
+  const { user, profile } = useAuth()
+  const [categories, setCategories] = useState<any[]>([])
+  const [services, setServices] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [catFilter, setCatFilter] = useState('all')
+  const [showForm, setShowForm] = useState(false)
+  const [editingId, setEditingId] = useState<string | null>(null)
+  const [formData, setFormData] = useState({ name: '', slug: '', category_id: '', description: '', base_price: 0, unit: 'per service', duration_minutes: 60, is_active: true })
+  const [formError, setFormError] = useState('')
+
+  useEffect(() => { if (user && profile?.role === 'admin') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const [catRes, svcRes] = await Promise.all([
+        supabase.from('service_categories').select('*').order('display_order'),
+        supabase.from('services').select('*, category:service_categories(*)').order('created_at', { ascending: false })
+      ])
+      setCategories(catRes.data || [])
+      setServices(svcRes.data || [])
+    } catch {}
+    setLoading(false)
+  }
+
+  async function saveService() {
+    setFormError('')
+    if (!formData.name || !formData.slug || !formData.category_id) { setFormError('Name, slug, and category are required'); return }
+    try {
+      if (editingId) {
+        await supabase.from('services').update(formData).eq('id', editingId)
+        showToast('Service updated', 'success')
+      } else {
+        await supabase.from('services').insert(formData)
+        showToast('Service created', 'success')
+      }
+      setShowForm(false)
+      setEditingId(null)
+      setFormData({ name: '', slug: '', category_id: '', description: '', base_price: 0, unit: 'per service', duration_minutes: 60, is_active: true })
+      load()
+    } catch (err: any) {
+      setFormError(err.message)
+    }
+  }
+
+  async function deleteService(id: string) {
+    if (!confirm('Delete this service?')) return
+    try {
+      await supabase.from('services').delete().eq('id', id)
+      showToast('Service deleted', 'info')
+      load()
+    } catch (err: any) {
+      showToast(err.message, 'error')
+    }
+  }
+
+  async function toggleActive(id: string, current: boolean) {
+    try {
+      await supabase.from('services').update({ is_active: !current }).eq('id', id)
+      showToast(`Service ${!current ? 'activated' : 'deactivated'}`, 'success')
+      load()
+    } catch {}
+  }
+
+  if (!user || profile?.role !== 'admin') return <Navigate to="/auth" />
+  if (loading) return <div className="admin-page loading"><div className="spinner" /></div>
+
+  const filtered = catFilter === 'all' ? services : services.filter(s => s.category_id === catFilter)
+
+  return (
+    <div className="admin-page">
+      <header className="page-header"><h1>Services</h1><button className="btn btn-primary btn-sm" onClick={() => setShowForm(true)}><Plus size={16} /> Add</button></header>
+
+      <select value={catFilter} onChange={e => setCatFilter(e.target.value)} className="cat-filter">
+        <option value="all">All Categories</option>
+        {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+      </select>
+
+      {showForm && (
+        <div className="form-section">
+          <h3>{editingId ? 'Edit' : 'Add'} Service</h3>
+          <div className="form-row">
+            <div className="form-group"><label>Name</label><input type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="Deep Cleaning" /></div>
+            <div className="form-group"><label>Slug</label><input type="text" value={formData.slug} onChange={e => setFormData({...formData, slug: e.target.value.toLowerCase().replace(/\s+/g, '-')})} placeholder="deep-cleaning" /></div>
+          </div>
+          <div className="form-group"><label>Category</label>
+            <select value={formData.category_id} onChange={e => setFormData({...formData, category_id: e.target.value})}>
+              <option value="">Select category</option>
+              {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </div>
+          <div className="form-group"><label>Description</label><input type="text" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} placeholder="Service description" /></div>
+          <div className="form-row">
+            <div className="form-group"><label>Base Price (₹)</label><input type="number" value={formData.base_price} onChange={e => setFormData({...formData, base_price: parseFloat(e.target.value) || 0})} /></div>
+            <div className="form-group"><label>Unit</label><input type="text" value={formData.unit} onChange={e => setFormData({...formData, unit: e.target.value})} placeholder="per service" /></div>
+            <div className="form-group"><label>Duration (mins)</label><input type="number" value={formData.duration_minutes} onChange={e => setFormData({...formData, duration_minutes: parseInt(e.target.value) || 60})} /></div>
+          </div>
+          <label className="checkbox-label"><input type="checkbox" checked={formData.is_active} onChange={e => setFormData({...formData, is_active: e.target.checked})} /> Active</label>
+          {formError && <div className="error-message">{formError}</div>}
+          <div className="btn-row">
+            <button className="btn btn-secondary" onClick={() => { setShowForm(false); setEditingId(null) }}>Cancel</button>
+            <button className="btn btn-primary" onClick={saveService}>Save</button>
+          </div>
+        </div>
+      )}
+
+      <div className="services-list">
+        {filtered.map(s => (
+          <div key={s.id} className={`service-card ${!s.is_active ? 'inactive' : ''}`}>
+            <div className="svc-info">
+              <h3>{s.name}</h3>
+              <p className="cat">{s.category?.name}</p>
+              <p className="price">₹{s.base_price} {s.unit}</p>
+            </div>
+            <div className="svc-actions">
+              <button className={`btn btn-sm ${s.is_active ? 'btn-outline' : 'btn-secondary'}`} onClick={() => toggleActive(s.id, s.is_active)}>{s.is_active ? 'Active' : 'Inactive'}</button>
+              <button className="btn btn-sm btn-outline" onClick={() => { setFormData({ name: s.name, slug: s.slug, category_id: s.category_id, description: s.description || '', base_price: s.base_price, unit: s.unit, duration_minutes: s.duration_minutes, is_active: s.is_active }); setEditingId(s.id); setShowForm(true) }}>Edit</button>
+              <button className="btn btn-sm btn-danger" onClick={() => deleteService(s.id)}>Delete</button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
 export default function App() {
   const { loading } = useAuth()
 
@@ -2241,6 +3371,7 @@ export default function App() {
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/partner-register" element={<PartnerRegistrationPage />} />
       </Route>
       <Route path="/partner" element={<PartnerLayout />}>
         <Route index element={<PartnerDashboard />} />
@@ -2249,6 +3380,9 @@ export default function App() {
         <Route path="earnings" element={<PartnerEarningsPage />} />
         <Route path="history" element={<PartnerHistoryPage />} />
         <Route path="profile" element={<PartnerProfilePage />} />
+        <Route path="kyc" element={<PartnerKYCPage />} />
+        <Route path="bank" element={<PartnerBankPage />} />
+        <Route path="withdrawals" element={<PartnerWithdrawalsPage />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminDashboard />} />
@@ -2257,6 +3391,11 @@ export default function App() {
         <Route path="bookings" element={<AdminBookingsPage />} />
         <Route path="coupons" element={<AdminCouponsPage />} />
         <Route path="notifications" element={<AdminNotificationsPage />} />
+        <Route path="kyc" element={<AdminKYCPage />} />
+        <Route path="applications" element={<AdminApplicationsPage />} />
+        <Route path="withdrawals" element={<AdminWithdrawalsPage />} />
+        <Route path="categories" element={<AdminCategoriesPage />} />
+        <Route path="services" element={<AdminServicesPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
