@@ -30,11 +30,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
     checkAuth()
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event: string, session: any) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: string, session: any) => {
       setUser(session?.user ?? null)
       if (session?.user) {
-        const { data } = await supabase.from('profiles').select('*').eq('user_id', session.user.id).single()
-        setProfile(data)
+        // Use IIFE to avoid deadlock - async operations inside onAuthStateChange must not block
+        ;(async () => {
+          const { data } = await supabase.from('profiles').select('*').eq('user_id', session.user.id).single()
+          setProfile(data)
+        })()
       } else {
         setProfile(null)
       }
