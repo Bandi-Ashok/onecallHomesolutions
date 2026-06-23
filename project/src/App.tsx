@@ -342,10 +342,12 @@ function ServiceDetailPage() {
 
 function BookingsPage() {
   const { user, profile } = useAuth()
+  const navigate = useNavigate()
   const [bookings, setBookings] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [filter, setFilter] = useState('all')
+  const [cancellingId, setCancellingId] = useState<string | null>(null)
 
   useEffect(() => { if (user && profile) load() }, [user, profile])
 
@@ -360,6 +362,20 @@ function BookingsPage() {
     setLoading(false)
   }
 
+  async function cancelBooking(bookingId: string) {
+    if (!confirm('Are you sure you want to cancel this booking?')) return
+    setCancellingId(bookingId)
+    try {
+      const { error: cancelError } = await supabase.from('bookings').update({ status: 'cancelled' }).eq('id', bookingId)
+      if (cancelError) throw cancelError
+      showToast('Booking cancelled', 'success')
+      load()
+    } catch (err: any) {
+      showToast(err.message || 'Failed to cancel', 'error')
+    }
+    setCancellingId(null)
+  }
+
   if (!user) return <div className="mobile-page auth-required"><Calendar size={48} /><h2>Sign in to view bookings</h2><Link to="/auth" className="btn btn-primary">Sign In</Link></div>
 
   const filtered = filter === 'all' ? bookings : bookings.filter(b => b.status === filter)
@@ -368,7 +384,7 @@ function BookingsPage() {
     <div className="mobile-page">
       <header className="page-header"><h1>My Bookings</h1></header>
       <div className="filter-panel">
-        {['all', 'pending', 'confirmed', 'completed'].map(f => (
+        {['all', 'pending', 'confirmed', 'completed', 'cancelled'].map(f => (
           <button key={f} className={`chip ${filter === f ? 'active' : ''}`} onClick={() => setFilter(f)}>{f.charAt(0).toUpperCase() + f.slice(1)}</button>
         ))}
       </div>
@@ -379,14 +395,21 @@ function BookingsPage() {
       ) : (
         <div className="bookings-list">
           {filtered.map(b => (
-            <div key={b.id} className="booking-card">
+            <div key={b.id} className="booking-card" onClick={() => navigate(`/booking/${b.id}`)}>
               <div className="booking-header"><span className="booking-id">#{b.booking_number}</span><span className={`status ${b.status}`}>{b.status.replace('_', ' ')}</span></div>
               <h3 className="service-name">{b.service?.name || 'Service'}</h3>
               <div className="booking-details">
                 <div className="detail"><Calendar size={14} /><span>{b.scheduled_date ? formatDate(b.scheduled_date) : 'TBD'}</span></div>
                 <div className="detail"><Clock size={14} /><span>{b.scheduled_time_slot || 'TBD'}</span></div>
               </div>
-              <div className="booking-footer"><span className="amount">₹{(b.final_price || 0).toLocaleString()}</span></div>
+              <div className="booking-footer">
+                <span className="amount">₹{(b.final_price || 0).toLocaleString()}</span>
+                {(b.status === 'pending' || b.status === 'confirmed') && (
+                  <button className="btn btn-sm btn-danger" onClick={e => { e.stopPropagation(); cancelBooking(b.id) }} disabled={cancellingId === b.id}>
+                    {cancellingId === b.id ? <span className="spinner-sm" /> : 'Cancel'}
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -437,6 +460,183 @@ function NotificationsPage() {
             <div key={n.id} className={`notification-item ${!n.is_read ? 'unread' : ''}`}>
               <div className="noti-icon">{n.type === 'booking' ? <Calendar size={20} /> : n.type === 'promotion' ? <Gift size={20} /> : <Bell size={20} />}</div>
               <div className="noti-content"><h4>{n.title}</h4><p>{n.body}</p><span className="noti-time">{formatRelativeTime(n.created_at)}</span></div>
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+function BookingDetailPage() {
+  const { user } = useAuth()
+  const [searchParams] = useSearchParams()
+  const bookingId = searchParams.get('id')
+  const navigate = useNavigate()
+  const [booking, setBooking] = useState<any>(null)
+  const [tracking, setTracking] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [cancelling, setCancelling] = useState(false)
+
+  useEffect(() => { if (bookingId && user) load() }, [bookingId, user])
+
+  async function load() {
+    try {
+      const { data, error: loadError } = await supabase.from('bookings').select('*, service:services(*), customer:profiles(*)').eq('id', bookingId).single()
+      if (loadError) throw loadError
+      setBooking(data)
+
+      const { data: trackData } = await supabase.from('tracking_updates').select('*').eq('booking_id', bookingId).order('created_at', { ascending: true })
+      setTracking(trackData || [])
+    } catch (err: any) {
+      setError(err.message)
+    }
+    setLoading(false)
+  }
+
+  async function cancelBooking() {
+    if (!confirm('Are you sure you want to cancel?')) return
+    setCancelling(true)
+    try {
+      const { error: cancelError } = await supabase.from('bookings').update({ status: 'cancelled' }).eq('id', bookingId)
+      if (cancelError) throw cancelError
+      showToast('Booking cancelled', 'success')
+      load()
+    } catch (err: any) {
+      showToast(err.message || 'Failed to cancel', 'error')
+    }
+    setCancelling(false)
+  }
+
+  if (!user) return <Navigate to="/auth" />
+  if (loading) return <div className="mobile-page loading"><div className="spinner" /></div>
+  if (error || !booking) return <div className="mobile-page"><div className="error-state"><AlertCircle size={48} /><h3>Booking not found</h3><button className="btn btn-primary" onClick={() => navigate('/bookings')}>Back to Bookings</button></div></div>
+
+  const statusSteps = ['pending', 'confirmed', 'in_progress', 'completed']
+  const currentStep = statusSteps.indexOf(booking.status)
+
+  return (
+    <div className="mobile-page booking-detail-page">
+      <header className="page-header with-back"><button className="back-btn" onClick={() => navigate('/bookings')}><ArrowLeft size={20} /></button><h1>Booking #{booking.booking_number}</h1></header>
+
+      <div className="status-timeline">
+        {statusSteps.map((step, idx) => (
+          <div key={step} className={`timeline-step ${idx <= currentStep ? 'completed' : ''} ${idx === currentStep ? 'current' : ''}`}>
+            <div className="step-marker">{idx < currentStep ? <Check size={14} /> : idx + 1}</div>
+            <div className="step-label">{step.replace('_', ' ').toUpperCase()}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="booking-info-card">
+        <h2>{booking.service?.name || 'Service'}</h2>
+        <div className="info-row"><span className="label">Status:</span><span className={`status ${booking.status}`}>{booking.status.replace('_', ' ')}</span></div>
+        <div className="info-row"><span className="label">Date:</span><span>{booking.scheduled_date ? formatDate(booking.scheduled_date) : 'TBD'}</span></div>
+        <div className="info-row"><span className="label">Time:</span><span>{booking.scheduled_time_slot || 'TBD'}</span></div>
+        <div className="info-row"><span className="label">Address:</span><span>{booking.address}{booking.city ? `, ${booking.city}` : ''}</span></div>
+        <div className="info-row"><span className="label">Amount:</span><span className="amount">₹{(booking.final_price || 0).toLocaleString()}</span></div>
+        {booking.notes && <div className="info-row"><span className="label">Notes:</span><span>{booking.notes}</span></div>}
+      </div>
+
+      {tracking.length > 0 && (
+        <div className="tracking-section">
+          <h3>Updates</h3>
+          {tracking.map(t => (
+            <div key={t.id} className="tracking-item">
+              <div className="track-icon">{t.status === 'en_route' ? <ArrowRight size={16} /> : t.status === 'arrived' ? <MapPin size={16} /> : <CheckCircle size={16} />}</div>
+              <div className="track-info"><span className="track-status">{t.status.replace('_', ' ')}</span><span className="track-time">{formatRelativeTime(t.created_at)}</span></div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {(booking.status === 'pending' || booking.status === 'confirmed') && (
+        <button className="btn btn-danger btn-block" onClick={cancelBooking} disabled={cancelling}>{cancelling ? 'Cancelling...' : 'Cancel Booking'}</button>
+      )}
+
+      <div className="bottom-spacer"></div>
+    </div>
+  )
+}
+
+function PartnerActiveJobsPage() {
+  const { user, profile } = useAuth()
+  const [jobs, setJobs] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [actioningId, setActioningId] = useState<string | null>(null)
+
+  useEffect(() => { if (user && profile?.role === 'partner') load() }, [user, profile])
+
+  async function load() {
+    try {
+      const { data: partner } = await partnerApi.getProfile(user!.id)
+      if (partner) {
+        const { data, error: loadError } = await supabase.from('bookings').select('*, service:services(*)').eq('technician_id', partner.id).in('status', ['confirmed', 'in_progress']).order('scheduled_date')
+        if (loadError) throw loadError
+        setJobs(data || [])
+      }
+    } catch (err: any) {
+      setError(err.message)
+    }
+    setLoading(false)
+  }
+
+  async function startJob(bookingId: string) {
+    setActioningId(bookingId)
+    try {
+      const { error: updateError } = await supabase.from('bookings').update({ status: 'in_progress' }).eq('id', bookingId)
+      if (updateError) throw updateError
+      const otp = Math.floor(1000 + Math.random() * 9000).toString()
+      await supabase.from('bookings').update({ otp }).eq('id', bookingId)
+      showToast('Job started! Customer will be notified.', 'success')
+      load()
+    } catch (err: any) {
+      showToast(err.message || 'Failed to start job', 'error')
+    }
+    setActioningId(null)
+  }
+
+  async function completeJob(bookingId: string) {
+    setActioningId(bookingId)
+    try {
+      const { error: updateError } = await supabase.from('bookings').update({ status: 'completed', completed_at: new Date().toISOString() }).eq('id', bookingId)
+      if (updateError) throw updateError
+      showToast('Job completed successfully!', 'success')
+      load()
+    } catch (err: any) {
+      showToast(err.message || 'Failed to complete job', 'error')
+    }
+    setActioningId(null)
+  }
+
+  if (!user || profile?.role !== 'partner') return <Navigate to="/auth" />
+
+  return (
+    <div className="partner-page">
+      <header className="page-header"><h1>Active Jobs</h1></header>
+      {loading ? <div className="loading-state"><div className="spinner" /></div> : error ? (
+        <div className="error-state"><AlertCircle size={48} /><h3>Failed to load</h3><button className="btn btn-primary" onClick={load}>Retry</button></div>
+      ) : jobs.length === 0 ? (
+        <div className="empty-state"><Wrench size={48} /><h3>No active jobs</h3><p>Accept a job request to get started</p><Link to="/partner/jobs" className="btn btn-primary">View Job Requests</Link></div>
+      ) : (
+        <div className="active-jobs-list">
+          {jobs.map(j => (
+            <div key={j.id} className="active-job-card">
+              <div className="job-header"><span className="booking-id">#{j.booking_number}</span><span className={`status ${j.status}`}>{j.status.replace('_', ' ')}</span></div>
+              <h3>{j.service?.name}</h3>
+              <div className="job-details">
+                <div className="detail"><MapPin size={14} /><span>{j.address?.substring(0, 40)}...</span></div>
+                <div className="detail"><Calendar size={14} /><span>{j.scheduled_date ? formatDate(j.scheduled_date) : 'TBD'}</span></div>
+                <div className="detail"><Clock size={14} /><span>{j.scheduled_time_slot || 'TBD'}</span></div>
+                {j.otp && <div className="detail"><Shield size={14} /><span className="otp">OTP: {j.otp}</span></div>}
+              </div>
+              <div className="job-actions">
+                {j.status === 'confirmed' && <button className="btn btn-primary" onClick={() => startJob(j.id)} disabled={actioningId === j.id}>{actioningId === j.id ? 'Starting...' : 'Start Job'}</button>}
+                {j.status === 'in_progress' && <button className="btn btn-success" onClick={() => completeJob(j.id)} disabled={actioningId === j.id}>{actioningId === j.id ? 'Completing...' : 'Complete Job'}</button>}
+              </div>
             </div>
           ))}
         </div>
@@ -1148,9 +1348,9 @@ function PartnerLayout() {
       <main className="partner-content"><Outlet /></main>
       <nav className="partner-nav">
         <Link to="/partner" className={`partner-nav-item ${location.pathname === '/partner' ? 'active' : ''}`}><Home size={20} /><span>Home</span></Link>
-        <Link to="/partner/jobs" className={`partner-nav-item ${location.pathname.startsWith('/partner/jobs') ? 'active' : ''}`}><Wrench size={20} /><span>Jobs</span></Link>
+        <Link to="/partner/jobs" className={`partner-nav-item ${location.pathname.startsWith('/partner/jobs') ? 'active' : ''}`}><Wrench size={20} /><span>Requests</span></Link>
+        <Link to="/partner/active" className={`partner-nav-item ${location.pathname.startsWith('/partner/active') ? 'active' : ''}`}><CheckCircle size={20} /><span>Active</span></Link>
         <Link to="/partner/earnings" className={`partner-nav-item ${location.pathname.startsWith('/partner/earnings') ? 'active' : ''}`}><DollarSign size={20} /><span>Earnings</span></Link>
-        <Link to="/partner/history" className={`partner-nav-item ${location.pathname.startsWith('/partner/history') ? 'active' : ''}`}><Clock size={20} /><span>History</span></Link>
       </nav>
     </div>
   )
@@ -1251,8 +1451,9 @@ function PartnerJobsPage() {
       if (actionError) throw actionError
       if (accept) {
         const req = requests.find(r => r.id === requestId)
-        if (req?.booking_id) {
-          await supabase.from('bookings').update({ technician_id: requests.find(r => r.id === requestId)?.partner_id, status: 'confirmed' }).eq('id', req.booking_id)
+        if (req?.booking_id && req?.partner_id) {
+          const { error: bookingError } = await supabase.from('bookings').update({ technician_id: req.partner_id, status: 'confirmed' }).eq('id', req.booking_id)
+          if (bookingError) throw bookingError
         }
       }
       showToast(accept ? 'Job accepted!' : 'Job declined', accept ? 'success' : 'info')
@@ -1626,16 +1827,22 @@ function AdminPartnersPage() {
 function AdminBookingsPage() {
   const { user, profile } = useAuth()
   const [bookings, setBookings] = useState<any[]>([])
+  const [partners, setPartners] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [updatingId, setUpdatingId] = useState<string | null>(null)
 
   useEffect(() => { if (user && profile?.role === 'admin') load() }, [user, profile])
 
   async function load() {
     try {
-      const { data, error: loadError } = await bookingApi.getAll()
-      if (loadError) throw loadError
-      setBookings(data || [])
+      const [bookingsRes, partnersRes] = await Promise.all([
+        bookingApi.getAll(),
+        partnerApi.getAll()
+      ])
+      if (bookingsRes.error) throw bookingsRes.error
+      setBookings(bookingsRes.data || [])
+      setPartners(partnersRes.data || [])
     } catch (err: any) {
       setError(err.message)
     }
@@ -1643,6 +1850,7 @@ function AdminBookingsPage() {
   }
 
   async function updateStatus(bookingId: string, status: string) {
+    setUpdatingId(bookingId)
     try {
       const { error: updateError } = await bookingApi.updateStatus(bookingId, status)
       if (updateError) throw updateError
@@ -1651,6 +1859,21 @@ function AdminBookingsPage() {
     } catch (err: any) {
       showToast(err.message || 'Failed to update', 'error')
     }
+    setUpdatingId(null)
+  }
+
+  async function assignPartner(bookingId: string, partnerId: string) {
+    if (!partnerId) return
+    setUpdatingId(bookingId)
+    try {
+      const { error: assignError } = await supabase.from('bookings').update({ technician_id: partnerId, status: 'confirmed' }).eq('id', bookingId)
+      if (assignError) throw assignError
+      showToast('Partner assigned successfully', 'success')
+      load()
+    } catch (err: any) {
+      showToast(err.message || 'Failed to assign partner', 'error')
+    }
+    setUpdatingId(null)
   }
 
   if (!user || profile?.role !== 'admin') return <Navigate to="/auth" />
@@ -1668,7 +1891,7 @@ function AdminBookingsPage() {
             <div key={b.id} className="admin-booking-card">
               <div className="booking-header">
                 <span className="booking-id">#{b.booking_number}</span>
-                <select value={b.status} onChange={e => updateStatus(b.id, e.target.value)} className="status-select">
+                <select value={b.status} onChange={e => updateStatus(b.id, e.target.value)} className="status-select" disabled={updatingId === b.id}>
                   <option value="pending">Pending</option>
                   <option value="confirmed">Confirmed</option>
                   <option value="in_progress">In Progress</option>
@@ -1681,6 +1904,20 @@ function AdminBookingsPage() {
               <div className="booking-details">
                 <span><Calendar size={14} /> {b.scheduled_date ? formatDate(b.scheduled_date) : 'TBD'}</span>
                 <span><DollarSign size={14} /> ₹{b.final_price?.toLocaleString() || 0}</span>
+              </div>
+              <div className="partner-assign">
+                <label>Assign Partner:</label>
+                <select
+                  value={b.technician_id || ''}
+                  onChange={e => assignPartner(b.id, e.target.value)}
+                  className="partner-select"
+                  disabled={updatingId === b.id || b.status === 'cancelled' || b.status === 'completed'}
+                >
+                  <option value="">Select Partner</option>
+                  {partners.filter(p => p.is_available !== false).map(p => (
+                    <option key={p.id} value={p.id}>{p.full_name} (★{p.rating?.toFixed(1) || '0.0'})</option>
+                  ))}
+                </select>
               </div>
             </div>
           ))}
@@ -1993,6 +2230,7 @@ export default function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/:category" element={<ServiceDetailPage />} />
         <Route path="/bookings" element={<BookingsPage />} />
+        <Route path="/booking/detail" element={<BookingDetailPage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/emergency" element={<EmergencyPage />} />
@@ -2007,6 +2245,7 @@ export default function App() {
       <Route path="/partner" element={<PartnerLayout />}>
         <Route index element={<PartnerDashboard />} />
         <Route path="jobs" element={<PartnerJobsPage />} />
+        <Route path="active" element={<PartnerActiveJobsPage />} />
         <Route path="earnings" element={<PartnerEarningsPage />} />
         <Route path="history" element={<PartnerHistoryPage />} />
         <Route path="profile" element={<PartnerProfilePage />} />
