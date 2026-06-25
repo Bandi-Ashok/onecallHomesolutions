@@ -1,0 +1,67 @@
+import type { CapacitorConfig } from '@capacitor/cli';
+
+const config: CapacitorConfig = {
+  appId: 'com.onecall.homesolutions',
+  appName: 'One Call Home Solutions',
+  webDir: 'dist',
+  server: {
+    androidScheme: 'https',
+  },
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 3000,
+      launchAutoHide: true,
+      backgroundColor: '#1B3A5C',
+      androidSplashResourceName: 'splash',
+      androidScaleType: 'CENTER_CROP',
+      showSpinner: false,
+      splashFullScreen: true,
+      splashImmersive: true,
+    },
+    StatusBar: {
+      style: 'DARK',
+      backgroundColor: '#1B3A5C',
+    },
+    Keyboard: {
+      resize: 'body',
+      style: 'dark',
+      resizeOnFullScreen: true,
+    },
+    PushNotifications: {
+      presentationOptions: ['badge', 'sound', 'alert'],
+    },
+    LocalNotifications: {
+      smallIcon: 'ic_stat_icon_config_sample',
+      iconColor: '#C9972C',
+    },
+    Geolocation: {
+      enableHighAccuracy: true,
+    },
+    Camera: {
+      permissions: ['camera', 'photos'],
+    },
+    Filesystem: {
+      // For document uploads (KYC documents)
+    },
+  },
+  android: {
+    allowMixedContent: false,
+    captureInput: true,
+    webContentsDebuggingEnabled: false,
+    backgroundColor: '#1B3A5C',
+    buildOptions: {
+      keystorePath: 'release.keystore',
+      keystorePassword: '',
+      keyAlias: 'onecall',
+      keyPassword: '',
+      signingType: 'apksigner',
+    },
+  },
+  ios: {
+    scrollEnabled: true,
+    contentInset: 'automatic',
+    preferredContentMode: 'mobile',
+  },
+};
+
+export default config;

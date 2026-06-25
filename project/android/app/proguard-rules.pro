@@ -19,3 +19,35 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Capacitor
+-keep class com.getcapacitor.** { *; }
+-keep class capacitor.android.plugins.** { *; }
+-dontwarn capacitor.android.plugins.**
+
+# WebView JavaScript Interface
+-keepclassmembers class com.onecall.homesolutions.MainActivity {
+    public *;
+}
+
+# Keep native methods
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# OkHttp and Okio
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+
+# Gson
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.google.gson.** { *; }
+
+# Keep serialized fields
+-keepclassmembers class * {
+    @com.google.gson.annotations.SerializedName <fields>;
+}
+
