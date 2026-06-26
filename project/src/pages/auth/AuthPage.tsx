@@ -40,7 +40,7 @@ export function AuthPage() {
         .from('profiles')
         .select('*')
         .eq('google_id', firebaseUser.uid)
-        .single()
+        .maybeSingle()
 
       if (existingProfile) {
         setUser({ id: existingProfile.user_id } as any)
@@ -103,7 +103,7 @@ export function AuthPage() {
     try {
       await confirmationResult.confirm(otp)
       setStep('details')
-    } catch (err: any) {
+    } catch {
       setError('Invalid OTP. Please try again.')
     } finally {
       setLoading(false)
@@ -124,7 +124,7 @@ export function AuthPage() {
 
       const { data: { user: authUser } } = await supabase.auth.getUser()
       if (authUser) {
-        const { data: userProfile } = await supabase.from('profiles').select('*').eq('user_id', authUser.id).single()
+        const { data: userProfile } = await supabase.from('profiles').select('*').eq('user_id', authUser.id).maybeSingle()
         if (userProfile) {
           setUser({ id: userProfile.user_id } as any)
           setProfile(userProfile)
@@ -164,7 +164,7 @@ export function AuthPage() {
             email,
           })
           .select()
-          .single()
+          .maybeSingle()
 
         if (newProfile) {
           setUser({ id: newProfile.user_id } as any)
@@ -177,7 +177,7 @@ export function AuthPage() {
           .update({ full_name: fullName, phone, email, updated_at: new Date().toISOString() })
           .eq('user_id', authUser.id)
           .select()
-          .single()
+          .maybeSingle()
 
         if (updatedProfile) {
           setUser({ id: updatedProfile.user_id } as any)

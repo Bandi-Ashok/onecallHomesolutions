@@ -484,7 +484,7 @@ function BookingDetailPage() {
 
   async function load() {
     try {
-      const { data, error: loadError } = await supabase.from('bookings').select('*, service:services(*), customer:profiles(*)').eq('id', bookingId).single()
+      const { data, error: loadError } = await supabase.from('bookings').select('*, service:services(*), customer:profiles(*)').eq('id', bookingId).maybeSingle()
       if (loadError) throw loadError
       setBooking(data)
 
@@ -856,7 +856,7 @@ function BookingPage() {
     if (!couponCode) return
     setError('')
     try {
-      const { data, error: couponError } = await supabase.from('coupons').select('*').eq('code', couponCode.toUpperCase()).eq('is_active', true).single()
+      const { data, error: couponError } = await supabase.from('coupons').select('*').eq('code', couponCode.toUpperCase()).eq('is_active', true).maybeSingle()
       if (couponError || !data) {
         setError('Invalid or expired coupon code')
         return
@@ -2455,7 +2455,7 @@ function PartnerKYCPage() {
         partner_id: partner.id,
         document_type: docType,
         document_url: urlData.publicUrl
-      }, { onConflict: 'partner_id,document_type' })
+      }, { onConflict: 'kyc_documents_partner_id_document_type_key' })
 
       if (dbError) throw dbError
       showToast(`${docTypes.find(d => d.key === docType)?.label} uploaded!`, 'success')
@@ -3052,8 +3052,11 @@ function AdminWithdrawalsPage() {
   async function rejectWithdrawal(w: any, reason: string) {
     try {
       await supabase.from('withdrawal_requests').update({ status: 'rejected', reject_reason: reason, processed_at: new Date().toISOString() }).eq('id', w.id)
-      // Refund to partner wallet
-      await supabase.from('partners').update({ wallet_balance: supabase.rpc('increment_wallet', { amount: w.amount }) }).eq('id', w.partner_id)
+      // Refund to partner wallet - fetch current balance and add amount
+      const { data: partnerData } = await supabase.from('partners').select('wallet_balance').eq('id', w.partner_id).maybeSingle()
+      if (partnerData) {
+        await supabase.from('partners').update({ wallet_balance: (partnerData.wallet_balance || 0) + w.amount }).eq('id', w.partner_id)
+      }
       showToast('Withdrawal rejected, amount refunded', 'info')
       load()
     } catch (err: any) {
@@ -3098,7 +3101,7 @@ function AdminWithdrawalsPage() {
                 <div className="actions">
                   <input type="text" placeholder="Transaction Reference" value={txnRef} onChange={e => setTxnRef(e.target.value)} />
                   <div className="btn-row">
-                    <button className="btn btn-danger btn-sm" onClick={() => { const reason = prompt('Rejection reason:'); reason && rejectWithdrawal(w, reason) }}>Reject</button>
+                    <button className="btn btn-danger btn-sm" onClick={() => { const reason = prompt('Rejection reason:'); if (reason) rejectWithdrawal(w, reason) }}>Reject</button>
                     <button className="btn btn-success btn-sm" onClick={() => approveWithdrawal(w)}>Approve</button>
                   </div>
                 </div>

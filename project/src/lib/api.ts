@@ -5,7 +5,7 @@ export const bookingApi = {
     const bookingNumber = `OCH${Date.now().toString().slice(-8)}`
     return supabase.from('bookings').insert({ ...booking, booking_number: bookingNumber }).select().single()
   },
-  getById: async (id: string) => supabase.from('bookings').select('*, service:services(*)').eq('id', id).single(),
+  getById: async (id: string) => supabase.from('bookings').select('*, service:services(*)').eq('id', id).maybeSingle(),
   getByCustomer: async (customerId: string) => supabase.from('bookings').select('*, service:services(*)').eq('customer_id', customerId).order('created_at', { ascending: false }),
   updateStatus: async (id: string, status: string) => supabase.from('bookings').update({ status }).eq('id', id),
   getAll: async () => supabase.from('bookings').select('*, service:services(*), customer:profiles(*)').order('created_at', { ascending: false }),
@@ -14,11 +14,11 @@ export const bookingApi = {
 export const servicesApi = {
   getCategories: async () => supabase.from('service_categories').select('*').order('display_order'),
   getByCategory: async (categoryId: string) => supabase.from('services').select('*').eq('category_id', categoryId).eq('is_active', true),
-  getById: async (id: string) => supabase.from('services').select('*, category:service_categories(*)').eq('id', id).single(),
+  getById: async (id: string) => supabase.from('services').select('*, category:service_categories(*)').eq('id', id).maybeSingle(),
 }
 
 export const walletApi = {
-  getBalance: async (userId: string) => supabase.from('wallets').select('*').eq('user_id', userId).single(),
+  getBalance: async (userId: string) => supabase.from('wallets').select('*').eq('user_id', userId).maybeSingle(),
   getTransactions: async (walletId: string) => supabase.from('wallet_transactions').select('*').eq('wallet_id', walletId).order('created_at', { ascending: false }),
   createWallet: async (userId: string) => supabase.from('wallets').insert({ user_id: userId }).select().single(),
 }
@@ -29,7 +29,7 @@ export const couponApi = {
 }
 
 export const referralApi = {
-  getCode: async (userId: string) => supabase.from('referral_codes').select('*').eq('user_id', userId).single(),
+  getCode: async (userId: string) => supabase.from('referral_codes').select('*').eq('user_id', userId).maybeSingle(),
 }
 
 export const chatApi = {
@@ -37,11 +37,11 @@ export const chatApi = {
 }
 
 export const trackingApi = {
-  getLatest: async (bookingId: string) => supabase.from('tracking_updates').select('*').eq('booking_id', bookingId).order('created_at', { ascending: false }).limit(1).single(),
+  getLatest: async (bookingId: string) => supabase.from('tracking_updates').select('*').eq('booking_id', bookingId).order('created_at', { ascending: false }).limit(1).maybeSingle(),
 }
 
 export const partnerApi = {
-  getProfile: async (userId: string) => supabase.from('partners').select('*').eq('user_id', userId).single(),
+  getProfile: async (userId: string) => supabase.from('partners').select('*').eq('user_id', userId).maybeSingle(),
   updateProfile: async (userId: string, updates: any) => supabase.from('partners').update(updates).eq('user_id', userId).select().single(),
   getJobRequests: async (partnerId: string) => supabase.from('partner_job_requests').select('*, booking:bookings(*, service:services(*))').eq('partner_id', partnerId).eq('status', 'pending'),
   getEarnings: async (partnerId: string) => supabase.from('partner_earnings').select('*').eq('partner_id', partnerId).order('created_at', { ascending: false }),
@@ -63,7 +63,7 @@ export const reviewApi = {
 }
 
 export const userApi = {
-  getProfile: async (userId: string) => supabase.from('profiles').select('*').eq('user_id', userId).single(),
+  getProfile: async (userId: string) => supabase.from('profiles').select('*').eq('user_id', userId).maybeSingle(),
   updateProfile: async (userId: string, updates: any) => supabase.from('profiles').update(updates).eq('user_id', userId).select().single(),
   getAddresses: async (customerId: string) => supabase.from('service_addresses').select('*').eq('customer_id', customerId).order('is_default', { ascending: false }),
   addAddress: async (address: any) => supabase.from('service_addresses').insert(address).select().single(),
@@ -110,5 +110,5 @@ export const dashboardApi = {
 
 export const amcApi = {
   getPlans: async () => supabase.from('amc_plans').select('*').eq('is_active', true).order('monthly_price'),
-  getActiveSubscription: async (customerId: string) => supabase.from('customer_amc').select('*, plan:amc_plans(*)').eq('customer_id', customerId).eq('status', 'active').single(),
+  getActiveSubscription: async (customerId: string) => supabase.from('customer_amc').select('*, plan:amc_plans(*)').eq('customer_id', customerId).eq('status', 'active').maybeSingle(),
 }
