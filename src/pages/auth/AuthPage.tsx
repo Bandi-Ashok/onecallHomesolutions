@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { supabase } from '../../lib/supabase'
-import { firebaseAuth, googleProvider } from '../../lib/firebase'
-import { signInWithPopup, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
 import { Phone, Mail, ArrowRight, Loader as Loader2, MessageCircle, Shield } from 'lucide-react'
 
 type AuthMode = 'phone' | 'email'
@@ -21,7 +19,6 @@ export function AuthPage() {
   const [fullName, setFullName] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [confirmationResult, setConfirmationResult] = useState<any>(null)
 
   // Redirect if already logged in
   if (user && profile) {
@@ -33,78 +30,14 @@ export function AuthPage() {
     setLoading(true)
     setError('')
     try {
-      const result = await signInWithPopup(firebaseAuth, googleProvider)
-      const firebaseUser = result.user
-
-      const { data: existingProfile } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('google_id', firebaseUser.uid)
-        .maybeSingle()
-
-      if (existingProfile) {
-        setUser({ id: existingProfile.user_id } as any)
-        setProfile(existingProfile)
-        navigate(existingProfile.role === 'partner' ? '/partner' : existingProfile.role === 'admin' ? '/admin' : '/')
-        return
-      }
-
-      setFullName(firebaseUser.displayName || '')
-      setEmail(firebaseUser.email || '')
-      setStep('details')
-    } catch (err: any) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  async function initRecaptcha() {
-    if (!(window as any).recaptchaVerifier) {
-      (window as any).recaptchaVerifier = new RecaptchaVerifier(firebaseAuth, 'recaptcha-container', {
-        size: 'invisible',
+      const { error: signInError } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: window.location.origin },
       })
-    }
-  }
-
-  async function sendPhoneOTP() {
-    if (phone.length < 10) {
-      setError('Please enter a valid phone number')
-      return
-    }
-
-    setLoading(true)
-    setError('')
-    try {
-      await initRecaptcha()
-      const formattedPhone = `+91${phone}`
-      const result = await signInWithPhoneNumber(firebaseAuth, formattedPhone, (window as any).recaptchaVerifier)
-      setConfirmationResult(result)
-      setStep('otp')
+      if (signInError) throw signInError
+      // OAuth redirect will handle the rest; on return, useAuth will pick up the session
     } catch (err: any) {
-      setError(err.message)
-      if ((window as any).recaptchaVerifier) {
-        (window as any).recaptchaVerifier.clear()
-        ;(window as any).recaptchaVerifier = null
-      }
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  async function verifyOTP() {
-    if (otp.length !== 6) {
-      setError('Please enter a valid 6-digit OTP')
-      return
-    }
-
-    setLoading(true)
-    setError('')
-    try {
-      await confirmationResult.confirm(otp)
-      setStep('details')
-    } catch {
-      setError('Invalid OTP. Please try again.')
+      setError(err.message || 'Google sign-in failed')
     } finally {
       setLoading(false)
     }
@@ -138,27 +71,23 @@ export function AuthPage() {
     }
   }
 
-  async function completeProfile() {
-    if (!fullName) {
-      setError('Please enter your full name')
+  async function handleEmailSignUp() {
+    if (!email || !password || !fullName) {
+      setError('Please fill all fields')
       return
     }
 
     setLoading(true)
     setError('')
     try {
-      const { data: { user: authUser } } = await supabase.auth.getUser()
-      if (!authUser) {
-        const { data, error: signUpError } = await supabase.auth.signUp({
-          email: email || `${phone}@phone.placeholder`,
-          password: password || Math.random().toString(36).slice(-10),
-        })
-        if (signUpError) throw signUpError
+      const { data, error: signUpError } = await supabase.auth.signUp({ email, password })
+      if (signUpError) throw signUpError
 
+      if (data.user) {
         const { data: newProfile } = await supabase
           .from('profiles')
           .insert({
-            user_id: data.user!.id,
+            user_id: data.user.id,
             full_name: fullName,
             phone,
             email,
@@ -171,7 +100,69 @@ export function AuthPage() {
           setProfile(newProfile)
           navigate('/')
         }
-      } else {
+      }
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function sendPhoneOTP() {
+    if (phone.length < 10) {
+      setError('Please enter a valid phone number')
+      return
+    }
+
+    setLoading(true)
+    setError('')
+    try {
+      const { error: otpError } = await supabase.auth.signInWithOtp({
+        phone: `+91${phone}`,
+      })
+      if (otpError) throw otpError
+      setStep('otp')
+    } catch (err: any) {
+      setError(err.message || 'Failed to send OTP')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function verifyOTP() {
+    if (otp.length !== 6) {
+      setError('Please enter a valid 6-digit OTP')
+      return
+    }
+
+    setLoading(true)
+    setError('')
+    try {
+      const { error: verifyError } = await supabase.auth.verifyOtp({
+        phone: `+91${phone}`,
+        token: otp,
+        type: 'sms',
+      })
+      if (verifyError) throw verifyError
+      setStep('details')
+    } catch (err: any) {
+      setError('Invalid OTP. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function completeProfile() {
+    if (!fullName) {
+      setError('Please enter your full name')
+      return
+    }
+
+    setLoading(true)
+    setError('')
+    try {
+      const { data: { user: authUser } } = await supabase.auth.getUser()
+      if (authUser) {
         const { data: updatedProfile } = await supabase
           .from('profiles')
           .update({ full_name: fullName, phone, email, updated_at: new Date().toISOString() })
@@ -259,6 +250,9 @@ export function AuthPage() {
                 <button className="btn btn-primary btn-block" onClick={handleEmailLogin} disabled={loading}>
                   {loading ? <Loader2 className="spinner" size={20} /> : 'Sign In'}
                   <ArrowRight size={18} />
+                </button>
+                <button className="btn btn-secondary btn-block" onClick={handleEmailSignUp} disabled={loading}>
+                  {loading ? <Loader2 className="spinner" size={20} /> : 'Create Account'}
                 </button>
               </div>
             )}
@@ -363,7 +357,6 @@ export function AuthPage() {
 
         {error && <div className="error-message">{error}</div>}
       </div>
-      <div id="recaptcha-container"></div>
     </div>
   )
 }
