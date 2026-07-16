@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emergency Protocol &amp; On-site Safety | One Call Academy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .check-step:checked + label {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#f7fafc",
+                      "on-surface": "#181c1e",
+                      "on-tertiary-fixed-variant": "#00504e",
+                      "on-secondary-fixed-variant": "#8c1620",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#4cadab",
+                      "on-primary-fixed": "#001b3c",
+                      "tertiary-fixed": "#94f2f0",
+                      "surface-variant": "#e0e3e5",
+                      "on-secondary-fixed": "#410006",
+                      "surface-container": "#ebeef0",
+                      "on-tertiary-fixed": "#00201f",
+                      "surface-bright": "#f7fafc",
+                      "on-secondary-container": "#6d0010",
+                      "inverse-on-surface": "#eef1f3",
+                      "surface-dim": "#d7dadc",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "inverse-surface": "#2d3133",
+                      "outline-variant": "#c4c6cf",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#77d6d3",
+                      "primary": "#002045",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed-dim": "#adc7f7",
+                      "tertiary": "#002625",
+                      "surface-container-low": "#f1f4f6",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#ffdad8",
+                      "inverse-primary": "#adc7f7",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#fe6c6b",
+                      "outline": "#74777f",
+                      "surface-tint": "#455f88",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-surface-variant": "#43474e",
+                      "secondary": "#ad3035",
+                      "on-secondary": "#ffffff",
+                      "background": "#f7fafc",
+                      "tertiary-container": "#003d3c",
+                      "secondary-fixed-dim": "#ffb3b0",
+                      "primary-fixed": "#d6e3ff",
+                      "surface-container-high": "#e5e9eb",
+                      "on-background": "#181c1e",
+                      "on-primary-container": "#86a0cd",
+                      "primary-container": "#1a365d",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "base": "8px",
+                      "container-max": "1280px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Montserrat"],
+                      "label-md": ["Inter"],
+                      "headline-xl": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "headline-lg": ["Montserrat"],
+                      "body-lg": ["Inter"],
+                      "caption": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface custom-scrollbar">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background shadow-sm fixed top-0 w-full z-50 transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-3xl">school</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">One Call Academy</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 items-center">
+<span class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md cursor-pointer hover:text-primary transition-colors">Catalog</span>
+<span class="text-primary dark:text-primary-fixed font-bold font-label-md text-label-md cursor-pointer">Safety</span>
+<span class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md cursor-pointer hover:text-primary transition-colors">Resources</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed-dim bg-primary-container flex items-center justify-center cursor-pointer active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Sidebar Navigation (Desktop) -->
+<nav class="hidden lg:flex flex-col h-screen fixed left-0 top-0 z-40 bg-surface-container-low dark:bg-surface-container-highest border-r border-outline-variant w-80 pt-24 shadow-lg">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed text-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<p class="font-headline-md text-[18px] font-bold text-primary dark:text-primary-fixed leading-tight">Service Professional</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Certification Level 2</p>
+</div>
+</div>
+<div class="flex flex-col space-y-1">
+<a class="text-on-surface-variant dark:text-surface-variant px-4 py-3 mx-2 my-1 rounded-lg flex items-center gap-4 hover:bg-surface-container-high dark:hover:bg-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 shadow-sm translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-md text-label-md">Safety Protocols</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant px-4 py-3 mx-2 my-1 rounded-lg flex items-center gap-4 hover:bg-surface-container-high dark:hover:bg-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-label-md text-label-md">Certifications</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant px-4 py-3 mx-2 my-1 rounded-lg flex items-center gap-4 hover:bg-surface-container-high dark:hover:bg-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-label-md text-label-md">Exam Center</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant px-4 py-3 mx-2 my-1 rounded-lg flex items-center gap-4 hover:bg-surface-container-high dark:hover:bg-primary-container transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md text-label-md">Resources</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="lg:ml-80 pt-24 pb-32 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-4xl mx-auto space-y-10">
+<!-- Breadcrumbs & Title -->
+<div class="space-y-2">
+<nav class="flex items-center gap-2 text-on-surface-variant text-caption">
+<span class="hover:text-primary cursor-pointer">Safety Modules</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Active Module</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Emergency Protocol &amp; On-site Safety</h2>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5 px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                Verified Content
+                            </span>
+<span class="text-on-surface-variant flex items-center gap-1 text-label-md">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+                                15 min read
+                            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Video/Diagram Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Video Player / Hero Visual -->
+<div class="md:col-span-2 relative aspect-video bg-on-background rounded-2xl overflow-hidden shadow-2xl border border-outline-variant group">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80" data-alt="A professional technician in high-visibility safety gear standing in a residential mechanical room with a complex HVAC system. The lighting is crisp and cinematic, highlighting technical safety protocols. High-end photography style with Corporate Modern clarity and primary navy accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAF3f8WOs02Pp60ag8hk4zAgLzJpwe2Q-5Cc10oQTu4D3i6tvQzuLHHT8sTXB4ngIWf8dfCemkF05DVMOEZ0INRvb2JYq42SRz6JfJOyxtSMmbqHpudd9IDYnMAPvPWRnPwCX2d0-Dhv2ZtV-NRYcP4g7xmvF0UTiqEklSX0FWgLgrRttezk7ihkUpca3CgKF7iDf0HPVkhWdi-kHnz6FrLKMIbqaKd7TooyI6SzrCx_hd6pEcdbOT0')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-center justify-center">
+<button class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center text-on-secondary shadow-xl hover:scale-110 active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<div class="absolute bottom-4 left-6 right-6 flex justify-between items-center text-white">
+<span class="font-label-md text-label-md">Unit 04: Assessing Gas Leaks</span>
+<span class="font-caption text-caption">04:22 / 12:00</span>
+</div>
+</div>
+<!-- Quick Stats/Info Panel -->
+<div class="flex flex-col gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex-1">
+<h3 class="font-headline-md text-[18px] text-primary mb-4">Module Summary</h3>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-0.5">report</span>
+<span class="text-body-md text-on-surface-variant">Immediate threat identification techniques.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary mt-0.5">call</span>
+<span class="text-body-md text-on-surface-variant">Communication chain of command.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">meeting_room</span>
+<span class="text-body-md text-on-surface-variant">Residential evacuation procedures.</span>
+</li>
+</ul>
+</div>
+<div class="bg-secondary-container/10 p-5 rounded-2xl border border-secondary/20 flex items-center gap-4">
+<div class="bg-secondary p-3 rounded-xl text-on-secondary">
+<span class="material-symbols-outlined text-2xl">warning</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary font-bold">Safety First</p>
+<p class="text-caption text-on-secondary-container">Standard One Call Protocol</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Lesson Steps -->
+<div class="space-y-6">
+<h3 class="font-headline-lg text-headline-md text-primary">On-site Protocol Sequence</h3>
+<div class="relative space-y-4 before:absolute before:left-8 before:top-4 before:bottom-4 before:w-0.5 before:bg-outline-variant">
+<!-- Step 1 -->
+<div class="relative pl-16 group">
+<div class="absolute left-4 top-2 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold z-10 border-4 border-surface group-hover:scale-110 transition-transform">1</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-outline-variant group-hover:border-primary-fixed-dim transition-colors">
+<h4 class="font-headline-md text-[18px] text-primary mb-2">Initial Scene Survey</h4>
+<p class="text-on-surface-variant leading-relaxed mb-4">Before entering any customer residence, perform a 360-degree exterior scan for visible gas vents, structural damage, or unsecured pets. Look for the "Safety Three": Sparks, Smells, and Sounds.</p>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container-high rounded-lg text-primary font-label-md text-label-md hover:bg-primary-fixed-dim transition-colors">View Diagram</button>
+<button class="px-4 py-2 border border-outline rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors">Read Standards</button>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-16 group">
+<div class="absolute left-4 top-2 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold z-10 border-4 border-surface group-hover:scale-110 transition-transform">2</div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-outline-variant group-hover:border-primary-fixed-dim transition-colors">
+<h4 class="font-headline-md text-[18px] text-primary mb-2">Client Verification &amp; Communication</h4>
+<p class="text-on-surface-variant leading-relaxed">Establish clear communication with the homeowner. Identify yourself using the official One Call ID and explain the safety perimeter you will be establishing during the repair process.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative pl-16 group opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="absolute left-4 top-2 w-8 h-8 rounded-full bg-outline text-white flex items-center justify-center font-bold z-10 border-4 border-surface">3</div>
+<div class="bg-surface-container-low p-6 rounded-2xl border border-dashed border-outline">
+<h4 class="font-headline-md text-[18px] text-on-surface-variant mb-2">Hazard Isolation</h4>
+<p class="text-on-surface-variant/80">Complete the previous steps to unlock this section detailing lock-out-tag-out (LOTO) procedures for electrical and gas mains.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Key Takeaways Checklist -->
+<div class="bg-primary/5 rounded-3xl p-8 border border-primary/10">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-md text-primary">Key Takeaways</h3>
+<p class="text-on-surface-variant text-caption">Review these essential points before proceeding to the final exam.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-4 p-4 bg-white rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<input class="check-step w-6 h-6 rounded-md text-primary focus:ring-primary border-outline" id="takeaway1" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface cursor-pointer select-none" for="takeaway1">Identify "Safety Three" hazard markers</label>
+</div>
+<div class="flex items-center gap-4 p-4 bg-white rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<input class="check-step w-6 h-6 rounded-md text-primary focus:ring-primary border-outline" id="takeaway2" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface cursor-pointer select-none" for="takeaway2">Perform LOTO on residential mains</label>
+</div>
+<div class="flex items-center gap-4 p-4 bg-white rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<input class="check-step w-6 h-6 rounded-md text-primary focus:ring-primary border-outline" id="takeaway3" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface cursor-pointer select-none" for="takeaway3">Execute evacuation route mapping</label>
+</div>
+<div class="flex items-center gap-4 p-4 bg-white rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<input class="check-step w-6 h-6 rounded-md text-primary focus:ring-primary border-outline" id="takeaway4" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface cursor-pointer select-none" for="takeaway4">Contact emergency dispatch if threat level &gt; 3</label>
+</div>
+</div>
+</div>
+<!-- Take Quiz CTA Section -->
+<div class="bg-primary p-10 rounded-3xl text-center space-y-6 shadow-xl relative overflow-hidden">
+<!-- Atmospheric background element -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 max-w-lg mx-auto space-y-4">
+<h3 class="font-headline-xl text-headline-xl text-white">Module Mastery Check</h3>
+<p class="text-on-primary-container font-body-lg text-body-lg opacity-90">Finish this module by completing the safety assessment. You need an 85% score to earn your certificate badge.</p>
+<div class="pt-4">
+<button class="inline-flex items-center gap-3 px-10 py-5 bg-secondary text-white font-bold text-lg rounded-2xl shadow-2xl hover:bg-secondary/90 hover:scale-[1.02] active:scale-95 transition-all group" onclick="handleQuizStart()">
+<span>Take Final Quiz</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<p class="text-caption text-on-primary-container/60">Estimated time: 5 minutes • 10 Questions</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface dark:bg-surface-dim shadow-[0_-4px_20px_rgba(0,32,69,0.1)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-md-mobile text-label-md-mobile">Learn</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-4 py-1 shadow-md scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="font-label-md-mobile text-label-md-mobile font-bold">Safety</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-label-md-mobile text-label-md-mobile">Exams</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md-mobile text-label-md-mobile">Profile</span>
+</div>
+</nav>
+<script>
+        function handleQuizStart() {
+            // Simple micro-interaction for quiz start
+            const btn = event.currentTarget;
+            btn.innerHTML = `<span>Loading Assessment...</span>`;
+            setTimeout(() => {
+                alert('Initializing Secure Exam Environment...');
+                btn.innerHTML = `<span>Take Final Quiz</span><span class="material-symbols-outlined">arrow_forward</span>`;
+            }, 1000);
+        }
+
+        // Handle sticky header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md', 'bg-white/95', 'backdrop-blur-md');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/95', 'backdrop-blur-md');
+            }
+        });
+    </script>
+</body></html>

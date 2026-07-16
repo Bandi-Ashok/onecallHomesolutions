@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Brand Story | One Call Home Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c4c6cf",
+                    "primary-fixed-dim": "#adc7f7",
+                    "surface-variant": "#e0e3e5",
+                    "surface-tint": "#455f88",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-fixed": "#ffdad8",
+                    "on-tertiary-container": "#4cadab",
+                    "tertiary-container": "#003d3c",
+                    "surface-dim": "#d7dadc",
+                    "tertiary-fixed": "#94f2f0",
+                    "on-secondary-fixed": "#410006",
+                    "on-tertiary-fixed": "#00201f",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f7fafc",
+                    "on-primary": "#ffffff",
+                    "primary": "#002045",
+                    "on-secondary-container": "#6d0010",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "primary-fixed": "#d6e3ff",
+                    "on-surface-variant": "#43474e",
+                    "tertiary": "#002625",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#74777f",
+                    "surface": "#f7fafc",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "on-primary-container": "#86a0cd",
+                    "inverse-primary": "#adc7f7",
+                    "background": "#f7fafc",
+                    "primary-container": "#1a365d",
+                    "surface-container-high": "#e5e9eb",
+                    "on-surface": "#181c1e",
+                    "surface-container": "#ebeef0",
+                    "inverse-surface": "#2d3133",
+                    "secondary": "#ad3035",
+                    "on-background": "#181c1e",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f1f4f6",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "secondary-container": "#fe6c6b",
+                    "on-primary-fixed": "#001b3c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Montserrat"],
+                    "caption": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .level-1-card {
+            background-color: #FFFFFF;
+            box-shadow: 0 4px 20px 0 rgba(0, 32, 69, 0.15);
+            border-radius: 12px;
+        }
+        .text-shadow-glow {
+            text-shadow: 0 0 20px rgba(0, 32, 69, 0.3);
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-size: 32px;">home_repair_service</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">One Call</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">Services</a>
+<a class="text-primary font-semibold border-b-2 border-primary" href="#">Story</a>
+<a class="text-on-surface-variant font-medium hover:text-primary hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">Refer</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-semibold active:scale-95 duration-150 transition-all hover:shadow-lg">
+                Download App
+            </button>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative h-[70vh] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-[10000ms] hover:scale-110" data-alt="A cinematic, high-resolution wide shot of a modern, upscale residential neighborhood at dusk. The lighting is warm and golden from interior windows, contrasting with a deep, professional navy blue evening sky. The atmosphere is peaceful, secure, and impeccably maintained, reflecting a sense of elite property guardianship and corporate modern reliability. The image style is clean, architectural, and highly professional." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFAcqLnPFXaQFgDY58Vb014SEp_lZQqqypVFOSqp2GqAC_A8DDLK7cT-Raiemos04ZHPJiZWmekyb1oHfBPsJD2DMAB9pqMa6q6AoLt9jd3yug3tG4SDSxhtuM0O98SYaEtRIcal2y6JcSx4s2Xmt5wlByQU12aSvn-DJPuLulHsYEDdbunIolt4xQPYN82x2gxGBGIsSqUa1U9EY7tbbeYwQutBCelt64aSeeGXXBUile723L37vL')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop w-full">
+<div class="max-w-2xl">
+<span class="inline-block bg-tertiary-container/30 text-tertiary-fixed px-4 py-1 rounded-full text-label-md mb-6 backdrop-blur-md border border-tertiary/20">OUR MISSION</span>
+<h1 class="font-headline-xl text-headline-xl text-on-primary mb-6 text-shadow-glow">The Professional Guardian of Your Home.</h1>
+<p class="font-body-lg text-body-lg text-on-primary-container mb-8 opacity-90 leading-relaxed">
+                        At One Call Home Solutions, we believe your home is your sanctuary. We provide institutional-grade reliability for individual homeowners, ensuring safety, speed, and technical excellence in every repair.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-secondary text-on-primary px-8 py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_20px_rgba(173,48,53,0.4)] transition-all active:scale-95">Emergency SOS</button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">Explore Services</button>
+</div>
+</div>
+</div>
+</section>
+<!-- The Guardian Standard Section -->
+<section class="py-20 bg-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">The Guardian Standard</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We don't just send contractors; we deploy vetted professionals. Every technician undergoes a rigorous 50-point background and technical certification process.</p>
+</div>
+<div class="flex items-center gap-2 text-tertiary-container font-semibold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>1,200+ Verified Professionals</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 level-1-card p-8 flex flex-col justify-between relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Rigorous Vetting</h3>
+<p class="text-on-surface-variant max-w-sm">Every 'Guardian' is background checked, insured, and tested for technical mastery across specialized home systems.</p>
+</div>
+<div class="mt-8 flex gap-4 overflow-x-auto pb-4">
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-label-md text-primary whitespace-nowrap border border-outline-variant">Background Checked</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-label-md text-primary whitespace-nowrap border border-outline-variant">$2M Liability Cover</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-label-md text-primary whitespace-nowrap border border-outline-variant">Certified Master Craftsmen</span>
+</div>
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[180px] absolute -right-10 top-1/2 -translate-y-1/2 rotate-12">policy</span>
+</div>
+</div>
+<div class="level-1-card p-8 bg-primary text-on-primary overflow-hidden relative">
+<h3 class="font-headline-md text-headline-md mb-4">Real-Time Tracking</h3>
+<p class="opacity-80 mb-6">Monitor your technician's arrival with GPS-enabled precision. No more 4-hour windows.</p>
+<div class="w-full h-40 bg-white/10 rounded-xl border border-white/20 flex items-center justify-center">
+<div class="w-full h-full rounded-xl" data-location="Manhattan, New York" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQoQDH-DOuncG3M-dR6ALtDKeEnHLEvjHpLfoqDuVhzHFT-i8S4bXlO0D4hcc3tqi4_5fibeHcHwUei15SqG5X3G8xooEVJ41Nxmb-LPY1Cp8dgmjuhEW7pwtB9oh5zyRd0V35qZHnOL6ZJSkeghQi5NfsSMJ3-NwndbImSdol_uaEVz78pepQCEMMHyenBhYk2kPNVAuEnIjmcAJnBE2CNIsqtM6ZIceydvUW0iR0Ap1XVX65Jjzb')"></div>
+</div>
+</div>
+<div class="level-1-card p-8 flex flex-col md:flex-row gap-8 md:col-span-3 items-center">
+<div class="w-full md:w-1/3 aspect-video rounded-xl overflow-hidden shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-quality portrait of a professional technician wearing a crisp, branded navy blue uniform with 'One Call' logo. He is smiling confidently, holding a digital tablet that shows a maintenance checklist. The lighting is bright and clean, typical of a high-end corporate lifestyle shoot, set in a modern, well-lit kitchen. The color palette emphasizes deep navy, pure white, and subtle teal accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAlP2kd9TB8SLjSq56SH9zi1JCcQu_yGuDQiaewTiA8OmOYfzCCMBFX8tpzhL6Ir2otqSQR2HDPVi-rfDfK0-OvOMwThifHBrtiEge7DoiJh1_znkpqPZZTBCYiTE83M__EtaJMnWdxcKxtPJUkWVGTzfHYwqBBp2k_gL9O12CBD-CQ8oqCaIy-84-UuWVNNfeyQfsx2N7NNUUoUGqOQ_1NHW5aJ-memfVH_imFpYayFt7rCYv04lR"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<div class="flex text-[#FFD700]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-bold text-primary">4.9/5 Average Rating</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">The Face of Reliability</h3>
+<p class="text-on-surface-variant">"The technician arrived exactly at 2:00 PM, diagnosed the leak in 5 minutes, and had it fixed within the hour. Professionalism I haven't seen in this industry before."</p>
+<p class="mt-4 font-bold text-primary">— Sarah J., Premium Member</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 30-Min Emergency Guarantee -->
+<section class="py-24 bg-surface-container-lowest overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="flex-1 order-2 lg:order-1">
+<div class="relative inline-block mb-6">
+<h2 class="font-headline-xl text-headline-xl text-primary z-10 relative">30-Minute Dispatch Guarantee</h2>
+<div class="absolute bottom-1 left-0 w-full h-4 bg-secondary/10 -z-0"></div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
+                            When an emergency strikes, seconds count. Our intelligent dispatch system identifies the nearest 'Elite Guardian' and routes them to your doorstep in 30 minutes or less. We don't just promise speed; we guarantee it.
+                        </p>
+<div class="space-y-6">
+<div class="flex gap-6 p-6 rounded-2xl bg-surface-container-high/50 border border-outline-variant hover:border-secondary transition-colors duration-300">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<div>
+<h4 class="font-bold text-primary text-lg">Instant Triage</h4>
+<p class="text-on-surface-variant">AI-powered damage assessment via the app for immediate resource allocation.</p>
+</div>
+</div>
+<div class="flex gap-6 p-6 rounded-2xl bg-surface-container-high/50 border border-outline-variant hover:border-secondary transition-colors duration-300">
+<div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">shuffle</span>
+</div>
+<div>
+<h4 class="font-bold text-primary text-lg">GPS Rapid Routing</h4>
+<p class="text-on-surface-variant">Optimal navigation to bypass local traffic and arrive on site faster than anyone else.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 order-1 lg:order-2 w-full lg:w-auto">
+<div class="relative group">
+<div class="absolute -inset-4 bg-secondary/10 rounded-3xl blur-2xl group-hover:bg-secondary/20 transition-all duration-500"></div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+<img class="w-full h-[500px] object-cover" data-alt="A dramatic, high-action close-up of a professional service vehicle's dashboard and steering wheel with a GPS map clearly visible showing a direct route through city streets. Outside the windshield, the scene is a soft-focus urban environment at night with streaks of white and red light. The overall aesthetic is high-speed, efficient, and technologically advanced, using a color palette of deep navy and safety orange accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr7tgc31y3OqnaIXvwyGqIzxqDljD-noNhBIrAa5-Quaq7sc6fD-VgkjFMXil46ESl_Ig8xilqd3kKHLElYPdeS37JQAKKQhPjQOhksAtA8hdvvQLvWQq48Ng_kDSvTGX3OtAvaM6GlCNGAnvKh8M9uIrGLmREBQWgmW68hR2eRrBNVWXO0YzGw8F7v4bVRBR2oZ82lE48w8hPG5kVxBpiOY9gQ74zbiByauPKYOi3rkR6cjNpZJdk"/>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-white/70 text-sm font-medium">DISPATCH TIME</span>
+<span class="text-white text-3xl font-extrabold tracking-tight">00:24:12</span>
+</div>
+<div class="ml-auto flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-full animate-pulse">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+<span class="text-xs font-bold uppercase tracking-widest">Active Dispatch</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Social Impact -->
+<section class="py-20 bg-primary text-on-primary">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-6">Our Social Impact</h2>
+<p class="font-body-lg text-body-lg opacity-80">We are committed to more than just home repair. One Call Home Solutions reinvests in the local technicians who form the backbone of our communities.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center p-6 border border-white/10 rounded-2xl hover:bg-white/5 transition-all">
+<div class="text-secondary text-4xl font-black mb-2">15%</div>
+<h4 class="font-bold mb-2">Technician Growth Fund</h4>
+<p class="text-sm opacity-70">Dedicated funding for local contractors to upgrade their tools and equipment.</p>
+</div>
+<div class="text-center p-6 border border-white/10 rounded-2xl hover:bg-white/5 transition-all">
+<div class="text-secondary text-4xl font-black mb-2">250+</div>
+<h4 class="font-bold mb-2">Scholarships Awarded</h4>
+<p class="text-sm opacity-70">Supporting the next generation of trade professionals through specialized education.</p>
+</div>
+<div class="text-center p-6 border border-white/10 rounded-2xl hover:bg-white/5 transition-all">
+<div class="text-secondary text-4xl font-black mb-2">Local</div>
+<h4 class="font-bold mb-2">Technician First</h4>
+<p class="text-sm opacity-70">We prioritize family-owned local businesses, giving them the reach of a national brand.</p>
+</div>
+<div class="text-center p-6 border border-white/10 rounded-2xl hover:bg-white/5 transition-all">
+<div class="text-secondary text-4xl font-black mb-2">Green</div>
+<h4 class="font-bold mb-2">Eco-Solutions</h4>
+<p class="text-sm opacity-70">Subsidies for homeowners choosing sustainable, energy-efficient home repairs.</p>
+</div>
+</div>
+<div class="mt-20 rounded-3xl overflow-hidden relative h-[400px]">
+<img class="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-700" data-alt="A wide-angle, heartwarming environmental portrait of a diverse group of professional male and female technicians in One Call uniforms standing together in a sun-drenched outdoor park setting. They are chatting and laughing, representing a strong, supportive community. The lighting is warm and golden-hour style, with soft lens flare. The image communicates unity, social impact, and professional camaraderie within a corporate modern framework." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtvntMPbYoiOi7_4JIwmIb_y5CQyDUefPwrCiXVeeutzDbMHj-ld-VPvPVBhM0-I1Osa5K1FZN4V2Ufd585c8iudGIU-S9_OBko0BKiCtO80oSHigXrJ_ayeSVGAjg1-lLujXZmzeE4IRJcv2y2GzK_PmDQ6yCcArq1ohmZ37rFRAQrZDxGOT_8JVI3Jxuh1sij9L4oB2qOfWYIZHjA5k9GH_EeAft8A1v6pOWyHRObUiU9ZbTotyr"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+<h3 class="font-headline-md text-headline-md mb-4 max-w-xl">Investing in the People Who Guard Your Property</h3>
+<p class="max-w-2xl text-on-primary-container mb-8">Every time you book with One Call, a portion of the fee goes directly into local trade development programs.</p>
+<button class="bg-on-primary text-primary px-10 py-4 rounded-xl font-bold hover:bg-primary-fixed transition-colors">Read the Impact Report</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Bar -->
+<section class="py-12 bg-white">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<p class="text-center text-on-surface-variant font-bold text-sm tracking-widest uppercase mb-10">Our Trusted Certification Partners</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale">
+<div class="h-12 w-32 bg-gray-400 flex items-center justify-center font-bold text-xl italic">INSURICO</div>
+<div class="h-12 w-32 bg-gray-400 flex items-center justify-center font-bold text-xl">TRADECERT</div>
+<div class="h-12 w-32 bg-gray-400 flex items-center justify-center font-bold text-xl tracking-tighter underline">H-GUARD</div>
+<div class="h-12 w-32 bg-gray-400 flex items-center justify-center font-bold text-xl border-2 border-gray-400 px-2">SAFEPRO</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 bg-surface-container">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<div class="max-w-2xl mx-auto bg-white p-12 rounded-[32px] shadow-2xl relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/5 rounded-full"></div>
+<div class="absolute -bottom-10 -left-10 w-32 h-32 bg-primary/5 rounded-full"></div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Experience the Guardian Standard Today</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10">Download the One Call app to access our network of elite professionals and get peace of mind for your home.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">apps</span> App Store
+                        </button>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined">play_arrow</span> Google Play
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-primary dark:bg-surface-container-highest">
+<div class="flex flex-col md:flex-row justify-between items-center gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-sm text-headline-sm text-on-primary">One Call</span>
+<p class="text-outline-variant font-body-md text-center md:text-left">© 2024 One Call Home Solutions. The Professional Guardian.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-outline-variant font-medium hover:text-on-primary-container transition-all" href="#">Services</a>
+<a class="text-outline-variant font-medium hover:text-on-primary-container transition-all" href="#">Referral Program</a>
+<a class="text-secondary-fixed font-bold" href="#">Brand Story</a>
+<a class="text-outline-variant font-medium hover:text-on-primary-container transition-all" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface px-4 py-3 pb-6 shadow-[0_-4px_20px_0_rgba(0,32,69,0.15)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high px-4 py-1 rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high px-4 py-1 rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-md text-label-md">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high px-4 py-1 rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">group_add</span>
+<span class="font-label-md text-label-md">Refer</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-6 py-1 scale-110 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-label-md text-label-md">Story</span>
+</a>
+</nav>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+
+        // Intersection Observer for fade-in effects
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.level-1-card').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

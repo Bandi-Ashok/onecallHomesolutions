@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Partner Onboarding | One Call Home Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f1f4f6",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#ffdad8",
+                    "on-primary-container": "#86a0cd",
+                    "surface-container-high": "#e5e9eb",
+                    "inverse-primary": "#adc7f7",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#6d0010",
+                    "primary-fixed": "#d6e3ff",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "on-tertiary-fixed": "#00201f",
+                    "on-secondary-fixed": "#410006",
+                    "surface-dim": "#d7dadc",
+                    "inverse-surface": "#2d3133",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#ebeef0",
+                    "outline": "#74777f",
+                    "tertiary-fixed": "#94f2f0",
+                    "surface-bright": "#f7fafc",
+                    "secondary": "#ad3035",
+                    "surface": "#f7fafc",
+                    "tertiary-container": "#003d3c",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#181c1e",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#002625",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "primary": "#002045",
+                    "background": "#f7fafc",
+                    "surface-tint": "#455f88",
+                    "outline-variant": "#c4c6cf",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "on-background": "#181c1e",
+                    "primary-fixed-dim": "#adc7f7",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-tertiary-container": "#4cadab",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-fixed": "#001b3c",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#fe6c6b",
+                    "on-surface-variant": "#43474e",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "primary-container": "#1a365d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "base": "8px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .step-active { @apply text-primary font-bold border-primary; }
+        .step-inactive { @apply text-on-surface-variant border-outline-variant; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface shadow-sm">
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary font-headline-md text-headline-md" data-icon="location_on">location_on</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">One Call Home Solutions</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold font-label-md text-label-md" href="#">Join as Partner</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-1 rounded-lg font-label-md text-label-md" href="#">Support</a>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="notifications">notifications</span>
+</div>
+</div>
+</header>
+<main class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 pb-32">
+<!-- Hero Section -->
+<section class="mb-12">
+<h1 class="font-headline-xl text-headline-xl text-primary mb-4">Partner Onboarding</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Complete your application to join the elite network of "The Professional Guardians." Gain access to exclusive leads and premium home service contracts.</p>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Multi-step Flow -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Stepper Progress -->
+<div class="flex items-center justify-between w-full mb-8 relative px-4">
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0"></div>
+<div class="relative z-10 flex flex-col items-center group">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-base" data-icon="person">person</span>
+</div>
+<span class="mt-2 font-label-md text-label-md text-primary">Details</span>
+</div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center ring-4 ring-surface border border-outline-variant">
+<span class="material-symbols-outlined text-base" data-icon="business_center">business_center</span>
+</div>
+<span class="mt-2 font-label-md text-label-md text-on-surface-variant">Business</span>
+</div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center ring-4 ring-surface border border-outline-variant">
+<span class="material-symbols-outlined text-base" data-icon="verified_user">verified_user</span>
+</div>
+<span class="mt-2 font-label-md text-label-md text-on-surface-variant">Verify</span>
+</div>
+</div>
+<!-- Step 1: Personal Details -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_20px_rgba(0,32,69,0.08)] border border-outline-variant/30">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Personal Details</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Full Legal Name</label>
+<input class="w-full rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary p-3 bg-surface" placeholder="Johnathan Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Email Address</label>
+<input class="w-full rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary p-3 bg-surface" placeholder="john@company.com" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Phone Number</label>
+<input class="w-full rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary p-3 bg-surface" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Position/Title</label>
+<input class="w-full rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary p-3 bg-surface" placeholder="CEO / General Contractor" type="text"/>
+</div>
+</div>
+</div>
+<!-- Step 2: Business Credentials -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_20px_rgba(0,32,69,0.08)] border border-outline-variant/30">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Business Credentials</h2>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Registered Business Name</label>
+<input class="w-full rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary p-3 bg-surface" placeholder="Guardian Services LLC" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Business License Number</label>
+<input class="w-full rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary p-3 bg-surface" placeholder="LIC-998273-X" type="text"/>
+</div>
+</div>
+<div class="space-y-4">
+<label class="font-label-md text-label-md text-on-surface-variant">Service Categories</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<button class="flex items-center gap-2 p-3 rounded-xl border border-primary bg-primary-fixed text-on-primary-fixed transition-all">
+<span class="material-symbols-outlined text-base" data-icon="plumbing">plumbing</span>
+<span class="font-label-md text-label-md">Plumbing</span>
+</button>
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-base" data-icon="bolt">bolt</span>
+<span class="font-label-md text-label-md">Electrical</span>
+</button>
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-base" data-icon="ac_unit">ac_unit</span>
+<span class="font-label-md text-label-md">HVAC</span>
+</button>
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-base" data-icon="roofing">roofing</span>
+<span class="font-label-md text-label-md">Roofing</span>
+</button>
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-base" data-icon="security">security</span>
+<span class="font-label-md text-label-md">Security</span>
+</button>
+<button class="flex items-center gap-2 p-3 rounded-xl border border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-base" data-icon="more_horiz">more_horiz</span>
+<span class="font-label-md text-label-md">Other</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: Document Upload -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_4px_20px_rgba(0,32,69,0.08)] border border-outline-variant/30">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Documents &amp; Certifications</h2>
+<p class="text-on-surface-variant font-body-md mb-6">Upload clear digital copies of your professional credentials.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="p-6 border-2 border-dashed border-outline-variant rounded-xl hover:border-primary hover:bg-surface-container-low transition-colors cursor-pointer flex flex-col items-center justify-center text-center group">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="upload_file">upload_file</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Business ID / SSN</span>
+<span class="text-caption font-caption text-on-surface-variant mt-1">PDF, JPG or PNG (Max 5MB)</span>
+</div>
+<div class="p-6 border-2 border-dashed border-outline-variant rounded-xl hover:border-primary hover:bg-surface-container-low transition-colors cursor-pointer flex flex-col items-center justify-center text-center group">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="military_tech">military_tech</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Trade License</span>
+<span class="text-caption font-caption text-on-surface-variant mt-1">Proof of professional certification</span>
+</div>
+</div>
+</div>
+<!-- Submit Section -->
+<div class="flex flex-col md:flex-row items-center justify-between p-6 bg-primary-container rounded-xl gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="info">info</span>
+<p class="text-on-primary-container font-label-md text-label-md">Average verification time: 24-48 hours.</p>
+</div>
+<button class="w-full md:w-auto bg-secondary text-on-secondary px-10 py-4 rounded-xl font-bold hover:scale-105 transition-transform active:scale-95 shadow-lg">
+                        Submit Application
+                    </button>
+</div>
+</div>
+<!-- Right Column: Benefits & Trust -->
+<div class="lg:col-span-4 space-y-gutter sticky top-24">
+<!-- Trust Banner -->
+<div class="bg-primary text-white p-8 rounded-xl relative overflow-hidden">
+<!-- Subtle background decoration -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<h3 class="font-headline-md text-headline-md mb-6 relative z-10">Why Partner with Us?</h3>
+<ul class="space-y-6 relative z-10">
+<li class="flex gap-4">
+<div class="w-8 h-8 rounded-lg bg-white/10 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="bolt">bolt</span>
+</div>
+<div>
+<span class="font-label-md text-label-md block">Instant Leads</span>
+<p class="text-caption font-caption text-white/70">Receive 24/7 service requests directly to your phone via our app.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="w-8 h-8 rounded-lg bg-white/10 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="payments">payments</span>
+</div>
+<div>
+<span class="font-label-md text-label-md block">Weekly Payouts</span>
+<p class="text-caption font-caption text-white/70">Guaranteed weekly transfers for all completed and verified work orders.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="w-8 h-8 rounded-lg bg-white/10 flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="shield">shield</span>
+</div>
+<div>
+<span class="font-label-md text-label-md block">Full Coverage</span>
+<p class="text-caption font-caption text-white/70">Access our master umbrella insurance policy for additional project safety.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Profile Completion Tip -->
+<div class="bg-surface-container-high p-6 rounded-xl border border-outline-variant">
+<div class="flex items-center gap-3 mb-4">
+<div class="px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] rounded uppercase font-bold tracking-widest">Pro Tip</div>
+<span class="font-label-md text-label-md text-primary">Verified Badge</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Completing all document uploads today makes you eligible for the <strong>Verified Badge</strong>, which increases your booking rate by up to 40%.</p>
+<div class="flex items-center gap-2 text-tertiary font-bold text-label-md">
+<span class="material-symbols-outlined" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Verified Guardian Status
+                    </div>
+</div>
+<!-- Testimonial Image Card -->
+<div class="relative rounded-xl overflow-hidden group">
+<div class="bg-cover bg-center w-full h-64 grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A cinematic, high-quality portrait of a smiling, professional male HVAC technician in a clean navy uniform with a tool belt, standing in front of a modern home during a soft golden hour. The lighting is warm and institutional, reflecting the professional guardian brand with a clean and sophisticated aesthetic. The background shows a pristine residential exterior, emphasizing reliability and trust." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCW1HwR_dgaUFK986mTUwI8Do1FagAm2Zc7yVfc-R_8KOZ6E5HiQzr89lLdLCOwvxgvoLyd90OjCA6Ep9mZqthxxsR4wOMe6u3OZH1sytSOT143cKt6b7c4w_hgoY35_AkWkNg2SOgXmfaHszMzZJdJXFUILV-G5LUVthB5RQdwVMqUxCEO72A3r_5-Zf7PXtYF-9-eHzR3FLgLfUW8VCm02E5zWYI-wtO76FMFwlAD0hnDjPLjgsfL')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-6">
+<p class="text-white italic text-body-md mb-2">"One Call Home Solutions doubled my monthly revenue in the first quarter alone."</p>
+<span class="text-white/80 font-bold font-label-md text-label-md">— Marcus T., Plumbing Specialist</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface py-2 px-2 pb-safe shadow-[0_-4px_20px_rgba(0,32,69,0.15)] border-t border-outline-variant z-50">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+<span class="font-label-md text-label-md">SOS</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for input focus
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').classList.remove('text-primary');
+            });
+        });
+
+        // Category selection toggle
+        const categoryButtons = document.querySelectorAll('button.flex.items-center.gap-2.p-3.rounded-xl.border');
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.classList.contains('bg-primary-fixed')) {
+                    btn.classList.remove('bg-primary-fixed', 'text-on-primary-fixed', 'border-primary');
+                    btn.classList.add('border-outline-variant');
+                } else {
+                    btn.classList.add('bg-primary-fixed', 'text-on-primary-fixed', 'border-primary');
+                    btn.classList.remove('border-outline-variant');
+                }
+            });
+        });
+    </script>
+</body></html>

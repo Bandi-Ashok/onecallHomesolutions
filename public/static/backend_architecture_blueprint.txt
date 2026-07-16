@@ -1,0 +1,42 @@
+# One Call Home Solutions - Backend Architecture & Production Blueprint
+
+## 1. Core Tech Stack
+*   **Language:** Node.js (TypeScript) or Python (FastAPI/Django)
+*   **Database:** PostgreSQL (Primary), Redis (Caching & Real-time tracking)
+*   **Real-time Communication:** Socket.io or WebSockets (for live technician GPS tracking)
+*   **Payments:** Razorpay / PhonePe SDK Integration
+*   **Authentication:** OAuth 2.0 / Firebase Auth (Mobile OTP based login)
+
+## 2. API Architecture (RESTful / GraphQL)
+
+### A. Customer Service Layer
+*   `POST /api/v1/bookings`: Create new service request
+*   `GET /api/v1/properties`: Fetch user-managed properties (Home, Office, Rental)
+*   `GET /api/v1/tracking/:technician_id`: Real-time GPS coordinate stream
+*   `POST /api/v1/payments/verify`: Razorpay webhook and checksum verification
+
+### B. Technician Academy & Compliance
+*   `GET /api/v1/academy/courses`: Fetch mandatory safety modules
+*   `POST /api/v1/academy/exams`: Submit Guardian Standard Exam results
+*   `PATCH /api/v1/technicians/status`: Update certification level (Level 2 -> Level 3)
+
+### C. Admin & Dispatch Logic
+*   **Smart Dispatcher:** Algorithm to assign technicians based on distance, skill level (Level 3 for SOS), and current load.
+*   `GET /api/v1/admin/analytics`: Aggregate data for the Admin Overview Dashboard.
+
+## 3. Database Schema (High-Level)
+*   **Users:** ID, Name, Phone, Loyalty Points, Membership Tier (AMC).
+*   **Properties:** ID, OwnerID, Address, GPS Coords, Last Inspection Date.
+*   **Technicians:** ID, Name, Photo, Verified Status, Skill Level, Current Location.
+*   **Bookings:** ID, CustomerID, TechnicianID, Status (Pending/Dispatched/Complete), PaymentID.
+
+## 4. Production Environment Setup
+*   **Hosting:** AWS (EC2/RDS) or Google Cloud Platform (GCP).
+*   **CI/CD:** GitHub Actions for automated deployment.
+*   **Security:** SSL/TLS encryption, JWT for session management, and PCI-DSS compliance for payment data handling.
+
+## 5. Integration Guide
+To move to production, your developers will:
+1.  Connect the **HTML/CSS UI** provided in Stitch to these API endpoints.
+2.  Implement the **GPS Logic** using Google Maps API for the tracking screens.
+3.  Secure the **Razorpay Payment Gateway** with your merchant secret keys.

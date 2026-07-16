@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Booking &amp; Checkout | One Call Home Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Montserrat:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .property-card:has(input:checked) {
+            border-color: #002045;
+            background-color: rgba(26, 54, 93, 0.04);
+        }
+        
+        .payment-card:has(input:checked) {
+            border-color: #002045;
+            background-color: rgba(26, 54, 93, 0.02);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ad3035",
+                        "secondary-fixed-dim": "#ffb3b0",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#77d6d3",
+                        "on-surface-variant": "#43474e",
+                        "surface-container": "#ebeef0",
+                        "tertiary-container": "#003d3c",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#6d0010",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "background": "#f7fafc",
+                        "on-secondary-fixed": "#410006",
+                        "primary": "#002045",
+                        "surface-tint": "#455f88",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdad8",
+                        "tertiary": "#002625",
+                        "surface": "#f7fafc",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#00201f",
+                        "on-surface": "#181c1e",
+                        "secondary-container": "#fe6c6b",
+                        "inverse-on-surface": "#eef1f3",
+                        "on-tertiary-container": "#4cadab",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1a365d",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-primary": "#adc7f7",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#94f2f0",
+                        "on-background": "#181c1e",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-container-high": "#e5e9eb",
+                        "primary-fixed-dim": "#adc7f7",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-fixed-variant": "#00504e",
+                        "on-primary-container": "#86a0cd",
+                        "outline": "#74777f",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f7fafc",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary-fixed-variant": "#8c1620",
+                        "surface-container-low": "#f1f4f6",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d7dadc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Montserrat"],
+                        "caption": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface shadow-sm md:px-margin-desktop">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Checkout</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<span class="text-label-md font-label-md text-on-surface-variant hidden sm:inline">Mumbai, MH</span>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile pt-24 md:pt-28 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Selection & Forms -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Step Tracker -->
+<section class="flex items-center justify-between relative">
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-outline-variant -translate-y-1/2 z-0"></div>
+<div class="z-10 bg-background pr-4">
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-md font-bold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="text-label-md font-label-md text-primary">Service</span>
+</div>
+</div>
+<div class="z-10 bg-background px-4">
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-md font-bold ring-4 ring-primary/10">2</div>
+<span class="text-label-md font-label-md text-primary">Schedule</span>
+</div>
+</div>
+<div class="z-10 bg-background pl-4">
+<div class="flex flex-col items-center gap-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-label-md font-bold">3</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Payment</span>
+</div>
+</div>
+</section>
+<!-- Property Selection -->
+<section class="space-y-4">
+<h2 class="text-headline-md font-headline-md text-primary">Select Property</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<label class="property-card cursor-pointer border-2 border-outline-variant rounded-xl p-4 transition-all hover:shadow-md flex items-start gap-4">
+<input checked="" class="mt-1 text-primary focus:ring-primary" name="property" type="radio" value="home"/>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-bold text-body-md text-primary">Home (Main)</span>
+</div>
+<p class="text-caption text-on-surface-variant">B-402, Skyline Residency, Powai, Mumbai - 400076</p>
+</div>
+</label>
+<label class="property-card cursor-pointer border-2 border-outline-variant rounded-xl p-4 transition-all hover:shadow-md flex items-start gap-4">
+<input class="mt-1 text-primary focus:ring-primary" name="property" type="radio" value="office"/>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary">business</span>
+<span class="font-bold text-body-md text-primary">Office (Branch)</span>
+</div>
+<p class="text-caption text-on-surface-variant">Tech Hub, Sector 5, Vashi, Navi Mumbai - 400703</p>
+</div>
+</label>
+</div>
+<button class="flex items-center gap-2 text-primary font-bold py-2 hover:underline">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="text-label-md font-label-md">Add New Address</span>
+</button>
+</section>
+<!-- Date & Time Selector -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-md font-headline-md text-primary">Select Schedule</h2>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="text-label-md font-label-md">October 2023</span>
+</div>
+</div>
+<!-- Horizontal Date Picker -->
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<!-- Dates -->
+<button class="flex-shrink-0 w-16 h-20 rounded-xl flex flex-col items-center justify-center gap-1 border-2 border-outline-variant hover:border-primary transition-all">
+<span class="text-caption font-medium uppercase text-on-surface-variant">Mon</span>
+<span class="text-body-lg font-bold">23</span>
+</button>
+<button class="flex-shrink-0 w-16 h-20 rounded-xl flex flex-col items-center justify-center gap-1 border-2 border-primary bg-primary-container text-primary transition-all ring-2 ring-primary/10">
+<span class="text-caption font-medium uppercase text-on-primary-container">Tue</span>
+<span class="text-body-lg font-bold">24</span>
+</button>
+<button class="flex-shrink-0 w-16 h-20 rounded-xl flex flex-col items-center justify-center gap-1 border-2 border-outline-variant hover:border-primary transition-all">
+<span class="text-caption font-medium uppercase text-on-surface-variant">Wed</span>
+<span class="text-body-lg font-bold">25</span>
+</button>
+<button class="flex-shrink-0 w-16 h-20 rounded-xl flex flex-col items-center justify-center gap-1 border-2 border-outline-variant hover:border-primary transition-all">
+<span class="text-caption font-medium uppercase text-on-surface-variant">Thu</span>
+<span class="text-body-lg font-bold">26</span>
+</button>
+<button class="flex-shrink-0 w-16 h-20 rounded-xl flex flex-col items-center justify-center gap-1 border-2 border-outline-variant hover:border-primary transition-all">
+<span class="text-caption font-medium uppercase text-on-surface-variant">Fri</span>
+<span class="text-body-lg font-bold">27</span>
+</button>
+<button class="flex-shrink-0 w-16 h-20 rounded-xl flex flex-col items-center justify-center gap-1 border-2 border-outline-variant hover:border-primary transition-all">
+<span class="text-caption font-medium uppercase text-on-surface-variant">Sat</span>
+<span class="text-body-lg font-bold">28</span>
+</button>
+</div>
+<!-- Time Slot Picker -->
+<div class="space-y-4">
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-3">Morning Slots</p>
+<div class="flex gap-3 overflow-x-auto hide-scrollbar">
+<button class="px-6 py-3 rounded-xl border border-outline-variant bg-surface hover:border-primary transition-all whitespace-nowrap">08:00 AM</button>
+<button class="px-6 py-3 rounded-xl border border-outline-variant bg-surface hover:border-primary transition-all whitespace-nowrap">09:30 AM</button>
+<button class="px-6 py-3 rounded-xl border border-outline-variant bg-surface hover:border-primary transition-all whitespace-nowrap">11:00 AM</button>
+</div>
+</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-3">Afternoon Slots</p>
+<div class="flex gap-3 overflow-x-auto hide-scrollbar">
+<button class="px-6 py-3 rounded-xl border-2 border-primary bg-primary-container text-primary font-bold whitespace-nowrap">02:00 PM</button>
+<button class="px-6 py-3 rounded-xl border border-outline-variant bg-surface hover:border-primary transition-all whitespace-nowrap">03:30 PM</button>
+<button class="px-6 py-3 rounded-xl border border-outline-variant bg-surface hover:border-primary transition-all whitespace-nowrap">05:00 PM</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Methods -->
+<section class="space-y-4">
+<h2 class="text-headline-md font-headline-md text-primary">Payment Method</h2>
+<div class="space-y-3">
+<!-- UPI -->
+<label class="payment-card flex flex-col p-4 bg-white border border-outline-variant rounded-xl cursor-pointer hover:shadow-sm transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<input checked="" class="text-primary focus:ring-primary" name="payment" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+<span class="font-bold">UPI (GPay / PhonePe / BHIM)</span>
+</div>
+</div>
+<div class="flex gap-2">
+<img alt="GPay" class="h-4 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2AAlniyK5UH4lRlETg4bITpnJewwMAlx7CBp3Ov3dL2Qo17pKGD26MtjEcbvuZR8msB5gMQKuiIN5G0EwsaVhEYFgvDzddut2LBanoT4V-looMI-jr-rnTlva1NvfhX7VD_1Dg0iU5X906XZanslWNueHCy35dRuZGSdu_1pkcoNmlxZseWfFYbZ87l_1-B2NRF98Tf8UruWQvoCz040PVo_ZN2NHc0ksI5hbxLmssd6MubhKHK9C"/>
+<img alt="PhonePe" class="h-4 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq2t41mFd-bWNgrWyT2BkoTV5AXYddDchaDPOi2pgD6jApAMrBMiKWHc0VFEFuHgLz3UGBqJ-1T7GTqQyAB3q9bFBTYCDxfkANkuIdg0HGbrh0cQl8BcLXSSliZ4BtsfXXSljjqhyqlDIAyaCjjX6USPhQTzP_to8TE0iRt9AwrKZeS5EAZ0GZZFERp7UhZQkgi3IdziedWzcKNIAZ91kpP53Nj-DJMGJ-tnb3DD3yJENHOX_35281"/>
+</div>
+</div>
+</label>
+<!-- Card -->
+<label class="payment-card flex flex-col p-4 bg-white border border-outline-variant rounded-xl cursor-pointer hover:shadow-sm transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary" name="payment" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<span class="font-bold">Credit / Debit Cards</span>
+</div>
+</div>
+<div class="flex gap-2 items-center">
+<img alt="Visa" class="h-3 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc1xk6QOLapjCgWHgjgXK0LtSZadcCxsKwOFbUC8F-mdZ3l9RicOo5mv9eYgUWY1TsIPQSbtImq4ebeLUR_TdjzB_v6jOqWJMRy2PhoDWC910xOTNPJ4ZeI4NvM26itrsW1MC9ahcD4XfYVsA7hH3h3syz6sdtx5rBrqZJ_zw_r11GfIn8wgtvt9FZe9aUNkYG6-bKQCTB8_uEjfB3gOZtTmpgxaCmXvqXmPRjMn_HsH366kazGiOp"/>
+<img alt="Mastercard" class="h-4 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnGQUijrpSxYVvbvYwqcub9pPVRrMnbcI_dEvmxreEZuMflub3jY9syJbSg7646CIqn6cjCZehZWDkp-kkcqkBb05YH_c3-yS3XzFT7gIeqWHFplKpGQH92yn-wq49lbWpOpHnOG1m1R8b9So4e61NVfOF2xb4y7p6ig4AJj0QVOccgIH72BvMvbX7MBSun28AiA2v5FqQlbjS8fRjNB66G7hBic9eOgUz10gE_hGUab9QvZ5TUJ0j"/>
+<img alt="RuPay" class="h-3 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB18vHU57XZn8BSBvljpr2Ye0neMaIJryb-fxZed6n3PHpqjwOI2sjdE9b2okxfcHnlyqxjm8CihGwy3SoKUoc9S19S2ejEWtseDDCto0pZvcvqgxqPbyCCU3hdc5OnGMHfYkCeOpoiaVqpjdxuWZvYUaPMPJ0wwdG3M485GMhM7_1_GhxFk37xIYR3r3tYqfSeQS3pXVystm-ICm8EvhmDbzFKhHjFgTo89gDNgWf8Y2vlXa66JVvf"/>
+</div>
+</div>
+</label>
+<!-- Net Banking -->
+<label class="payment-card flex flex-col p-4 bg-white border border-outline-variant rounded-xl cursor-pointer hover:shadow-sm transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary" name="payment" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+<span class="font-bold">Net Banking</span>
+</div>
+</div>
+<div class="flex -space-x-1">
+<div class="w-6 h-6 rounded-full bg-white border border-outline-variant flex items-center justify-center p-0.5">
+<img alt="SBI" class="h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJt4DA_JpTggIgvevBVD_lnU0IcEKGL1LB8jKFmQKL0WrQy6ZvdrWH49Ig4GxKkFXpBJ-x_9psLNqOw_AloyBDw-GHPLmKAhhbLhOM8ZlbFOif3XNN0YVn91VSilDGYMBbKM63LsMWp3kP_IERJQkxOruXiqdRGIYeIM8N2ZkKnbGIxENaXcRCTU9kY9Uy49MVdpa2LX5deoIC6_TsOedJOMLFF5opZDZunNlSj9pRRRhBIRjlsCtQ"/>
+</div>
+<div class="w-6 h-6 rounded-full bg-white border border-outline-variant flex items-center justify-center p-0.5">
+<img alt="HDFC" class="h-full scale-150" onerror="this.src='https://placehold.co/24x24?text=H'" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkKmMdJqsmqJQXF_f0qwjubbXTxdblNE3tb4LYxyX972CWoWhZAFkKpkTewwNL2lSq1NwkBygoL2Z7RWdBuXAQqzNYvi335zxXX0bQ9UUFFG3jUDf15kAhl1TxF9Mv9mnxHbiXJSxXHVKuFaGN68ng94dTQbQlDPwcZm8C0yhyverBvvO6jKlgRm3JGigEsPRJZ2Mn3mARYfnOC4eyQNZGcR5SmGZ6Nf_Ae6oeE4DiVueLcPWP0AvG"/>
+</div>
+<div class="w-6 h-6 rounded-full bg-white border border-outline-variant flex items-center justify-center p-0.5">
+<img alt="ICICI" class="h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOMbE2hGUf9dOM3mMwz9_5rjvz6TuM9qKOhAI2Lzx512ZMi3M9_dQhEUuNJsh91-3XplSqI4mytQ1lJkZQqKqP_YFKCJ6z6y_zZWOpmZ2L2nzrEJZqI-H24yr0TiG_n8iqEGnyoAKlL1Nnz-A4GNdNStyhlL5zTUAchWcz-LpYtP8LciE9rwAoq0s6WFRpm_TQg1oQIZ_ZrTALDL09y5fS19ftOZjdxwW3DCliGfwOfpQsPTi6tPqf"/>
+</div>
+</div>
+</div>
+</label>
+<!-- EMI & Pay Later -->
+<label class="payment-card flex flex-col p-4 bg-white border border-outline-variant rounded-xl cursor-pointer hover:shadow-sm transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary" name="payment" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history_toggle_off</span>
+<span class="font-bold">EMI &amp; Pay Later</span>
+</div>
+</div>
+<span class="text-[10px] font-bold text-secondary px-2 py-0.5 bg-secondary-container/10 rounded">LOW INTEREST</span>
+</div>
+</label>
+<!-- COD -->
+<label class="payment-card flex flex-col p-4 bg-white border border-outline-variant rounded-xl cursor-pointer hover:shadow-sm transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary" name="payment" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="font-bold">Cash on Delivery</span>
+</div>
+</div>
+<span class="text-caption text-on-surface-variant font-medium">Pay after service</span>
+</div>
+</label>
+</div>
+<!-- Trust Footer -->
+<div class="flex items-center justify-center gap-2 py-4 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="text-caption font-medium">Securely processed by</span>
+<div class="flex items-center gap-1 grayscale opacity-70">
+<img alt="Razorpay" class="h-3 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHkBn0ujfJ3ngHp2Ch7WZQZK3s1phmTvXUmVmW7WgJQ1lt2q8Rii1Q_MQy6XhpT-Z3vkYpxy4xoZAPA0hplI6xIbf2euGsHLZGY5ydeBr_5OaIF4AOxcSWsY4rPiKufjnKVGLGXCMPhaUm3v0fw1CQZNIuXVvk3TeiEDCJ-R4JwB7j-INyb9raLmQURavQFEymrve9bcBpA30gaN6zHtNXDDS9kjf006abuO5Oy77pk21fj5rWNy6N"/>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary & Review -->
+<div class="lg:col-span-5">
+<div class="sticky top-24 space-y-6">
+<!-- Summary Card -->
+<div class="bg-white rounded-2xl shadow-xl border border-outline-variant overflow-hidden">
+<div class="p-6 bg-primary text-on-primary">
+<h3 class="text-headline-md font-headline-md">Booking Summary</h3>
+<p class="text-label-md opacity-80">Reference ID: #OC-88219</p>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-start justify-between pb-4 border-b border-outline-variant">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="A macro close-up of professional deep cleaning equipment" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC36YLZ_8Dg3CKefQOVr5uu4HaLcdgzRaDHfYSepK_5sV1vsKfeEFG6BkycHsoOPBbwuSgI5vtqZL3RTq2XvIVCBQpFR9NvYd_sK-2vijWHuyyTEhbYWXaNZhdOkqLM4fDx_3-DX2-g5yk2m8JWmvjTodGmMfhOwtJby7RKj5L2jgU4mHPlZqFNtFFA03XusmqSKLtkjifgccYqqLCK83a2y3I8dQpZlcOw0Cc7BNBAtvD4S0oU97Rd')"></div>
+</div>
+<div>
+<h4 class="font-bold text-body-md text-primary">Kitchen Deep Cleaning</h4>
+<p class="text-caption text-on-surface-variant">One-time Intensive Service</p>
+<p class="text-caption text-primary font-bold mt-1">Oct 24 • 02:00 PM</p>
+</div>
+</div>
+<span class="font-bold text-body-md">₹1,299</span>
+</div>
+<!-- Bill Details -->
+<div class="space-y-3">
+<div class="flex justify-between text-body-md">
+<span class="text-on-surface-variant">Base Price</span>
+<span>₹1,299.00</span>
+</div>
+<div class="flex justify-between text-body-md">
+<span class="text-on-surface-variant">Taxes &amp; Fees (GST)</span>
+<span>₹233.82</span>
+</div>
+<div class="flex justify-between text-body-md text-tertiary font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">sell</span>
+                                    FIRSTHOME Coupon
+                                </span>
+<span>-₹100.00</span>
+</div>
+<div class="pt-4 mt-2 border-t border-outline-variant flex justify-between items-end">
+<div>
+<span class="text-label-md font-label-md text-on-surface-variant block">Total Payable</span>
+<span class="text-headline-md font-headline-md text-primary">₹1,432.82</span>
+</div>
+<span class="text-caption bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-1 rounded font-bold">SAVED ₹100</span>
+</div>
+</div>
+</div>
+<!-- Safety Note & Badges -->
+<div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<p class="text-label-md font-bold text-primary">7-Day Service Warranty Included</p>
+<p class="text-caption text-on-surface-variant">Complete peace of mind with 100% money-back guarantee.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<div class="px-3 py-1 rounded-full bg-surface-container text-on-surface-variant text-[10px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">security</span>
+                                SECURE CHECKOUT
+                            </div>
+<div class="px-3 py-1 rounded-full bg-surface-container text-on-surface-variant text-[10px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">eco</span>
+                                ECO-FRIENDLY CHEMICALS
+                            </div>
+</div>
+</div>
+</div>
+<!-- Promotion Box -->
+<div class="p-4 bg-white border border-outline-variant border-dashed rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">confirmation_number</span>
+<span class="font-bold text-label-md">Apply Promo Code</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer -->
+<div class="fixed bottom-0 left-0 w-full bg-white shadow-[0_-8px_30px_rgba(0,0,0,0.08)] px-4 py-4 z-50 md:py-6">
+<div class="max-w-container-max mx-auto flex items-center justify-between gap-4">
+<div class="hidden sm:block">
+<p class="text-caption text-on-surface-variant">Total to pay</p>
+<p class="text-headline-md font-bold text-primary leading-none">₹1,432.82</p>
+</div>
+<button class="flex-1 max-w-md mx-auto sm:mx-0 bg-primary text-on-primary py-4 px-8 rounded-xl font-headline-md font-bold text-center flex items-center justify-center gap-3 active:scale-95 transition-transform">
+                Confirm Booking
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+        // Interaction for slots and payment methods
+        document.querySelectorAll('button[class*="border-outline-variant"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!this.innerText.includes('Confirm')) {
+                    const siblingButtons = this.parentElement.querySelectorAll('button');
+                    siblingButtons.forEach(s => {
+                        s.classList.remove('border-primary', 'bg-primary-container', 'text-primary', 'font-bold');
+                        s.classList.add('border-outline-variant', 'bg-surface');
+                    });
+                    this.classList.remove('border-outline-variant', 'bg-surface');
+                    this.classList.add('border-primary', 'bg-primary-container', 'text-primary', 'font-bold');
+                }
+            });
+        });
+    </script>
+</body></html>

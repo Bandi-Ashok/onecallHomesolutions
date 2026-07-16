@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exam Center | One Call Academy</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f7fafc",
+                        "on-surface": "#181c1e",
+                        "on-tertiary-fixed-variant": "#00504e",
+                        "on-secondary-fixed-variant": "#8c1620",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#4cadab",
+                        "on-primary-fixed": "#001b3c",
+                        "tertiary-fixed": "#94f2f0",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-fixed": "#410006",
+                        "surface-container": "#ebeef0",
+                        "on-tertiary-fixed": "#00201f",
+                        "surface-bright": "#f7fafc",
+                        "on-secondary-container": "#6d0010",
+                        "inverse-on-surface": "#eef1f3",
+                        "surface-dim": "#d7dadc",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#c4c6cf",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#77d6d3",
+                        "primary": "#002045",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "tertiary": "#002625",
+                        "surface-container-low": "#f1f4f6",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffdad8",
+                        "inverse-primary": "#adc7f7",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#fe6c6b",
+                        "outline": "#74777f",
+                        "surface-tint": "#455f88",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-surface-variant": "#43474e",
+                        "secondary": "#ad3035",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7fafc",
+                        "tertiary-container": "#003d3c",
+                        "secondary-fixed-dim": "#ffb3b0",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container-high": "#e5e9eb",
+                        "on-background": "#181c1e",
+                        "on-primary-container": "#86a0cd",
+                        "primary-container": "#1a365d",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .exam-card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.08);
+        }
+        .selection-glow:checked + label {
+            border-color: #002045;
+            background-color: #f1f4f6;
+            box-shadow: 0 0 0 2px #002045;
+        }
+    </style>
+</head>
+<body class="text-on-surface bg-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface shadow-sm docked full-width top-0 z-50 fixed w-full">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="school">school</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">One Call Academy</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-8">
+<span class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container transition-colors px-3 py-1 rounded-lg cursor-pointer">Support</span>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="timer">timer</span>
+<span class="font-label-md text-label-md text-on-surface" id="global-timer">59:42</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border-2 border-primary/10">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a service technician wearing a clean navy blue uniform, smiling confidently with a blurred industrial workshop background. High-quality corporate photography style, bright light-mode studio lighting, professional and trustworthy mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGjciZoCYeWqly9ZgnT3Xpxeo-lmBU8ou6uMNm3gm7PAnCAcNQbr6TD797xlvf8f_NNu03Pl9iJnM6kU0681Kyy1Li_GSX1CzHM9G-LRb9qMtSEtuEx3y7pL0ZIwiEgrItLhN7je8kW9aDqZvhOsP9iv924B4Qm3564wH5yfLuUkyN2Jd5Jen7YriybQzMruXHWhpr5fSYu6gYsE9wZLnefTlvUEFSG2LtheoJCLoFo0UXbMGdJPhN"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation (Desktop Only) -->
+<aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 z-40 bg-surface-container-low border-r border-outline-variant w-80 pt-24">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface">
+<div class="w-12 h-12 rounded-full bg-primary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Service Professional</p>
+<p class="font-caption text-caption text-on-surface-variant">Certification Level 2</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-on-surface-variant px-4 py-3 mx-2 my-1 flex items-center gap-3 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 my-1 flex items-center gap-3 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-md text-label-md">Safety Protocols</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 my-1 flex items-center gap-3 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+<span class="font-label-md text-label-md">Certifications</span>
+</a>
+<a class="bg-primary-container text-on-primary-container rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-3 translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="font-label-md text-label-md font-bold">Exam Center</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 my-1 flex items-center gap-3 hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-label-md">Resources</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:ml-80 pt-24 pb-32 min-h-screen">
+<div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Exam Progress Header -->
+<div class="mb-10">
+<div class="flex justify-between items-end mb-4">
+<div>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary/10 text-on-tertiary-fixed-variant font-label-md text-label-md mb-2">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            Final Certification Exam
+                        </span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Advanced HVAC Safety &amp; Diagnostics</h2>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface-variant">Question <span class="text-primary font-bold">12</span> of 20</p>
+</div>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500 ease-out" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Question Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 exam-card-shadow border border-outline-variant/30 mb-8">
+<div class="mb-8">
+<p class="font-headline-md text-headline-md text-primary leading-tight">
+                        When assessing a residential furnace with a suspected cracked heat exchanger, which of the following atmospheric readings is the primary indicator of immediate hazardous conditions?
+                    </p>
+</div>
+<div class="space-y-4">
+<!-- Option 1 -->
+<div class="relative">
+<input checked="" class="hidden selection-glow" id="opt1" name="exam_option" type="radio"/>
+<label class="flex items-center p-5 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface transition-all duration-200" for="opt1">
+<span class="w-6 h-6 rounded-full border-2 border-outline flex-shrink-0 flex items-center justify-center mr-4">
+<span class="w-3 h-3 rounded-full bg-primary opacity-0 transition-opacity"></span>
+</span>
+<span class="font-body-md text-body-md text-on-surface">Carbon monoxide (CO) levels exceeding 100ppm in the ambient air immediately surrounding the unit.</span>
+</label>
+</div>
+<!-- Option 2 -->
+<div class="relative">
+<input class="hidden selection-glow" id="opt2" name="exam_option" type="radio"/>
+<label class="flex items-center p-5 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface transition-all duration-200" for="opt2">
+<span class="w-6 h-6 rounded-full border-2 border-outline flex-shrink-0 flex items-center justify-center mr-4">
+<span class="w-3 h-3 rounded-full bg-primary opacity-0 transition-opacity"></span>
+</span>
+<span class="font-body-md text-body-md text-on-surface">A relative humidity drop of more than 15% during the initial combustion cycle.</span>
+</label>
+</div>
+<!-- Option 3 -->
+<div class="relative">
+<input class="hidden selection-glow" id="opt3" name="exam_option" type="radio"/>
+<label class="flex items-center p-5 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface transition-all duration-200" for="opt3">
+<span class="w-6 h-6 rounded-full border-2 border-outline flex-shrink-0 flex items-center justify-center mr-4">
+<span class="w-3 h-3 rounded-full bg-primary opacity-0 transition-opacity"></span>
+</span>
+<span class="font-body-md text-body-md text-on-surface">Oxygen (O2) depletion below 19.5% in the utility room without a secondary fresh air intake.</span>
+</label>
+</div>
+<!-- Option 4 -->
+<div class="relative">
+<input class="hidden selection-glow" id="opt4" name="exam_option" type="radio"/>
+<label class="flex items-center p-5 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface transition-all duration-200" for="opt4">
+<span class="w-6 h-6 rounded-full border-2 border-outline flex-shrink-0 flex items-center justify-center mr-4">
+<span class="w-3 h-3 rounded-full bg-primary opacity-0 transition-opacity"></span>
+</span>
+<span class="font-body-md text-body-md text-on-surface">Methane gas detection at 5% of the Lower Explosive Limit (LEL) near the gas valve manifold.</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="flex items-center justify-between gap-4">
+<button class="flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary font-bold rounded-xl hover:bg-surface-container transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                    Previous
+                </button>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-surface-container text-on-surface-variant font-bold rounded-xl hover:bg-surface-container-high transition-all active:scale-95 duration-150">
+                        Review Later
+                    </button>
+<button class="flex items-center gap-2 px-8 py-3 bg-primary text-white font-bold rounded-xl hover:opacity-90 transition-all active:scale-95 duration-150 shadow-md">
+                        Next Question
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Warning / Submit Info -->
+<div class="mt-16 p-6 rounded-xl bg-secondary-fixed/30 border border-secondary/10 flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+<div>
+<h4 class="font-label-md text-label-md text-secondary mb-1">Important Submission Notice</h4>
+<p class="font-caption text-caption text-on-secondary-fixed-variant">Once you click 'Submit Exam', you will not be able to modify any answers. Ensure you have reviewed all flagged items. A passing score of 85% is required for Level 3 Certification.</p>
+</div>
+<button class="ml-auto bg-secondary text-white px-6 py-2 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all shadow-sm">
+                    Submit Exam
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 bg-surface shadow-[0_-4px_20px_rgba(0,32,69,0.1)] flex justify-around items-center px-4 pb-4 pt-2 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-label-md-mobile text-label-md-mobile">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-md-mobile text-label-md-mobile">Safety</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-label-md-mobile text-label-md-mobile">Exams</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-md-mobile text-label-md-mobile">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Countdown Timer Mockup
+        let time = 3582; // 59:42 in seconds
+        const timerDisplay = document.getElementById('global-timer');
+
+        setInterval(() => {
+            if (time > 0) {
+                time--;
+                const minutes = Math.floor(time / 60);
+                const seconds = time % 60;
+                timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                
+                // Visual warning if time is low
+                if (time < 300) {
+                    timerDisplay.parentElement.classList.add('bg-error-container', 'text-error');
+                }
+            }
+        }, 1000);
+
+        // Selection Interaction
+        const radios = document.querySelectorAll('input[name="exam_option"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                radios.forEach(r => {
+                    const circle = r.nextElementSibling.querySelector('.w-3.h-3');
+                    if (r.checked) {
+                        circle.classList.remove('opacity-0');
+                        circle.classList.add('opacity-100');
+                    } else {
+                        circle.classList.add('opacity-0');
+                        circle.classList.remove('opacity-100');
+                    }
+                });
+            });
+        });
+        // Set initial state
+        document.querySelector('input[name="exam_option"]:checked').dispatchEvent(new Event('change'));
+    </script>
+</body></html>

@@ -1,0 +1,6 @@
+{
+  "name": "One Call Home Solutions Platform",
+  "description": "Professional 24/7 Home Management and Emergency SOS Platform under the Guardian Standard, featuring unified diagnostics, service catalogs, live tracking, and support systems.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

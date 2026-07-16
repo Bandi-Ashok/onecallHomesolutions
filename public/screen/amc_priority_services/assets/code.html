@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AMC Subscription Management | One Call Home Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c4c6cf",
+                    "on-primary-fixed": "#001b3c",
+                    "on-tertiary-container": "#4cadab",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "on-tertiary-fixed": "#00201f",
+                    "secondary-fixed": "#ffdad8",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-low": "#f1f4f6",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#410006",
+                    "background": "#f7fafc",
+                    "surface-dim": "#d7dadc",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "tertiary-fixed": "#94f2f0",
+                    "on-surface": "#181c1e",
+                    "outline": "#74777f",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#d6e3ff",
+                    "primary": "#002045",
+                    "on-secondary-container": "#6d0010",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "error-container": "#ffdad6",
+                    "surface": "#f7fafc",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "primary-container": "#1a365d",
+                    "primary-fixed-dim": "#adc7f7",
+                    "surface-container": "#ebeef0",
+                    "on-surface-variant": "#43474e",
+                    "tertiary": "#002625",
+                    "surface-bright": "#f7fafc",
+                    "secondary": "#ad3035",
+                    "on-background": "#181c1e",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-container": "#003d3c",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#adc7f7",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-tint": "#455f88",
+                    "surface-container-high": "#e5e9eb",
+                    "secondary-container": "#fe6c6b",
+                    "on-primary-container": "#86a0cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .elevation-l1 {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.1);
+        }
+        .premium-gradient {
+            background: linear-gradient(135deg, #002045 0%, #1a365d 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">One Call Home Solutions</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high rounded-full transition-colors" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section: Active Plan Status -->
+<section class="mt-4 mb-8">
+<div class="premium-gradient rounded-xl p-6 text-on-primary shadow-lg relative overflow-hidden">
+<!-- Decorative Abstract Background Element -->
+
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="inline-block bg-on-tertiary-container text-tertiary-container text-label-md px-3 py-1 rounded-full mb-2">Active Plan</span>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-white">Standard Annual Contract</h2>
+<p class="text-on-primary-container font-body-md">Member since Jan 2023</p>
+</div>
+<div class="bg-white/10 p-3 rounded-xl backdrop-blur-md">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 mt-8">
+<div class="bg-white/5 rounded-lg p-4 flex-1">
+<p class="text-label-md text-on-primary-container uppercase tracking-wider mb-1">Next Inspection</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="calendar_month">calendar_month</span>
+<p class="text-body-lg font-bold text-white">Nov 15, 2023</p>
+</div>
+<p class="text-caption text-on-primary-container mt-1">Quarterly Plumbing Check</p>
+</div>
+<div class="bg-white/5 rounded-lg p-4 flex-1">
+<p class="text-label-md text-on-primary-container uppercase tracking-wider mb-1">Protection Level</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="security">security</span>
+<p class="text-body-lg font-bold text-white">Essential Coverage</p>
+</div>
+<p class="text-caption text-on-primary-container mt-1">Basic maintenance included</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Benefits & Features -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Benefit 1: Quarterly Inspections -->
+<div class="bg-white rounded-xl p-6 elevation-l1 flex flex-col items-start gap-4 hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="query_stats">query_stats</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2">Quarterly Inspections</h3>
+<p class="text-body-md text-on-surface-variant">Preventative care with 4 detailed health checks annually. We catch leaks before they become floods.</p>
+</div>
+<div class="mt-auto flex items-center gap-2 text-on-tertiary-container font-label-md">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Standard Feature
+                </div>
+</div>
+<!-- Benefit 2: Priority SOS Queuing -->
+<div class="bg-white rounded-xl p-6 elevation-l1 flex flex-col items-start gap-4 hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="emergency_home">emergency_home</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2">Priority SOS Queuing</h3>
+<p class="text-body-md text-on-surface-variant">Skip the line during emergencies. AMC members get dispatched first in our emergency response grid.</p>
+</div>
+<div class="mt-auto flex items-center gap-2 text-on-tertiary-container font-label-md">
+<span class="material-symbols-outlined text-sm" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    60-min Response
+                </div>
+</div>
+<!-- Benefit 3: Zero Visit Charges -->
+<div class="bg-white rounded-xl p-6 elevation-l1 flex flex-col items-start gap-4 hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant text-3xl" data-icon="payments">payments</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2">Zero Visit Charges</h3>
+<p class="text-body-md text-on-surface-variant">No call-out fees for scheduled or emergency visits. You only pay for specialized parts if needed.</p>
+</div>
+<div class="mt-auto flex items-center gap-2 text-on-tertiary-container font-label-md">
+<span class="material-symbols-outlined text-sm" data-icon="savings" style="font-variation-settings: 'FILL' 1;">savings</span>
+                    Saves $450/Year
+                </div>
+</div>
+</section>
+<!-- Upgrade Call to Action -->
+<section class="mb-12">
+<div class="bg-surface-container-high rounded-xl p-8 md:p-12 border border-outline-variant/30 flex flex-col md:flex-row items-center gap-8 overflow-hidden relative">
+<div class="flex-1 relative z-10 text-center md:text-left">
+<h2 class="text-headline-xl font-headline-xl text-primary mb-4">Ready for Total Peace of Mind?</h2>
+<p class="text-body-lg text-on-surface-variant mb-8 max-w-2xl">
+                        Upgrade to <span class="font-bold text-primary">Premium AMC</span> for unlimited emergency calls, 24/7 smart monitoring integration, and a dedicated property manager.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+<button class="bg-secondary text-white font-bold text-body-md px-8 py-4 rounded-xl shadow-lg active:scale-95 transition-all">
+                            Upgrade to Premium AMC
+                        </button>
+<button class="bg-white text-primary border border-primary font-bold text-body-md px-8 py-4 rounded-xl hover:bg-surface-container transition-all">
+                            Compare Plans
+                        </button>
+</div>
+</div>
+<div class="w-full md:w-1/3 relative h-64 md:h-80 rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="A professional house maintenance specialist wearing a clean navy blue uniform with a company logo, smiling while checking a modern home's high-tech control panel. The scene is bright, with soft natural light streaming into a contemporary living room. The aesthetic is clean, corporate modern, and evokes reliability and high-end service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWIq0BIX0o9l6cuEW2zVa4sK7lQrhuwcm9MXUSUEWQFCTNRyYDH9ktEHRGu2CiJhStPoSHz6eCZilcUVwIkLCy-IOEV5hOfOKaQUEVUZ34QcxdY06BOHvRpGW1r8r2J-91G9Pkc8FgcHBNiOlP2k7tU1lKjesiFY5cx3jDBAddXt7eJ5jplCVvLEPG3djHD0SSsKATOGs9UZQCFQfOrlazg5j6yu9xlpWb5Hmtw5UdQ-siGFfsES-Z"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- Schedule Preview & Activity -->
+<section class="mb-24">
+<h3 class="text-headline-md font-headline-md text-primary mb-6">Upcoming Service Timeline</h3>
+<div class="space-y-4">
+<!-- Timeline Item 1 -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white z-10">
+<span class="material-symbols-outlined" data-icon="plumbing">plumbing</span>
+</div>
+<div class="w-0.5 h-full bg-outline-variant/50"></div>
+</div>
+<div class="bg-white p-4 rounded-xl flex-1 elevation-l1 mb-4 flex justify-between items-center">
+<div>
+<p class="text-label-md text-secondary font-bold">Nov 15, 2023</p>
+<h4 class="text-body-lg font-bold text-primary">Quarterly Plumbing Check</h4>
+<p class="text-caption text-on-surface-variant">Focus: Leak detection, pipe insulation, water heater health.</p>
+</div>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+                            Reschedule <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary z-10">
+<span class="material-symbols-outlined" data-icon="hvac">hvac</span>
+</div>
+<div class="w-0.5 h-full bg-outline-variant/50"></div>
+</div>
+<div class="bg-white p-4 rounded-xl flex-1 elevation-l1 mb-4 flex justify-between items-center opacity-60">
+<div>
+<p class="text-label-md text-on-surface-variant">Feb 10, 2024</p>
+<h4 class="text-body-lg font-bold text-primary">HVAC Efficiency Tune-up</h4>
+<p class="text-caption text-on-surface-variant">Focus: Filter replacement, condenser cleaning, thermostat calibration.</p>
+</div>
+<span class="bg-surface-container px-3 py-1 rounded-full text-caption">Upcoming</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface shadow-[0_-4px_20px_rgba(0,32,69,0.1)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="text-label-md font-label-md">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="text-label-md font-label-md">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md">Account</span>
+</a>
+</nav>
+<!-- FAB for quick upgrade or help (contextual) -->
+<button class="fixed right-6 bottom-24 md:bottom-8 bg-secondary text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+</button>
+</body></html>

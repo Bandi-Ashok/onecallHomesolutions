@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Home &amp; Security | One Call Home Solutions</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c4c6cf",
+                    "on-primary-fixed": "#001b3c",
+                    "on-tertiary-container": "#4cadab",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "on-tertiary-fixed": "#00201f",
+                    "secondary-fixed": "#ffdad8",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-low": "#f1f4f6",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#410006",
+                    "background": "#f7fafc",
+                    "surface-dim": "#d7dadc",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "tertiary-fixed": "#94f2f0",
+                    "on-surface": "#181c1e",
+                    "outline": "#74777f",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#d6e3ff",
+                    "primary": "#002045",
+                    "on-secondary-container": "#6d0010",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "error-container": "#ffdad6",
+                    "surface": "#f7fafc",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "primary-container": "#1a365d",
+                    "primary-fixed-dim": "#adc7f7",
+                    "surface-container": "#ebeef0",
+                    "on-surface-variant": "#43474e",
+                    "tertiary": "#002625",
+                    "surface-bright": "#f7fafc",
+                    "secondary": "#ad3035",
+                    "on-background": "#181c1e",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-container": "#003d3c",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#adc7f7",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-tint": "#455f88",
+                    "surface-container-high": "#e5e9eb",
+                    "secondary-container": "#fe6c6b",
+                    "on-primary-container": "#86a0cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .verified-badge {
+            background-color: rgba(76, 173, 171, 0.1);
+            color: #4cadab;
+        }
+        .service-card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.08);
+        }
+        .glass-header {
+            backdrop-filter: blur(8px);
+            background-color: rgba(247, 250, 252, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface shadow-sm glass-header">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">One Call Home Solutions</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-label-md font-label-md text-primary font-bold" href="#">Home</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Bookings</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">SOS</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Account</a>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section / Header -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant mb-4">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock">lock</span>
+<span class="text-label-md font-label-md uppercase tracking-wider">Smart Home &amp; Security</span>
+</div>
+<h2 class="text-headline-xl font-headline-xl text-primary mb-4">The Professional Guardian for Your Home</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Intelligent protection and seamless automation. We integrate world-class hardware with expert local installation to keep your family safe and your home connected.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-secondary text-on-secondary px-6 py-3 rounded-xl font-bold text-label-md flex items-center gap-2 transition-transform active:scale-95 shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined" data-icon="emergency">emergency</span>
+                        EMERGENCY SOS
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Services -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+<!-- CCTV Installation (Large Card) -->
+<div class="md:col-span-8 group relative overflow-hidden bg-white rounded-xl border border-outline-variant/30 service-card-shadow transition-all hover:scale-[1.01]">
+<div class="absolute top-4 right-4 z-10 flex items-center gap-2 px-3 py-1 rounded-full verified-badge">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-caption font-semibold">SECURE PRO VERIFIED</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2">
+<div class="p-8 flex flex-col justify-between">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary mb-3">AI-Powered CCTV Installation</h3>
+<p class="text-on-surface-variant mb-6">Crystal clear 4K surveillance with night vision and smart human detection to filter out false alerts.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center gap-2 text-on-surface text-label-md">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+                                    24/7 Cloud or Local Recording
+                                </li>
+<li class="flex items-center gap-2 text-on-surface text-label-md">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+                                    Remote Smartphone Access
+                                </li>
+<li class="flex items-center gap-2 text-on-surface text-label-md">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="check_circle">check_circle</span>
+                                    AI Facial Recognition
+                                </li>
+</ul>
+</div>
+<button class="w-full md:w-fit border-2 border-primary text-primary px-8 py-3 rounded-xl font-bold hover:bg-primary hover:text-white transition-all">View Packages</button>
+</div>
+<div class="h-64 md:h-full relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, modern high-tech 4K security camera mounted on a clean white architectural corner. The lighting is crisp and cool, reflecting a professional corporate modern aesthetic. The background shows a high-end residential exterior with soft bokeh. The overall mood is technologically advanced and secure, using a palette of navy and white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByL5HbFVycJcdv6TxebVhhoJhQxJ7OPqUnjBVbHGBbEG63NiixgMDW4pdniVceM4Jk3WetjOtguZ_DWTkVqRcq-YeeAOoDnhK-eFcY32F8nduKnlwOCYI53qmIG--osKKdvW6RI3T64v1Vl38UXnFSjAxl7AEdk8VGP9ZdxlQvRnmGKa-DltnORgaKvC-78UHJpT9C0jB8vXSN3IJIi6esKx525X5L0pArL4AFWbBCbc7DgukDBnIo"/>
+</div>
+</div>
+</div>
+<!-- Smart Locks (Vertical Card) -->
+<div class="md:col-span-4 flex flex-col bg-white rounded-xl border border-outline-variant/30 service-card-shadow group transition-all hover:scale-[1.01]">
+<div class="p-6">
+<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center text-on-primary-container mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="lock_person">lock_person</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-3">Smart Door Locks</h3>
+<p class="text-on-surface-variant mb-6 text-sm">Keyless entry via fingerprint, PIN code, or mobile app. Auto-lock security for peace of mind.</p>
+</div>
+<div class="mt-auto h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a premium matte black smart door lock on a modern oak wood door. A human finger is touching the integrated biometric scanner which glows with a soft cyan light. The lighting is warm and domestic but professional. The style is clean and institutional with tactile clarity, highlighting the premium hardware quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyzPLOkxsnopQE5YB0tT7ctaYDxAwotr74lkwbuvAD55EFIiT6bgQH_YYfnV54DVne3nmXUWzAiP5IIHk3pgBTFPbZchHYB8dFhhAV-4jwj57A5f9d6SVfFH_1uVct2XdTfhn1Sb94uiwoCKauJPSy8OS8hSknvww53uPtjDMhzlXrbOpHtXdfLiTYR71y7VAz4ni6Qz8tHW6YyPjcHhSdXH-vKcPti64hADQz7_EOu8pyS4elbq79"/>
+</div>
+<div class="p-6">
+<button class="w-full bg-surface-container text-primary px-4 py-3 rounded-xl font-bold hover:bg-primary-fixed transition-colors flex justify-center items-center gap-2">
+                        Install Now <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Ecosystem Integration (Horizontal Card) -->
+<div class="md:col-span-12 bg-primary text-on-primary rounded-xl overflow-hidden relative">
+
+<div class="relative z-10 p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+<div>
+<h3 class="text-headline-lg font-headline-lg mb-4 text-white">Unified Smart Ecosystems</h3>
+<p class="text-on-primary-container mb-8 text-lg">Bring your home to life with Alexa, Google Home, or Apple HomeKit. We handle the complex setup so you can control your lights, heating, and security with just your voice.</p>
+<div class="flex flex-wrap gap-4 items-center">
+<div class="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full border border-white/20 backdrop-blur-md">
+<span class="material-symbols-outlined" data-icon="keyboard_voice">keyboard_voice</span>
+<span class="text-label-md">Voice Control</span>
+</div>
+<div class="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full border border-white/20 backdrop-blur-md">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="text-label-md">Custom Routines</span>
+</div>
+<div class="flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full border border-white/20 backdrop-blur-md">
+<span class="material-symbols-outlined" data-icon="router">router</span>
+<span class="text-label-md">Full Mesh WiFi</span>
+</div>
+</div>
+</div>
+<div class="flex justify-center md:justify-end">
+<div class="relative w-full max-w-sm aspect-square">
+<img class="rounded-2xl shadow-2xl border-4 border-white/10 object-cover w-full h-full" data-alt="A minimalist, high-end living room interior with subtle digital overlays showing connected lines between various smart devices like a smart speaker, thermostat, and light switches. The style is 'The Professional Guardian' with calm navy tones, white surfaces, and generous negative space. The lighting is soft and ambient, evoking comfort and technical competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrmXalSTpw3oGo-B6dYXQEAX1drmH98OS_h26Uve9UhF_Av9HVivtvM-CbLQ1gCAaKhr57TaM2AHAj_QHftKREgKFC37h1aBud0pYEdf5ELBjRCEBx7eb8kIEq05AUbJJhWgaiD2UWuBnRF2puwb9wOZm_yM6kFdw7ZmsSpe69sFfEjSX6Rq53AEDYYiYe1k07r6jwMzyH1cKaHcuU7zmonen3mIlH7rekh1DWn-ziHkFP-tOJQWPa"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Full Home Automation Banner -->
+<section class="mb-16">
+<div class="bg-gradient-to-r from-tertiary-container to-primary rounded-2xl p-1 text-on-tertiary">
+<div class="bg-primary/40 backdrop-blur-xl rounded-[calc(1rem-4px)] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="text-center md:text-left">
+<h2 class="text-headline-lg font-headline-lg mb-2">Planning a Smart Home Project?</h2>
+<p class="text-on-primary-container max-w-xl">Get a personalized consultation with our senior engineers. We design end-to-end security and automation blueprints for new builds and renovations.</p>
+</div>
+<button class="bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 rounded-xl font-bold text-headline-md-mobile hover:scale-105 transition-transform flex items-center gap-3 shadow-xl shadow-tertiary/30">
+                        Get a Free Consultation
+                        <span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Trust & Credentials -->
+<section class="mb-16">
+<div class="text-center mb-8">
+<h3 class="text-label-md font-label-md text-outline tracking-[0.2em] uppercase">Trusted by Leading Partners</h3>
+</div>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+<div class="flex items-center gap-2 text-headline-md font-bold text-outline">
+<span class="material-symbols-outlined text-4xl" data-icon="shield">shield</span>
+                    ADCORP
+                </div>
+<div class="flex items-center gap-2 text-headline-md font-bold text-outline">
+<span class="material-symbols-outlined text-4xl" data-icon="security">security</span>
+                    SAFEGUARD
+                </div>
+<div class="flex items-center gap-2 text-headline-md font-bold text-outline">
+<span class="material-symbols-outlined text-4xl" data-icon="house">house</span>
+                    HOMESHIELD
+                </div>
+<div class="flex items-center gap-2 text-headline-md font-bold text-outline">
+<span class="material-symbols-outlined text-4xl" data-icon="lock_open">lock_open</span>
+                    KEYPRO
+                </div>
+</div>
+</section>
+<!-- FAQ Section for quick info -->
+<section class="max-w-3xl mx-auto">
+<h3 class="text-headline-md font-headline-md text-primary text-center mb-8">Smart Security FAQs</h3>
+<div class="space-y-4">
+<details class="group bg-white rounded-xl border border-outline-variant/30 overflow-hidden" open="">
+<summary class="flex justify-between items-center p-5 cursor-pointer list-none hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Do you offer 24/7 monitoring services?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-5 pt-0 text-on-surface-variant text-sm">
+                        Yes, we partner with professional central monitoring stations to provide 24/7 oversight. In the event of an alarm, authorities are dispatched within seconds.
+                    </div>
+</details>
+<details class="group bg-white rounded-xl border border-outline-variant/30 overflow-hidden">
+<summary class="flex justify-between items-center p-5 cursor-pointer list-none hover:bg-surface-container transition-colors">
+<span class="font-bold text-primary">Can I integrate my existing smart bulbs?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-5 pt-0 text-on-surface-variant text-sm">
+                        Our systems are designed to be hardware-agnostic where possible. We can bridge most Zigbee, Z-Wave, and WiFi-enabled bulbs into a single control panel.
+                    </div>
+</details>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface shadow-[0_-4px_20px_rgba(0,32,69,0.1)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container rounded-xl px-3 py-1 scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-label-md font-label-md">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="text-label-md font-label-md">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md">Account</span>
+</a>
+</nav>
+<!-- Floating Action Button (Supressed on details page usually, but kept here for "Consultation" context as per rule: rendering "Book a Walk" on Home or Dashboard style screens) -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 bg-secondary text-on-secondary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center z-40 transition-transform active:scale-90 hover:scale-110">
+<span class="material-symbols-outlined text-3xl" data-icon="chat_bubble">chat_bubble</span>
+</button>
+<script>
+        // Micro-interactions and atmospheric logic
+        document.querySelectorAll('details').forEach((el) => {
+            el.addEventListener('click', (e) => {
+                if (el.open) return;
+                document.querySelectorAll('details[open]').forEach((opened) => {
+                    if (opened !== el) opened.removeAttribute('open');
+                });
+            });
+        });
+
+        // Subtle parallax or scroll reveal effect logic
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

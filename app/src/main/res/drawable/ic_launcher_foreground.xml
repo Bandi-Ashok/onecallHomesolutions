@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Protective Shield Outline -->
+    <path
+        android:pathData="M 54,22 L 28,30 L 28,58 C 28,74 42,84 54,86 C 66,84 80,74 80,58 L 80,30 Z"
+        android:fillColor="#1F77D6D3"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.5"
+        android:strokeLineJoin="round" />
+
+    <!-- Centered Home & Services Icon -->
+    <path
+        android:pathData="M 54,38 L 36,52 L 42,52 L 42,68 L 50,68 L 50,58 L 58,58 L 58,68 L 66,68 L 66,52 L 72,52 Z"
+        android:fillColor="#FFFFFF" />
+</vector>

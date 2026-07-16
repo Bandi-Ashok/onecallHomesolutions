@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>One Call Home - Live Technician Monitoring</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#002045",
+                    "secondary-container": "#fe6c6b",
+                    "background": "#f7fafc",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "on-surface": "#181c1e",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#003d3c",
+                    "surface-container-low": "#f1f4f6",
+                    "surface-container": "#ebeef0",
+                    "outline": "#74777f",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#adc7f7",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f7fafc",
+                    "on-primary-fixed": "#001b3c",
+                    "tertiary": "#002625",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-fixed": "#ffdad8",
+                    "primary-fixed": "#d6e3ff",
+                    "on-secondary-container": "#6d0010",
+                    "on-surface-variant": "#43474e",
+                    "surface-dim": "#d7dadc",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline-variant": "#c4c6cf",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#00201f",
+                    "surface": "#f7fafc",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#94f2f0",
+                    "on-secondary-fixed": "#410006",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "surface-container-high": "#e5e9eb",
+                    "on-tertiary-container": "#4cadab",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "on-primary-container": "#86a0cd",
+                    "inverse-primary": "#adc7f7",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "on-background": "#181c1e",
+                    "primary-container": "#1a365d",
+                    "surface-tint": "#455f88",
+                    "secondary": "#ad3035",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "on-secondary-fixed-variant": "#8c1620"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "base": "8px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "caption": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .map-container {
+            height: calc(100vh - 64px);
+        }
+        /* Custom scrollbar for sidebar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f4f6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #adc7f7;
+            border-radius: 10px;
+        }
+        .active-technician-card {
+            border-left: 4px solid #002045;
+        }
+        .pulse-sos {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .7; transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-primary flex flex-col z-40 shadow-md">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">One Call Home</h1>
+<p class="text-primary-fixed-dim text-label-md font-label-md">Solutions Portal</p>
+</div>
+<nav class="flex-grow mt-4 overflow-y-auto">
+<!-- Analytics -->
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<!-- Service Requests -->
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="trolley">trolley</span>
+<span class="font-label-md text-label-md">Service Requests</span>
+</a>
+<!-- Live Tracking (Active) -->
+<a class="text-on-primary-fixed bg-primary-fixed-dim rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-label-md text-label-md">Live Tracking</span>
+</a>
+<!-- Partners -->
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span class="font-label-md text-label-md">Partners</span>
+</a>
+</nav>
+<div class="p-4 border-t border-on-primary-fixed-variant">
+<button class="w-full bg-secondary text-on-secondary font-label-md text-label-md py-3 rounded-xl shadow-lg hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+                Emergency Dispatch
+            </button>
+</div>
+<div class="pb-6">
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 flex justify-between items-center px-margin-desktop z-30 bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-6">
+<span class="font-headline-md text-headline-md font-bold text-primary">One Call Home Solutions</span>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary w-64 text-body-md font-body-md" placeholder="Search technician or task..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container rounded-full p-2 transition-all relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="hover:bg-surface-container rounded-full p-2 transition-all">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of a male corporate administrator in a dark navy blue suit with sharp lighting, clean background, representing a high-level security and operations manager for a professional guardian service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa-wNpHJzyXuaWp8IuEaDwJXGHTuoDRsMw5HAahFUYxoHlxg98U24Ryr1n9-HDWHbH1tL6r1R7gkFK6Zr3Rriv76PPL94rm6Jv2xeQROMBtoNWZC_8ZzCgDEEQ4L1aLJChtzXvHGoLXbrEXR-VHbfN2Bit9R8hrsbmi1kRanyGDNjC-rbztq3-EYZAwowYXshnPNPCE8jaz8P6ekoJX9JuMeGvDvK0tcNfRR1i1m6uxhnZbgXymJy9"/>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+                    New Request
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content: Map View -->
+<main class="pl-64 pt-16 h-screen relative">
+<!-- Live Map Background -->
+<div class="absolute inset-0 z-0 map-container grayscale-[0.2]" data-location="Chicago" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACsvrub9O-uOeK9nzz7SeA7aE9-RXX1k92F1wvVQ6F7hl4YfdNPksOVrl2Xfj4WqybMSW4q-XnjLVh91SBPD6RmpPQq5nwkjB9WgbblziAD8iYYvsnl09FJvhI2aVPXRdiHpN-I5RNkqCh9yh4slIOED3YqpnJvCzFHnQEfl9RjilbzNoDXgV1r_bU0HJO92ki4u3mokOpEN4bAXHymbEivi_wPXET2msSxMNEjBOBsK74mBn_Fg6V')">
+<!-- Simulated Map Markers -->
+<!-- SOS Dispatch Marker -->
+<div class="absolute top-[40%] left-[35%] z-10 cursor-pointer group" onclick="toggleSidebar('Marcus')">
+<div class="relative">
+<div class="absolute -inset-4 bg-secondary-container opacity-20 rounded-full pulse-sos"></div>
+<div class="w-10 h-10 bg-secondary border-2 border-on-secondary rounded-full flex items-center justify-center shadow-xl">
+<span class="material-symbols-outlined text-on-secondary" data-icon="emergency_home" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</div>
+</div>
+<div class="absolute top-12 left-1/2 -translate-x-1/2 bg-surface px-2 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="font-label-md text-[10px] uppercase text-secondary">SOS: Burst Pipe</span>
+</div>
+</div>
+<!-- On Job Marker -->
+<div class="absolute top-[60%] left-[55%] z-10 cursor-pointer group" onclick="toggleSidebar('Sarah')">
+<div class="w-8 h-8 bg-primary border-2 border-on-primary rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-primary text-sm" data-icon="construction" style="font-variation-settings: 'FILL' 1;">construction</span>
+</div>
+<div class="absolute top-10 left-1/2 -translate-x-1/2 bg-surface px-2 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="font-label-md text-[10px] uppercase text-primary">On Job: HVAC Repair</span>
+</div>
+</div>
+<!-- Available Marker -->
+<div class="absolute top-[30%] left-[65%] z-10 cursor-pointer group" onclick="toggleSidebar('David')">
+<div class="w-8 h-8 bg-on-tertiary-container border-2 border-on-primary rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-primary text-sm" data-icon="person_pin_circle" style="font-variation-settings: 'FILL' 1;">person_pin_circle</span>
+</div>
+<div class="absolute top-10 left-1/2 -translate-x-1/2 bg-surface px-2 py-1 rounded shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="font-label-md text-[10px] uppercase text-on-tertiary-container">Available</span>
+</div>
+</div>
+</div>
+<!-- Legend Overlay -->
+<div class="absolute top-8 left-8 z-20 bg-surface/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-outline-variant flex flex-col gap-3">
+<h3 class="font-label-md text-label-md text-primary mb-1">Fleet Status</h3>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-on-tertiary-container rounded-full"></div>
+<span class="text-caption font-caption text-on-surface">Available (14)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+<span class="text-caption font-caption text-on-surface">On Job (8)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-secondary rounded-full pulse-sos"></div>
+<span class="text-caption font-caption text-on-surface">SOS Dispatch (2)</span>
+</div>
+</div>
+<!-- Technician Details Sidebar Overlay -->
+<div class="absolute right-0 top-0 bottom-0 w-96 bg-surface shadow-2xl z-30 translate-x-full transition-transform duration-300 ease-in-out border-l border-outline-variant flex flex-col" id="tech-sidebar">
+<!-- Header -->
+<div class="p-6 border-b border-outline-variant flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden shadow-md">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of a home service technician wearing a high-quality navy blue uniform, friendly but expert expression, soft studio lighting, professional guardian aesthetic." id="tech-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANehnpPmyL2ILcoLgisZbmJDitfnEg-WcxYunM9DIp4pt48YSeQNq4uf3cVe8BdCgTnGEc-zxm8laRYt8E3LBqVDvfv_zLq48e2I2IH07_E0iNbF9FLEDqB1OaNJtpFcYFn-H0AmhtH7GQMO1GHBk5MM-EF2nVqqg5CVd2hFiU7pyVcPq8EJmpbnavwIxZLKA-Jfj2n_mCyyD3V-eCABcVmbIJ12gjQUYhwXE9LHonmj8mCoIcKNcJ"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary" id="tech-name">Marcus Thorne</h2>
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.9 (248 Reviews)</span>
+</div>
+</div>
+</div>
+<button class="p-2 hover:bg-surface-container rounded-full transition-all" onclick="closeSidebar()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Content Area -->
+<div class="flex-grow overflow-y-auto p-6 space-y-8">
+<!-- Status & Task -->
+<div class="space-y-4">
+<div>
+<span class="text-caption font-caption uppercase tracking-wider text-on-surface-variant">Current Status</span>
+<div class="mt-1 inline-flex items-center px-3 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full text-label-md font-label-md gap-2" id="tech-status-badge">
+<span class="w-2 h-2 bg-secondary rounded-full"></span>
+                            SOS Dispatching
+                        </div>
+</div>
+<div>
+<span class="text-caption font-caption uppercase tracking-wider text-on-surface-variant">Active Task</span>
+<div class="mt-2 p-4 bg-surface-container rounded-xl border border-outline-variant">
+<h4 class="font-body-lg text-body-lg font-bold text-primary">Burst Pipe - Emergency</h4>
+<p class="text-caption text-on-surface-variant mt-1">128 Oak Ridge Dr, Unit 402</p>
+<div class="flex items-center gap-2 mt-3 text-secondary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-caption font-label-md">ETA: 6 Minutes</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Verified Badge -->
+<div class="flex items-center justify-between p-4 bg-tertiary/5 rounded-xl border border-tertiary/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container">verified</span>
+<span class="font-label-md text-label-md text-on-tertiary-container">Master Plumber Certified</span>
+</div>
+<span class="text-[10px] font-bold text-on-tertiary-container bg-tertiary-fixed px-2 py-1 rounded">PLATINUM</span>
+</div>
+<!-- VoIP Communication -->
+<div class="space-y-3">
+<span class="text-caption font-caption uppercase tracking-wider text-on-surface-variant">Direct Communication</span>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 bg-primary text-on-primary py-3 rounded-xl hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">call</span>
+<span class="font-label-md">Voice Call</span>
+</button>
+<button class="flex items-center justify-center gap-2 border border-primary text-primary py-3 rounded-xl hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined">video_call</span>
+<span class="font-label-md">Live Feed</span>
+</button>
+</div>
+<button class="w-full flex items-center justify-center gap-2 bg-surface-container text-on-surface py-3 rounded-xl hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md">Secure Message</span>
+</button>
+</div>
+<!-- Recent Activity Feed -->
+<div class="space-y-4">
+<span class="text-caption font-caption uppercase tracking-wider text-on-surface-variant">Live Telemetry</span>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-body-md">
+<span class="text-on-surface-variant">Travel Speed</span>
+<span class="font-bold text-primary">34 mph</span>
+</div>
+<div class="flex items-center justify-between text-body-md">
+<span class="text-on-surface-variant">Fuel Level</span>
+<span class="font-bold text-primary">82%</span>
+</div>
+<div class="flex items-center justify-between text-body-md">
+<span class="text-on-surface-variant">Signal Strength</span>
+<span class="font-bold text-on-tertiary-container">Excellent</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Refresh Action -->
+<button class="absolute bottom-10 right-10 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:rotate-180 transition-all duration-500 z-20">
+<span class="material-symbols-outlined">sync</span>
+</button>
+</main>
+<script>
+        function toggleSidebar(techName) {
+            const sidebar = document.getElementById('tech-sidebar');
+            const nameEl = document.getElementById('tech-name');
+            const statusEl = document.getElementById('tech-status-badge');
+            
+            // Basic logic to differentiate UI based on click (simulation)
+            if(techName === 'Marcus') {
+                nameEl.innerText = 'Marcus Thorne';
+                statusEl.innerHTML = '<span class="w-2 h-2 bg-secondary rounded-full"></span> SOS Dispatching';
+                statusEl.className = 'mt-1 inline-flex items-center px-3 py-1 bg-secondary-fixed text-on-secondary-fixed rounded-full text-label-md font-label-md gap-2';
+            } else if(techName === 'Sarah') {
+                nameEl.innerText = 'Sarah Jenkins';
+                statusEl.innerHTML = '<span class="w-2 h-2 bg-primary rounded-full"></span> On Job';
+                statusEl.className = 'mt-1 inline-flex items-center px-3 py-1 bg-primary-fixed text-on-primary-fixed rounded-full text-label-md font-label-md gap-2';
+            } else {
+                nameEl.innerText = 'David Kim';
+                statusEl.innerHTML = '<span class="w-2 h-2 bg-on-tertiary-container rounded-full"></span> Available';
+                statusEl.className = 'mt-1 inline-flex items-center px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-label-md font-label-md gap-2';
+            }
+
+            sidebar.classList.remove('translate-x-full');
+        }
+
+        function closeSidebar() {
+            document.getElementById('tech-sidebar').classList.add('translate-x-full');
+        }
+
+        // Add some simple interactivity for the search bar focus
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('w-80');
+            searchInput.classList.add('w-80');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('w-80');
+            searchInput.classList.remove('w-80');
+        });
+    </script>
+</body></html>

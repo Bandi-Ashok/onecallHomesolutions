@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seasonal Offers | One Call Home Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Montserrat:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "error": "#ba1a1a",
+                "outline-variant": "#c4c6cf",
+                "primary-fixed-dim": "#adc7f7",
+                "surface-variant": "#e0e3e5",
+                "surface-tint": "#455f88",
+                "on-tertiary": "#ffffff",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed-variant": "#2d476f",
+                "surface-container-highest": "#e0e3e5",
+                "secondary-fixed": "#ffdad8",
+                "on-tertiary-container": "#4cadab",
+                "tertiary-container": "#003d3c",
+                "surface-dim": "#d7dadc",
+                "tertiary-fixed": "#94f2f0",
+                "on-secondary-fixed": "#410006",
+                "on-tertiary-fixed": "#00201f",
+                "on-error-container": "#93000a",
+                "surface-bright": "#f7fafc",
+                "on-primary": "#ffffff",
+                "primary": "#002045",
+                "on-secondary-container": "#6d0010",
+                "on-tertiary-fixed-variant": "#00504e",
+                "primary-fixed": "#d6e3ff",
+                "on-surface-variant": "#43474e",
+                "tertiary": "#002625",
+                "inverse-on-surface": "#eef1f3",
+                "surface-container-lowest": "#ffffff",
+                "outline": "#74777f",
+                "surface": "#f7fafc",
+                "on-secondary-fixed-variant": "#8c1620",
+                "on-primary-container": "#86a0cd",
+                "inverse-primary": "#adc7f7",
+                "background": "#f7fafc",
+                "primary-container": "#1a365d",
+                "surface-container-high": "#e5e9eb",
+                "on-surface": "#181c1e",
+                "surface-container": "#ebeef0",
+                "inverse-surface": "#2d3133",
+                "secondary": "#ad3035",
+                "on-background": "#181c1e",
+                "error-container": "#ffdad6",
+                "tertiary-fixed-dim": "#77d6d3",
+                "on-error": "#ffffff",
+                "surface-container-low": "#f1f4f6",
+                "secondary-fixed-dim": "#ffb3b0",
+                "secondary-container": "#fe6c6b",
+                "on-primary-fixed": "#001b3c"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-desktop": "40px",
+                "gutter": "24px",
+                "margin-mobile": "16px",
+                "container-max": "1280px",
+                "base": "8px"
+              },
+              "fontFamily": {
+                "headline-lg": ["Montserrat"],
+                "caption": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-xl": ["Montserrat"],
+                "headline-md": ["Montserrat"],
+                "label-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg-mobile": ["Montserrat"]
+              },
+              "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .offer-card-shadow {
+            box-shadow: 0 4px 20px 0 rgba(0, 32, 69, 0.15);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim w-full top-0 sticky border-b border-outline-variant dark:border-outline shadow-sm z-50">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-3xl">home_repair_service</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">One Call</h1>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary hover:bg-surface-container-low transition-colors px-3 py-1 rounded-lg" href="#">Home</a>
+<a class="text-primary font-semibold border-b-2 border-primary transition-colors px-3 py-1" href="#">Offers</a>
+<a class="text-on-surface-variant font-medium hover:text-primary hover:bg-surface-container-low transition-colors px-3 py-1 rounded-lg" href="#">Refer</a>
+<a class="text-on-surface-variant font-medium hover:text-primary hover:bg-surface-container-low transition-colors px-3 py-1 rounded-lg" href="#">Story</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-semibold active:scale-95 duration-150 transition-all hover:bg-primary-container">
+                Download App
+            </button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12">
+<!-- Hero: Refer & Earn -->
+<section class="relative overflow-hidden rounded-[24px] bg-primary-container text-on-primary-fixed mb-12 md:mb-16">
+
+<div class="relative z-10 p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="max-w-xl text-center md:text-left">
+<span class="inline-block bg-tertiary-container text-on-tertiary-container px-4 py-1 rounded-full font-label-md text-label-md mb-6">EXCLUSIVE GUARDIAN REWARDS</span>
+<h2 class="font-headline-xl text-headline-xl text-white mb-4 leading-tight">Refer a neighbor, earn 1 month of free protection.</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed-dim mb-8">Share the security of One Call with your community. Both you and your friend get premium benefits on successful signup.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+<button class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg hover:brightness-110 active:scale-95 transition-all shadow-lg">Refer Now</button>
+<button class="border border-primary-fixed-dim text-primary-fixed-dim px-8 py-4 rounded-xl font-semibold hover:bg-white/5 transition-all">How it works</button>
+</div>
+</div>
+<div class="w-full max-w-[400px]">
+<div class="aspect-square rounded-2xl overflow-hidden offer-card-shadow border-4 border-white/10">
+<img class="w-full h-full object-cover" data-alt="A professional homeowner in a modern, well-lit smart home hallway, smiling while using a high-end mobile app to share a referral code. The lighting is crisp and natural, highlighting premium materials like wood and glass. The aesthetic is clean, trustworthy, and sophisticated, matching a corporate modern professional guardian brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsEdOugsiaH9z-yxZIj9f3XNa9po3ogLt5rBKo6uqQaDYB7TEVsBhFGsmU6RdIMZtT6A3B64VlY0XefGSTV-OgrFVcuv66B_mx6Vvqtof4R4KFta7jkvyTH9ylxhSHS76wTeRxQwhuyfqScKX_AFORc9Iqa9k3actk7HSWxgdy7k2p7Clj3r80v9Gnqaaza0KtIf7pSELpZgDSvUcDyEy1hr5OfFp7fUtzxjCRCoDlF9-OAg_DyUv8"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Seasonal Offers -->
+<div class="mb-8">
+<h3 class="font-headline-lg text-headline-lg mb-2 text-primary">Seasonal Campaigns</h3>
+<p class="font-body-md text-on-surface-variant mb-8">Limited time packages tailored for your home's current needs.</p>
+</div>
+<div class="bento-grid">
+<!-- AMC Subscription (Large Card) -->
+<div class="col-span-12 md:col-span-8 bg-white rounded-[24px] offer-card-shadow p-8 flex flex-col justify-between border border-outline-variant relative overflow-hidden group">
+<div class="absolute top-4 right-4 bg-tertiary/10 text-on-tertiary-container px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs font-bold uppercase tracking-wider">Most Popular</span>
+</div>
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Annual Maintenance Contract (AMC)</h4>
+<p class="text-on-surface-variant font-body-md max-w-md mb-8">Enjoy 365 days of priority service, zero labor charges, and quarterly health checkups for your plumbing, electrical, and HVAC systems.</p>
+<div class="flex items-baseline gap-2 mb-12">
+<span class="text-primary font-bold text-4xl">$299</span>
+<span class="text-on-surface-variant line-through">$450</span>
+<span class="text-secondary font-bold text-sm">SAVE 35%</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-end justify-between gap-6 relative z-10">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold active:scale-95 transition-all hover:bg-primary-container w-full sm:w-auto">Grab Offer</button>
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a professional HVAC technician wearing a clean navy blue uniform with the One Call logo, looking confident and reliable. Professional studio lighting with a neutral gray background, emphasizing technical competence and approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUmTxhh_9KX_qqnpDI2jiFOJh0X_HraOLdewyffz3KotmYlgNnkkEvpgs5AhhMgt375DWjWfgDKfEsWiaGHLljaB9slcoKUXJEZmbtUAkcITpmAfnnsY3EJgj7U9LGW3746ZyNHuR9vwUAx2qSzOC4hrthzPzS-b7HmcCEU5FrkcwCxts_Nd_rO54l6VC5raCE-nhMf3X6E92Gb9DnyODjSaS_SPO0-TN7DrulEQTcBWR3XZJ9yD0b"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A smiling female master plumber in a professional uniform, holding a high-quality wrench. The style is clean, sharp, and corporate, with a focus on trust and speed. Soft key lighting and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc6u_R_CzSqfvHxnPa_iOV1iAF25tFevaAE46GRLKHdhzD4lbhDFXHSjfION-gd3HhosC_ftozCT2SpZxxX2n2c75AEDk0jGs2mjS3Qhq1AetFv7xQTthn0zkpcjenJkQBCO_VH7XBl7K5EL4CW6hYTGpkWCU7DXkrR3dn50oA4VnBIke1LmRHAJF9b7b5v881t8JCNnD4J4r_HMV1MO6Dvkrq80GLNJTBmiTpPZvptgIYpr7qjLoa"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-container flex items-center justify-center text-[10px] font-bold text-primary bg-primary-fixed">
+                            +500
+                        </div>
+</div>
+</div>
+<div class="absolute -right-12 -bottom-12 w-64 h-64 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[256px]">shield</span>
+</div>
+</div>
+<!-- Seasonal Cleaning (Small Card) -->
+<div class="col-span-12 md:col-span-4 bg-white rounded-[24px] offer-card-shadow p-8 flex flex-col border border-outline-variant">
+<div class="h-40 rounded-xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover" data-alt="A pristine, minimalist modern living room with large windows letting in bright morning sunlight. The surfaces are gleaming and dust-free. The lighting is high-key and airy, creating a sense of professional cleanliness and calm. Corporate modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6u4-7Pyog5IgZUtYQ18I3z6OydgbzX2G-R397az-5WKwg2pstDtAvR6T7BjaRLE0aLpasysVm41XwriJMxtZawdaQCdPNJNy4ujjNkjSeUEPMXFQxpxe5wGSU9aHcncOhEYg4kr5koPFLh47KwhLsC3cVMI4DBhsHPhIyqp2b71TwpNgJ9UHs-OXy64uGKE0mFHJCFXLq-Pec_8UtMh5qydrU-8ZyE9lxxRLSv0cw22GrVIjKv2oI"/>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Spring Cleaning</h4>
+<p class="text-on-surface-variant font-body-md mb-6">Deep kitchen &amp; bathroom sanitation with high-grade eco-friendly solutions.</p>
+<div class="mt-auto">
+<div class="text-secondary font-bold text-xl mb-4">Starting at $89</div>
+<button class="border-2 border-primary text-primary w-full py-3 rounded-xl font-bold hover:bg-primary hover:text-on-primary transition-all">Grab Offer</button>
+</div>
+</div>
+<!-- Holiday Pest Control (Small Card) -->
+<div class="col-span-12 md:col-span-4 bg-white rounded-[24px] offer-card-shadow p-8 flex flex-col border border-outline-variant">
+<div class="h-40 rounded-xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover" data-alt="A sophisticated home exterior during dusk with warm glowing holiday lights. The scene is cozy and secure, emphasizing a protected and inviting environment. The lighting is cinematic with deep blues and warm oranges, symbolizing a professional guardian service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyVkAyjpgoHqhBA1Lbac5GgkHgNqGUSzr9LaKLRGFBlXR6D1U_2L6rlj_FZk0D9PFDKrFAiBcc6BygYaN7E-kSsm7mEVqe0kQkeQnt66CVCSQwSzEm8hLJqlmFykSzPEFtt57TiwBdXepUuOzC1EBU0D-t2WEudUg3h4YtQPy5B-GubiaJK1RHm3NSiK7bH1KM_cV6hRxtNyatPNhAKP0pMwZjvG0pIuGhmF6Rd9zghqC7Ty_gvxaN"/>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Holiday Shield</h4>
+<p class="text-on-surface-variant font-body-md mb-6">Comprehensive perimeter protection against seasonal pests. 100% Guaranteed.</p>
+<div class="mt-auto">
+<div class="text-secondary font-bold text-xl mb-4">Flat 20% Off</div>
+<button class="border-2 border-primary text-primary w-full py-3 rounded-xl font-bold hover:bg-primary hover:text-on-primary transition-all">Grab Offer</button>
+</div>
+</div>
+<!-- Referral Mini Card (Bento Filler) -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-high rounded-[24px] p-8 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/30">
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Gift a Guardian</h4>
+<p class="text-on-surface-variant font-body-md">Know someone moving? Send them a 'New Home Starter Kit' and get credits in your One Call wallet.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-white text-primary p-4 rounded-full shadow-sm hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold hover:bg-primary-container transition-all">
+                        Gift Now
+                    </button>
+</div>
+</div>
+</div>
+<!-- Trust Bar -->
+<div class="mt-16 pt-8 border-t border-outline-variant flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+<span class="font-bold text-xl text-primary tracking-tighter">ISO 9001 CERTIFIED</span>
+<span class="font-bold text-xl text-primary tracking-tighter">SAFEHOME ALLIANCE</span>
+<span class="font-bold text-xl text-primary tracking-tighter">PREMIUM INSURANCE PARTNER</span>
+<span class="font-bold text-xl text-primary tracking-tighter">GUILD OF MASTER CRAFTSMEN</span>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-surface-container-highest w-full py-12 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center md:text-left">
+<h3 class="font-headline-sm text-headline-sm text-on-primary mb-2">One Call</h3>
+<p class="font-body-md text-outline-variant">© 2024 One Call Home Solutions. The Professional Guardian.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-outline-variant font-medium hover:text-on-primary-container transition-all" href="#">Services</a>
+<a class="text-secondary-fixed font-bold hover:text-on-primary-container transition-all" href="#">Referral Program</a>
+<a class="text-outline-variant font-medium hover:text-on-primary-container transition-all" href="#">Brand Story</a>
+<a class="text-outline-variant font-medium hover:text-on-primary-container transition-all" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface px-4 py-3 pb-6 shadow-[0_-4px_20px_0_rgba(0,32,69,0.15)] md:hidden rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-6 py-1 scale-110 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-md text-label-md">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">group_add</span>
+<span class="font-label-md text-label-md">Refer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-md text-label-md">Story</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.offer-card-shadow').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

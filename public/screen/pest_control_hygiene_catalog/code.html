@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guardian Home | Professional Pest &amp; Hygiene Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f7fafc",
+                    "on-primary-fixed": "#001b3c",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f1f4f6",
+                    "surface-container-high": "#e5e9eb",
+                    "primary-container": "#1a365d",
+                    "primary": "#002045",
+                    "inverse-surface": "#2d3133",
+                    "on-error-container": "#93000a",
+                    "background": "#f7fafc",
+                    "on-secondary-fixed": "#410006",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#4cadab",
+                    "surface-tint": "#455f88",
+                    "secondary-fixed": "#ffdad8",
+                    "primary-fixed-dim": "#adc7f7",
+                    "on-tertiary-fixed": "#00201f",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-primary-container": "#86a0cd",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "on-surface": "#181c1e",
+                    "surface-dim": "#d7dadc",
+                    "surface-container": "#ebeef0",
+                    "outline": "#74777f",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#002625",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "tertiary-fixed": "#94f2f0",
+                    "on-surface-variant": "#43474e",
+                    "tertiary-container": "#003d3c",
+                    "inverse-primary": "#adc7f7",
+                    "secondary-container": "#fe6c6b",
+                    "on-secondary-container": "#6d0010",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "on-error": "#ffffff",
+                    "secondary": "#ad3035",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface": "#f7fafc",
+                    "on-background": "#181c1e",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c4c6cf",
+                    "surface-variant": "#e0e3e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "caption": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .service-card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.08);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface font-body-md">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Guardian Home</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-primary" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Business</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors" data-icon="notifications">notifications</button>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-xl font-label-md text-label-md active:scale-95 transition-transform">Book Inspection</button>
+</div>
+</header>
+<main class="pt-24 pb-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section with Animation & Bento Pattern -->
+<section class="mb-16">
+<div class="relative overflow-hidden rounded-3xl bg-primary-container p-8 md:p-12 mb-8 h-[300px] md:h-[400px] flex flex-col justify-center">
+
+<div class="relative z-10 max-w-2xl">
+<span class="inline-block bg-secondary text-on-secondary px-3 py-1 rounded-full text-caption font-bold mb-4">EMERGENCY DISPATCH AVAILABLE</span>
+<h2 class="font-headline-xl text-headline-xl text-on-primary leading-tight mb-6 md:text-5xl">Professional Guardian of Your Living Space</h2>
+<p class="text-on-primary-container font-body-lg text-body-lg mb-8 opacity-90">Certified pest control and hygiene solutions for homes and businesses. 100% safety-focused methodology.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary text-on-secondary px-8 py-3 rounded-xl font-bold active:scale-95 transition-transform">Schedule SOS Service</button>
+<button class="bg-surface-container-lowest text-primary px-8 py-3 rounded-xl font-bold active:scale-95 transition-transform">View Catalog</button>
+</div>
+</div>
+</div>
+<!-- Trust Bar / Health & Safety Banner -->
+<div class="flex flex-col md:flex-row items-center gap-8 bg-surface-container-low p-6 rounded-2xl border border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<p class="font-bold text-primary">Certified Health &amp; Safety</p>
+<p class="text-caption text-on-surface-variant">WHO-Grade disinfection standards.</p>
+</div>
+</div>
+<div class="h-px md:h-12 w-full md:w-px bg-outline-variant"></div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<div>
+<p class="font-bold text-primary">Money-Back Guarantee</p>
+<p class="text-caption text-on-surface-variant">100% satisfaction or full refund.</p>
+</div>
+</div>
+<div class="h-px md:h-12 w-full md:w-px bg-outline-variant"></div>
+<div class="flex-1 flex justify-between md:justify-end items-center gap-4">
+<p class="text-caption text-on-surface-variant font-medium">Partnered with:</p>
+<div class="flex gap-4 grayscale opacity-60">
+<span class="font-bold text-on-surface-variant tracking-tighter">EPA CERT</span>
+<span class="font-bold text-on-surface-variant tracking-tighter">ISO 9001</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Catalog -->
+<div class="space-y-16">
+<!-- Residential Section -->
+<section>
+<div class="flex items-end justify-between mb-8">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary">Residential Shield</h3>
+<p class="text-on-surface-variant">Targeted elimination for a pest-free home.</p>
+</div>
+<a class="text-primary font-label-md flex items-center gap-1" href="#">See All <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Cockroach Control -->
+<div class="group bg-surface-container-lowest p-4 rounded-3xl service-card-shadow transition-all hover:-translate-y-1">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-4">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A clean, bright modern kitchen interior with soft morning light hitting the white marble countertops. Professional pest control treatment focus, representing hygiene and safety. High-end architectural photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCw9Tg6Roz6vkPil5Lq24UeHY_WZPw5vBy7jeRuFY5uoGoEZrw3ajjGvaXOtMSxgOyE4Ck3xgWwqqicUb2qqwCpaRK8FKcxWmQzJ2TEBOt0oabbDsT602kXxo8eonNQvN1ELiNi_GPJXJfD25YzaV0pxrgwusopU_oRkCfKnVuhWFAY97SB6MvGfZOyMD647E1q-2H3IGhIOPnFVTQAmgYDJD1ncgg1vm6EAe8bBaZT2WqRN294qSt9')"></div>
+<div class="absolute top-3 right-3 bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-caption flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span> Verified
+                            </div>
+</div>
+<h4 class="font-bold text-lg text-primary mb-1">Cockroach Control</h4>
+<p class="text-caption text-on-surface-variant mb-4">Odorless gel treatment &amp; moisture barrier protection.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary">From $79</span>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl text-caption font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors">Book Now</button>
+</div>
+</div>
+<!-- Bed Bug Treatment -->
+<div class="group bg-surface-container-lowest p-4 rounded-3xl service-card-shadow transition-all hover:-translate-y-1 border-2 border-transparent hover:border-secondary-container">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-4">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A luxurious, minimalist bedroom with pristine white linens and a plush gray headboard. The lighting is warm and inviting, suggesting a peaceful and safe sleep environment. High-end real estate photography style with intentional focus on clean surfaces." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDnzv501XS0azTIyot7M6FUycvK0jjhYn8rizMYf6_i75s1Iu0sDZRTNJazA9793cT3OdUYUOEedL2NbupnTRYvDF3O_Xx-KNMhPils8o2J88fXXof3h399EdE5rKj0NOcE6vFCFmep4r3zR3JDveBh3SIEmU0FXqDBLiLenCNcFHPH_t5miXitJZs2m3YDJ709CV5mTRkrVxyzg8sAW4qXyKIEfLKlU8R6HqpIizC0xDOXPBXsZm-v')"></div>
+<div class="absolute top-3 right-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-caption font-bold">Intensive</div>
+</div>
+<h4 class="font-bold text-lg text-primary mb-1">Bed Bug Heat Treatment</h4>
+<p class="text-caption text-on-surface-variant mb-4">Thermal remediation for 100% egg elimination in 24h.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary">From $199</span>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl text-caption font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors">Book Now</button>
+</div>
+</div>
+<!-- Termite Pre-Construction -->
+<div class="group bg-surface-container-lowest p-4 rounded-3xl service-card-shadow transition-all hover:-translate-y-1">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-4">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A modern construction site with clean concrete foundations and steel framing. Professional grade protective barriers are being applied. Bright daylight with a focus on structural integrity and long-term protection." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAk3J55XHPvp_lEhmYqkHuxqhGUNyvTythcxcOJelVjSsWgh_NFFE4JNliH9UxIHyJzuA21spBrI2cTMzUnEofQIVpXTm5kslGmhjtKRWaRAnU92lp_nAfve1E-DMb40d6Eeqy-vQpF6GUvRSNLNzJyLghrA3S6SyFFsrbI7kHMA-Jkjp8f8hGOEh5LklOob_776e50XdfIzocoOsLiBeACFwT7x7_-kPL3CFsC91YfEFJtfh31rwbg')"></div>
+</div>
+<h4 class="font-bold text-lg text-primary mb-1">Pre-Construction Termite</h4>
+<p class="text-caption text-on-surface-variant mb-4">Anti-termite soil treatment with 10-year warranty.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary">Quotation</span>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl text-caption font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors">Enquire</button>
+</div>
+</div>
+<!-- Specialized Bird Netting -->
+<div class="group bg-surface-container-lowest p-4 rounded-3xl service-card-shadow transition-all hover:-translate-y-1">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-4">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, modern glass balcony overlooking a city skyline. Discreet, high-quality bird netting is installed, barely visible against the blue sky. Pristine urban environment, professional installation showcase." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9SUa_2o2Qd0XL3ygJv8pqNYPBSvrfpSpUZvDfWqO5wLnsSlIV-T-Uo0Q-UQDOTT2S62yILk7PETwh6PZMW_x5xu4cvkIeLQQPLAm77yiBJQzGsMvmfUAG5eGUQeftxJcr0B6VwUlS1W1cjcwAw6xCHirBlmVR55A35HyctNxbTsOaNOC3UrbVpgvBk-fUfgFBjMqEBoioAXkcvY_1JPgVUn-kNNUTdOhia8R2vvpNqMeu6Oi4bs2p')"></div>
+</div>
+<h4 class="font-bold text-lg text-primary mb-1">HD Bird Netting</h4>
+<p class="text-caption text-on-surface-variant mb-4">UV-resistant, nearly invisible balcony safety nets.</p>
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary">From $120</span>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl text-caption font-bold group-hover:bg-primary group-hover:text-on-primary transition-colors">Book Now</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Commercial / Industrial Section - Bento Layout -->
+<section>
+<div class="mb-8">
+<h3 class="font-headline-lg text-headline-lg text-primary">Commercial Hygiene</h3>
+<p class="text-on-surface-variant">Advanced compliance solutions for high-traffic environments.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 relative group overflow-hidden rounded-3xl h-[400px]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A professional commercial kitchen with gleaming stainless steel surfaces. The atmosphere is industrial yet spotlessly clean, with bright, even clinical lighting. A focus on sanitation and food safety standards." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCf5Gl7FPJDo5k_mShFs2D0o8ELmo7GhVOLz5MXMEJQjQ031Z7YC7GUGwAecw-m7vpad-MXQBImi50YY00zBkqcc8DxtXdENsa7xfMMjrVCiByOb3XLaBjrzshmJmPJyVQ6al1p5rpWJQwGXBmbmbEspgDRkmkGSFSy66sI6eMvJAQXRVM3QXORfnGus5xgxrwOgbN9su8xUgVsMui_qQWmEZbBW1ivkiA7qZu_0tlHwbAfebKpJ4fB')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-8">
+<h4 class="font-headline-md text-headline-md text-on-primary mb-2">Food-Safe Restaurant Disinfection</h4>
+<p class="text-on-primary-container mb-6 max-w-md">Comprehensive pest and hygiene protocols compliant with local health department regulations and HACCP standards.</p>
+<div class="flex gap-4">
+<button class="bg-on-primary text-primary px-6 py-3 rounded-xl font-bold">Request Inspection</button>
+<button class="border border-on-primary/30 text-on-primary px-6 py-3 rounded-xl font-bold hover:bg-on-primary/10 transition-colors">Case Studies</button>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-on-primary-fixed p-6 rounded-3xl h-1/2 flex flex-col justify-center border border-primary-container">
+<span class="material-symbols-outlined text-secondary-container text-4xl mb-4" data-icon="cloud_sync">cloud_sync</span>
+<h4 class="font-bold text-on-primary mb-2">Wall Injection System</h4>
+<p class="text-caption text-on-primary-fixed-variant">Advanced sub-slab termite baiting and piping systems for facilities.</p>
+</div>
+<div class="bg-surface-container-high p-6 rounded-3xl h-1/2 flex flex-col justify-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="mask">masks</span>
+<h4 class="font-bold text-primary mb-2">Fumigation Service</h4>
+<p class="text-caption text-on-surface-variant">Global standard container and warehouse fumigation for exports.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Guarantees Grid -->
+<section class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="text-center p-8">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="timer">timer</span>
+</div>
+<h5 class="font-bold text-primary mb-2">60-Minute Response</h5>
+<p class="text-body-md text-on-surface-variant">Emergency team dispatched within one hour of SOS calls.</p>
+</div>
+<div class="text-center p-8 border-x border-outline-variant">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="biotech">biotech</span>
+</div>
+<h5 class="font-bold text-primary mb-2">Eco-Safe Chemicals</h5>
+<p class="text-body-md text-on-surface-variant">Safe for pets and infants. No harmful residual odors.</p>
+</div>
+<div class="text-center p-8">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<h5 class="font-bold text-primary mb-2">Lifetime Shield</h5>
+<p class="text-body-md text-on-surface-variant">Annual maintenance contracts with zero-pest guarantee.</p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest shadow-[0_-4px_20px_rgba(0,32,69,0.1)] rounded-t-xl py-2 px-margin-mobile flex justify-around items-center">
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="font-label-md text-label-md">SOS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</div>
+</nav>
+<!-- Floating Action Button for Emergency -->
+<button class="fixed right-6 bottom-24 md:bottom-12 z-40 bg-secondary text-on-secondary w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="emergency_home" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</button>
+<!-- Interactive Search Overlay Mockup (Script for interaction) -->
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+        });
+    </script>
+</body></html>

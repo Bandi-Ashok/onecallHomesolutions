@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>One Call Home Solutions - Electrical Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .verified-badge {
+            background-color: rgba(76, 173, 171, 0.1);
+            color: #00504e;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.15);
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#455f88",
+                      "on-surface-variant": "#43474e",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-background": "#181c1e",
+                      "tertiary-container": "#003d3c",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#181c1e",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#410006",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#001b3c",
+                      "secondary-container": "#fe6c6b",
+                      "surface-variant": "#e0e3e5",
+                      "on-tertiary-fixed-variant": "#00504e",
+                      "background": "#f7fafc",
+                      "secondary-fixed": "#ffdad8",
+                      "on-secondary-container": "#6d0010",
+                      "inverse-surface": "#2d3133",
+                      "surface-bright": "#f7fafc",
+                      "inverse-on-surface": "#eef1f3",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-tertiary-fixed": "#00201f",
+                      "inverse-primary": "#adc7f7",
+                      "on-primary-container": "#86a0cd",
+                      "primary": "#002045",
+                      "tertiary": "#002625",
+                      "surface-dim": "#d7dadc",
+                      "surface-container": "#ebeef0",
+                      "on-primary": "#ffffff",
+                      "surface-container-low": "#f1f4f6",
+                      "surface": "#f7fafc",
+                      "surface-container-high": "#e5e9eb",
+                      "on-tertiary-container": "#4cadab",
+                      "primary-fixed": "#d6e3ff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#ffb3b0",
+                      "primary-container": "#1a365d",
+                      "outline-variant": "#c4c6cf",
+                      "on-secondary-fixed-variant": "#8c1620",
+                      "tertiary-fixed": "#94f2f0",
+                      "primary-fixed-dim": "#adc7f7",
+                      "outline": "#74777f",
+                      "tertiary-fixed-dim": "#77d6d3",
+                      "secondary": "#ad3035",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "base": "8px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "caption": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-xl": ["Montserrat"],
+                      "headline-lg-mobile": ["Montserrat"],
+                      "headline-lg": ["Montserrat"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Montserrat"]
+              },
+              "fontSize": {
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">location_on</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed truncate">One Call Home Solutions</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-container-max mx-auto">
+<!-- Safety First Banner -->
+<section class="mt-4 mb-8">
+<div class="relative overflow-hidden bg-primary-container rounded-xl p-6 text-on-primary flex flex-col md:flex-row items-center gap-6 shadow-lg border border-primary/10">
+<div class="z-10 bg-on-primary/10 p-4 rounded-full">
+<span class="material-symbols-outlined text-[48px] text-white" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<div class="z-10 text-center md:text-left">
+<h2 class="font-headline-md text-headline-md text-white mb-2">Safety First Architecture</h2>
+<p class="font-body-md text-body-md text-white/80 max-w-2xl">All electrical technicians are certified master electricians, background-checked, and insured. We prioritize your home's integrity and your family's safety with every wire we touch.</p>
+</div>
+<div class="absolute right-0 top-0 opacity-10 pointer-events-none transform translate-x-1/4 -translate-y-1/4">
+<span class="material-symbols-outlined text-[200px]">verified_user</span>
+</div>
+</div>
+</section>
+<!-- Category Title -->
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Electrical Services</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Professional solutions for every circuit.</p>
+</div>
+<button class="text-primary font-label-md hover:underline flex items-center gap-1">
+                Filter <span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+</div>
+<!-- Services Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-12">
+<!-- Card 1: Emergency Repairs -->
+<div class="bg-surface-container-lowest rounded-xl p-4 custom-shadow border border-outline-variant hover:border-primary transition-all group flex flex-col">
+<div class="relative mb-4 overflow-hidden rounded-lg aspect-video">
+<div class="absolute top-2 right-2 z-10 verified-badge px-2 py-1 rounded-full flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span> Verified
+                    </div>
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A professional electrician wearing a navy blue uniform and protective goggles repairing a complex residential breaker box. The lighting is focused and technical, emphasizing precision and safety. The setting is a modern clean utility room with a corporate, trustworthy aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA27KJdL3WNZht9Ct6gOmcoMf0Nu_XcFrdOiRnWhXZy3a1mVxSH6vUyqOiSqVwy5nPUeNU7_oonXnqP4CtyBMUed1enA2vNWq14fqRp5JCvKTOOQy-1OdtDhv8tV4bPzDXldKkkq2KkjkBDLe5dNXNmua5o2JkgWGQigFQH4MXZ6tmPR_wDChxARvpyCFMPf1af1Tw0ZhYOb5LBKh1Q81Zqy6Bdk6jMMI-_ZIKjAbPVOTlOEguyI4a_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-secondary text-white text-[10px] px-2 py-0.5 rounded font-bold">EMERGENCY</span>
+</div>
+</div>
+<h4 class="font-headline-md text-body-lg text-primary mb-1">Emergency Repairs</h4>
+<p class="font-body-md text-caption text-on-surface-variant mb-4 flex-grow">Rapid response for power outages, sparking outlets, or electrical hazards. Available 24/7.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant">
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Starting At</span>
+<span class="text-primary font-bold text-lg">$129</span>
+</div>
+<button class="bg-primary text-white p-2 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Wiring & Rewiring -->
+<div class="bg-surface-container-lowest rounded-xl p-4 custom-shadow border border-outline-variant hover:border-primary transition-all group flex flex-col">
+<div class="relative mb-4 overflow-hidden rounded-lg aspect-video">
+<div class="absolute top-2 right-2 z-10 verified-badge px-2 py-1 rounded-full flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span> Verified
+                    </div>
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A macro close-up of neatly organized copper wiring inside a wall during a home renovation. The wires are clean, color-coded, and perfectly channeled through high-quality conduits. The aesthetic is bright, professional, and institutional, conveying technical excellence and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-3vi-aNEWf_MM-mhrQy_KsXYjkbI8d6BsgUntI4AGLVXxpDliABn4tv8dq5O-yIFXbga_zBs4igmb9va2ZqExs9JaKseIeFZT1PUQEadaFEtm9UsYJ_hlFf-8TSn9R1o6kjgbk0h--rrjXG1yTJCow1UJYrkffmKgfnp2nlGd63kr_gOKlEZ-iPeT1T1SuPjk9sUz9BpQxSDA8QFRdMi6W-_NCgXP0RPm7TVvckDGmhp7vXxIgsbw"/>
+</div>
+<h4 class="font-headline-md text-body-lg text-primary mb-1">Wiring & Rewiring</h4>
+<p class="font-body-md text-caption text-on-surface-variant mb-4 flex-grow">Full house rewiring or circuit additions. Modernize your home's electrical capacity safely.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant">
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Consultation</span>
+<span class="text-primary font-bold text-lg">FREE</span>
+</div>
+<button class="bg-primary text-white p-2 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Appliance Installation -->
+<div class="bg-surface-container-lowest rounded-xl p-4 custom-shadow border border-outline-variant hover:border-primary transition-all group flex flex-col">
+<div class="relative mb-4 overflow-hidden rounded-lg aspect-video">
+<div class="absolute top-2 right-2 z-10 verified-badge px-2 py-1 rounded-full flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span> Verified
+                    </div>
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A technician installing a high-end built-in kitchen oven into a sleek, modern cabinetry system. The kitchen features marble countertops and stainless steel accents. The lighting is warm and domestic but bright enough to show professional competence. Minimalist corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEtQZVyQym57BBVighoW3yBS3NmrZXUhO-Qps1G2LNekUGVFDNFVQHIuSs5C4kWV9E1qaww4AisLt5nBhnYmPADxjNHwMBgvumg3eYkBJ-Q13TCz8NpdebQA0QyaOgd6_uHRaga76Kiy8PB1gCVPWwY1FHguGrqMh-V2g6B3cZClQBYOyzU_f4cA_PPoYdm0fGbcc6Z1cV98L-oaAjhbZ-ZQBNb4x5eGcJbq6ryhAsE1XKXTzIR_2N"/>
+</div>
+<h4 class="font-headline-md text-body-lg text-primary mb-1">Appliance Installation</h4>
+<p class="font-body-md text-caption text-on-surface-variant mb-4 flex-grow">Professional hookup for heavy-duty appliances including ovens, EV chargers, and HVAC units.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant">
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Starting At</span>
+<span class="text-primary font-bold text-lg">$85</span>
+</div>
+<button class="bg-primary text-white p-2 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Smart Lighting Setup -->
+<div class="bg-surface-container-lowest rounded-xl p-4 custom-shadow border border-outline-variant hover:border-primary transition-all group flex flex-col">
+<div class="relative mb-4 overflow-hidden rounded-lg aspect-video">
+<div class="absolute top-2 right-2 z-10 verified-badge px-2 py-1 rounded-full flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span> Verified
+                    </div>
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A sophisticated living room at dusk with integrated smart lighting. Soft blue and warm amber tones illuminate the modern furniture and architectural features. A hand holds a sleek smartphone in the foreground showing a lighting control interface. The mood is calm, luxurious, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW1rCv6D37pkRVgsT1jyxYnzEXn1djhw0WZV9XsPr4lA4PCL66rRsLKA50Sw6MHpExFzCZpidiWVJHHtyoHzWTJR6p5mXK4gnn1_GfOTuOFQSIiP2IFfi-339SHqpcP5bMkB9U2D_9oNMtgowZOVp_DYBRKCkLk5Nq24kDQwbHZb28whpbOjIPldPKNt3hweEHugrc92jnS_JdanPfOPrKvauSCvSWz9NgBSjbMFbSWAHKGsqwktBL"/>
+</div>
+<h4 class="font-headline-md text-body-lg text-primary mb-1">Smart Lighting Setup</h4>
+<p class="font-body-md text-caption text-on-surface-variant mb-4 flex-grow">Automated systems, dimmers, and custom interior lighting designs for your smart home.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant">
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Starting At</span>
+<span class="text-primary font-bold text-lg">$199</span>
+</div>
+<button class="bg-primary text-white p-2 rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Trust Bar -->
+<section class="mt-8 py-12 border-t border-outline-variant">
+<h5 class="text-center font-label-md text-on-surface-variant uppercase tracking-widest mb-8">Our Certified Partners & Compliance</h5>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl">verified</span>
+<span class="font-headline-md text-lg">NECA</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl">security</span>
+<span class="font-headline-md text-lg">OSHA</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl">bolt</span>
+<span class="font-headline-md text-lg">IEEE</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl">gpp_good</span>
+<span class="font-headline-md text-lg">UL</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest dark:bg-on-surface border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,32,69,0.15)] flex justify-around items-center w-full h-20 px-margin-mobile pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-secondary-fixed-dim text-on-primary-container dark:text-on-secondary-fixed-variant rounded-xl px-4 py-1 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">emergency_home</span>
+<span class="font-label-md text-label-md">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+</nav>
+<!-- Contextual FAB (Hidden on catalog but ready for microinteraction) -->
+<button class="fixed bottom-24 right-6 bg-secondary text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center z-40 active:scale-95 transition-transform md:hidden" id="emergency-fab">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</button>
+<script>
+        // Micro-interactions
+        const cards = document.querySelectorAll('.custom-shadow');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple visibility observer for lazy-loading style effects
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.grid > div').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-500');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

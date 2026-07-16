@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guardian Home | Luxury &amp; Smart Interiors</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Style Guidance & Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f7fafc",
+                    "on-primary-fixed": "#001b3c",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f1f4f6",
+                    "surface-container-high": "#e5e9eb",
+                    "primary-container": "#1a365d",
+                    "primary": "#002045",
+                    "inverse-surface": "#2d3133",
+                    "on-error-container": "#93000a",
+                    "background": "#f7fafc",
+                    "on-secondary-fixed": "#410006",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#4cadab",
+                    "surface-tint": "#455f88",
+                    "secondary-fixed": "#ffdad8",
+                    "primary-fixed-dim": "#adc7f7",
+                    "on-tertiary-fixed": "#00201f",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-primary-container": "#86a0cd",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "on-surface": "#181c1e",
+                    "surface-dim": "#d7dadc",
+                    "surface-container": "#ebeef0",
+                    "outline": "#74777f",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#002625",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "tertiary-fixed": "#94f2f0",
+                    "on-surface-variant": "#43474e",
+                    "tertiary-container": "#003d3c",
+                    "inverse-primary": "#adc7f7",
+                    "secondary-container": "#fe6c6b",
+                    "on-secondary-container": "#6d0010",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "on-error": "#ffffff",
+                    "secondary": "#ad3035",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface": "#f7fafc",
+                    "on-background": "#181c1e",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c4c6cf",
+                    "surface-variant": "#e0e3e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "caption": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .text-shadow-sm {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface-bright font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-primary-fixed shadow-sm">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold text-headline-md">location_on</span>
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed font-bold">Guardian Home</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed hover:text-primary-container transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-fixed-variant hover:text-primary transition-colors" href="#">Interiors</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-fixed-variant hover:text-primary transition-colors" href="#">Projects</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-primary-fixed-variant hover:text-primary transition-colors" href="#">About</a>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors active:scale-95">notifications</button>
+</nav>
+</header>
+<main class="pt-24 pb-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section: Luxury & Smart Interiors -->
+<section class="relative rounded-3xl overflow-hidden mb-16 shadow-lg group">
+<div class="h-[500px] w-full" data-alt="A ultra-high-end luxury living room featuring a seamless blend of smart home technology and corporate modern design. The space has floor-to-ceiling windows overlooking a twilight city skyline, sleek navy blue velvet furniture, and sophisticated acoustic wood paneling. Lighting is soft and atmospheric, with integrated smart LED strips casting a gentle glow. The overall aesthetic is professional, pristine, and technologically advanced, using the Guardian Home primary navy and neutral palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAAHZEHpw0g2u4w20V08uwPCqt2L-YrnDRzc03NzjQ2RaK3uYOJ3MgtI9A0E-1vln2nRQ5PRX0u13SbTBnaV3w1P4kPbt-Tah-L2xSP_-RDppz-gma577Tig400loF9hEeOnOxY76SdxP-smGaKQQJozU9MgpC4tKvAI6x22_wxcIbCdS05TJMR-7mTQUvLjvNxLi4rUWqMMHHCNPaT8x8mbUP0g7aL08EFqnGIrLvQrP6dw9ObLEsC')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent flex items-center p-12">
+<div class="max-w-2xl">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary text-on-secondary font-label-md text-label-md mb-4 animate-pulse">NEW TECHNOLOGY</span>
+<h1 class="font-headline-xl text-headline-xl text-white mb-6">Luxury &amp; Smart <br/>Interiors Redefined</h1>
+<p class="font-body-lg text-body-lg text-white/90 mb-8">Professional-grade renovation services meeting the highest standards of the Guardian Home certification. Smart integration, premium materials, and unparalleled precision.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-xl font-label-md text-label-md hover:bg-primary transition-all active:scale-95">View Catalog</button>
+<button class="glass-card text-primary px-8 py-3 rounded-xl font-label-md text-label-md hover:bg-white transition-all active:scale-95">Consult Experts</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+<!-- Modular Kitchens -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,32,69,0.08)] transition-transform hover:-translate-y-1">
+<div class="flex flex-col md:flex-row h-full">
+<div class="md:w-1/2 p-8 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-tertiary/10 text-tertiary-container px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified Service
+                            </span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold">Vastu-Compliant</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Modular Kitchen Design</h3>
+<p class="text-on-surface-variant font-body-md mb-6">Ergonomic layouts with high-tech storage solutions and anti-bacterial surfaces.</p>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> 10-Year Warranty</li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Smart Lighting Integration</li>
+</ul>
+<button class="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all">Explore Designs <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+<div class="md:w-1/2 h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A contemporary high-end modular kitchen with matte navy cabinets, white marble countertops, and integrated smart appliances. The lighting is bright and clean, showcasing a professional Guardian Home aesthetic with a focus on ergonomics and premium finishes. Professional photography, bright daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD57KZGQ1KCwxzIKBsXXye0lQBndeAhGCFhaZmVDRz0dvt7Lphtm7HXEYBN15XsK1M89SK1Ae4LWXFccsKjo7_B3Czm6mBCC2QXNV-XkV-n_W1CXWOcmWu2aQV2KC1aTPQAZ1AWPnaI2vOD-nDptUOYV50Npe5sGeS-iP7CskfmUfk9fmAkRebwyF1-xURZlcZeSrLL4M9h-fRKGbfEoCglmRht-0kTWPvrZJirvk-Mv-AIYQKWjoyC"/>
+</div>
+</div>
+</div>
+<!-- Acoustic Panels -->
+<div class="md:col-span-4 bg-primary text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl mb-4 text-primary-fixed">graphic_eq</span>
+<h3 class="font-headline-md text-headline-md mb-4">Acoustic Panel Installation</h3>
+<p class="text-white/80 font-body-md mb-6">Professional noise reduction solutions for home offices and cinema rooms.</p>
+</div>
+<div class="relative z-10 bg-white/10 p-4 rounded-xl border border-white/20 backdrop-blur-sm">
+<p class="text-xs font-label-md mb-2">ENGINEERING SPECS</p>
+<div class="flex items-center justify-between">
+<span class="text-xl font-bold">-45dB Reduction</span>
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute -right-8 -bottom-8 opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-[160px]">waves</span>
+</div>
+</div>
+<!-- Living Room Transformations -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,32,69,0.08)] transition-transform hover:-translate-y-1">
+<div class="h-56 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A before and after comparison of a living room transformation. The 'after' image shows a sophisticated, modern corporate-style living space with clean lines, high-end furniture curation, and a neutral color palette with navy accents. The lighting is balanced and professionally staged." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAMF-OOlOttIpTsgs-iCxDHY_pzpl-oyr1pFxEASEk5fn9PtRk_bCDoJbD6AEMAeC7qnn6aLQw8lGXBMoFvd04Why48UJVp-GooGLjTDBsgOc2fpoHpy2iUhhC6c5lvevz_pQn4KcG8SQmRtOe6-va3AR0StNJnX3S6l6RJ9YR4SWzUYRtlzqqyxpYooMieStziLwdS1g9Y-HMeAabPeHf-wOyhgypfZ3dwqiQQYGpn7XiZeLuMFDK"/>
+<div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold">Transformation</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Living Room Styling</h3>
+<p class="text-on-surface-variant font-body-md mb-4">From conceptual layouts to final furniture curation.</p>
+<button class="bg-surface-container text-primary w-full py-2 rounded-xl font-label-md text-label-md hover:bg-primary hover:text-white transition-colors">See Portfolio</button>
+</div>
+</div>
+<!-- 3D Floor Planning -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,32,69,0.08)] transition-transform hover:-translate-y-1">
+<div class="h-56 bg-surface-container-low flex items-center justify-center relative overflow-hidden">
+<!-- Tech visual for 3D mapping -->
+<div class="absolute inset-0 opacity-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[200px]">grid_4x4</span>
+</div>
+<span class="material-symbols-outlined text-7xl text-primary-container z-10">view_in_ar</span>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">3D Floor Planning</h3>
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 rounded text-[10px] font-bold">HOT</span>
+</div>
+<p class="text-on-surface-variant font-body-md mb-4">Visualize your renovation in hyper-realistic 4K before execution.</p>
+<button class="bg-surface-container text-primary w-full py-2 rounded-xl font-label-md text-label-md hover:bg-primary hover:text-white transition-colors">Start Design</button>
+</div>
+</div>
+<!-- Premium Furniture Curation -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,32,69,0.08)] transition-transform hover:-translate-y-1">
+<div class="h-56 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A collection of premium designer furniture including a sleek leather sofa, a minimalist coffee table, and an architectural lounge chair. The setting is a bright, high-end gallery space with soft morning light. The color palette is composed of deep navies, charcoals, and warm oak woods." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZoZJAk_R2-UoU92WzCB8K3uQ4VC9PuYdCx2_0u_drLbek6XFfYbJ3fy1l0M6jhCIYcbTS9YmXHBR1cDBJu6TpqOLeoON8y1l0iSAShjZpIgU8YKmCGEVe2MPB7MgkWAKZBaRCtvrnaFe8iAijBZwb-Wy6Wy3vc78akBS6huwO0QRBHDLcrJsLPwrhGhePTFvJ_X7UmlsrG9msESKQe9tMbLOJfIz2OiWtdFKV7733DfldImQxq60B"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Furniture Curation</h3>
+<span class="text-tertiary-container flex items-center"><span class="material-symbols-outlined text-sm">stars</span></span>
+</div>
+<p class="text-on-surface-variant font-body-md mb-4">Exclusively sourced pieces from top global luxury brands.</p>
+<button class="bg-surface-container text-primary w-full py-2 rounded-xl font-label-md text-label-md hover:bg-primary hover:text-white transition-colors">Browse Collection</button>
+</div>
+</div>
+</div>
+<!-- Call to Action Banner -->
+<section class="bg-surface-container-highest rounded-3xl p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="max-w-xl z-10">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Ready to elevate your living space?</h2>
+<p class="text-on-surface-variant font-body-lg mb-0">Our Professional Guardians are ready to bring your vision to life with precision and smart integration.</p>
+</div>
+<div class="flex flex-col gap-4 w-full md:w-auto z-10">
+<button class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-label-md text-label-md text-center hover:shadow-lg transition-all active:scale-95 whitespace-nowrap">Get a Free Consultation</button>
+<div class="flex items-center justify-center gap-4 text-on-surface-variant">
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-sm">event_available</span> 24h Response</span>
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-sm">security</span> Certified</span>
+</div>
+</div>
+<!-- Atmospheric decoration -->
+<div class="absolute -left-12 -top-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+</section>
+<!-- Trust Bar -->
+<div class="mt-16 py-8 border-t border-outline-variant">
+<p class="text-center text-on-surface-variant font-label-md text-xs mb-8">CERTIFIED BY INDUSTRY LEADERS</p>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">architecture</span>
+<span class="font-bold">INT ARCH ASSOC</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">construction</span>
+<span class="font-bold">SAFEBUILD LTD</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">nest_eco_leaf</span>
+<span class="font-bold">ECO-SMART</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">verified</span>
+<span class="font-bold">VASTU GLOBAL</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest dark:bg-on-primary-fixed border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,32,69,0.1)] py-2 px-margin-mobile flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-fixed-variant px-3 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-md text-[10px]">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-fixed-variant px-3 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">emergency_home</span>
+<span class="font-label-md text-[10px]">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-fixed-variant px-3 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[10px]">Account</span>
+</a>
+</nav>
+<!-- Interactive script for some hover logic -->
+<script>
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.95)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+    </script>
+
+<!-- Offline API and Navigation Controller -->
+<script>
+  (function() {
+    console.log("Initializing local offline-first controller...");
+
+    // Initial Data definitions
+    const defaultBookings = [
+      {
+        id: "BK-8891",
+        service: "Deep Home Cleaning",
+        category: "Cleaning",
+        property: "Home - Green Valley, Mumbai",
+        date: "2026-07-15",
+        time: "10:00 AM",
+        status: "Scheduled",
+        price: "₹1,899",
+        provider: "Ramesh Kumar (Level 2 Certified)",
+        paymentStatus: "Paid"
+      },
+      {
+        id: "BK-7712",
+        service: "Emergency AC Repair",
+        category: "HVAC",
+        property: "Home - Green Valley, Mumbai",
+        date: "2026-07-13",
+        time: "02:30 PM",
+        status: "Dispatched",
+        price: "₹650",
+        provider: "Suresh Sharma (Level 3 SOS Certified)",
+        paymentStatus: "Paid"
+      },
+      {
+        id: "BK-4456",
+        service: "Smart Lock Installation",
+        category: "Smart Home",
+        property: "Office - Bandra, Mumbai",
+        date: "2026-07-10",
+        time: "11:30 AM",
+        status: "Completed",
+        price: "₹1,200",
+        provider: "Vikram Malhotra (Level 3 Certified)",
+        paymentStatus: "Paid"
+      }
+    ];
+
+    const defaultProperties = [
+      { id: "prop-1", name: "Home - Green Valley, Mumbai", address: "Apt 402, Green Valley Towers, Andheri East", type: "Residential", amc: "Active" },
+      { id: "prop-2", name: "Office - Bandra, Mumbai", address: "Plot 12, BKC, Bandra West", type: "Commercial", amc: "None" }
+    ];
+
+    const defaultSosDispatches = [
+      { id: "SOS-911", service: "Gas Leakage Emergency", status: "Technician En Route", responseTime: "12 min", provider: "Suresh Sharma", date: "Just Now" }
+    ];
+
+    const defaultExams = [
+      { name: "Rahul Verma", score: 92, status: "Passed", date: "2026-07-12" }
+    ];
+
+    const defaultPartners = [
+      { name: "Apex Electricals Ltd", city: "Mumbai", status: "Approved", segment: "Electrical" }
+    ];
+
+    const defaultTickets = [
+      { id: "TKT-101", title: "Double Charge on AC Booking", priority: "High", status: "Open", user: "Bandi Ashok" },
+      { id: "TKT-102", title: "Delay in Cleaning Service Dispatch", priority: "Medium", status: "Resolved", user: "Karan Johar" }
+    ];
+
+    // Setup LocalStorage
+    if (!localStorage.getItem('local_bookings')) {
+      localStorage.setItem('local_bookings', JSON.stringify(defaultBookings));
+    }
+    if (!localStorage.getItem('local_properties')) {
+      localStorage.setItem('local_properties', JSON.stringify(defaultProperties));
+    }
+    if (!localStorage.getItem('local_sosDispatches')) {
+      localStorage.setItem('local_sosDispatches', JSON.stringify(defaultSosDispatches));
+    }
+    if (!localStorage.getItem('local_exams')) {
+      localStorage.setItem('local_exams', JSON.stringify(defaultExams));
+    }
+    if (!localStorage.getItem('local_partners')) {
+      localStorage.setItem('local_partners', JSON.stringify(defaultPartners));
+    }
+    if (!localStorage.getItem('local_tickets')) {
+      localStorage.setItem('local_tickets', JSON.stringify(defaultTickets));
+    }
+
+    // Floating Stitch Control Panel Injection for navigation jumping offline!
+    const stitchPanelHtml = `
+      <div id="stitch-nav-trigger" class="fixed bottom-6 right-6 z-[999999] transition-all duration-300">
+        <button onclick="toggleStitchPanel()" class="h-16 w-16 bg-[#002045] hover:bg-[#1a365d] text-white rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-white active:scale-95 transition-all">
+          <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">explore</span>
+        </button>
+        <span class="absolute -top-2 -right-1 bg-[#ad3035] text-white text-[10px] px-2 py-0.5 rounded-full font-bold shadow-md">NAV</span>
+      </div>
+
+      <div id="stitch-control-panel" class="fixed right-6 bottom-24 w-96 max-w-[calc(100vw-2rem)] h-[550px] max-h-[calc(100vh-8rem)] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden z-[999999] transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-[#002045] text-white p-4 flex justify-between items-center border-b-4 border-[#ad3035]">
+          <div class="flex items-center gap-2 text-left">
+            <span class="material-symbols-outlined text-[#fe6c6b]">explore</span>
+            <div>
+              <h4 class="font-bold text-sm tracking-wide text-white">STITCH OFFLINE NAVIGATOR</h4>
+              <p class="text-[10px] text-[#86a0cd]">Runs completely on-device</p>
+            </div>
+          </div>
+          <button onclick="toggleStitchPanel()" class="material-symbols-outlined hover:bg-white/10 p-1.5 rounded-full text-gray-300 hover:text-white transition-colors">close</button>
+        </div>
+
+        <div class="bg-[#ebeef0] px-4 py-2 flex justify-around items-center text-[10px] text-gray-600 border-b border-gray-200">
+          <div class="flex items-center gap-1">
+            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>OFFLINE LOCAL SYSTEM</span>
+          </div>
+          <span>•</span>
+          <div class="flex items-center gap-1">
+            <span>Bookings: <strong id="stitch-stat-bookings">0</strong></span>
+          </div>
+          <span>•</span>
+          <div class="flex items-center gap-1">
+            <span>SOS: <strong id="stitch-stat-sos">0</strong></span>
+          </div>
+        </div>
+
+        <div class="p-3 bg-[#f7fafc] border-b border-gray-200 flex flex-wrap gap-2 justify-center">
+          <button onclick="navigateToRootHome()" class="px-3 py-1 bg-white hover:bg-[#ebeef0] border border-[#002045] text-[#002045] text-xs rounded-lg font-bold flex items-center gap-1 transition-colors">
+            <span class="material-symbols-outlined text-[14px]">home</span> Home Screen
+          </button>
+          <button onclick="simulateQuickBooking()" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] rounded-lg font-bold flex items-center gap-1 transition-colors shadow-sm">
+            + Booking
+          </button>
+          <button onclick="simulateQuickSOS()" class="px-2 py-1 bg-[#ad3035] hover:bg-red-800 text-white text-[10px] rounded-lg font-bold flex items-center gap-1 transition-colors shadow-sm">
+            + SOS
+          </button>
+        </div>
+
+        <div class="p-3 bg-white border-b border-gray-100">
+          <div class="relative">
+            <input id="stitch-search-input" oninput="searchStitchScreens()" type="text" placeholder="Search all screens..." class="w-full pl-3 pr-3 py-1.5 text-xs border border-gray-300 rounded-xl focus:outline-none focus:border-[#002045]">
+          </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-3 space-y-2 bg-gray-50" id="stitch-screen-list">
+        </div>
+      </div>
+    `;
+
+    // Append Stitch UI to Document
+    const div = document.createElement('div');
+    div.innerHTML = stitchPanelHtml;
+    document.body.appendChild(div);
+
+    // Populate screens list
+    const screensList = [
+      {"name": "Home Explore Screen", "path": "home_explore_screen", "description": "The primary homepage featuring emergency SOS button, service search, category grids, and seasonal banners.", "category": "Customer Experience", "icon": "home"},
+{"name": "Marketing Landing Page", "path": "marketing_landing_page_launch_kit", "description": "Premium public landing page for new customer acquisition, trust stats, and lead gen.", "category": "Customer Experience", "icon": "campaign"},
+{"name": "Customer Help Center & FAQs", "path": "customer_help_center_faqs", "description": "Interactive FAQ section with collapsible answers, search, and ticket creation.", "category": "Customer Experience", "icon": "help"},
+{"name": "Loyalty Points & Rewards", "path": "loyalty_rewards_dashboard", "description": "Loyalty tier representation, reward redemption, and milestone benefits.", "category": "Customer Experience", "icon": "military_tech"},
+{"name": "Referral & Viral Growth Hub", "path": "referral_viral_growth_hub", "description": "Social sharing, referral code dashboard, and rewards progress tracking.", "category": "Customer Experience", "icon": "share"},
+{"name": "Cleaning Services Catalog", "path": "cleaning_services_catalog", "description": "Bathroom, Sofa, and Kitchen deep cleaning service catalog with dynamic pricing estimates.", "category": "Service Catalogs", "icon": "cleaning_services"},
+{"name": "Electrical Services - Variant 1", "path": "electrical_services_catalog_1", "description": "Clean Grid design catalog for switches, wiring, and appliance installations.", "category": "Service Catalogs", "icon": "electrical_services"},
+{"name": "Electrical Services - Variant 2", "path": "electrical_services_catalog_2", "description": "List-style electrical service selector with live pricing and speed filters.", "category": "Service Catalogs", "icon": "electric_bolt"},
+{"name": "Construction & Civil Works", "path": "construction_civil_works_catalog", "description": "Masonry, bricklaying, wall repair, and scaffolding service catalog.", "category": "Service Catalogs", "icon": "engineering"},
+{"name": "HVAC & Air Quality Catalog", "path": "hvac_air_quality_catalog", "description": "AC servicing, ventilation repairs, and indoor air purification solutions.", "category": "Service Catalogs", "icon": "mode_fan"},
+{"name": "Interior Design & Renovation", "path": "interior_design_renovation_catalog", "description": "Modular kitchens, living room remodels, wallpaper and paint consultation.", "category": "Service Catalogs", "icon": "chair"},
+{"name": "Pest Control & Hygiene", "path": "pest_control_hygiene_catalog", "description": "Cockroach gel, termite treatment, bedbug inspection, and chemical sanitization.", "category": "Service Catalogs", "icon": "pest_control"},
+{"name": "Roofing & PVC Services", "path": "roofing_pvc_services", "description": "Roof leak sealing, water tank installations, and quality PVC works.", "category": "Service Catalogs", "icon": "roofing"},
+{"name": "Smart Home & Security", "path": "smart_home_security_catalog", "description": "CCTV setups, smart doorbell installations, and integrated alarm grids.", "category": "Service Catalogs", "icon": "security"},
+{"name": "Senior Citizen At-Home Care", "path": "senior_citizen_lifestyle_care", "description": "Senior wellness logs, companion services, and physical support booking.", "category": "Service Catalogs", "icon": "elderly"},
+{"name": "Vehicle Care & Chauffeurs", "path": "vehicle_care_travel_services", "description": "At-home car washing, monthly chauffeur hiring, and road trip checks.", "category": "Service Catalogs", "icon": "directions_car"},
+{"name": "Healthcare & Wellness at Home", "path": "healthcare_wellness_at_home", "description": "Doctor consultations, nurse dispatches, and physiotherapy at home.", "category": "Service Catalogs", "icon": "medical_services"},
+{"name": "Service Booking - Variant 1", "path": "service_booking_payment", "description": "Classic multi-step checkout with address selection, slot selection, and checkout.", "category": "Booking & Payments", "icon": "shopping_cart"},
+{"name": "Service Booking - Variant 2", "path": "service_booking_production_ready_payment", "description": "Modern, high-conversion billing interface with split UPI/Card payments and dynamic breakdown.", "category": "Booking & Payments", "icon": "credit_card"},
+{"name": "Service History & Bookings", "path": "service_history_bookings", "description": "Interactive record of past, ongoing, and scheduled jobs with active in-memory updates.", "category": "Booking & Payments", "icon": "history"},
+{"name": "Live Technician Tracking (Mobile)", "path": "live_technician_tracking", "description": "Real-time client view showing technician's location, profile, contact options, and OTP.", "category": "Technician & SOS Tracking", "icon": "my_location"},
+{"name": "Technician GPS Control Center", "path": "live_technician_monitoring_gps_hub", "description": "Global monitoring dashboard showing multiple active dispatches on a simulated live map.", "category": "Technician & SOS Tracking", "icon": "map"},
+{"name": "Dispatch Center Console", "path": "service_requests_dispatch_center", "description": "Operator workspace for assigning new jobs to verified local contractors.", "category": "Technician & SOS Tracking", "icon": "assignment"},
+{"name": "Account & Property Dashboard", "path": "account_property_dashboard", "description": "User dashboard showing loyalty points, active properties list, and subscription tiers.", "category": "Account & Property Dashboards", "icon": "account_circle"},
+{"name": "Property Management Hub - Variant 1", "path": "property_management_hub_1", "description": "Grid view of properties with system diagnostic check scores (Electrical, Plumbing, HVAC).", "category": "Account & Property Dashboards", "icon": "domain"},
+{"name": "Property Management Hub - Variant 2", "path": "property_management_hub_2", "description": "Comprehensive property portfolio tracking with active lease, tenant logs, and task list.", "category": "Account & Property Dashboards", "icon": "holiday_village"},
+{"name": "Landlord & Tenant Support Center", "path": "landlord_tenant_support", "description": "Dispute logging, inspection bookings, and documentation center for rental units.", "category": "Account & Property Dashboards", "icon": "gavel"},
+{"name": "Technician Academy Dashboard", "path": "technician_academy_dashboard", "description": "Learning center for technicians featuring training progression and courses.", "category": "Technician Academy & Compliance", "icon": "school"},
+{"name": "Guardian Standard Exam", "path": "guardian_standard_exam", "description": "Mandatory qualification exam for service agents to receive Level 3 SOS badge.", "category": "Technician Academy & Compliance", "icon": "quiz"},
+{"name": "Safety Protocol Training", "path": "safety_protocol_training", "description": "Active video-guide safety checklist and post-onboarding certifications.", "category": "Technician Academy & Compliance", "icon": "health_and_safety"},
+{"name": "Skill & Quality Certification Hub", "path": "skill_certification_hub", "description": "Verification logs, badge claims, and status updates for technicians.", "category": "Technician Academy & Compliance", "icon": "workspace_premium"},
+{"name": "Partner Franchise Onboarding", "path": "partner_franchise_onboarding", "description": "Onboarding form, pricing calculator, and business registration for contractors.", "category": "Franchise & Partner Portal", "icon": "handshake"},
+{"name": "Franchise Management Portal", "path": "partner_franchise_management_portal", "description": "Franchise network dashboard featuring sales, local jobs, and performance logs.", "category": "Franchise & Partner Portal", "icon": "corporate_fare"},
+{"name": "Admin Overview & Analytics", "path": "admin_overview_analytics_dashboard", "description": "Executive control panel detailing platform earnings, active dispatches, and system loads.", "category": "Admin, Support & Ops", "icon": "monitoring"},
+{"name": "Agent Support Workspace", "path": "support_agent_workspace_ticket_management", "description": "Ticketing panel for customer support operators with active filter queues.", "category": "Admin, Support & Ops", "icon": "chat"},
+{"name": "Emergency Support Hub", "path": "support_emergency_hub", "description": "Specialized high-alert console for tracking critical medical, security, and hazard alarms.", "category": "Admin, Support & Ops", "icon": "warning"},
+{"name": "AMC Priority Center", "path": "amc_priority_services", "description": "Annual Maintenance Contract registration, inspection logs, and premium priority queue.", "category": "Admin, Support & Ops", "icon": "star"},
+{"name": "Event Management & Celebrations", "path": "event_management_celebration", "description": "At-home birthday, anniversary, catering, and audio-visual setup event manager.", "category": "Admin, Support & Ops", "icon": "celebration"},
+{"name": "The Guardian Standard Vision", "path": "brand_story_the_guardian_standard", "description": "Interactive brand story detailing company history, milestones, and security philosophy.", "category": "Admin, Support & Ops", "icon": "menu_book"},
+{"name": "Seasonal Campaign Manager", "path": "seasonal_offers_campaigns", "description": "Admin panel for triggering monsoon, festival, or summer service discounts.", "category": "Admin, Support & Ops", "icon": "sell"}
+    ];
+
+    const listContainer = document.getElementById('stitch-screen-list');
+    if (listContainer) {
+      listContainer.innerHTML = screensList.map(s => `
+        <div class="stitch-screen-item bg-white p-2 rounded-xl border border-gray-100 hover:border-[#002045] transition-all flex items-center justify-between text-left" data-name="${s.name.toLowerCase()}">
+          <div class="flex items-center gap-2 overflow-hidden mr-1">
+            <span class="material-symbols-outlined text-sm text-[#002045] bg-gray-100 p-1 rounded">${s.icon}</span>
+            <div class="overflow-hidden">
+              <h5 class="font-bold text-[11px] text-[#002045] truncate">${s.name}</h5>
+              <p class="text-[9px] text-gray-500 truncate">${s.description}</p>
+            </div>
+          </div>
+          <button onclick="navigateToOfflineScreen('${s.path}')" class="px-2 py-1 bg-[#ad3035] text-white text-[9px] font-bold rounded hover:bg-red-800 transition-colors whitespace-nowrap">GO</button>
+        </div>
+      `).join('');
+    }
+
+    // Refresh Navigator Stats
+    function updateNavigatorStats() {
+      const bCount = JSON.parse(localStorage.getItem('local_bookings') || '[]').length;
+      const sCount = JSON.parse(localStorage.getItem('local_sosDispatches') || '[]').length;
+      const bStat = document.getElementById('stitch-stat-bookings');
+      const sStat = document.getElementById('stitch-stat-sos');
+      if (bStat) bStat.textContent = bCount;
+      if (sStat) sStat.textContent = sCount;
+    }
+    updateNavigatorStats();
+
+    // Global toggle and navigation helpers
+    window.toggleStitchPanel = function() {
+      const panel = document.getElementById('stitch-control-panel');
+      if (panel) {
+        if (panel.classList.contains('translate-y-4')) {
+          panel.classList.remove('translate-y-4', 'opacity-0', 'pointer-events-none');
+          panel.classList.add('translate-y-0', 'opacity-100');
+        } else {
+          panel.classList.add('translate-y-4', 'opacity-0', 'pointer-events-none');
+          panel.classList.remove('translate-y-0', 'opacity-100');
+        }
+      }
+    };
+
+    window.navigateToRootHome = function() {
+      const pathParts = window.location.pathname.split('/');
+      if (window.location.pathname.includes('/screen/')) {
+        window.location.href = '../../index.html';
+      } else {
+        window.location.href = './index.html';
+      }
+    };
+
+    window.navigateToOfflineScreen = function(name) {
+      if (window.location.pathname.includes('/screen/')) {
+        window.location.href = '../' + name + '/index.html';
+      } else {
+        window.location.href = './screen/' + name + '/index.html';
+      }
+    };
+
+    window.searchStitchScreens = function() {
+      const query = document.getElementById('stitch-search-input').value.toLowerCase();
+      document.querySelectorAll('.stitch-screen-item').forEach(item => {
+        const name = item.getAttribute('data-name');
+        if (name.includes(query)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    };
+
+    window.simulateQuickBooking = function() {
+      fetch('/api/v1/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service: 'Dynamic Electrical Inspection',
+          category: 'Electrical',
+          property: 'Home - Green Valley, Mumbai',
+          price: '₹550'
+        })
+      }).then(res => res.json()).then(booking => {
+        updateNavigatorStats();
+        alert('Booking created locally: ' + booking.id + '\nCheck under "Service History"!');
+        if (window.location.pathname.includes('service_history_bookings')) {
+          window.location.reload();
+        }
+      });
+    };
+
+    window.simulateQuickSOS = function() {
+      fetch('/api/v1/sos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ service: 'Emergency Water Tank Alarm' })
+      }).then(res => res.json()).then(sos => {
+        updateNavigatorStats();
+        alert('ALERT triggered locally: ' + sos.id + '\nCheck under "Live GPS Track"!');
+        if (window.location.pathname.includes('live_technician_tracking')) {
+          window.location.reload();
+        }
+      });
+    };
+
+    // Monkey patch fetch
+    const originalFetch = window.fetch;
+    window.fetch = function(url, options) {
+      const urlStr = typeof url === 'string' ? url : (url.url || '');
+      
+      if (urlStr.includes('/api/v1/bookings')) {
+        const bookings = JSON.parse(localStorage.getItem('local_bookings') || '[]');
+        if (options && options.method === 'POST') {
+          const body = options.body ? JSON.parse(options.body) : {};
+          const newBooking = {
+            id: 'BK-' + Math.floor(1000 + Math.random() * 9000),
+            service: body.service || "General Home Maintenance",
+            category: body.category || "General",
+            property: body.property || "Home - Green Valley, Mumbai",
+            date: new Date().toISOString().split('T')[0],
+            time: "12:00 PM",
+            status: "Scheduled",
+            price: body.price || "₹450",
+            provider: "Assigned Professional (Level 3 Certified)",
+            paymentStatus: "Paid"
+          };
+          bookings.unshift(newBooking);
+          localStorage.setItem('local_bookings', JSON.stringify(bookings));
+          return Promise.resolve(new Response(JSON.stringify(newBooking), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        } else {
+          return Promise.resolve(new Response(JSON.stringify(bookings), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        }
+      }
+
+      if (urlStr.includes('/api/v1/properties')) {
+        const properties = JSON.parse(localStorage.getItem('local_properties') || '[]');
+        if (options && options.method === 'POST') {
+          const body = options.body ? JSON.parse(options.body) : {};
+          const newProperty = {
+            id: 'prop-' + Math.floor(10 + Math.random() * 90),
+            name: body.name || "New Property Office",
+            address: body.address || "Mumbai Center",
+            type: body.type || "Commercial",
+            amc: "None"
+          };
+          properties.push(newProperty);
+          localStorage.setItem('local_properties', JSON.stringify(properties));
+          return Promise.resolve(new Response(JSON.stringify(newProperty), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        } else {
+          return Promise.resolve(new Response(JSON.stringify(properties), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        }
+      }
+
+      if (urlStr.includes('/api/v1/sos')) {
+        const sos = JSON.parse(localStorage.getItem('local_sosDispatches') || '[]');
+        if (options && options.method === 'POST') {
+          const body = options.body ? JSON.parse(options.body) : {};
+          const newSos = {
+            id: 'SOS-' + Math.floor(100 + Math.random() * 900),
+            service: body.service || "Emergency Medical/Safety Call",
+            status: "Technician En Route",
+            responseTime: "15 min remaining",
+            provider: "Rajesh Malhotra (SOS Commander)",
+            date: "Just Now"
+          };
+          sos.unshift(newSos);
+          localStorage.setItem('local_sosDispatches', JSON.stringify(sos));
+          return Promise.resolve(new Response(JSON.stringify(newSos), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        } else {
+          return Promise.resolve(new Response(JSON.stringify(sos), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        }
+      }
+
+      if (urlStr.includes('/api/v1/tracking/')) {
+        const offsetLat = (Math.sin(Date.now() / 10000) * 0.005);
+        const offsetLng = (Math.cos(Date.now() / 10000) * 0.005);
+        return Promise.resolve(new Response(JSON.stringify({
+          technician_id: "tech_1",
+          name: "Suresh Sharma",
+          photo: "https://lh3.googleusercontent.com/a",
+          lat: 19.112 + offsetLat,
+          lng: 72.871 + offsetLng,
+          status: "En Route",
+          eta: Math.max(1, Math.round(15 - (Date.now() % 60000) / 5000)) + " mins"
+        }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        }));
+      }
+
+      if (urlStr.includes('/api/v1/academy/exams')) {
+        const exams = JSON.parse(localStorage.getItem('local_exams') || '[]');
+        if (options && options.method === 'POST') {
+          const body = options.body ? JSON.parse(options.body) : {};
+          const newExam = {
+            name: body.name || "Anonymous Technician",
+            score: body.score || 95,
+            status: body.score >= 90 ? "Passed" : "Failed",
+            date: new Date().toISOString().split('T')[0]
+          };
+          exams.push(newExam);
+          localStorage.setItem('local_exams', JSON.stringify(exams));
+          return Promise.resolve(new Response(JSON.stringify(newExam), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        } else {
+          return Promise.resolve(new Response(JSON.stringify(exams), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        }
+      }
+
+      if (urlStr.includes('/api/v1/partners')) {
+        const partners = JSON.parse(localStorage.getItem('local_partners') || '[]');
+        if (options && options.method === 'POST') {
+          const body = options.body ? JSON.parse(options.body) : {};
+          const newPartner = {
+            name: body.name || "Simulated Agency",
+            city: body.city || "Mumbai",
+            status: "Approved",
+            segment: body.segment || "Plumbing"
+          };
+          partners.push(newPartner);
+          localStorage.setItem('local_partners', JSON.stringify(partners));
+          return Promise.resolve(new Response(JSON.stringify(newPartner), {
+            status: 201,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        } else {
+          return Promise.resolve(new Response(JSON.stringify(partners), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          }));
+        }
+      }
+
+      if (urlStr.includes('/api/v1/admin/analytics')) {
+        const bookings = JSON.parse(localStorage.getItem('local_bookings') || '[]');
+        const sos = JSON.parse(localStorage.getItem('local_sosDispatches') || '[]');
+        const exams = JSON.parse(localStorage.getItem('local_exams') || '[]');
+        const partners = JSON.parse(localStorage.getItem('local_partners') || '[]');
+        const tickets = JSON.parse(localStorage.getItem('local_tickets') || '[]');
+        return Promise.resolve(new Response(JSON.stringify({
+          totalBookings: bookings.length + 312,
+          activeSos: sos.length,
+          totalRevenue: (bookings.length * 1250) + 418500,
+          certifiedGrads: exams.filter(e => e.status === "Passed").length + 248,
+          activePartners: partners.length + 54,
+          ticketCount: tickets.length
+        }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        }));
+      }
+
+      return originalFetch(url, options);
+    };
+
+    // Global navigation interceptor on clicks
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a, button');
+      if (!target) return;
+
+      const href = target.getAttribute('href');
+      const text = (target.textContent || '').trim().toLowerCase();
+
+      // SOS trigger
+      if (text.includes('sos') || text.includes('emergency') || text.includes('request sos')) {
+        e.preventDefault();
+        fetch('/api/v1/sos', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ service: 'Emergency Dispatch' })
+        }).then(() => {
+          navigateToOfflineScreen('live_technician_tracking');
+        });
+        return;
+      }
+
+      if (text.includes('bookings') || target.querySelector('.material-symbols-outlined')?.textContent === 'calendar_month') {
+        e.preventDefault();
+        navigateToOfflineScreen('service_history_bookings');
+        return;
+      }
+      if (text.includes('account') || target.querySelector('.material-symbols-outlined')?.textContent === 'person') {
+        e.preventDefault();
+        navigateToOfflineScreen('account_property_dashboard');
+        return;
+      }
+      if (text.includes('home') || target.querySelector('.material-symbols-outlined')?.textContent === 'home' || target.alt === 'One Call Home Solutions Logo') {
+        e.preventDefault();
+        navigateToOfflineScreen('home_explore_screen');
+        return;
+      }
+      if (text.includes('cleaning') || target.querySelector('.material-symbols-outlined')?.textContent === 'cleaning_services') {
+        e.preventDefault();
+        navigateToOfflineScreen('cleaning_services_catalog');
+        return;
+      }
+      if (text.includes('painting') || target.querySelector('.material-symbols-outlined')?.textContent === 'format_paint') {
+        e.preventDefault();
+        navigateToOfflineScreen('interior_design_renovation_catalog');
+        return;
+      }
+      if (text.includes('electrical') || target.querySelector('.material-symbols-outlined')?.textContent === 'electrical_services') {
+        e.preventDefault();
+        navigateToOfflineScreen('electrical_services_catalog_2');
+        return;
+      }
+      if (text.includes('smart home') || text.includes('security') || target.querySelector('.material-symbols-outlined')?.textContent === 'smartphone') {
+        e.preventDefault();
+        navigateToOfflineScreen('smart_home_security_catalog');
+        return;
+      }
+      if (text.includes('pest') || target.querySelector('.material-symbols-outlined')?.textContent === 'pest_control') {
+        e.preventDefault();
+        navigateToOfflineScreen('pest_control_hygiene_catalog');
+        return;
+      }
+      if (text.includes('appliances') || target.querySelector('.material-symbols-outlined')?.textContent === 'microwave') {
+        e.preventDefault();
+        navigateToOfflineScreen('hvac_air_quality_catalog');
+        return;
+      }
+      if (text.includes('book now') || text.includes('subscribe now') || text.includes('proceed to payment') || text.includes('add service')) {
+        e.preventDefault();
+        navigateToOfflineScreen('service_booking_production_ready_payment');
+        return;
+      }
+      if (text.includes('pay now') || text.includes('confirm booking') || text.includes('confirm and pay')) {
+        e.preventDefault();
+        fetch('/api/v1/bookings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            service: 'AC Comprehensive Servicing',
+            category: 'HVAC',
+            property: 'Home - Green Valley, Mumbai',
+            price: '₹1,250'
+          })
+        }).then(() => {
+          navigateToOfflineScreen('service_history_bookings');
+        });
+        return;
+      }
+      if (text.includes('take exam') || text.includes('start exam') || text.includes('qualification exam')) {
+        e.preventDefault();
+        navigateToOfflineScreen('guardian_standard_exam');
+        return;
+      }
+      if (text.includes('submit exam') || text.includes('finish test')) {
+        e.preventDefault();
+        fetch('/api/v1/academy/exams', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'Simulated Graduate', score: 94 })
+        }).then(() => {
+          navigateToOfflineScreen('technician_academy_dashboard');
+        });
+        return;
+      }
+      if (text.includes('join as partner') || text.includes('onboard') || text.includes('apply now') || text.includes('register business')) {
+        e.preventDefault();
+        navigateToOfflineScreen('partner_franchise_onboarding');
+        return;
+      }
+      if (text.includes('submit application') || text.includes('register franchise') || text.includes('confirm registration')) {
+        e.preventDefault();
+        fetch('/api/v1/partners', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'Dynamic Partner Studio', city: 'Mumbai', segment: 'Electrical' })
+        }).then(() => {
+          navigateToOfflineScreen('partner_franchise_management_portal');
+        });
+        return;
+      }
+      if (text.includes('view analytics') || text.includes('admin portal') || text.includes('dispatch dashboard')) {
+        e.preventDefault();
+        navigateToOfflineScreen('admin_overview_analytics_dashboard');
+        return;
+      }
+
+      // If matches /screen/<name> route
+      if (href && (href.startsWith('/screen/') || href.startsWith('screen/'))) {
+        e.preventDefault();
+        const cleanName = href.replace(/^\/?screen\//, '').split('?')[0];
+        navigateToOfflineScreen(cleanName);
+      } else if (href === '/' || href === '') {
+        e.preventDefault();
+        navigateToRootHome();
+      }
+    }, true);
+
+    // Live sync service history in offline page
+    if (window.location.pathname.includes('service_history_bookings')) {
+      syncServiceHistoryLocally();
+      setInterval(syncServiceHistoryLocally, 1000);
+    }
+
+    function syncServiceHistoryLocally() {
+      fetch('/api/v1/bookings')
+        .then(r => r.json())
+        .then(bookings => {
+          const listContainer = document.querySelector('.lg\\:col-span-8 .space-y-4') || document.querySelector('.lg\\:col-span-8');
+          if (listContainer) {
+            let bookingsHtml = '<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-4">Active & History Bookings (Synchronized Offline)</h3>';
+            bookings.forEach(b => {
+              const isCompleted = b.status === 'Completed';
+              const isDispatched = b.status === 'Dispatched';
+              const statusClass = isCompleted ? 'bg-emerald-100 text-emerald-800' : (isDispatched ? 'bg-amber-100 text-amber-800 animate-pulse' : 'bg-blue-100 text-blue-800');
+              
+              bookingsHtml += `
+                <div class="service-card bg-white p-6 rounded-xl flex flex-col md:flex-row gap-6 items-start md:items-center border border-gray-200 relative overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md mb-4 text-left">
+                  <div class="absolute top-0 right-0 p-2">
+                    <span class="bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">verified</span> Level 3 Pro
+                    </span>
+                  </div>
+                  <div class="bg-blue-50 p-4 rounded-xl flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[36px] text-[#002045]">engineering</span>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2 flex-wrap">
+                      <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider ${statusClass}">
+                        ${b.status}
+                      </span>
+                      <span class="text-xs text-gray-400 font-mono">${b.id}</span>
+                    </div>
+                    <h4 class="font-bold text-lg text-[#002045] mb-1">${b.service}</h4>
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-500 text-sm">
+                      <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> ${b.property}</span>
+                      <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">calendar_month</span> ${b.date} • ${b.time}</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-end gap-2 w-full md:w-auto border-t md:border-t-0 pt-4 md:pt-0">
+                    <span class="text-xl font-bold text-[#002045]">${b.price}</span>
+                    <span class="text-xs text-gray-400">Pro: ${b.provider}</span>
+                    ${b.status === 'Dispatched' ? `
+                      <button onclick="navigateToOfflineScreen('live_technician_tracking')" class="mt-2 bg-[#ad3035] hover:bg-red-800 text-white px-4 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors shadow-sm">
+                        <span class="material-symbols-outlined text-[14px]">my_location</span> GPS Live Track
+                      </button>
+                    ` : ''}
+                  </div>
+                </div>
+              `;
+            });
+            listContainer.innerHTML = bookingsHtml;
+          }
+        });
+    }
+
+    // Live coordinate simulator on tracking screen
+    if (window.location.pathname.includes('live_technician_tracking')) {
+      setInterval(() => {
+        fetch('/api/v1/tracking/tech_1')
+          .then(r => r.json())
+          .then(data => {
+            const etaBadge = document.querySelector('.bg-secondary-container p') || document.querySelector('.text-secondary');
+            if (etaBadge) {
+              etaBadge.innerHTML = '<span class="material-symbols-outlined text-secondary mr-1">timer</span> ETA: ' + data.eta + ' (Synchronized via Live GPS)';
+            }
+          });
+      }, 3000);
+    }
+  })();
+</script>
+</body></html>

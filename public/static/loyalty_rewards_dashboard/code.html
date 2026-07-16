@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guardian Gold | Loyalty &amp; Rewards</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f1f4f6",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#ffdad8",
+                    "on-primary-container": "#86a0cd",
+                    "surface-container-high": "#e5e9eb",
+                    "inverse-primary": "#adc7f7",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#6d0010",
+                    "primary-fixed": "#d6e3ff",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "on-tertiary-fixed": "#00201f",
+                    "on-secondary-fixed": "#410006",
+                    "surface-dim": "#d7dadc",
+                    "inverse-surface": "#2d3133",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#ebeef0",
+                    "outline": "#74777f",
+                    "tertiary-fixed": "#94f2f0",
+                    "surface-bright": "#f7fafc",
+                    "secondary": "#ad3035",
+                    "surface": "#f7fafc",
+                    "tertiary-container": "#003d3c",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#181c1e",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#002625",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "primary": "#002045",
+                    "background": "#f7fafc",
+                    "surface-tint": "#455f88",
+                    "outline-variant": "#c4c6cf",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "on-background": "#181c1e",
+                    "primary-fixed-dim": "#adc7f7",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-tertiary-container": "#4cadab",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-fixed": "#001b3c",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#fe6c6b",
+                    "on-surface-variant": "#43474e",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "primary-container": "#1a365d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "base": "8px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "caption": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 32, 69, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F4F6;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ADC7F7;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24 md:pb-0">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 shadow-sm bg-surface">
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">One Call Home Solutions</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-1 rounded-lg font-label-md text-label-md" href="#">Home</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-1 rounded-lg font-label-md text-label-md" href="#">Bookings</a>
+<a class="text-primary font-bold px-3 py-1 rounded-lg font-label-md text-label-md" href="#">Rewards</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-1 rounded-lg font-label-md text-label-md" href="#">Account</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low rounded-full transition-colors" data-icon="notifications">notifications</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">JD</div>
+</div>
+</div>
+<button class="md:hidden material-symbols-outlined text-primary p-2" data-icon="menu">menu</button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<!-- Hero Loyalty Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-12">
+<!-- Point Balance Card -->
+<div class="lg:col-span-7 bg-primary text-white rounded-xl p-8 shadow-lg relative overflow-hidden flex flex-col justify-between min-h-[320px]">
+
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label-md text-label-md uppercase tracking-widest opacity-80 mb-1">Current Balance</p>
+<div class="flex items-center gap-3">
+<h2 class="font-headline-xl text-headline-xl">12,450</h2>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[12px] font-bold px-2 py-1 rounded uppercase">Points</span>
+</div>
+</div>
+<div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 flex flex-col items-center">
+<span class="material-symbols-outlined text-tertiary-fixed text-4xl" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<p class="font-label-md text-[10px] mt-1 text-center font-bold">GUARDIAN GOLD</p>
+</div>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between mb-2 items-end">
+<p class="font-label-md text-label-md">2,550 points until <span class="text-tertiary-fixed font-bold">Elite Titanium</span></p>
+<p class="text-caption">83%</p>
+</div>
+<div class="w-full bg-white/20 h-3 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed h-full rounded-full" style="width: 83%"></div>
+</div>
+</div>
+</div>
+<div class="relative z-10 mt-8 flex gap-4">
+<button class="bg-tertiary-fixed text-on-tertiary-fixed px-6 py-2.5 rounded-xl font-label-md hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="redeem">redeem</span>
+                        Redeem Now
+                    </button>
+<button class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-2.5 rounded-xl font-label-md hover:bg-white/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="info">info</span>
+                        Tier Benefits
+                    </button>
+</div>
+</div>
+<!-- Refer & Earn Bento -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex items-center justify-between shadow-sm bento-card">
+<div class="flex gap-4 items-center">
+<div class="w-14 h-14 bg-secondary-fixed flex items-center justify-center rounded-xl">
+<span class="material-symbols-outlined text-on-secondary-fixed text-3xl" data-icon="group_add">group_add</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Refer a Friend</h3>
+<p class="text-on-surface-variant font-body-md text-sm">Earn 500 points for each signup</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-primary hover:bg-primary-fixed p-2 rounded-full transition-colors" data-icon="chevron_right">chevron_right</button>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex items-center justify-between shadow-sm bento-card">
+<div class="flex gap-4 items-center">
+<div class="w-14 h-14 bg-tertiary-fixed flex items-center justify-center rounded-xl">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-3xl" data-icon="rate_review">rate_review</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Leave a Review</h3>
+<p class="text-on-surface-variant font-body-md text-sm">Earn 200 points per verified review</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-primary hover:bg-primary-fixed p-2 rounded-full transition-colors" data-icon="chevron_right">chevron_right</button>
+</div>
+<div class="bg-primary-container p-6 rounded-xl flex items-center gap-4 text-on-primary-container">
+<span class="material-symbols-outlined text-3xl" data-icon="campaign">campaign</span>
+<p class="font-label-md text-label-md">Double Points weekend starts this Friday on all deep cleaning services!</p>
+</div>
+</div>
+</div>
+<!-- Rewards Catalog -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Redeem Your Points</h2>
+<p class="text-on-surface-variant font-body-md">Exclusive rewards tailored for your home maintenance needs</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded-full hover:bg-surface-container transition-colors"><span class="material-symbols-outlined" data-icon="tune">tune</span></button>
+<button class="font-label-md text-primary px-4 py-2 hover:underline">View All Rewards</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Reward Card 1 -->
+<div class="bg-white rounded-xl overflow-hidden border border-outline-variant group bento-card">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional home cleaning service in action with specialized equipment, featuring soft morning sunlight filtering through large windows into a pristine living room. The aesthetic is modern and corporate with high-contrast, clean lines and a premium, high-end residential feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHaMmGZgag1c_ergKdr642SDMJE1FztdDlAXSF_b5Zu5YlYT3ED0raborCCQK-qAAARkvEQZaT5wHWJO2-CsTj6B5AKtLukgHyd9cH2OL2JNkUbiEH8aEHZPyV8-6m146OMdKOGplR3B0ha0J9a8KuKao8jGAe05TJejkiHWop9jazL7jlSWoq4dM8Gh68ACkYdUxSKAWD24hXtUxk1TliowsDoVwFwpIOJ5GgsIGKS3AdA6mV6S_r"/>
+<div class="absolute top-3 right-3 bg-tertiary-fixed/90 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold text-on-tertiary-fixed flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-xs" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span> VERIFIED
+                        </div>
+</div>
+<div class="p-5">
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Deep Cleaning Pro</h4>
+<p class="text-on-surface-variant font-body-md text-sm mb-4">Complete top-to-bottom home sanitization.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="monetization_on">monetization_on</span>
+<span class="font-bold text-primary">2,500</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-label-md hover:bg-primary-container transition-colors">Redeem</button>
+</div>
+</div>
+</div>
+<!-- Reward Card 2 -->
+<div class="bg-white rounded-xl overflow-hidden border border-outline-variant group bento-card">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An expert technician wearing a navy blue professional uniform inspecting an air conditioning unit with advanced diagnostic tools. The setting is a clean, modern mechanical room with neutral tones, conveying technical competence and corporate reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_O_Xar4LWr2P9v18ygZj4GIb9rpoLrl0fBm4uyvILbHeuo8n4bvPq9mCzyIRcTjvIz6d_zKmXOVI5lDyxzPsXvIYlg9m3TPgWiGUurAvEjArIQVI6sgEq-lfVXpHVFaPMry1q5tYYQ2fL1MAvOX4Ya1KFyLORBvi6-5cKFHhhzHGnWRVlliY2JNpxKCA947E6QuhY1moCIN-e1eQOPa5pr9i3VyV64UMt8aKYykK0LWZvbli_zADl"/>
+<div class="absolute top-3 right-3 bg-tertiary-fixed/90 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold text-on-tertiary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span> VERIFIED
+                        </div>
+</div>
+<div class="p-5">
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Priority AMC</h4>
+<p class="text-on-surface-variant font-body-md text-sm mb-4">Move to the top of the queue for all services.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="monetization_on">monetization_on</span>
+<span class="font-bold text-primary">5,000</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-label-md hover:bg-primary-container transition-colors">Redeem</button>
+</div>
+</div>
+</div>
+<!-- Reward Card 3 -->
+<div class="bg-white rounded-xl overflow-hidden border border-outline-variant group bento-card">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of high-quality premium air filters and maintenance kits on a white, minimalist wooden surface. The lighting is soft and even, highlighting the clean textures and institutional quality of the home maintenance products." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7vqhVA6bPmfJVhMoMiQQDyU3_E3ISj6OHrk52TimOoQEdSO-HLnuex3RHd7cgimWjQ_JELGAoyEzrd4WTwSxy9JpyNW4o8Owakg6ArAH45JUOVIBZJmKoU5krcsa-mvyeO9ewBPhcBUMmUUrtAcz3nTQOZ8t7PVlkLOWNK4CmZPXs0aHBIZ9R-IcDap6Zg8xKKFcc-mERM5QQK9IiMIHLU6i85ZgKmbV5gV1jPj27JJEHIJlc78KM"/>
+<div class="absolute top-3 right-3 bg-tertiary-fixed/90 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold text-on-tertiary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span> VERIFIED
+                        </div>
+</div>
+<div class="p-5">
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Filter Replacements</h4>
+<p class="text-on-surface-variant font-body-md text-sm mb-4">Set of 4 HEPA air filters for your HVAC system.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="monetization_on">monetization_on</span>
+<span class="font-bold text-primary">1,200</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-label-md hover:bg-primary-container transition-colors">Redeem</button>
+</div>
+</div>
+</div>
+<!-- Reward Card 4 -->
+<div class="bg-white rounded-xl overflow-hidden border border-outline-variant group bento-card">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A modern home security system control panel glowing in a sleek entryway. The lighting is cinematic with deep shadows and sharp focus on the digital interface, representing safety, speed, and technical protection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqk8fCdc-Ddr6KzgXl0ue9cthnw3BxcUFQmlUwohhxXo2eR4Ht66T3hyHvwKwg5gUTrX0y-V4xSd5aIjBTUNDSaVc0C6k95oyJ1ynm-clpMQdFAysvRWSVPuJfvWfLJFFcp-1g_PS_nKqUVB9xyPZYJmmSxXrYhHgfqyMSm3PfyYB_TgtTliW-gC9hRl1iYausr4x53SLZNnG61iZVlBo3oru__vKr-hOAPx7c6-Zq3BEmkRXwHAi9"/>
+<div class="absolute top-3 right-3 bg-tertiary-fixed/90 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold text-on-tertiary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span> VERIFIED
+                        </div>
+</div>
+<div class="p-5">
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Smart Guard Kit</h4>
+<p class="text-on-surface-variant font-body-md text-sm mb-4">Basic smart home security upgrade module.</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="monetization_on">monetization_on</span>
+<span class="font-bold text-primary">8,000</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-label-md hover:bg-primary-container transition-colors">Redeem</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Transaction History & Tiers Info -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Point History -->
+<div class="lg:col-span-2 bg-white rounded-xl border border-outline-variant p-8 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">Points History</h3>
+<button class="text-primary text-sm font-label-md flex items-center gap-1 hover:underline">
+                        Download PDF <span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</button>
+</div>
+<div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+<!-- History Item 1 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="home_repair_service">home_repair_service</span>
+</div>
+<div>
+<p class="font-bold text-primary">AMC Service Completed</p>
+<p class="text-caption text-on-surface-variant">Oct 24, 2023 • ID: #44921</p>
+</div>
+</div>
+<span class="text-tertiary font-bold">+1,200 pts</span>
+</div>
+<!-- History Item 2 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 bg-secondary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed" data-icon="group">group</span>
+</div>
+<div>
+<p class="font-bold text-primary">Referral Reward</p>
+<p class="text-caption text-on-surface-variant">Oct 18, 2023 • Sarah Miller</p>
+</div>
+</div>
+<span class="text-tertiary font-bold">+500 pts</span>
+</div>
+<!-- History Item 3 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-outline-variant/30 opacity-70">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="shopping_cart">shopping_cart</span>
+</div>
+<div>
+<p class="font-bold text-primary">Redeemed: AC Cleaning</p>
+<p class="text-caption text-on-surface-variant">Oct 02, 2023 • Reward #992</p>
+</div>
+</div>
+<span class="text-secondary font-bold">-2,000 pts</span>
+</div>
+<!-- History Item 4 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-outline-variant/30">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 bg-tertiary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="verified">verified</span>
+</div>
+<div>
+<p class="font-bold text-primary">Survey Bonus</p>
+<p class="text-caption text-on-surface-variant">Sep 28, 2023 • Feedback Survey</p>
+</div>
+</div>
+<span class="text-tertiary font-bold">+150 pts</span>
+</div>
+</div>
+</div>
+<!-- Tier Roadmap -->
+<div class="bg-surface-container-high rounded-xl p-8 border border-outline-variant relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-6 relative z-10">Elite Tiers</h3>
+<div class="space-y-8 relative z-10">
+<div class="flex gap-4 items-start relative">
+<div class="absolute left-3.5 top-8 bottom-0 w-0.5 bg-outline-variant"></div>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white z-10 ring-4 ring-surface-container-high">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</div>
+<div>
+<p class="font-bold text-primary">Guardian Gold</p>
+<p class="text-caption text-on-surface-variant">10,000 pts reached. 5% cashback on all services.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start relative">
+<div class="absolute left-3.5 top-8 bottom-0 w-0.5 bg-outline-variant/50"></div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-primary flex items-center justify-center text-primary z-10 ring-4 ring-surface-container-high">
+<span class="material-symbols-outlined text-sm" data-icon="lock_open">lock_open</span>
+</div>
+<div>
+<p class="font-bold text-primary">Elite Titanium</p>
+<p class="text-caption text-on-surface-variant">15,000 pts required. Free quarterly check-ups &amp; 10% cashback.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-outline-variant flex items-center justify-center text-outline z-10 ring-4 ring-surface-container-high">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+</div>
+<div>
+<p class="font-bold text-outline">Platinum Master</p>
+<p class="text-caption text-outline">50,000 pts required. Dedicated property manager &amp; 24/7 VIP SOS.</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-3 bg-white border border-outline text-primary font-label-md rounded-xl hover:bg-primary hover:text-white transition-all">
+                    Full Benefits Comparison
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface py-2 px-2 pb-safe shadow-[0_-4px_20px_rgba(0,32,69,0.15)] z-50 rounded-t-xl border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-[10px]">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="redeem" style="font-variation-settings: 'FILL' 1;">redeem</span>
+<span class="font-label-md text-[10px]">Rewards</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-[10px]">Account</span>
+</a>
+</nav>
+<!-- Floating Action Button Contextual Logic -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 bg-secondary text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-3xl" data-icon="emergency">emergency</span>
+<span class="absolute right-full mr-4 bg-secondary px-3 py-1 rounded text-white text-sm font-bold opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity pointer-events-none">SOS Dispatch</span>
+</button>
+<script>
+        // Simple micro-interaction for point counter animation
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const pointElement = document.querySelector('h2.font-headline-xl');
+        if (pointElement) {
+            // Wait a moment then animate the points for a "rewarding" feel
+            setTimeout(() => {
+                animateValue(pointElement, 10000, 12450, 1500);
+            }, 500);
+        }
+    </script>
+</body></html>

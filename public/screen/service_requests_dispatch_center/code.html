@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service Requests & Dispatch | One Call Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-shadow {
+            box-shadow: 0 4px 12px rgba(0, 32, 69, 0.15);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#002045",
+                        "secondary-container": "#fe6c6b",
+                        "background": "#f7fafc",
+                        "secondary-fixed-dim": "#ffb3b0",
+                        "on-surface": "#181c1e",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#003d3c",
+                        "surface-container-low": "#f1f4f6",
+                        "surface-container": "#ebeef0",
+                        "outline": "#74777f",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f7fafc",
+                        "on-primary-fixed": "#001b3c",
+                        "tertiary": "#002625",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#ffdad8",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary-container": "#6d0010",
+                        "on-surface-variant": "#43474e",
+                        "surface-dim": "#d7dadc",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline-variant": "#c4c6cf",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#00201f",
+                        "surface": "#f7fafc",
+                        "inverse-on-surface": "#eef1f3",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#94f2f0",
+                        "on-secondary-fixed": "#410006",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "surface-container-high": "#e5e9eb",
+                        "on-tertiary-container": "#4cadab",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed-dim": "#77d6d3",
+                        "on-primary-container": "#86a0cd",
+                        "inverse-primary": "#adc7f7",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#181c1e",
+                        "primary-container": "#1a365d",
+                        "surface-tint": "#455f88",
+                        "secondary": "#ad3035",
+                        "on-tertiary-fixed-variant": "#00504e",
+                        "on-secondary-fixed-variant": "#8c1620"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen overflow-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-primary flex flex-col z-40 shadow-md">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">One Call Home</h1>
+<p class="text-primary-fixed-dim font-label-md text-label-md opacity-80">Solutions Portal</p>
+</div>
+<nav class="flex-1 mt-4 overflow-y-auto">
+<div class="space-y-1">
+<!-- Analytics (Inactive) -->
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<!-- Service Requests (Active) -->
+<a class="text-on-primary-fixed bg-primary-fixed-dim rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 active-nav-shadow" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">trolley</span>
+<span class="font-label-md text-label-md">Service Requests</span>
+</a>
+<!-- Live Tracking (Inactive) -->
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">map</span>
+<span class="font-label-md text-label-md">Live Tracking</span>
+</a>
+<!-- Partners (Inactive) -->
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">handshake</span>
+<span class="font-label-md text-label-md">Partners</span>
+</a>
+</div>
+</nav>
+<div class="p-4 mb-2">
+<button class="w-full bg-secondary text-on-secondary font-label-md text-label-md py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-transform hover:scale-[0.98] active:scale-95 shadow-lg">
+<span class="material-symbols-outlined">emergency_home</span>
+                Emergency Dispatch
+            </button>
+</div>
+<div class="border-t border-white/10 pt-4 pb-6 px-2 space-y-1">
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg px-4 py-2 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="text-primary-fixed-dim hover:text-on-primary-fixed hover:bg-on-primary-fixed-variant rounded-lg px-4 py-2 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 flex justify-between items-center px-margin-desktop z-30 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-6 w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border-none rounded-full pl-10 pr-4 py-2 text-body-md focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Search service requests, addresses, or IDs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container rounded-full p-2 transition-all relative group">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-surface"></span>
+</button>
+<button class="hover:bg-surface-container rounded-full p-2 transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant">apps</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-lg flex items-center gap-2 hover:opacity-90 transition-all active:opacity-80">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                New Request
+            </button>
+<img class="h-10 w-10 rounded-full border border-outline-variant object-cover" data-alt="Close-up professional portrait of a male administrative manager with a clean-cut look, wearing a dark navy blazer and white shirt, set against a blurred modern office background with soft neutral lighting and corporate professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcZlj4JplBpYpNG-VzarFlBDPFIWSQTUurDkmSdHAj2mPAuKuAzIcRniUZehoMGQxCmqq9AMq8Q-5Zt9KU5yQd2yk_-0hjXLZcIQ8CddsWUKaQhvA4VlZgJ8dnZEWcleFa774rz5X_L-uw49Ao6DfRcYnrVnGOI8C7fOoePb_3VCx4IV5vW-J0Gy-kTkc0dm4TOUkBCmioOYhTvkwoKR7IBT5qmYgiZISCGCcPLzEP390A2jNQW4Dv"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-16 pl-64 h-screen flex flex-col overflow-hidden">
+<div class="flex-1 flex overflow-hidden p-6 gap-6">
+<!-- Left Column: Service Request List (Bento-style list) -->
+<section class="w-[450px] flex flex-col gap-4 overflow-hidden">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-primary">Live Requests</h2>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-high rounded-full font-label-md text-caption text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Filter
+                        </button>
+<button class="px-3 py-1 bg-secondary/10 text-secondary rounded-full font-label-md text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] animate-pulse">emergency</span> Urgent (3)
+                        </button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-4 pr-2">
+<!-- Request Item 1 (Emergency) -->
+<div class="glass-card p-4 rounded-xl border-l-4 border-secondary hover:shadow-lg transition-all cursor-pointer group active:scale-[0.99]">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-caption bg-secondary-fixed text-on-secondary-fixed px-2 py-1 rounded-md uppercase tracking-wider">SOS Emergency</span>
+<span class="text-on-surface-variant font-label-md text-caption">2m ago</span>
+</div>
+<h3 class="font-headline-md text-body-lg text-primary mb-1">Burst Main Pipe</h3>
+<p class="text-on-surface-variant text-caption mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> 1422 Northview Dr, Suite 402
+                        </p>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Detailed close up of a professional female profile photo in a circular frame, featuring a professional woman in her 30s with a warm and capable expression, wearing a minimalist grey suit. The lighting is soft and corporate, matching a clean modern UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVfBQ8tLdvep8Aw2U2jCKJq4Fdxr_IHBJiN1usveFeukYbG5PCtaKYwZzy-ZqhbVO7Ec5S-bFzkZIGQPyZqR8gd5dkESYYEFEatGAqGZ0VojlZpsEKRJKCWGOV4SUGiIJLqAVpfgi0BcRnHhj3BvchzFv4aizA2u8oj7kr-MMpkZD9OtI-HfEmWRY-ZiYc1jBfGxhapUVbDapMwPeAQUdOFoeUn0-DjwtdInZdZSibi0q4ozR_JOkH"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-white flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+2</div>
+</div>
+<span class="text-secondary font-label-md text-caption flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">speed</span> Dispatching...
+                            </span>
+</div>
+</div>
+<!-- Request Item 2 (Standard) -->
+<div class="bg-white p-4 rounded-xl border border-outline-variant hover:border-primary/30 transition-all cursor-pointer shadow-sm active:scale-[0.99]">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-caption bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-md uppercase tracking-wider">Electrical</span>
+<span class="text-on-surface-variant font-label-md text-caption">15m ago</span>
+</div>
+<h3 class="font-headline-md text-body-lg text-primary mb-1">Faulty Breaker Panel</h3>
+<p class="text-on-surface-variant text-caption mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> 88 Westgate Circle
+                        </p>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="text-on-surface-variant font-label-md text-caption">Queued</span>
+</div>
+<span class="text-primary font-label-md text-caption">ID: #OCH-8832</span>
+</div>
+</div>
+<!-- Request Item 3 (Standard) -->
+<div class="bg-white p-4 rounded-xl border border-outline-variant hover:border-primary/30 transition-all cursor-pointer shadow-sm active:scale-[0.99]">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-caption bg-surface-container-highest text-on-surface-variant px-2 py-1 rounded-md uppercase tracking-wider">Plumbing</span>
+<span class="text-on-surface-variant font-label-md text-caption">42m ago</span>
+</div>
+<h3 class="font-headline-md text-body-lg text-primary mb-1">Low Water Pressure</h3>
+<p class="text-on-surface-variant text-caption mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> 12 Maple Street
+                        </p>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-label-md text-caption">Technician Assigned</span>
+</div>
+</div>
+</div>
+<!-- Request Item 4 -->
+<div class="bg-white p-4 rounded-xl border border-outline-variant hover:border-primary/30 transition-all cursor-pointer shadow-sm active:scale-[0.99]">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-caption bg-primary-fixed text-on-primary-fixed px-2 py-1 rounded-md uppercase tracking-wider">Roofing</span>
+<span class="text-on-surface-variant font-label-md text-caption">1h ago</span>
+</div>
+<h3 class="font-headline-md text-body-lg text-primary mb-1">Storm Damage Inspection</h3>
+<p class="text-on-surface-variant text-caption mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> 502 Skyline Ridge
+                        </p>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></div>
+<span class="text-on-surface-variant font-label-md text-caption">Pending Review</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Detail View & Dispatch (Bento Grid) -->
+<section class="flex-1 flex flex-col gap-6 overflow-hidden">
+<!-- Detailed Request Header -->
+<div class="bg-primary rounded-2xl p-6 text-on-primary shadow-lg relative overflow-hidden flex flex-col md:flex-row gap-6">
+<!-- Subtle background decoration -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<div class="flex-1 relative z-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-secondary px-3 py-1 rounded-full text-caption font-bold uppercase tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> Critical Priority
+                            </span>
+<span class="text-on-primary/60 font-label-md text-caption">Reported 14:02 PM</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl mb-2">Burst Main Pipe (Flooding)</h2>
+<div class="flex flex-wrap gap-4 text-on-primary/80">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Sarah Jenkins (Gold Member)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">phone</span>
+<span class="font-body-md text-body-md">+1 (555) 012-9932</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-body-md text-body-md">Verified Policy #OCH-99-A</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 justify-center relative z-10 min-w-[200px]">
+<button class="w-full bg-on-primary text-primary font-bold py-3 rounded-xl hover:bg-surface-bright transition-all shadow-md">
+                            Call Customer
+                        </button>
+<button class="w-full border border-on-primary/30 text-on-primary font-bold py-3 rounded-xl hover:bg-white/10 transition-all">
+                            View House Plans
+                        </button>
+</div>
+</div>
+<div class="flex-1 grid grid-cols-12 gap-6 overflow-hidden">
+<!-- Map / Location Context -->
+<div class="col-span-12 lg:col-span-7 bg-white rounded-2xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center">
+<h4 class="font-headline-md text-body-lg text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">explore</span> Dispatch Context
+                            </h4>
+<div class="flex gap-1">
+<button class="p-1 hover:bg-surface-container rounded"><span class="material-symbols-outlined text-[20px]">layers</span></button>
+<button class="p-1 hover:bg-surface-container rounded"><span class="material-symbols-outlined text-[20px]">fullscreen</span></button>
+</div>
+</div>
+<div class="flex-1 relative bg-surface-container">
+<!-- Map Placeholder -->
+<div class="absolute inset-0 grayscale opacity-40 mix-blend-multiply" data-alt="A detailed aerial map view of a suburban neighborhood with clean grid-like streets and modern houses, styled with a high-contrast corporate blueprint aesthetic using navy and grey tones. The map features subtle vector overlays and geometric markers indicating service locations." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHZVw2GmcNH5-nWaJXjfn22nXZGKKimbel18BhnsZlxvLlP2Y4Lsb04S4j4zzEG2ZQOHGM2_8FkoIhZ1Ad3W4S0sqE4w9SFT6vRuyLgIoZ96a3mXBBqolwWudrO_IuEBeCzY8oy3IpPNJySiSaR09JfkvO5GAw02Q92MZCP_OLSH33lm7HKuOZzcTCAGFBgeDga3ucOfOcGRcYoNMoEZ1Jbt9EWPQomgkNBVsLrDBl_q3eqGI-PPT_')"></div>
+<!-- Dynamic Overlay markers (Simulated with HTML) -->
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="bg-secondary text-on-secondary p-2 rounded-full shadow-xl animate-bounce">
+<span class="material-symbols-outlined">home_pin</span>
+</div>
+<div class="mt-1 bg-primary px-3 py-1 rounded-lg text-on-primary text-[10px] font-bold whitespace-nowrap shadow-md">
+                                    SARAH J. (INCIDENT)
+                                </div>
+</div>
+<div class="absolute bottom-1/4 right-1/3 flex flex-col items-center">
+<div class="bg-tertiary-container text-on-tertiary-container p-1 rounded-full shadow-lg border-2 border-white">
+<span class="material-symbols-outlined text-[18px]">engineering</span>
+</div>
+<div class="mt-1 bg-white px-2 py-0.5 rounded-md text-primary text-[9px] font-bold shadow-sm">
+                                    MARCUS (4 min)
+                                </div>
+</div>
+<div class="absolute top-1/2 right-1/4 flex flex-col items-center">
+<div class="bg-tertiary-container text-on-tertiary-container p-1 rounded-full shadow-lg border-2 border-white">
+<span class="material-symbols-outlined text-[18px]">engineering</span>
+</div>
+<div class="mt-1 bg-white px-2 py-0.5 rounded-md text-primary text-[9px] font-bold shadow-sm">
+                                    DAVID (9 min)
+                                </div>
+</div>
+<!-- Legend -->
+<div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur p-3 rounded-xl border border-outline-variant text-[11px] space-y-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-secondary rounded-full"></span>
+<span class="font-label-md text-on-surface">Target Site</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-tertiary-container rounded-full"></span>
+<span class="font-label-md text-on-surface">Available Technicians</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dispatcher Interface -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-6">
+<div class="bg-white rounded-2xl border border-outline-variant shadow-sm flex flex-col flex-1">
+<div class="p-4 border-b border-outline-variant">
+<h4 class="font-headline-md text-body-lg text-primary">Nearest Professionals</h4>
+<p class="text-caption text-on-surface-variant">AI-suggested based on current traffic and tools</p>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-3">
+<!-- Tech 1 -->
+<div class="group p-3 rounded-xl border border-outline-variant hover:border-tertiary transition-all cursor-pointer flex items-center gap-4 bg-surface-container-lowest">
+<div class="relative">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="A professional headshot of a male technician in his late 40s, wearing a clean grey polo shirt with a small company logo. He has a friendly, trustworthy expression. The lighting is bright and even, against a neutral light grey background, conveying professional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAh63MJ7WhUW_8SJ2uU72cPQf-frLu9cqPTeCMCumWYdF58RIjCELoO3xPFSjjmykSyDWI4utCoULGLNiGbT7TZrJG2yhWwduajPmrOwfzKUtqbIFEI4l8P2N-G0ALYBXgN3sUuf31KTkpx9Uo7M8r3N4r_wNA78pllr942i9w0sYsOE_mlDTslbcq9Za4bv-HRqeeFHRP_bK9f-DMpBW6kwV3Pc23YBfgomqZc8aRS_P6eYWsrOCW"/>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 bg-tertiary-fixed-dim border-2 border-white rounded-full"></span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h5 class="font-headline-md text-label-md text-primary">Marcus Thorne</h5>
+<span class="text-tertiary font-bold text-caption">0.8 mi</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-[11px] bg-tertiary/10 text-tertiary px-2 rounded-full">Senior Plumber</span>
+<span class="text-on-surface-variant text-[11px] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                                            </span>
+</div>
+</div>
+<button class="bg-primary text-on-primary p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+<!-- Tech 2 -->
+<div class="group p-3 rounded-xl border border-outline-variant hover:border-tertiary transition-all cursor-pointer flex items-center gap-4">
+<div class="relative">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="A professional headshot of a female technician in her 30s, wearing a dark blue work uniform. She looks focused and professional. The style is a clean, modern studio portrait with soft lighting that emphasizes trust and technical competence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMj2SLg5RIn5w9mbl71R5zMho9BzyrWek7dX0RMAX0Q9qEixS385XQ-KGSYjvOjE7ilRRAMI4cJ8fLNQAzp80gD7gVxSA16O6OO6zSAXpaNkEhDQiV1oxPRuawV1bhIIlHVF3cyGBNF2TEUWELi06N8IScOoG5jscxh1Rg7nvQngByFmNo80eBH-CnGOIbZaSua_s81K8PNVhFPLU5znZDjsJqvU37tDXMBh9YpJkHqsP00pmMrmuZ"/>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 bg-tertiary-fixed-dim border-2 border-white rounded-full"></span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h5 class="font-headline-md text-label-md text-primary">Elena Rodriguez</h5>
+<span class="text-on-surface-variant font-bold text-caption">2.4 mi</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-[11px] bg-primary/10 text-primary px-2 rounded-full">Master Plumber</span>
+<span class="text-on-surface-variant text-[11px] flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span> 5.0
+                                            </span>
+</div>
+</div>
+<button class="bg-primary text-on-primary p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+<!-- Tech 3 -->
+<div class="group p-3 rounded-xl border border-outline-variant opacity-60 flex items-center gap-4">
+<div class="relative grayscale">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Professional headshot of a male technician in his 50s with a kind and experienced face, wearing a standard navy work shirt. High quality lighting with a focus on trust and approachability for a professional service UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh5C2yEl4jEl867emQ27qCUY76Ch-G9G1DvOJ2lvgC9PL15zYoyhSqQnlerrhb_ky3FPxdh8RnLzlym9Xrz425tF3L6M56-LHTDhSPVk2iYKU5fqafNTUUcfhxSMPnoqGmVwa1kR8npO_RjWi_UFM9qe_2lUzKA3knGWeZs_ZPy37TnEgJQ5rclVl818sqhyJVQcBQ3fPp56dMv93pAwCZvyhIIGnY20860XsKoHoqN1kmCfU1vOg3"/>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 bg-outline border-2 border-white rounded-full"></span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h5 class="font-headline-md text-label-md text-primary">David Smith</h5>
+<span class="text-on-surface-variant font-bold text-caption">1.2 mi</span>
+</div>
+<p class="text-[11px] text-error font-semibold">On Break (Returns 15:30)</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low mt-auto rounded-b-2xl">
+<button class="w-full bg-primary text-on-primary font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-primary-container transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">bolt</span> 
+                                    Quick Dispatch Marcus
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Stats Bar -->
+<footer class="h-12 bg-white border-t border-outline-variant px-margin-desktop flex items-center justify-between">
+<div class="flex gap-8 items-center">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+<span class="text-caption font-label-md text-on-surface-variant">Live Dispatch Stream Active</span>
+</div>
+<div class="flex items-center gap-4 text-caption font-label-md text-on-surface-variant">
+<span>Average Response: <strong class="text-primary">12.4 mins</strong></span>
+<span class="h-4 w-[1px] bg-outline-variant"></span>
+<span>Active Techs: <strong class="text-primary">42</strong></span>
+<span class="h-4 w-[1px] bg-outline-variant"></span>
+<span>Efficiency: <strong class="text-tertiary">98.2%</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-caption font-label-md text-on-surface-variant">Server Status: <span class="text-tertiary">Healthy</span></span>
+<div class="flex -space-x-1">
+<div class="w-6 h-6 rounded-full bg-primary border-2 border-white flex items-center justify-center text-[8px] text-white">OP</div>
+<div class="w-6 h-6 rounded-full bg-secondary border-2 border-white flex items-center justify-center text-[8px] text-white">JD</div>
+</div>
+</div>
+</footer>
+</main>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed bottom-16 right-8 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all active:scale-95 group z-50">
+<span class="material-symbols-outlined text-[28px] group-hover:rotate-12 transition-transform">phone_in_talk</span>
+<div class="absolute right-16 bg-primary text-on-primary px-3 py-1.5 rounded-lg text-caption font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
+            Open Global Comm Channel
+        </div>
+</button>
+<script>
+        // Simple Micro-interaction for list item selection
+        document.querySelectorAll('.glass-card, .bg-white.p-4.rounded-xl').forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove active styling from others
+                document.querySelectorAll('.glass-card, .bg-white.p-4.rounded-xl').forEach(c => {
+                    c.classList.remove('ring-2', 'ring-primary', 'bg-primary/5');
+                });
+                // Add to current
+                card.classList.add('ring-2', 'ring-primary', 'bg-primary/5');
+            });
+        });
+
+        // Search highlight simulation
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

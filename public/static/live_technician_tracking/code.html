@@ -1,0 +1,273 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Emergency Technician Tracking | One Call Home Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary": "#ad3035",
+                "secondary-fixed-dim": "#ffb3b0",
+                "on-error": "#ffffff",
+                "tertiary-fixed-dim": "#77d6d3",
+                "on-surface-variant": "#43474e",
+                "surface-container": "#ebeef0",
+                "tertiary-container": "#003d3c",
+                "on-error-container": "#93000a",
+                "surface-container-highest": "#e0e3e5",
+                "on-secondary-container": "#6d0010",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-fixed-variant": "#2d476f",
+                "background": "#f7fafc",
+                "on-secondary-fixed": "#410006",
+                "primary": "#002045",
+                "surface-tint": "#455f88",
+                "on-primary": "#ffffff",
+                "secondary-fixed": "#ffdad8",
+                "tertiary": "#002625",
+                "surface": "#f7fafc",
+                "on-tertiary": "#ffffff",
+                "on-tertiary-fixed": "#00201f",
+                "on-surface": "#181c1e",
+                "secondary-container": "#fe6c6b",
+                "inverse-on-surface": "#eef1f3",
+                "on-tertiary-container": "#4cadab",
+                "error-container": "#ffdad6",
+                "primary-container": "#1a365d",
+                "surface-variant": "#e0e3e5",
+                "inverse-primary": "#adc7f7",
+                "inverse-surface": "#2d3133",
+                "tertiary-fixed": "#94f2f0",
+                "on-background": "#181c1e",
+                "on-primary-fixed": "#001b3c",
+                "surface-container-high": "#e5e9eb",
+                "primary-fixed-dim": "#adc7f7",
+                "outline-variant": "#c4c6cf",
+                "on-tertiary-fixed-variant": "#00504e",
+                "on-primary-container": "#86a0cd",
+                "outline": "#74777f",
+                "on-secondary": "#ffffff",
+                "surface-bright": "#f7fafc",
+                "primary-fixed": "#d6e3ff",
+                "on-secondary-fixed-variant": "#8c1620",
+                "surface-container-low": "#f1f4f6",
+                "error": "#ba1a1a",
+                "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "container-max": "1280px",
+                "margin-desktop": "40px",
+                "margin-mobile": "16px",
+                "base": "8px"
+            },
+            "fontFamily": {
+                "headline-xl": ["Montserrat"],
+                "caption": ["Inter"],
+                "headline-lg": ["Montserrat"],
+                "headline-md": ["Montserrat"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .pulse-animation {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(173, 48, 53, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(173, 48, 53, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(173, 48, 53, 0); }
+      }
+      .map-glow {
+        background: radial-gradient(circle, rgba(0,32,69,0.05) 0%, rgba(247,250,252,0) 70%);
+      }
+      .tracking-line {
+        stroke-dasharray: 8;
+        animation: dash 20s linear infinite;
+      }
+      @keyframes dash {
+        to { stroke-dashoffset: -100; }
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-hidden h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">One Call Home Solutions</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full" data-icon="notifications">notifications</button>
+</div>
+</header>
+<!-- Main Canvas: Live Map Integration -->
+<main class="flex-1 relative mt-16 pb-[300px] md:pb-0">
+<!-- Map View -->
+<div class="absolute inset-0 bg-surface-container-low overflow-hidden">
+<!-- Simulated Map with data-location -->
+<div class="w-full h-full relative bg-cover bg-center grayscale-[0.2]" data-location="New Delhi, India" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwHGXy4m1Elvvsc3oM5jat1ooDlgAuaXU-RKw4ZG3aVsWaEF2j1g00cjyuQ0fJsYerl6oTFK0odhkVED2MJW7cAQZ8NK_ocK2SU1kedOfymCrb2pA4KN6e2i3RwURa6dVGnO_rSFXdXu1K3v3iOe21UyYu95SltoLA91krUAWRMaoG2ltiZa8c4BJV-qkvRVD5CRI842cj-yrAgjovSJV97yqhnwvqvi1wmBCyakdGlWiozZV2V8FO')">
+<!-- SVG Overlay for tracking path -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none">
+<path class="tracking-line opacity-30" d="M 100,500 Q 200,450 300,300 T 500,150" fill="none" stroke="#002045" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<!-- User Location Marker -->
+<div class="absolute top-[150px] right-[40%] flex flex-col items-center">
+<div class="w-10 h-10 bg-primary rounded-full border-4 border-white flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_pin_circle">person_pin_circle</span>
+</div>
+<span class="mt-2 bg-primary text-white text-[10px] px-2 py-0.5 rounded-full font-bold shadow-sm">YOUR LOCATION</span>
+</div>
+<!-- Technician Marker (Animated movement simulation) -->
+<div class="absolute bottom-[200px] left-[20%] flex flex-col items-center transition-all duration-[5000ms] ease-in-out" id="tech-marker" style="bottom: 250px; left: 35%;"><div class="absolute -top-6 flex items-center gap-1 bg-secondary px-2 py-0.5 rounded-full shadow-sm animate-pulse"><div class="w-1.5 h-1.5 bg-white rounded-full"></div><span class="text-white text-[10px] font-bold tracking-widest uppercase">Live</span></div>
+<div class="w-12 h-12 bg-secondary rounded-full border-4 border-white flex items-center justify-center text-white shadow-xl pulse-animation">
+<span class="material-symbols-outlined text-[24px]" data-icon="home_repair_service">home_repair_service</span>
+</div>
+<div class="mt-2 bg-white px-3 py-1 rounded-lg shadow-md border border-outline-variant flex items-center gap-2">
+<span class="text-primary font-bold text-[12px]">ETA: 12m</span>
+</div>
+</div>
+</div>
+<!-- Map Gradient Fade -->
+<div class="absolute inset-0 pointer-events-none map-glow"></div>
+<div class="absolute right-4 bottom-[320px] flex flex-col gap-2 pointer-events-auto"><button class="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">my_location</span></button><button class="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-secondary hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">engineering</span></button></div></div>
+<!-- Floating UI Components on Map -->
+<div class="absolute top-4 left-4 right-4 flex flex-col gap-3 pointer-events-none"><div class="bg-primary text-white px-4 py-2 rounded-xl shadow-lg flex items-center gap-3 pointer-events-auto border border-white/20 mb-1"><span class="material-symbols-outlined text-[20px]">distance</span><p class="text-[12px] font-semibold">Technician is 2km away</p></div>
+<!-- Emergency Alert Header -->
+<div class="bg-secondary text-white px-6 py-3 rounded-xl shadow-lg flex items-center justify-between pointer-events-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined fill text-[24px] animate-pulse" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<p class="font-bold text-label-md">SOS ACTIVE</p>
+<p class="text-[12px] opacity-90">Technician is on the way for electrical smoke</p>
+</div>
+</div>
+<button class="bg-white/20 hover:bg-white/30 px-3 py-1 rounded-lg text-[12px] font-bold transition-all">CANCEL</button>
+</div>
+<!-- Helpline Quick Action -->
+<div class="bg-white border border-secondary/20 p-3 rounded-xl shadow-md flex items-center justify-between pointer-events-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="call">call</span>
+</div>
+<p class="text-body-md font-semibold text-primary">Need immediate help?</p>
+</div>
+<a class="text-secondary font-bold text-label-md" href="tel:1800-OC-HELP">1800-OC-HELP</a>
+</div>
+</div>
+<!-- Technician Detail Sheet (Bento Style) -->
+<div class="absolute bottom-4 left-4 right-4 bg-white rounded-3xl shadow-2xl p-6 md:max-w-md md:left-auto md:right-8 transition-transform transform translate-y-0">
+<!-- Technician Identity Section -->
+<div class="flex items-start justify-between mb-6">
+<div class="flex gap-4">
+<div class="relative">
+<img class="w-16 h-16 rounded-2xl object-cover border-2 border-primary-container" data-alt="A professional male home technician in his late 30s named Rahul Sharma, wearing a clean navy blue polo shirt with a company logo. He has a warm, trustworthy smile and is standing in front of a neutral professional background. The image is bright with high-key lighting, maintaining the Professional Guardian aesthetic of the design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS-pTzbBntVZoHJXdoKRZL4UDAgw57FvBiGNcnTWSCKbdqpo-rTakj9SlcxOBB8Fx4A4JZAFBxQgC1nVrjB5Z-QkpXlmZOLmAX_aY6iEuR23H9qcukgmZkdqhXz0W1PEOaY3Gkh_yiRQtb5Y8ep_Z0ts8bHCMDzCWDZSk_-OwsKqE64vMcQVB3lqSj8lP8G3qC_JmltQqMa2a_PPES6r6ewBczfzfEGaGwuedblawLwPw2oLIPcMpU">
+<div class="absolute -bottom-2 -right-2 bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm border border-white">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold">VERIFIED</span>
+</div>
+</div>
+<div>
+<h2 class="text-headline-md font-bold text-primary leading-tight">Rahul Sharma</h2><div class="flex items-center gap-2 mt-0.5 text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">electric_car</span><span class="text-[12px] font-medium">Electric Service Van • DL 3C AQ 4592</span></div>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">#OC-9921</span>
+<div class="flex items-center text-secondary font-bold text-[12px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.8
+                            </div>
+</div>
+</div>
+</div>
+<div class="flex gap-2"><button class="flex items-center gap-2 px-4 h-12 rounded-2xl bg-primary text-white hover:scale-95 transition-transform shadow-md"><span class="material-symbols-outlined" data-icon="call">call</span><span class="text-label-md font-bold">Call in App</span></button><button class="w-12 h-12 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center hover:scale-95 transition-transform"><span class="material-symbols-outlined" data-icon="chat">chat</span></button></div>
+</div>
+<!-- Arrival Info & OTP Grid -->
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-low p-4 rounded-2xl flex flex-col items-center justify-center border border-outline-variant/30 animate-pulse">
+<span class="text-on-surface-variant text-[11px] font-bold uppercase tracking-widest mb-1">Arriving In</span>
+<span class="text-headline-md font-bold text-primary">12 mins</span>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed p-4 rounded-2xl flex flex-col items-center justify-center border border-primary-fixed-dim"><span class="text-on-primary-fixed-variant text-[11px] font-bold uppercase tracking-widest mb-1">Secure OTP</span><span class="text-headline-md font-bold tracking-[0.2em]">5829</span><p class="text-[9px] text-center mt-2 leading-tight opacity-80">Share only after technician arrives</p></div>
+</div>
+<!-- Footer Action / Instructions -->
+<div class="mt-2 pt-4 border-t border-outline-variant/30"><div class="flex justify-between items-start relative px-2"><div class="absolute top-3 left-4 right-4 h-0.5 bg-surface-container-highest"></div><div class="absolute top-3 left-4 w-1/2 h-0.5 bg-primary"></div><div class="relative z-10 flex flex-col items-center gap-1"><div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white"><span class="material-symbols-outlined text-[14px]">check</span></div><span class="text-[10px] font-bold text-primary">Assigned</span></div><div class="relative z-10 flex flex-col items-center gap-1"><div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white animate-pulse"><span class="material-symbols-outlined text-[14px]">navigation</span></div><span class="text-[10px] font-bold text-primary">En Route</span></div><div class="relative z-10 flex flex-col items-center gap-1"><div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">home</span></div><span class="text-[10px] font-bold text-on-surface-variant">Arrival</span></div></div></div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (SOS Active) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface rounded-t-xl shadow-[0_-4px_20px_rgba(0,32,69,0.1)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-label-md font-label-md">Bookings</span>
+</a>
+<!-- ACTIVE TAB: SOS -->
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container rounded-xl px-4 py-1.5 scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined fill" data-icon="emergency_home" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+<span class="text-label-md font-label-md font-bold">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md">Account</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const techMarker = document.getElementById('tech-marker');
+            
+            // Simulating movement towards user location
+            setTimeout(() => {
+                if (techMarker) {
+                    techMarker.style.bottom = '250px';
+                    techMarker.style.left = '35%';
+                }
+            }, 1000);
+
+            // Adding a small interaction for the call button
+            const callBtn = document.querySelector('button .material-symbols-outlined[data-icon="call"]')?.parentElement;
+            if (callBtn) {
+                callBtn.addEventListener('click', () => {
+                    alert('Connecting you to Rahul Sharma...');
+                });
+            }
+        });
+    </script>
+
+
+
+
+</body></html>

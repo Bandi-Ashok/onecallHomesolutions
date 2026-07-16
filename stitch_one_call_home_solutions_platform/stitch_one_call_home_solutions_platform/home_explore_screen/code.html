@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>One Call Home Solutions | Professional Home Management</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "secondary": "#ad3035",
+              "secondary-fixed-dim": "#ffb3b0",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#77d6d3",
+              "on-surface-variant": "#43474e",
+              "surface-container": "#ebeef0",
+              "tertiary-container": "#003d3c",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e0e3e5",
+              "on-secondary-container": "#6d0010",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#2d476f",
+              "background": "#f7fafc",
+              "on-secondary-fixed": "#410006",
+              "primary": "#002045",
+              "surface-tint": "#455f88",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#ffdad8",
+              "tertiary": "#002625",
+              "surface": "#f7fafc",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#00201f",
+              "on-surface": "#181c1e",
+              "secondary-container": "#fe6c6b",
+              "inverse-on-surface": "#eef1f3",
+              "on-tertiary-container": "#4cadab",
+              "error-container": "#ffdad6",
+              "primary-container": "#1a365d",
+              "surface-variant": "#e0e3e5",
+              "inverse-primary": "#adc7f7",
+              "inverse-surface": "#2d3133",
+              "tertiary-fixed": "#94f2f0",
+              "on-background": "#181c1e",
+              "on-primary-fixed": "#001b3c",
+              "surface-container-high": "#e5e9eb",
+              "primary-fixed-dim": "#adc7f7",
+              "outline-variant": "#c4c6cf",
+              "on-tertiary-fixed-variant": "#00504e",
+              "on-primary-container": "#86a0cd",
+              "outline": "#74777f",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#f7fafc",
+              "primary-fixed": "#d6e3ff",
+              "on-secondary-fixed-variant": "#8c1620",
+              "surface-container-low": "#f1f4f6",
+              "error": "#ba1a1a",
+              "surface-dim": "#d7dadc",
+              "safety-orange": "#FF5722"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "gutter": "24px",
+              "container-max": "1280px",
+              "margin-desktop": "40px",
+              "margin-mobile": "16px",
+              "base": "8px"
+            },
+            "fontFamily": {
+              "headline-xl": ["Montserrat"],
+              "caption": ["Inter"],
+              "headline-lg": ["Montserrat"],
+              "headline-md": ["Montserrat"],
+              "body-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "label-md": ["Inter"],
+              "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+              "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+              "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+              "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+              "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+              "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+              "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+              "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+              "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .emergency-glow {
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.4);
+        }
+        .service-card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.05);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Shimmer Animation for Skeletons */
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .shimmer-bg {
+          background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+          background-size: 200% 100%;
+          animation: shimmer 1.5s infinite linear;
+        }
+        .dark .shimmer-bg {
+          background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+          background-size: 200% 100%;
+          animation: shimmer 1.5s infinite linear;
+        }
+    </style>
+</head>
+<body class="bg-background dark:bg-[#0b1523] text-on-surface dark:text-[#ebeef0] font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed transition-colors duration-200">
+
+<!-- GLOBAL VIEW CONTAINER (State Driven SPA Router) -->
+<div id="app-wrapper" class="relative min-h-screen">
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: SPLASH SCREEN                      -->
+    <!-- ========================================== -->
+    <div id="view-splash" class="view-screen fixed inset-0 z-[99999] flex flex-col items-center justify-between p-8 bg-gradient-to-br from-[#00132b] via-[#002045] to-[#0d2a54] text-white">
+        <div></div>
+        
+        <div class="flex flex-col items-center gap-6 text-center animate-fade-in">
+            <!-- App Logo & Icon representation -->
+            <div class="h-24 w-24 bg-white/10 rounded-3xl flex items-center justify-center p-4 shadow-2xl border-2 border-white/20 animate-pulse">
+                <svg class="h-16 w-16 text-[#fe6c6b]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            </div>
+            
+            <div class="space-y-2">
+                <h1 class="text-3xl font-bold tracking-tight font-headline-xl">ONE CALL</h1>
+                <p class="text-xs tracking-widest text-[#86a0cd] font-semibold uppercase">Home Solutions Platform</p>
+            </div>
+            
+            <div class="flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full border border-white/10">
+                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[10px] tracking-wider uppercase font-bold text-gray-200">The Guardian Standard</span>
+            </div>
+        </div>
+
+        <div class="w-full max-w-xs flex flex-col items-center gap-4">
+            <!-- Loading Indicator -->
+            <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-[#fe6c6b] to-[#ad3035] rounded-full animate-[loading-bar_2s_ease-out_forwards]" style="width: 100%"></div>
+            </div>
+            <p class="text-xs text-[#86a0cd] font-mono">Initializing offline systems...</p>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: ONBOARDING CAROUSEL                -->
+    <!-- ========================================== -->
+    <div id="view-onboarding" class="view-screen hidden min-h-screen flex flex-col justify-between p-6 bg-background dark:bg-[#0b1523]">
+        <!-- Top Skip Bar -->
+        <div class="flex justify-between items-center">
+            <span class="text-xs text-on-surface-variant font-bold">1-CALL ASSURED</span>
+            <button onclick="changeView('welcome')" class="text-sm font-bold text-secondary dark:text-[#fe6c6b] hover:underline">Skip</button>
+        </div>
+
+        <!-- Carousel Slide Core Container -->
+        <div class="flex-1 flex flex-col justify-center my-6 max-w-md mx-auto w-full">
+            
+            <!-- Slide 1 -->
+            <div id="onboarding-slide-0" class="onboarding-slide flex flex-col items-center text-center space-y-6">
+                <div class="h-64 w-full flex items-center justify-center p-8 bg-blue-50/50 dark:bg-slate-800/30 rounded-3xl border border-gray-100 dark:border-slate-800">
+                    <svg class="h-40 w-40 text-secondary animate-bounce" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-2xl font-bold text-primary dark:text-[#adc7f7] font-headline-lg">Instant 24/7 SOS</h2>
+                    <p class="text-sm text-on-surface-variant dark:text-gray-400 max-w-xs mx-auto">
+                        Connect immediately to emergency services. Electrical failures, burst pipes, and safety hazards resolved in under 30 minutes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div id="onboarding-slide-1" class="onboarding-slide hidden flex flex-col items-center text-center space-y-6">
+                <div class="h-64 w-full flex items-center justify-center p-8 bg-emerald-50/50 dark:bg-slate-800/30 rounded-3xl border border-gray-100 dark:border-slate-800">
+                    <svg class="h-40 w-40 text-emerald-600 animate-pulse" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-2xl font-bold text-primary dark:text-[#adc7f7] font-headline-lg">Guardian-Certified Pros</h2>
+                    <p class="text-sm text-on-surface-variant dark:text-gray-400 max-w-xs mx-auto">
+                        Sleep peacefully knowing all local technicians are completely background checked, vetted, and Level-3 certified.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div id="onboarding-slide-2" class="onboarding-slide hidden flex flex-col items-center text-center space-y-6">
+                <div class="h-64 w-full flex items-center justify-center p-8 bg-indigo-50/50 dark:bg-slate-800/30 rounded-3xl border border-gray-100 dark:border-slate-800">
+                    <svg class="h-40 w-40 text-[#fe6c6b]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h2 class="text-2xl font-bold text-primary dark:text-[#adc7f7] font-headline-lg">Unified Diagnostics</h2>
+                    <p class="text-sm text-on-surface-variant dark:text-gray-400 max-w-xs mx-auto">
+                        Manage properties, track maintenance contract statuses, and log repairs fully on your local device.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Dots & Next Action -->
+        <div class="flex flex-col items-center gap-6 max-w-md mx-auto w-full">
+            <!-- Indicator Dots -->
+            <div class="flex gap-2">
+                <span id="onboarding-dot-0" class="h-2 w-6 rounded-full bg-secondary dark:bg-[#fe6c6b] transition-all"></span>
+                <span id="onboarding-dot-1" class="h-2 w-2 rounded-full bg-gray-300 dark:bg-slate-700 transition-all"></span>
+                <span id="onboarding-dot-2" class="h-2 w-2 rounded-full bg-gray-300 dark:bg-slate-700 transition-all"></span>
+            </div>
+
+            <!-- CTA -->
+            <button onclick="nextOnboardingStep()" class="w-full bg-primary hover:bg-[#1a365d] dark:bg-primary-container text-white px-6 py-4 rounded-xl font-bold flex justify-center items-center gap-2 active:scale-95 transition-all">
+                <span id="onboarding-btn-text">Next Step</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 3: WELCOME SCREEN                     -->
+    <!-- ========================================== -->
+    <div id="view-welcome" class="view-screen hidden min-h-screen flex flex-col justify-between p-6 bg-background dark:bg-[#0b1523]">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary dark:text-[#fe6c6b] text-3xl font-bold">shield</span>
+                <span class="text-primary dark:text-[#adc7f7] font-bold text-sm tracking-wide uppercase">One Call</span>
+            </div>
+            <!-- Quick Offline Switch in Header -->
+            <div class="flex items-center gap-1 bg-white/80 dark:bg-slate-800/80 px-2.5 py-1 rounded-full border border-gray-100 dark:border-slate-700 text-[10px]">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                <span class="font-bold text-gray-500 dark:text-gray-400">OFFLINE SYNC</span>
+            </div>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-center text-center space-y-6 max-w-md mx-auto w-full">
+            <div class="h-56 w-full flex items-center justify-center relative">
+                <div class="absolute inset-0 bg-[#fe6c6b]/10 rounded-full filter blur-3xl animate-pulse"></div>
+                <!-- Welcome Graphic SVG -->
+                <svg class="h-44 w-44 text-primary dark:text-[#adc7f7] relative z-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M2.25 21h19.5M3 9l9-7 9 7M5 10v11" />
+                </svg>
+            </div>
+            
+            <div class="space-y-2">
+                <h2 class="text-3xl font-extrabold text-primary dark:text-white font-headline-xl">Welcome to One Call</h2>
+                <p class="text-sm text-on-surface-variant dark:text-gray-400 max-w-sm mx-auto">
+                    Manage diagnostics, request instant SOS service agents, and keep your property catalog operating flawlessly.
+                </p>
+            </div>
+        </div>
+
+        <div class="space-y-3 max-w-md mx-auto w-full">
+            <button onclick="changeView('login')" class="w-full bg-primary hover:bg-[#1a365d] dark:bg-primary-container text-white py-4 rounded-xl font-bold flex justify-center items-center gap-2 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[20px]">login</span> LOG IN TO ACCOUNT
+            </button>
+            <button onclick="changeView('signup')" class="w-full bg-white dark:bg-slate-800 border-2 border-primary dark:border-primary-container text-primary dark:text-[#adc7f7] py-4 rounded-xl font-bold flex justify-center items-center gap-2 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[20px]">person_add</span> CREATE NEW ACCOUNT
+            </button>
+            <button onclick="bypassLogin()" class="w-full text-center text-xs font-semibold text-on-surface-variant hover:text-primary dark:hover:text-white mt-4 block">
+                Explore as Guest (No Account Required)
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 4: LOGIN SCREEN                       -->
+    <!-- ========================================== -->
+    <div id="view-login" class="view-screen hidden min-h-screen flex flex-col justify-between p-6 bg-background dark:bg-[#0b1523]">
+        <div class="flex items-center gap-2" onclick="changeView('welcome')">
+            <button class="material-symbols-outlined p-2 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-gray-100 dark:border-slate-700">arrow_back</button>
+            <span class="text-xs font-bold text-on-surface-variant">Back</span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-center max-w-md mx-auto w-full space-y-8">
+            <div class="space-y-2 text-center md:text-left">
+                <h2 class="text-3xl font-extrabold text-primary dark:text-white font-headline-xl">Welcome Back</h2>
+                <p class="text-sm text-on-surface-variant dark:text-gray-400">Sign in to your One Call property hub</p>
+            </div>
+
+            <form id="login-form" onsubmit="handleLoginSubmit(event)" class="space-y-5 bg-white dark:bg-slate-800/80 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-slate-800">
+                <!-- Phone or Email -->
+                <div class="space-y-1.5 text-left">
+                    <label class="text-xs font-bold text-primary dark:text-[#adc7f7] uppercase tracking-wider">Email or Phone Number</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]">person</span>
+                        <input id="login-user" required type="text" placeholder="name@domain.com or Phone" class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-primary dark:focus:border-[#adc7f7] focus:ring-1 focus:ring-primary dark:text-white text-sm">
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="space-y-1.5 text-left">
+                    <div class="flex justify-between items-center">
+                        <label class="text-xs font-bold text-primary dark:text-[#adc7f7] uppercase tracking-wider">Password</label>
+                        <button type="button" onclick="changeView('forgot')" class="text-xs text-secondary dark:text-[#fe6c6b] hover:underline font-bold">Forgot?</button>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]">lock</span>
+                        <input id="login-pass" required type="password" placeholder="••••••••" class="w-full pl-10 pr-12 py-3 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-primary dark:focus:border-[#adc7f7] focus:ring-1 focus:ring-primary dark:text-white text-sm">
+                        <button type="button" onclick="togglePasswordVisibility('login-pass')" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary dark:hover:text-white">
+                            <span class="material-symbols-outlined text-[20px]">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full mt-4 bg-primary hover:bg-[#1a365d] dark:bg-primary-container text-white py-3.5 rounded-xl font-bold flex justify-center items-center gap-2 active:scale-95 transition-all shadow-md">
+                    <span class="material-symbols-outlined text-[20px]">login</span> LOG IN
+                </button>
+            </form>
+
+            <p class="text-center text-sm text-on-surface-variant dark:text-gray-400">
+                New to the platform? <button onclick="changeView('signup')" class="text-secondary dark:text-[#fe6c6b] font-bold hover:underline">Create Account</button>
+            </p>
+        </div>
+
+        <div></div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 5: SIGNUP SCREEN                      -->
+    <!-- ========================================== -->
+    <div id="view-signup" class="view-screen hidden min-h-screen flex flex-col justify-between p-6 bg-background dark:bg-[#0b1523]">
+        <div class="flex items-center gap-2" onclick="changeView('welcome')">
+            <button class="material-symbols-outlined p-2 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-gray-100 dark:border-slate-700">arrow_back</button>
+            <span class="text-xs font-bold text-on-surface-variant">Back</span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-center max-w-md mx-auto w-full space-y-6">
+            <div class="space-y-2 text-center md:text-left">
+                <h2 class="text-3xl font-extrabold text-primary dark:text-white font-headline-xl">Get Started</h2>
+                <p class="text-sm text-on-surface-variant dark:text-gray-400">Sign up and protect your properties</p>
+            </div>
+
+            <form id="signup-form" onsubmit="handleSignupSubmit(event)" class="space-y-4 bg-white dark:bg-slate-800/80 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-slate-800">
+                <!-- Full Name -->
+                <div class="space-y-1.5 text-left">
+                    <label class="text-xs font-bold text-primary dark:text-[#adc7f7] uppercase tracking-wider">Full Name</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]">person_book</span>
+                        <input id="signup-name" required type="text" placeholder="Bandi Ashok" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-primary dark:focus:border-[#adc7f7] dark:text-white text-sm">
+                    </div>
+                </div>
+
+                <!-- Phone / Email -->
+                <div class="space-y-1.5 text-left">
+                    <label class="text-xs font-bold text-primary dark:text-[#adc7f7] uppercase tracking-wider">Email or Mobile Number</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]">call</span>
+                        <input id="signup-user" required type="text" placeholder="e.g., +91 98765 43210" class="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-primary dark:focus:border-[#adc7f7] dark:text-white text-sm">
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="space-y-1.5 text-left">
+                    <label class="text-xs font-bold text-primary dark:text-[#adc7f7] uppercase tracking-wider">Password</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]">lock_reset</span>
+                        <input id="signup-pass" required type="password" placeholder="Min. 8 characters" class="w-full pl-10 pr-12 py-2.5 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-primary dark:focus:border-[#adc7f7] dark:text-white text-sm">
+                        <button type="button" onclick="togglePasswordVisibility('signup-pass')" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary dark:hover:text-white">
+                            <span class="material-symbols-outlined text-[20px]">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Terms -->
+                <div class="flex items-start gap-2 pt-2">
+                    <input id="signup-terms" required type="checkbox" class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                    <label for="signup-terms" class="text-xs text-on-surface-variant dark:text-gray-400">
+                        I agree to the <a href="#" class="text-secondary dark:text-[#fe6c6b] font-bold underline">Terms of Service</a> & <a href="#" class="text-secondary dark:text-[#fe6c6b] font-bold underline">Guardian Protocols</a>.
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full mt-4 bg-primary hover:bg-[#1a365d] dark:bg-primary-container text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 active:scale-95 transition-all shadow-md">
+                    <span class="material-symbols-outlined text-[20px]">how_to_reg</span> SIGN UP
+                </button>
+            </form>
+
+            <p class="text-center text-sm text-on-surface-variant dark:text-gray-400">
+                Already have an account? <button onclick="changeView('login')" class="text-secondary dark:text-[#fe6c6b] font-bold hover:underline">Log In</button>
+            </p>
+        </div>
+
+        <div></div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 6: OTP VERIFICATION                   -->
+    <!-- ========================================== -->
+    <div id="view-otp" class="view-screen hidden min-h-screen flex flex-col justify-between p-6 bg-background dark:bg-[#0b1523]">
+        <div class="flex items-center gap-2" onclick="changeView('signup')">
+            <button class="material-symbols-outlined p-2 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-gray-100 dark:border-slate-700">arrow_back</button>
+            <span class="text-xs font-bold text-on-surface-variant">Back</span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-center max-w-md mx-auto w-full space-y-8">
+            <div class="space-y-2 text-center">
+                <div class="h-16 w-16 bg-[#fe6c6b]/10 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                    <span class="material-symbols-outlined text-[#fe6c6b] text-3xl">sms</span>
+                </div>
+                <h2 class="text-3xl font-extrabold text-primary dark:text-white font-headline-xl">Verify Code</h2>
+                <p class="text-sm text-on-surface-variant dark:text-gray-400">We sent a 4-digit verification code to you</p>
+            </div>
+
+            <div class="space-y-6 bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-slate-800 text-center">
+                
+                <!-- 4 Digit Code Row -->
+                <div class="flex justify-center gap-4">
+                    <input id="otp-digit-1" maxlength="1" type="number" oninput="focusNextOtp(this, 'otp-digit-2')" class="w-16 h-16 text-2xl font-bold text-center bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-2xl focus:outline-none focus:border-primary dark:focus:border-[#fe6c6b] focus:ring-1 focus:ring-primary dark:text-white">
+                    <input id="otp-digit-2" maxlength="1" type="number" oninput="focusNextOtp(this, 'otp-digit-3')" onkeydown="focusPrevOtp(event, 'otp-digit-1')" class="w-16 h-16 text-2xl font-bold text-center bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-2xl focus:outline-none focus:border-primary dark:focus:border-[#fe6c6b] focus:ring-1 focus:ring-primary dark:text-white">
+                    <input id="otp-digit-3" maxlength="1" type="number" oninput="focusNextOtp(this, 'otp-digit-4')" onkeydown="focusPrevOtp(event, 'otp-digit-2')" class="w-16 h-16 text-2xl font-bold text-center bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-2xl focus:outline-none focus:border-primary dark:focus:border-[#fe6c6b] focus:ring-1 focus:ring-primary dark:text-white">
+                    <input id="otp-digit-4" maxlength="1" type="number" onkeydown="focusPrevOtp(event, 'otp-digit-3')" class="w-16 h-16 text-2xl font-bold text-center bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-2xl focus:outline-none focus:border-primary dark:focus:border-[#fe6c6b] focus:ring-1 focus:ring-primary dark:text-white">
+                </div>
+
+                <!-- Code Countdown Timer -->
+                <div class="flex justify-between items-center px-2">
+                    <span id="otp-countdown" class="text-xs text-on-surface-variant dark:text-gray-400 font-mono">01:59 remaining</span>
+                    <button id="otp-resend-btn" disabled onclick="resendOtpCountdown()" class="text-xs font-bold text-gray-400 hover:text-secondary dark:hover:text-[#fe6c6b] transition-colors">Resend OTP</button>
+                </div>
+
+                <button onclick="verifyOtpCode()" class="w-full bg-primary hover:bg-[#1a365d] dark:bg-primary-container text-white py-4 rounded-xl font-bold flex justify-center items-center gap-2 active:scale-95 transition-all shadow-md">
+                    <span class="material-symbols-outlined text-[20px]">verified</span> CONFIRM CODE
+                </button>
+            </div>
+        </div>
+
+        <div></div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 7: FORGOT PASSWORD                    -->
+    <!-- ========================================== -->
+    <div id="view-forgot" class="view-screen hidden min-h-screen flex flex-col justify-between p-6 bg-background dark:bg-[#0b1523]">
+        <div class="flex items-center gap-2" onclick="changeView('login')">
+            <button class="material-symbols-outlined p-2 rounded-full bg-white dark:bg-slate-800 shadow-sm border border-gray-100 dark:border-slate-700">arrow_back</button>
+            <span class="text-xs font-bold text-on-surface-variant">Back</span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-center max-w-md mx-auto w-full space-y-6">
+            <div id="forgot-form-section" class="space-y-6">
+                <div class="space-y-2 text-center md:text-left">
+                    <h2 class="text-3xl font-extrabold text-primary dark:text-white font-headline-xl">Forgot Password</h2>
+                    <p class="text-sm text-on-surface-variant dark:text-gray-400">Enter your registered email or phone to reset</p>
+                </div>
+
+                <form onsubmit="handleForgotSubmit(event)" class="space-y-5 bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-slate-800">
+                    <div class="space-y-1.5 text-left">
+                        <label class="text-xs font-bold text-primary dark:text-[#adc7f7] uppercase tracking-wider">Email or Phone Number</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]">alternate_email</span>
+                            <input id="forgot-user" required type="text" placeholder="yourname@domain.com" class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-primary dark:focus:border-[#adc7f7] dark:text-white text-sm">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-primary hover:bg-[#1a365d] dark:bg-primary-container text-white py-3.5 rounded-xl font-bold flex justify-center items-center gap-2 active:scale-95 transition-all shadow-md">
+                        <span class="material-symbols-outlined text-[20px]">mark_email_read</span> SEND RESET CODE
+                    </button>
+                </form>
+            </div>
+
+            <!-- success reset indicator -->
+            <div id="forgot-success-section" class="hidden space-y-6 text-center">
+                <div class="h-20 w-20 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                    <span class="material-symbols-outlined text-[48px]">mark_email_read</span>
+                </div>
+                <h3 class="text-2xl font-bold text-primary dark:text-white font-headline-lg">Reset Code Sent</h3>
+                <p class="text-sm text-on-surface-variant dark:text-gray-400 max-w-sm mx-auto">
+                    We've dispatched an offline-simulated recovery link. Check your inbox and tap below to login.
+                </p>
+                <button onclick="changeView('login')" class="w-full bg-primary hover:bg-[#1a365d] dark:bg-primary-container text-white py-3.5 rounded-xl font-bold flex justify-center items-center gap-2 active:scale-95 transition-all shadow-md max-w-xs mx-auto">
+                    <span class="material-symbols-outlined text-[20px]">login</span> LOG IN
+                </button>
+            </div>
+        </div>
+
+        <div></div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 8: INTERNAL SYSTEM ERROR              -->
+    <!-- ========================================== -->
+    <div id="view-error" class="view-screen hidden min-h-screen flex flex-col justify-center items-center p-6 bg-background dark:bg-[#0b1523] text-center">
+        <div class="max-w-md space-y-6">
+            <div class="h-24 w-24 bg-[#ad3035]/10 rounded-full flex items-center justify-center mx-auto animate-pulse">
+                <span class="material-symbols-outlined text-[#ad3035] text-[64px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+            </div>
+            <div class="space-y-2">
+                <h2 class="text-3xl font-extrabold text-primary dark:text-[#adc7f7] font-headline-xl">System Failure</h2>
+                <p class="text-xs text-[#ad3035] font-bold font-mono tracking-widest uppercase">ERROR_CODE_500</p>
+                <p class="text-sm text-on-surface-variant dark:text-gray-400 max-w-xs mx-auto">
+                    The background connection has closed unexpectedly. Please check your cloud settings or retry.
+                </p>
+            </div>
+            <button onclick="changeView('home')" class="px-8 py-3 bg-primary dark:bg-primary-container text-white rounded-xl font-bold shadow-md hover:bg-[#1a365d] transition-all">
+                RETRY CONNECTION
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 9: OFFLINE ALARM SCREEN               -->
+    <!-- ========================================== -->
+    <div id="view-offline" class="view-screen hidden min-h-screen flex flex-col justify-center items-center p-6 bg-background dark:bg-[#0b1523] text-center">
+        <div class="max-w-md space-y-6">
+            <div class="h-24 w-24 bg-gray-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto">
+                <span class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-[64px]">cloud_off</span>
+            </div>
+            <div class="space-y-2">
+                <h2 class="text-3xl font-extrabold text-primary dark:text-white font-headline-xl">Connection Offline</h2>
+                <p class="text-sm text-on-surface-variant dark:text-gray-400 max-w-xs mx-auto">
+                    No active network link detected. One Call will operate fully in on-device cache mode.
+                </p>
+            </div>
+            <button onclick="changeView('home')" class="px-8 py-3 bg-secondary dark:bg-[#fe6c6b] text-white rounded-xl font-bold shadow-md hover:bg-opacity-90 transition-all">
+                CONTINUE OFFLINE
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 10: PRIMARY HOME EXPLORE DASHBOARD    -->
+    <!-- ========================================== -->
+    <div id="view-home" class="view-screen hidden min-h-screen flex flex-col pb-24 bg-background dark:bg-[#0b1523]">
+        
+        <!-- SIDEBAR DRAWER PANEL (Module 1 Drawer) -->
+        <div id="app-drawer" class="fixed inset-y-0 left-0 w-80 bg-white dark:bg-[#111c2e] z-[100] transform -translate-x-full transition-transform duration-300 shadow-2xl border-r border-gray-200 dark:border-slate-800 flex flex-col justify-between">
+            <div>
+                <!-- Drawer Header -->
+                <div class="bg-primary dark:bg-primary-container text-white p-6 border-b-4 border-secondary flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 w-10 bg-white/10 rounded-xl flex items-center justify-center border border-white/20">
+                            <span class="material-symbols-outlined text-secondary dark:text-[#fe6c6b]">shield</span>
+                        </div>
+                        <div>
+                            <h4 id="drawer-user-name" class="font-bold text-sm leading-tight text-white">Bandi Ashok</h4>
+                            <p class="text-[10px] text-gray-300">Level 3 Premium Citizen</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleAppDrawer()" class="material-symbols-outlined hover:bg-white/10 p-1.5 rounded-full text-white transition-colors">close</button>
+                </div>
+
+                <!-- Drawer Links -->
+                <div class="p-4 space-y-1">
+                    <span class="text-[10px] text-gray-400 dark:text-slate-500 uppercase tracking-widest px-3 font-bold block mb-2">Platform Options</span>
+                    
+                    <button onclick="changeView('home'); toggleAppDrawer()" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors text-left">
+                        <span class="flex items-center gap-3 text-primary dark:text-[#adc7f7] font-semibold text-sm">
+                            <span class="material-symbols-outlined">home</span> Home Dashboard
+                        </span>
+                    </button>
+
+                    <!-- Theme Switch Toggle -->
+                    <button onclick="toggleDarkMode()" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors text-left">
+                        <span class="flex items-center gap-3 text-primary dark:text-[#adc7f7] font-semibold text-sm">
+                            <span class="material-symbols-outlined">dark_mode</span> Theme Toggle
+                        </span>
+                        <span id="theme-badge" class="bg-[#ebeef0] dark:bg-slate-800 text-[#002045] dark:text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">LIGHT</span>
+                    </button>
+
+                    <!-- Error test -->
+                    <button onclick="changeView('error'); toggleAppDrawer()" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors text-left">
+                        <span class="flex items-center gap-3 text-[#ad3035] dark:text-[#fe6c6b] font-semibold text-sm">
+                            <span class="material-symbols-outlined">bug_report</span> Test Error Screen
+                        </span>
+                    </button>
+
+                    <!-- Offline Test -->
+                    <button onclick="changeView('offline'); toggleAppDrawer()" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors text-left">
+                        <span class="flex items-center gap-3 text-gray-600 dark:text-gray-300 font-semibold text-sm">
+                            <span class="material-symbols-outlined">cloud_off</span> Test Offline Screen
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Drawer Footer Logout -->
+            <div class="p-6 border-t border-gray-100 dark:border-slate-800">
+                <button onclick="handleLogout()" class="w-full flex items-center justify-center gap-2 bg-gray-100 dark:bg-slate-800 text-[#002045] dark:text-white py-3 rounded-xl font-bold hover:bg-red-50 dark:hover:bg-red-950/20 hover:text-red-600 transition-colors">
+                    <span class="material-symbols-outlined">logout</span> LOG OUT HUB
+                </button>
+            </div>
+        </div>
+
+        <!-- Backdrop overlay for Drawer -->
+        <div id="drawer-backdrop" onclick="toggleAppDrawer()" class="fixed inset-0 bg-black/50 z-[99] hidden backdrop-blur-sm transition-opacity duration-300"></div>
+
+        <!-- ============================== -->
+        <!-- HEADER / TOP APP BAR           -->
+        <!-- ============================== -->
+        <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-[#111c2e] shadow-sm transition-colors border-b border-gray-100 dark:border-slate-800">
+            <div class="flex items-center gap-3">
+                <!-- Hamburger Menu Trigger -->
+                <button onclick="toggleAppDrawer()" class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors text-primary dark:text-[#adc7f7]">menu</button>
+                
+                <div class="flex flex-col">
+                    <span class="text-primary dark:text-[#adc7f7] font-headline-md text-[16px] md:text-[18px] leading-tight font-bold">One Call</span>
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[14px] text-primary dark:text-[#adc7f7]">location_on</span>
+                        <span class="text-[11px] font-semibold text-on-surface-variant dark:text-gray-400 truncate max-w-[120px] md:max-w-none">Home - Green Valley, Mumbai</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <!-- Theme toggle quick access -->
+                <button onclick="toggleDarkMode()" class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-slate-800 text-on-surface-variant dark:text-gray-300 transition-colors">dark_mode</button>
+                <button onclick="alert('Module 1: Notifications system simulated successfully.')" class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-slate-800 text-on-surface-variant dark:text-gray-300 transition-colors">notifications</button>
+                <button onclick="changeView('welcome')" class="hidden md:flex items-center gap-2 bg-primary dark:bg-primary-container text-white px-4 py-2 rounded-xl text-label-md font-bold">
+                    <span class="material-symbols-outlined text-[18px]">account_circle</span> AUTHENTICATION
+                </button>
+            </div>
+        </header>
+
+        <!-- ============================== -->
+        <!-- MAIN DASHBOARD CONTENT         -->
+        <!-- ============================== -->
+        <main class="pt-16">
+            
+            <!-- Hero Search Section -->
+            <section class="relative px-margin-mobile md:px-margin-desktop py-10 overflow-hidden bg-gradient-to-br from-blue-50/20 to-transparent dark:from-slate-900/40">
+                <div class="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-10">
+                    <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBvqqPTtyXVt-fgdmDXwGd_8RPRO2NnC7IWlAvAYHdRgrkiButGmxIQq38pyXoGTCS7xRVL55Rax9HB8USj_1-Z6qJd9-o66h3CH1e4pu78t6hUNtyJ9usRUmx7ihbKu2MYEu1HH72LdPevB1sxKoNv7ZhZXkrrLRmgYLzefxMp4aoPRg9Wq769xgckaIJOsufC7Q8Sna2J_eS8V3yUEr_wAbfqjeNndxAalO1_r-ooCWzYwVwmUe8E')"></div>
+                </div>
+                
+                <div class="max-w-container-max mx-auto">
+                    <h1 class="font-headline-xl text-headline-xl md:text-headline-xl max-w-2xl mb-6 text-primary dark:text-[#adc7f7]">
+                        Your Safety Home <br/><span class="text-secondary dark:text-[#fe6c6b]">Our Priority.</span>
+                    </h1>
+                    
+                    <!-- Integrated Search Trigger -->
+                    <div class="relative max-w-xl group">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+                        <input id="home-search" onkeydown="handleSearchKeyPress(event)" class="w-full pl-12 pr-24 py-4 rounded-xl border-outline-variant dark:border-slate-700 bg-white dark:bg-slate-800 shadow-md focus:border-primary dark:focus:border-primary-container dark:text-white transition-all text-body-md" placeholder="Search 300+ services (e.g. electrical, cleaning)" type="text"/>
+                        <button onclick="triggerSearchWithLoader()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-primary dark:bg-primary-container text-white px-5 py-2 rounded-lg text-label-md font-bold hover:bg-[#1a365d] active:scale-95 transition-all">FIND</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Emergency SOS Banner -->
+            <section class="px-margin-mobile md:px-margin-desktop mb-10">
+                <div class="max-w-container-max mx-auto">
+                    <div class="bg-white dark:bg-[#15253b] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 service-card-shadow border-l-8 border-safety-orange relative overflow-hidden border border-gray-100 dark:border-slate-800">
+                        <div class="flex items-center gap-6">
+                            <div class="h-16 w-16 bg-safety-orange/10 rounded-full flex items-center justify-center animate-pulse">
+                                <span class="material-symbols-outlined text-safety-orange text-[40px]" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+                            </div>
+                            <div class="text-left">
+                                <h2 class="font-headline-md text-headline-md text-primary dark:text-[#adc7f7] mb-1">One Call SOS</h2>
+                                <p class="text-on-surface-variant dark:text-gray-300 flex items-center gap-2 text-sm">
+                                    <span class="material-symbols-outlined text-safety-orange text-[18px]">timer</span>
+                                    <span class="font-bold text-secondary dark:text-[#fe6c6b]">30 Min Response Time</span> for all emergencies
+                                </p>
+                            </div>
+                        </div>
+                        <button onclick="alert('SOS Triggered! Level 3 Emergency units notified offline.')" class="w-full md:w-auto bg-safety-orange hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-headline-md emergency-glow active:scale-95 transition-all">
+                            REQUEST SOS NOW
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SKELETON LOADER BOX (Shimmering State Placeholder) -->
+            <section id="skeleton-loader-container" class="hidden px-margin-mobile md:px-margin-desktop mb-12">
+                <div class="max-w-container-max mx-auto">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="h-6 w-48 shimmer-bg rounded-lg"></div>
+                        <div class="h-4 w-16 shimmer-bg rounded-lg"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-100 dark:border-slate-850 space-y-4">
+                            <div class="h-32 w-full shimmer-bg rounded-xl"></div>
+                            <div class="h-6 w-3/4 shimmer-bg rounded-lg"></div>
+                            <div class="h-4 w-1/2 shimmer-bg rounded-lg"></div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-100 dark:border-slate-850 space-y-4">
+                            <div class="h-32 w-full shimmer-bg rounded-xl"></div>
+                            <div class="h-6 w-3/4 shimmer-bg rounded-lg"></div>
+                            <div class="h-4 w-1/2 shimmer-bg rounded-lg"></div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-gray-100 dark:border-slate-850 space-y-4">
+                            <div class="h-32 w-full shimmer-bg rounded-xl"></div>
+                            <div class="h-6 w-3/4 shimmer-bg rounded-lg"></div>
+                            <div class="h-4 w-1/2 shimmer-bg rounded-lg"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Content Wrapper (Can be hidden during loading shimmer) -->
+            <div id="home-dashboard-content">
+                <!-- Service Categories Grid -->
+                <section class="px-margin-mobile md:px-margin-desktop mb-12">
+                    <div class="max-w-container-max mx-auto">
+                        <div class="flex justify-between items-end mb-6">
+                            <h3 id="categories-section-title" class="font-headline-md text-headline-md text-primary dark:text-[#adc7f7]">Service Categories</h3>
+                            <button onclick="resetCategoryFilters()" class="text-primary dark:text-[#adc7f7] font-bold text-label-md flex items-center gap-1 hover:underline">VIEW ALL <span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-6 gap-4" id="categories-grid-parent">
+                            <!-- Cleaning -->
+                            <div onclick="filterByCategory('cleaning')" class="group cursor-pointer">
+                                <div class="bg-white dark:bg-[#15253b] p-6 rounded-2xl service-card-shadow flex flex-col items-center gap-3 border border-gray-100 dark:border-slate-800 group-hover:bg-primary dark:group-hover:bg-primary-container group-hover:text-on-primary transition-all duration-300">
+                                    <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] group-hover:text-white text-[32px]">cleaning_services</span>
+                                    <span class="text-label-md font-label-md text-primary dark:text-white group-hover:text-white">Cleaning</span>
+                                </div>
+                            </div>
+                            <!-- Painting -->
+                            <div onclick="filterByCategory('painting')" class="group cursor-pointer">
+                                <div class="bg-white dark:bg-[#15253b] p-6 rounded-2xl service-card-shadow flex flex-col items-center gap-3 border border-gray-100 dark:border-slate-800 group-hover:bg-primary dark:group-hover:bg-primary-container group-hover:text-on-primary transition-all duration-300">
+                                    <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] group-hover:text-white text-[32px]">format_paint</span>
+                                    <span class="text-label-md font-label-md text-primary dark:text-white group-hover:text-white">Painting</span>
+                                </div>
+                            </div>
+                            <!-- Plumbing -->
+                            <div onclick="filterByCategory('plumbing')" class="group cursor-pointer">
+                                <div class="bg-white dark:bg-[#15253b] p-6 rounded-2xl service-card-shadow flex flex-col items-center gap-3 border border-gray-100 dark:border-slate-800 group-hover:bg-primary dark:group-hover:bg-primary-container group-hover:text-on-primary transition-all duration-300 relative">
+                                    <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] group-hover:text-white text-[32px]">plumbing</span>
+                                    <span class="text-label-md font-label-md text-primary dark:text-white group-hover:text-white">Plumbing</span>
+                                    <span class="absolute top-2 right-2 bg-tertiary-container text-tertiary-fixed text-[9px] px-1.5 py-0.5 rounded-full font-bold">VERIFIED</span>
+                                </div>
+                            </div>
+                            <!-- Electrical -->
+                            <div onclick="filterByCategory('electrical')" class="group cursor-pointer">
+                                <div class="bg-white dark:bg-[#15253b] p-6 rounded-2xl service-card-shadow flex flex-col items-center gap-3 border border-gray-100 dark:border-slate-800 group-hover:bg-primary dark:group-hover:bg-primary-container group-hover:text-on-primary transition-all duration-300">
+                                    <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] group-hover:text-white text-[32px]">electrical_services</span>
+                                    <span class="text-label-md font-label-md text-primary dark:text-white group-hover:text-white">Electrical</span>
+                                </div>
+                            </div>
+                            <!-- Appliances -->
+                            <div onclick="filterByCategory('appliances')" class="group cursor-pointer">
+                                <div class="bg-white dark:bg-[#15253b] p-6 rounded-2xl service-card-shadow flex flex-col items-center gap-3 border border-gray-100 dark:border-slate-800 group-hover:bg-primary dark:group-hover:bg-primary-container group-hover:text-on-primary transition-all duration-300">
+                                    <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] group-hover:text-white text-[32px]">microwave</span>
+                                    <span class="text-label-md font-label-md text-primary dark:text-white group-hover:text-white">Appliances</span>
+                                </div>
+                            </div>
+                            <!-- Smart Home -->
+                            <div onclick="filterByCategory('smart home')" class="group cursor-pointer">
+                                <div class="bg-white dark:bg-[#15253b] p-6 rounded-2xl service-card-shadow flex flex-col items-center gap-3 border border-gray-100 dark:border-slate-800 group-hover:bg-primary dark:group-hover:bg-primary-container group-hover:text-on-primary transition-all duration-300">
+                                    <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] group-hover:text-white text-[32px]">smartphone</span>
+                                    <span class="text-label-md font-label-md text-primary dark:text-white group-hover:text-white">Smart Home</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Grid (Module 1 dynamic search target) -->
+                <section class="px-margin-mobile md:px-margin-desktop mb-12">
+                    <div class="max-w-container-max mx-auto">
+                        <h3 class="font-headline-md text-headline-md text-primary dark:text-[#adc7f7] mb-6 text-left">Popular Services</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="services-grid-container">
+                            <!-- Switch Wiring Service -->
+                            <div class="service-card-item bg-white dark:bg-[#15253b] rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-800 service-card-shadow transition-all hover:translate-y-[-4px]" data-category="electrical" data-name="switch replacement cabling inspection">
+                                <div class="h-44 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDltWZPWCZ8YGmRnx3S_vaAq7m2DQoZKnb_uKvJ1GP9lpqmbUpWefnr_D7G9mWsgFhLEoiCoxd0XAgS2PEmtpvFMmjfXGQfxkurFksKA6atIW1wkRX6C1x6UozpdSmg_VJtNh4DK90dJQssBOFTHRKxtp9pQ3a1TNMchdrRiCSFRr2xfWMYPG463roxzar-m7m0wiEVEZi97koJFmaq0qDj6IsK1wUlYPWOQ-KC48GEGT-fuS8f6tw7')"></div>
+                                <div class="p-5 text-left space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="bg-blue-50 dark:bg-slate-800 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase">Electrical</span>
+                                        <span class="text-sm font-bold text-primary dark:text-white">₹450 onwards</span>
+                                    </div>
+                                    <h4 class="font-bold text-primary dark:text-[#adc7f7] text-lg">Switch Replacement &amp; Cabling</h4>
+                                    <p class="text-xs text-on-surface-variant dark:text-gray-300">Complete multi-point terminal safety diagnostics and switches fitting by verified experts.</p>
+                                    <button onclick="alert('Booking registered offline under Electrical!')" class="w-full py-2 text-xs bg-primary dark:bg-primary-container hover:bg-opacity-90 text-white font-bold rounded-lg transition-colors">BOOK SERVICE</button>
+                                </div>
+                            </div>
+
+                            <!-- Bathroom Deep Clean Service -->
+                            <div class="service-card-item bg-white dark:bg-[#15253b] rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-800 service-card-shadow transition-all hover:translate-y-[-4px]" data-category="cleaning" data-name="bathroom deep cleaning disinfection sanitization">
+                                <div class="h-44 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBvqqPTtyXVt-fgdmDXwGd_8RPRO2NnC7IWlAvAYHdRgrkiButGmxIQq38pyXoGTCS7xRVL55Rax9HB8USj_1-Z6qJd9-o66h3CH1e4pu78t6hUNtyJ9usRUmx7ihbKu2MYEu1HH72LdPevB1sxKoNv7ZhZXkrrLRmgYLzefxMp4aoPRg9Wq769xgckaIJOsufC7Q8Sna2J_eS8V3yUEr_wAbfqjeNndxAalO1_r-ooCWzYwVwmUe8E')"></div>
+                                <div class="p-5 text-left space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="bg-emerald-50 dark:bg-slate-800 text-emerald-700 dark:text-emerald-300 px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase">Cleaning</span>
+                                        <span class="text-sm font-bold text-primary dark:text-white">₹899 onwards</span>
+                                    </div>
+                                    <h4 class="font-bold text-primary dark:text-[#adc7f7] text-lg">Deep Bathroom Sanitization</h4>
+                                    <p class="text-xs text-on-surface-variant dark:text-gray-300">Intense multi-acid floor polishing, limescale eradication, and certified antiviral spray coat.</p>
+                                    <button onclick="alert('Booking registered offline under Cleaning!')" class="w-full py-2 text-xs bg-primary dark:bg-primary-container hover:bg-opacity-90 text-white font-bold rounded-lg transition-colors">BOOK SERVICE</button>
+                                </div>
+                            </div>
+
+                            <!-- Emergency Pipeline Leak Service -->
+                            <div class="service-card-item bg-white dark:bg-[#15253b] rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-800 service-card-shadow transition-all hover:translate-y-[-4px]" data-category="plumbing" data-name="leak detection pipeline faucet plumbing repair">
+                                <div class="h-44 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBvqqPTtyXVt-fgdmDXwGd_8RPRO2NnC7IWlAvAYHdRgrkiButGmxIQq38pyXoGTCS7xRVL55Rax9HB8USj_1-Z6qJd9-o66h3CH1e4pu78t6hUNtyJ9usRUmx7ihbKu2MYEu1HH72LdPevB1sxKoNv7ZhZXkrrLRmgYLzefxMp4aoPRg9Wq769xgckaIJOsufC7Q8Sna2J_eS8V3yUEr_wAbfqjeNndxAalO1_r-ooCWzYwVwmUe8E')"></div>
+                                <div class="p-5 text-left space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="bg-red-50 dark:bg-slate-800 text-red-700 dark:text-red-300 px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase">Plumbing</span>
+                                        <span class="text-sm font-bold text-primary dark:text-white">₹350 onwards</span>
+                                    </div>
+                                    <h4 class="font-bold text-primary dark:text-[#adc7f7] text-lg">Faucet &amp; Pipeline Repair</h4>
+                                    <p class="text-xs text-on-surface-variant dark:text-gray-300">Rapid valve adjustments, gasket replacements, and heavy copper block sealing.</p>
+                                    <button onclick="alert('Booking registered offline under Plumbing!')" class="w-full py-2 text-xs bg-primary dark:bg-primary-container hover:bg-opacity-90 text-white font-bold rounded-lg transition-colors">BOOK SERVICE</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- No results placeholder state -->
+                        <div id="search-no-results" class="hidden py-12 text-center space-y-3 bg-white dark:bg-[#15253b] rounded-2xl border border-gray-100 dark:border-slate-800">
+                            <span class="material-symbols-outlined text-[48px] text-gray-400">search_off</span>
+                            <h4 class="font-bold text-primary dark:text-white">No Matching Services</h4>
+                            <p class="text-xs text-on-surface-variant dark:text-gray-400">Try searching for other terms like "plumbing", "painting", or "cleaning"</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Promotional Premium Banners (Large curated content) -->
+                <section class="px-margin-mobile md:px-margin-desktop mb-12">
+                    <div class="max-w-container-max mx-auto">
+                        <div class="relative bg-primary-container dark:bg-[#1a2c42] rounded-3xl p-8 md:p-12 overflow-hidden flex items-center min-h-[220px]">
+                            <div class="relative z-10 max-w-lg text-left">
+                                <span class="bg-secondary text-on-primary px-3 py-1 rounded-lg text-caption font-bold tracking-widest uppercase mb-4 inline-block">Special Offer</span>
+                                <h2 class="text-on-primary-container dark:text-white font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4">
+                                    Get 20% off your first AMC subscription
+                                </h2>
+                                <button onclick="alert('Module 1: Subscribed Offline!')" class="bg-white text-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+                                    Subscribe Now
+                                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                                </button>
+                            </div>
+                            <!-- Abstract geometric background -->
+                            <div class="absolute right-0 top-0 w-1/3 h-full opacity-20 pointer-events-none">
+                                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDltWZPWCZ8YGmRnx3S_vaAq7m2DQoZKnb_uKvJ1GP9lpqmbUpWefnr_D7G9mWsgFhLEoiCoxd0XAgS2PEmtpvFMmjfXGQfxkurFksKA6atIW1wkRX6C1x6UozpdSmg_VJtNh4DK90dJQssBOFTHRKxtp9pQ3a1TNMchdrRiCSFRr2xfWMYPG463roxzar-m7m0wiEVEZi97koJFmaq0qDj6IsK1wUlYPWOQ-KC48GEGT-fuS8f6tw7')"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trust Badges Commitment section -->
+                <section class="bg-surface-container dark:bg-slate-800/40 py-12 px-margin-mobile md:px-margin-desktop rounded-2xl mx-margin-mobile md:mx-margin-desktop">
+                    <div class="max-w-container-max mx-auto text-center">
+                        <h3 class="text-on-surface-variant dark:text-[#adc7f7] font-label-md mb-8 uppercase tracking-[0.2em] text-xs">Our Commitment to Quality</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                            <div class="flex flex-col items-center gap-2">
+                                <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] text-[48px]">verified_user</span>
+                                <span class="font-headline-md text-primary dark:text-white font-bold">300+ Services</span>
+                                <span class="text-label-md text-on-surface-variant dark:text-gray-400 text-xs">Expertise for every residential property need</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] text-[48px]">support_agent</span>
+                                <span class="font-headline-md text-primary dark:text-white font-bold">24/7 Support</span>
+                                <span class="text-label-md text-on-surface-variant dark:text-gray-400 text-xs">We're always online and active for safety dispatches</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <span class="material-symbols-outlined text-primary dark:text-[#fe6c6b] text-[48px]">assignment_ind</span>
+                                <span class="font-headline-md text-primary dark:text-white font-bold">Verified Pros</span>
+                                <span class="text-label-md text-on-surface-variant dark:text-gray-400 text-xs">Full background security checked &amp; certified</span>
+                            </div>
+                        </div>
+                        <div class="mt-12 flex flex-wrap justify-center gap-8 opacity-40 grayscale contrast-125 text-xs dark:text-gray-400">
+                            <span class="font-bold">ISO 9001 CERTIFIED</span>
+                            <span class="font-bold">HOMEGUARD SECURITY LABS</span>
+                            <span class="font-bold">TECHSECURE ASSURED</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+
+        <!-- ============================== -->
+        <!-- BOTTOM NAVIGATION BAR          -->
+        <!-- ============================== -->
+        <nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface dark:bg-[#111c2e] shadow-[0_-4px_20px_rgba(0,32,69,0.1)] rounded-t-xl transition-colors border-t border-gray-100 dark:border-slate-800">
+            <!-- Home Item -->
+            <button onclick="changeView('home')" id="bottom-nav-home" class="flex flex-col items-center justify-center text-primary dark:text-[#adc7f7] bg-primary-container dark:bg-slate-800 rounded-xl px-3 py-1 scale-90 transition-transform">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+                <span class="text-xs font-bold">Home</span>
+            </button>
+            
+            <!-- Bookings Item -->
+            <button onclick="alert('Module 1: Bookings section simulated successfully.')" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-white transition-all">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span class="text-xs font-bold">Bookings</span>
+            </button>
+            
+            <!-- FAB-style SOS center button -->
+            <div class="relative -mt-12">
+                <button onclick="alert('SOS Alert Dispatched! Level 3 Units deployed on-device.')" class="h-16 w-16 bg-safety-orange text-white rounded-full flex flex-col items-center justify-center emergency-glow active:scale-95 transition-all shadow-lg border-4 border-surface dark:border-[#111c2e]">
+                    <span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+                </button>
+                <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-safety-orange font-bold text-xs uppercase tracking-wider">SOS</span>
+            </div>
+            
+            <!-- Account Item -->
+            <button onclick="changeView('welcome')" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-gray-400 hover:text-primary dark:hover:text-white transition-all">
+                <span class="material-symbols-outlined">person</span>
+                <span class="text-xs font-bold">Account</span>
+            </button>
+        </nav>
+
+    </div>
+
+</div>
+
+<!-- ========================================== -->
+<!-- SCRIPTS & ROUTING ENGINE                   -->
+<!-- ========================================== -->
+<script>
+    // State Manager
+    const AppState = {
+        activeView: 'splash',
+        onboardingStep: 0,
+        darkMode: false,
+        currentUser: null
+    };
+
+    // Initialize View routing on page mount
+    window.addEventListener('DOMContentLoaded', () => {
+        // Run Splash countdown
+        setTimeout(() => {
+            const splashEl = document.getElementById('view-splash');
+            splashEl.classList.add('transition-opacity', 'duration-500', 'opacity-0');
+            setTimeout(() => {
+                splashEl.classList.add('hidden');
+                changeView('onboarding');
+            }, 500);
+        }, 2200);
+
+        // Check theme persistence
+        if (localStorage.getItem('dark-mode') === 'true') {
+            toggleDarkMode(true);
+        }
+    });
+
+    // SPA Router Screen changer
+    function changeView(viewId) {
+        AppState.activeView = viewId;
+        
+        // Hide all screens
+        document.querySelectorAll('.view-screen').forEach(el => {
+            el.classList.add('hidden');
+        });
+
+        // Show targets
+        const targetView = document.getElementById('view-' + viewId);
+        if (targetView) {
+            targetView.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    // Onboarding Carousel Manager
+    function nextOnboardingStep() {
+        // Hide active slide
+        document.getElementById(`onboarding-slide-${AppState.onboardingStep}`).classList.add('hidden');
+        document.getElementById(`onboarding-dot-${AppState.onboardingStep}`).classList.replace('w-6', 'w-2');
+        document.getElementById(`onboarding-dot-${AppState.onboardingStep}`).classList.replace('bg-secondary', 'bg-gray-300');
+        
+        AppState.onboardingStep++;
+
+        if (AppState.onboardingStep >= 3) {
+            // Finished onboarding slides
+            AppState.onboardingStep = 0; // reset
+            changeView('welcome');
+            return;
+        }
+
+        // Show next slide
+        document.getElementById(`onboarding-slide-${AppState.onboardingStep}`).classList.remove('hidden');
+        document.getElementById(`onboarding-dot-${AppState.onboardingStep}`).classList.replace('w-2', 'w-6');
+        document.getElementById(`onboarding-dot-${AppState.onboardingStep}`).classList.replace('bg-gray-300', 'bg-secondary');
+
+        // Modify button wording on final step
+        if (AppState.onboardingStep === 2) {
+            document.getElementById('onboarding-btn-text').textContent = "Get Started Now";
+        } else {
+            document.getElementById('onboarding-btn-text').textContent = "Next Step";
+        }
+    }
+
+    // Toggle Password eye-icon visibility
+    function togglePasswordVisibility(inputId) {
+        const input = document.getElementById(inputId);
+        if (input.type === 'password') {
+            input.type = 'text';
+        } else {
+            input.type = 'password';
+        }
+    }
+
+    // Form Submissions Mock Handler
+    function handleLoginSubmit(e) {
+        e.preventDefault();
+        const user = document.getElementById('login-user').value;
+        AppState.currentUser = user;
+        document.getElementById('drawer-user-name').textContent = user.split('@')[0];
+        
+        // Simulate Auth loader
+        triggerSkeletonLoader(() => {
+            changeView('home');
+        });
+    }
+
+    function handleSignupSubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('signup-name').value;
+        AppState.currentUser = name;
+        document.getElementById('drawer-user-name').textContent = name;
+        
+        // Go to OTP validation screen
+        changeView('otp');
+        resendOtpCountdown();
+    }
+
+    // OTP Code focus shifting
+    function focusNextOtp(current, nextFieldId) {
+        if (current.value.length >= 1) {
+            document.getElementById(nextFieldId).focus();
+        }
+    }
+
+    function focusPrevOtp(e, prevFieldId) {
+        if (e.key === 'Backspace') {
+            setTimeout(() => {
+                document.getElementById(prevFieldId).focus();
+            }, 10);
+        }
+    }
+
+    // OTP Countdown Timer simulation
+    let timerInterval = null;
+    function resendOtpCountdown() {
+        const resendBtn = document.getElementById('otp-resend-btn');
+        const countdownLabel = document.getElementById('otp-countdown');
+        resendBtn.disabled = true;
+        resendBtn.classList.add('text-gray-400');
+        
+        let seconds = 119;
+        if (timerInterval) clearInterval(timerInterval);
+
+        timerInterval = setInterval(() => {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSecs = seconds % 60;
+            countdownLabel.textContent = `0${minutes}:${remainingSecs < 10 ? '0' : ''}${remainingSecs} remaining`;
+            
+            seconds--;
+            if (seconds < 0) {
+                clearInterval(timerInterval);
+                countdownLabel.textContent = "Code expired";
+                resendBtn.disabled = false;
+                resendBtn.classList.remove('text-gray-400');
+                resendBtn.classList.add('text-secondary', 'font-bold');
+            }
+        }, 1000);
+
+        alert("Module 1: Simulated verification SMS sent successfully! Try code: 2026");
+    }
+
+    function verifyOtpCode() {
+        const d1 = document.getElementById('otp-digit-1').value;
+        const d2 = document.getElementById('otp-digit-2').value;
+        const d3 = document.getElementById('otp-digit-3').value;
+        const d4 = document.getElementById('otp-digit-4').value;
+        
+        if (d1 === '2' && d2 === '0' && d3 === '2' && d4 === '6') {
+            clearInterval(timerInterval);
+            triggerSkeletonLoader(() => {
+                changeView('home');
+            });
+        } else {
+            alert("Incorrect verification code. Please try using 2026");
+        }
+    }
+
+    // Forgot Password Submit
+    function handleForgotSubmit(e) {
+        e.preventDefault();
+        document.getElementById('forgot-form-section').classList.add('hidden');
+        document.getElementById('forgot-success-section').classList.remove('hidden');
+    }
+
+    // Guest login helper bypass
+    function bypassLogin() {
+        AppState.currentUser = "Guest Administrator";
+        document.getElementById('drawer-user-name').textContent = "Guest Administrator";
+        triggerSkeletonLoader(() => {
+            changeView('home');
+        });
+    }
+
+    function handleLogout() {
+        AppState.currentUser = null;
+        toggleAppDrawer();
+        changeView('welcome');
+    }
+
+    // Dark Mode Toggle Class management
+    function toggleDarkMode(forceState) {
+        const html = document.documentElement;
+        const badge = document.getElementById('theme-badge');
+        
+        if (forceState !== undefined) {
+            AppState.darkMode = forceState;
+        } else {
+            AppState.darkMode = !AppState.darkMode;
+        }
+
+        if (AppState.darkMode) {
+            html.classList.add('dark');
+            if (badge) badge.textContent = "DARK";
+            localStorage.setItem('dark-mode', 'true');
+        } else {
+            html.classList.remove('dark');
+            if (badge) badge.textContent = "LIGHT";
+            localStorage.setItem('dark-mode', 'false');
+        }
+    }
+
+    // Drawer Sliding controller
+    function toggleAppDrawer() {
+        const drawer = document.getElementById('app-drawer');
+        const backdrop = document.getElementById('drawer-backdrop');
+        
+        if (drawer.classList.contains('-translate-x-full')) {
+            drawer.classList.remove('-translate-x-full');
+            backdrop.classList.remove('hidden');
+        } else {
+            drawer.classList.add('-translate-x-full');
+            backdrop.classList.add('hidden');
+        }
+    }
+
+    // Simulated skeleton loader trigger when transitioning views
+    function triggerSkeletonLoader(callback) {
+        const loaderContainer = document.getElementById('skeleton-loader-container');
+        const dashboardContent = document.getElementById('home-dashboard-content');
+        
+        // Show shimmer loader
+        loaderContainer.classList.remove('hidden');
+        dashboardContent.classList.add('hidden');
+        
+        setTimeout(() => {
+            loaderContainer.classList.add('hidden');
+            dashboardContent.classList.remove('hidden');
+            if (callback) callback();
+        }, 1200);
+    }
+
+    // Integrated Search and interactive Category Filtering engine
+    function handleSearchKeyPress(e) {
+        if (e.key === 'Enter') {
+            triggerSearchWithLoader();
+        }
+    }
+
+    function triggerSearchWithLoader() {
+        const query = document.getElementById('home-search').value.toLowerCase().trim();
+        triggerSkeletonLoader(() => {
+            filterServices(query);
+        });
+    }
+
+    function filterServices(query) {
+        const items = document.querySelectorAll('.service-card-item');
+        let visibleCount = 0;
+        
+        items.forEach(card => {
+            const name = card.getAttribute('data-name');
+            const category = card.getAttribute('data-category');
+            
+            if (name.includes(query) || category.includes(query)) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        const noResults = document.getElementById('search-no-results');
+        if (visibleCount === 0) {
+            noResults.classList.remove('hidden');
+        } else {
+            noResults.classList.add('hidden');
+        }
+    }
+
+    function filterByCategory(cat) {
+        document.getElementById('home-search').value = cat;
+        document.getElementById('categories-section-title').textContent = `Filtered: ${cat.toUpperCase()}`;
+        triggerSearchWithLoader();
+    }
+
+    function resetCategoryFilters() {
+        document.getElementById('home-search').value = '';
+        document.getElementById('categories-section-title').textContent = 'Service Categories';
+        triggerSearchWithLoader();
+    }
+
+    // Mobile micro-interactions
+    document.querySelectorAll('.group').forEach(card => {
+        card.addEventListener('touchstart', () => card.classList.add('scale-95'));
+        card.addEventListener('touchend', () => card.classList.remove('scale-95'));
+    });
+</script>
+
+</body>
+</html>

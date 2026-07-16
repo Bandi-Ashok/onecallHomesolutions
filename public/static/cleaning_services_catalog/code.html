@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cleaning Services | One Call Home Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ad3035",
+                        "secondary-fixed-dim": "#ffb3b0",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#77d6d3",
+                        "on-surface-variant": "#43474e",
+                        "surface-container": "#ebeef0",
+                        "tertiary-container": "#003d3c",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#6d0010",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "background": "#f7fafc",
+                        "on-secondary-fixed": "#410006",
+                        "primary": "#002045",
+                        "surface-tint": "#455f88",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdad8",
+                        "tertiary": "#002625",
+                        "surface": "#f7fafc",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#00201f",
+                        "on-surface": "#181c1e",
+                        "secondary-container": "#fe6c6b",
+                        "inverse-on-surface": "#eef1f3",
+                        "on-tertiary-container": "#4cadab",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1a365d",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-primary": "#adc7f7",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#94f2f0",
+                        "on-background": "#181c1e",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-container-high": "#e5e9eb",
+                        "primary-fixed-dim": "#adc7f7",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-fixed-variant": "#00504e",
+                        "on-primary-container": "#86a0cd",
+                        "outline": "#74777f",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f7fafc",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary-fixed-variant": "#8c1620",
+                        "surface-container-low": "#f1f4f6",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d7dadc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Montserrat"],
+                        "caption": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-margin-desktop h-16 bg-surface shadow-sm">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="p-2 hover:bg-surface-container-high rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-primary truncate">Cleaning Services</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-surface-container-high rounded-full transition-colors">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-surface-container-high rounded-full transition-colors">location_on</span>
+</div>
+</header>
+<main class="pt-20 pb-24 px-4 md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Toggle: Residential vs Commercial -->
+<div class="flex justify-center mb-8">
+<div class="bg-surface-container-low p-1 rounded-xl inline-flex items-center shadow-inner">
+<button class="px-6 py-2 rounded-lg text-label-md transition-all duration-200 bg-primary text-on-primary shadow-sm" id="res-toggle" onclick="toggleSector('residential')">Residential</button>
+<button class="px-6 py-2 rounded-lg text-label-md transition-all duration-200 text-on-surface-variant hover:text-primary" id="com-toggle" onclick="toggleSector('commercial')">Commercial</button>
+</div>
+</div>
+<!-- Safety Highlight -->
+<div class="mb-8 bg-tertiary-fixed text-on-tertiary-fixed-variant p-4 rounded-xl flex items-center gap-3 border border-tertiary-container/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+<p class="text-label-md font-semibold">Using Eco-Friendly &amp; Non-Toxic Chemicals for a safer home environment.</p>
+</div>
+<!-- Service Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Service Card: Full House Cleaning -->
+<article class="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,32,69,0.1)] hover:shadow-lg transition-all duration-300 group flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A bright and airy modern living room being professionally cleaned. A worker in a professional uniform is dusting high shelves in a room with pristine white walls, light oak flooring, and minimalist furniture. The sunlight streams through large windows, creating a clean, high-contrast aesthetic consistent with a premium home service brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMXx8DZnVugx7ETf6A-0les7LDX8SqhZfSkLLvG-QRCJi_LWwH1IzldVsT_rzEJzNXhQeY2mtoM3FgCljgNtK6S7pLfj66Nv059oPs5NAbTukFlP4chV30EJ6Ic4CQhJ02xrGFgtsKhvxiSOB4zzQw_HYvE7I1IXqswJO3IpYT76gvW96JUU_9RotpQO2MTl7C1BVt0a0RMBqVPOFoeDaUHTQHepeS8w3gofc9PeXDVLqAmsQDdwSk')">
+</div>
+<div class="absolute top-3 right-3 bg-tertiary/10 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-tertiary-container">Verified</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md text-primary">Full House Cleaning</h3>
+<span class="text-secondary font-bold text-label-md">From ₹1,499</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-6 flex-grow">Deep cleaning for every corner of your home, including dusting, mopping, and vacuuming.</p>
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Service Card: Kitchen Cleaning -->
+<article class="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,32,69,0.1)] hover:shadow-lg transition-all duration-300 group flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Close-up of a sparkling clean modern kitchen with marble countertops and stainless steel appliances. A professional cleaner is focusing on detailing the faucet and sink area with specialized tools. The scene is bright and highlights the technical competence and attention to detail of the service, featuring a professional corporate aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApHoytuyfFbqWapzgproBXHeeW3Nn8wmE62rinDS9ngkJMv7qRtX8ZuFTZ-vc-i8GtVv2p1xYWoulYbxArI4VJG6f2zsgwwLWv5Qjncx_Evl-zYy9UyGvRf0-WXe53d--f3Ayt-5GDfSHre2JajlUzzILEKbOiVpjVXq2qv5keDj_9CTYlr2Epafm2Q-Cut9lfcRuwSadGCwNO0vV9xSMeD-Wf7GT074A9_EvGXK0Vymgp_gJXEkHI')">
+</div>
+<div class="absolute top-3 right-3 bg-tertiary/10 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-tertiary-container">Verified</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md text-primary">Kitchen Cleaning</h3>
+<span class="text-secondary font-bold text-label-md">From ₹699</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-6 flex-grow">Degreasing of chimneys, cabinets, and appliances to restore your kitchen to its original shine.</p>
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Service Card: Bathroom Cleaning -->
+<article class="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,32,69,0.1)] hover:shadow-lg transition-all duration-300 group flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A high-end contemporary bathroom with teal tiles and pristine porcelain fixtures. The glass shower stall is perfectly transparent, showing a streak-free finish. Soft light illuminates the space, creating a calm and professional atmosphere. The focus is on hygiene and the meticulous quality of the professional cleaning service." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHA93j8tWbgm3k3nrW49b5F3Fphu_3aUVG3dVhsRybLwWdx4M297L4HFn1cci2TWIvaOeJPWKnHiXcD3oGN3ElBkIGp5zXBGC2iluYQ9nYpT6xBw773aa6ZrzK_a5t-Bdo-E7yLm_snYEgI_oGpbl5ki9rhG44TnDy0-nMFRR0V6JgFELQ1LVwtzBxGjmH6tEhC5zAKrECOYiI_Pcn4ySxaROm1FYZ0Xm8SSEusMy4Dc3ENWqVwUTV')">
+</div>
+<div class="absolute top-3 right-3 bg-tertiary/10 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-tertiary-container">Verified</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md text-primary">Bathroom Cleaning</h3>
+<span class="text-secondary font-bold text-label-md">From ₹499</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-6 flex-grow">Disinfection and hard water stain removal from tiles, mirrors, and fixtures for a germ-free space.</p>
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</article>
+<!-- Service Card: Furniture & Upholstery -->
+<article class="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,32,69,0.1)] hover:shadow-lg transition-all duration-300 group flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A macro shot of a sofa fabric being vacuumed with a specialized professional upholstery cleaning head. The texture of the rich navy fabric is detailed, and a clear line of clean vs dirty surface is visible, demonstrating efficiency. The lighting is crisp, professional, and sophisticated, reflecting a high-standard corporate home maintenance service." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCDr05KqluwCj7phQ79_0YZrZZ2Tn4qw1iYCT5cgtR594FjOm4BOchMODsLYHL0-q4NOi2IfJ3TlH5g2bIFH3EffFqKdLUIjYKjHHv9niQsA4i5EuvdjduWDYBxcw2woOZAi6_i5hYNj8-UZGdeQGPP2mvMhGu7B4psVFM1viWoE9g1z9WdoKAFIRnWyKqWVBigQgypoUEl8m9mvj7lEBicbmS7LDcUNQFtjVdJ4Jtv6RN19_UQQ_B3')">
+</div>
+<div class="absolute top-3 right-3 bg-tertiary/10 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-tertiary-container">Verified</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md text-primary">Furniture &amp; Upholstery</h3>
+<span class="text-secondary font-bold text-label-md">From ₹799</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-6 flex-grow">Wet and dry shampooing for sofas, mattresses, and carpets to remove allergens and tough stains.</p>
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-bold hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Trust Section -->
+<section class="mt-16 text-center">
+<h4 class="text-label-md font-bold text-on-surface-variant uppercase tracking-widest mb-8">Our Trusted Partners</h4>
+<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all">
+<div class="w-32 h-12 flex items-center justify-center">
+<span class="font-bold text-xl text-primary">ECO-SAFE</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center">
+<span class="font-bold text-xl text-primary">PURECLEAN</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center">
+<span class="font-bold text-xl text-primary">SAFEGUARD</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center">
+<span class="font-bold text-xl text-primary">TRUSTY</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface shadow-[0_-4px_20px_rgba(0,32,69,0.1)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container rounded-xl px-3 py-1 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-label-md font-label-md">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-secondary">emergency_home</span>
+<span class="text-label-md font-label-md">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">Account</span>
+</a>
+</nav>
+<script>
+        function toggleSector(sector) {
+            const resBtn = document.getElementById('res-toggle');
+            const comBtn = document.getElementById('com-toggle');
+            
+            if (sector === 'residential') {
+                resBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+                resBtn.classList.remove('text-on-surface-variant');
+                comBtn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                comBtn.classList.add('text-on-surface-variant');
+            } else {
+                comBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+                comBtn.classList.remove('text-on-surface-variant');
+                resBtn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                resBtn.classList.add('text-on-surface-variant');
+            }
+            
+            // Add visual ripple or sound effect simulation if desired
+            console.log('Sector switched to:', sector);
+        }
+
+        // Simple animation on scroll for cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('article').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

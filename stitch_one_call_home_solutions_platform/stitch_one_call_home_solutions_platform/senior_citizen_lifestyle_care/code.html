@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Senior Citizen &amp; Lifestyle Care | One Call Home Solutions</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#002045",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "background": "#f7fafc",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#6d0010",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "on-secondary-fixed": "#410006",
+                    "secondary": "#ad3035",
+                    "on-tertiary-container": "#4cadab",
+                    "tertiary-fixed": "#94f2f0",
+                    "on-surface": "#181c1e",
+                    "surface-container": "#ebeef0",
+                    "on-primary-container": "#86a0cd",
+                    "on-background": "#181c1e",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "inverse-surface": "#2d3133",
+                    "outline-variant": "#c4c6cf",
+                    "surface": "#f7fafc",
+                    "on-tertiary-fixed": "#00201f",
+                    "inverse-primary": "#adc7f7",
+                    "on-secondary": "#ffffff",
+                    "outline": "#74777f",
+                    "surface-dim": "#d7dadc",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#003d3c",
+                    "primary-container": "#1a365d",
+                    "on-surface-variant": "#43474e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f1f4f6",
+                    "surface-container-high": "#e5e9eb",
+                    "on-primary-fixed": "#001b3c",
+                    "surface-bright": "#f7fafc",
+                    "surface-variant": "#e0e3e5",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-fixed-dim": "#adc7f7",
+                    "secondary-fixed": "#ffdad8",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "secondary-container": "#fe6c6b",
+                    "surface-tint": "#455f88",
+                    "tertiary": "#002625",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "primary-fixed": "#d6e3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Montserrat"],
+                    "caption": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "headline-md": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            color: #181c1e;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.15);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+        }
+        /* Accessible High Contrast Focus States */
+        button:focus-visible, a:focus-visible {
+            outline: 3px solid #ad3035;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface shadow-sm">
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">One Call Home Solutions</h1>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Notifications" class="p-2 rounded-full hover:bg-surface-container-low transition-colors active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<!-- Hero Section: Value Proposition -->
+<section class="relative rounded-xl overflow-hidden mb-12 min-h-[400px] flex items-center">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A heartwarming, high-contrast lifestyle photograph of a professional caregiver in a neat navy uniform smiling warmly while helping a senior woman in a bright, modern living room. The room is filled with soft, natural morning light, emphasizing a clean and safe environment. The color palette is dominated by deep navy, crisp whites, and gentle teal accents, creating a professional yet compassionate atmosphere. High-end residential setting with premium finishes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSXrdb-4PN2Gx-lI_p-JcoFfaSbP2BJMyuJBmrdJSTpT6PgtOgMrt6YFfs67i1Uzq9YVjhuscSpFdswML9pyO_BqitPKY8PTAVqqlUyUuyrlRMWVv6vrkTGpDJ70uZovEi8fDZzUXoGGwNJwEAlp2_31yoMrqyD98rNmo-2uc1CNaITeK6UGV8xRsgLhCESMIXlzTiB0Ey9_FtikAa5K2Mn1F9OWSVT0UWo5hwj5S8mD4kEl5ZAUgw"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent"></div>
+</div>
+<div class="relative z-10 p-8 md:p-16 max-w-2xl">
+<div class="inline-flex items-center px-4 py-1.5 bg-secondary text-on-primary rounded-full mb-6">
+<span class="material-symbols-outlined text-[20px] mr-2" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md uppercase">Family Peace of Mind</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-white mb-6 md:text-headline-xl text-headline-lg-mobile">
+                    Professional Guardian for your <span class="text-on-primary-container">Loved Ones</span>
+</h2>
+<p class="font-body-lg text-body-lg text-white/90 mb-8 max-w-lg">
+                    Comprehensive safety, lifestyle support, and priority emergency response tailored specifically for seniors living independently.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary text-on-primary font-bold px-8 py-4 rounded-xl text-lg hover:brightness-110 active:scale-95 transition-all">
+                        Request Support Now
+                    </button>
+<button class="bg-white/10 backdrop-blur-md border-2 border-white text-white font-bold px-8 py-4 rounded-xl text-lg hover:bg-white hover:text-primary transition-all">
+                        View Care Plans
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Core Services -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-16">
+<!-- Priority Response Card -->
+<div class="md:col-span-8 bg-primary-container rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group">
+
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="emergency" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<h3 class="font-headline-md text-headline-md text-white">Priority Response System</h3>
+</div>
+<p class="font-body-md text-body-md text-white/80 max-w-md mb-8">
+                        Our highest service tier. Senior members receive immediate 24/7 dispatch for home emergencies, technical failures, or safety concerns.
+                    </p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-white font-label-md">
+<span class="material-symbols-outlined text-secondary mr-2" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Guaranteed &lt; 30 min Phone Response
+                        </li>
+<li class="flex items-center text-white font-label-md">
+<span class="material-symbols-outlined text-secondary mr-2" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Direct Line to Senior Care Specialist
+                        </li>
+</ul>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="p-4 bg-white/5 rounded-lg border border-white/10">
+<span class="text-white/60 text-caption font-caption block mb-1">Status</span>
+<div class="flex items-center text-on-tertiary-container gap-2">
+<span class="w-3 h-3 bg-tertiary-fixed-dim rounded-full animate-pulse"></span>
+<span class="font-bold">Dispatch Centers Online</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Grocery & Errands -->
+<div class="md:col-span-4 bg-white rounded-xl p-8 custom-shadow flex flex-col border border-outline-variant">
+<div class="w-16 h-16 bg-surface-container-high rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Lifestyle Support</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                    Personalized grocery shopping, pharmacy pickups, and errand running by vetted professionals.
+                </p>
+<button class="mt-auto flex items-center justify-center gap-2 border-2 border-primary text-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-white transition-all">
+                    Schedule Help
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Home Safety Mods -->
+<div class="md:col-span-6 bg-white rounded-xl p-8 custom-shadow border border-outline-variant relative overflow-hidden group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 bg-surface-container-high rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="architecture">architecture</span>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-caption font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Safety Certified
+                    </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Safety Modifications</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                    Professional installation of grab bars, anti-slip flooring, and smart lighting systems to prevent falls.
+                </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30">
+<span class="text-primary font-bold block">Grab Bars</span>
+<span class="text-caption text-on-surface-variant">Installed &amp; Tested</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30">
+<span class="text-primary font-bold block">Anti-Slip</span>
+<span class="text-caption text-on-surface-variant">Kitchen &amp; Bath</span>
+</div>
+</div>
+</div>
+<!-- Monthly Inspections -->
+<div class="md:col-span-6 bg-white rounded-xl p-8 custom-shadow border border-outline-variant">
+<div class="flex flex-col h-full">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 bg-primary-fixed text-primary rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" data-icon="calendar_month">calendar_month</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Monthly Safety Audit</h3>
+<span class="text-on-surface-variant font-label-md">Preventative Maintenance</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                        Our technicians visit monthly to check smoke alarms, change filters, verify locks, and ensure all safety modifications are secure.
+                    </p>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant pt-6">
+<div>
+<span class="block text-caption text-on-surface-variant uppercase tracking-wider">Next Available Slot</span>
+<span class="block font-bold text-primary">Tomorrow, 10:00 AM</span>
+</div>
+<button class="bg-primary text-on-primary font-bold px-6 py-3 rounded-xl hover:bg-primary-container transition-all active:scale-95">
+                            Book Audit
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust & Certification Section -->
+<section class="bg-surface-container-low rounded-2xl p-12 mb-16 text-center border border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">The Professional Guardian Standard</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto mb-10">
+                Every technician assigned to Senior Care undergoes an extensive 12-point background check and specialized empathy training for elderly support.
+            </p>
+<div class="flex flex-wrap justify-center items-center gap-12 grayscale opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl" data-icon="verified_user">verified_user</span>
+<span class="font-bold text-xl uppercase tracking-tighter">Certified Care</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl" data-icon="shield">shield</span>
+<span class="font-bold text-xl uppercase tracking-tighter">SafeGuard Insured</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-4xl" data-icon="health_and_safety">health_and_safety</span>
+<span class="font-bold text-xl uppercase tracking-tighter">Pro-Safe Alliance</span>
+</div>
+</div>
+</section>
+<!-- CTA Plan Selection -->
+<section class="mb-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Basic Care -->
+<div class="bg-white p-8 rounded-xl border border-outline-variant hover:border-primary transition-all">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Essential Care</h4>
+<p class="text-caption text-on-surface-variant mb-6">Perfect for check-ins</p>
+<div class="mb-8">
+<span class="text-4xl font-bold text-primary">$99</span>
+<span class="text-on-surface-variant">/month</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center text-on-surface font-body-md">
+<span class="material-symbols-outlined text-primary mr-2" data-icon="check">check</span>
+                            1 Monthly Safety Audit
+                        </li>
+<li class="flex items-center text-on-surface font-body-md">
+<span class="material-symbols-outlined text-primary mr-2" data-icon="check">check</span>
+                            Grocery Delivery (2x)
+                        </li>
+</ul>
+<button class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-white transition-all">Select Plan</button>
+</div>
+<!-- Premium Care (Featured) -->
+<div class="bg-white p-8 rounded-xl border-2 border-secondary relative custom-shadow transform scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full text-caption font-bold">MOST POPULAR</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Guardian Plus</h4>
+<p class="text-caption text-on-surface-variant mb-6">Complete family peace of mind</p>
+<div class="mb-8">
+<span class="text-4xl font-bold text-primary">$249</span>
+<span class="text-on-surface-variant">/month</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center text-on-surface font-body-md">
+<span class="material-symbols-outlined text-primary mr-2" data-icon="check">check</span>
+                            Weekly Safety Check-ins
+                        </li>
+<li class="flex items-center text-on-surface font-body-md">
+<span class="material-symbols-outlined text-primary mr-2" data-icon="check">check</span>
+                            Priority Emergency Dispatch
+                        </li>
+<li class="flex items-center text-on-surface font-body-md">
+<span class="material-symbols-outlined text-primary mr-2" data-icon="check">check</span>
+                            Unlimited Errands
+                        </li>
+</ul>
+<button class="w-full bg-secondary text-white font-bold py-4 rounded-xl hover:brightness-110 shadow-lg transition-all">Start Free Trial</button>
+</div>
+<!-- Custom Concierge -->
+<div class="bg-white p-8 rounded-xl border border-outline-variant hover:border-primary transition-all">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Custom Care</h4>
+<p class="text-caption text-on-surface-variant mb-6">Bespoke lifestyle solutions</p>
+<div class="mb-8">
+<span class="text-4xl font-bold text-primary">Custom</span>
+<span class="text-on-surface-variant">/quoted</span>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center text-on-surface font-body-md">
+<span class="material-symbols-outlined text-primary mr-2" data-icon="check">check</span>
+                            Full Property Management
+                        </li>
+<li class="flex items-center text-on-surface font-body-md">
+<span class="material-symbols-outlined text-primary mr-2" data-icon="check">check</span>
+                            24/7 Personal Concierge
+                        </li>
+</ul>
+<button class="w-full border-2 border-primary text-primary font-bold py-3 rounded-xl hover:bg-primary hover:text-white transition-all">Contact Advisor</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface py-2 px-2 pb-safe shadow-[0_-4px_20px_rgba(0,32,69,0.15)] rounded-t-xl z-50 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="emergency" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<span class="font-label-md text-label-md">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.custom-shadow').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Roofing &amp; PVC Sheet Services | One Call Home Solutions</title>
+<!-- Montserrat and Inter fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#181c1e",
+                        "secondary-fixed-dim": "#ffb3b0",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#00504e",
+                        "surface-bright": "#f7fafc",
+                        "tertiary-fixed-dim": "#77d6d3",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-surface-variant": "#43474e",
+                        "on-secondary-fixed-variant": "#8c1620",
+                        "background": "#f7fafc",
+                        "tertiary-container": "#003d3c",
+                        "surface-container-high": "#e5e9eb",
+                        "primary-fixed-dim": "#adc7f7",
+                        "surface-tint": "#455f88",
+                        "primary": "#002045",
+                        "secondary-fixed": "#ffdad8",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-container": "#4cadab",
+                        "secondary": "#ad3035",
+                        "outline-variant": "#c4c6cf",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "inverse-primary": "#adc7f7",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d6e3ff",
+                        "primary-container": "#1a365d",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f1f4f6",
+                        "on-tertiary-fixed": "#00201f",
+                        "on-secondary-fixed": "#410006",
+                        "tertiary-fixed": "#94f2f0",
+                        "tertiary": "#002625",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#181c1e",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f7fafc",
+                        "outline": "#74777f",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fe6c6b",
+                        "on-secondary-container": "#6d0010",
+                        "surface-dim": "#d7dadc",
+                        "on-primary-container": "#86a0cd",
+                        "inverse-on-surface": "#eef1f3",
+                        "on-primary-fixed": "#001b3c",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#ebeef0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "caption": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F7FAFC; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .service-card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.15);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">location_on</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">One Call Home Solutions</h1>
+</div>
+<div class="flex items-center gap-4">
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Services</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Projects</a>
+</nav>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed p-2 rounded-full hover:bg-surface-container-low transition-colors active:scale-95">notifications</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="mb-12 relative overflow-hidden rounded-xl h-64 md:h-96 flex items-center">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="High-angle shot of a professionally installed industrial metal roof with solar panels, under a bright blue sky. The scene is crisp and clean, reflecting corporate modern aesthetics with deep navy and cool grey tones. Sunlight creates a high-contrast, professional atmosphere highlighting the structural integrity and modern engineering of the roof." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB2EJyijwpM57iztfmIAg4YqFzpcu50AfkcENLoOvOoSaec_KqLcd2ldGSSG21GiGcF_k1iQ4jZ967wYuH-Wzyj6JwX3IPPcyZ3RzAA0VSqsAare_78tiLXe1mw7bWKu0iGHYJD6O55iNbLhtwirwlhUtdp5PpAx8glGiLWANMtWzhTb8rsZTcoa-elhXddaZwG2a92OHEgq3Vi-rUPVnEqsFt7Gq9grwP5rgZU5p2x0SDCfNwpXEhG')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-transparent"></div>
+</div>
+<div class="relative z-10 px-8 max-w-2xl">
+<h2 class="text-headline-lg-mobile md:text-headline-xl font-headline-xl text-white mb-4">Professional Roofing &amp; PVC Solutions</h2>
+<p class="text-body-md md:text-body-lg text-primary-fixed font-body-md">Engineered for durability, designed for protection. Our industrial-grade roofing sheets provide ultimate waterproofing and structural longevity.</p>
+</div>
+</section>
+<!-- Trust Bar -->
+<section class="mb-12 flex flex-wrap justify-around items-center gap-8 py-6 bg-surface-container-low rounded-xl px-8 grayscale opacity-70">
+<img class="h-8 md:h-10" data-alt="Corporate logo of a global construction certification body, minimalist vector style, monochrome dark grey on transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU0g6uFRaP6XIVTewPhT1f0i3TNR3Jse9V9sllSzJ4ZO_B6Ur-TPdMv5T-n1ffsstsrLOqAJy5y10vYpRiM9tW015XTu5G8-V3_r-jNrefYC8RV0jvSpcds4-klGoUvstUy4yOuGkQ2c5Xu8frNKXk23NogTx3blep_Mk6JFCM7_TKLgeJAa5ZHtqllU7IA_9QLVT_7DhYtEXKzY10obe5HNC-1C7JNg5KCdRaCY-iwO2HPZun_Y3y"/>
+<img class="h-8 md:h-10" data-alt="Industrial steel manufacturing association emblem, professional linear design, monochrome dark grey on transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZAuzKes_8eJWmNDoVkboyASkPboG2sIlchCU0WHVlaUhYjXOPmCz2VNkbgRDrEWZ2BR6bysJ6VSj_Z2POIyzG8bHn5BXbiJDwIyhru5CTbI5dMxeUlSW0XDGn5CB3pOW-zXJbA1K7gCrxmIqfSHQACpYw1ALiVuP0QmiG08n7Le1VBoiyev2RP_uezadoRZYDDSaVZ3n1uQ01MnOUcmiovXG4cHYk50picF1QXkgPKFXuOKGqpTny"/>
+<img class="h-8 md:h-10" data-alt="ISO standard certification seal for quality management systems, clean geometric professional logo, monochrome dark grey." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrb9iRaJSciGFzLqmRM9q7VVDp2Bz3pgNWJUzrEJV2vrXCwwrzbVO9BzJjLvLWIYnDAmAeBeoC8cuWx0oFk_8M9nUepSf8xZTWYKN5bQjM2gdStiBPQiLa1KpCPdRo7UtNbh92B8qJDIQ1r0Cs071i7cHYpGeASp-eRRpW8G7abOv0rj-tFK9GpH0YTnzfC9kJnGfHGv7YALqd0wmYhAwbDaex1qzyjqUpMJzK33Gi6grsWouJfEGM"/>
+<img class="h-8 md:h-10" data-alt="Safety first industrial compliance badge, professional minimalist icon, monochrome dark grey on transparent background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaXvcuXmGc_coipzbr9Sss7uFjt4Bxt-sDVMJZlhrWKOeMuYpWPFDtBUVJcKIbNV8zQbnNxfzmfPhFoBYX2HhKf0-dF7bE5rzG1Hdd58u9hqCgLSOdNQeWe8Qsy8DFvapKDhV7ld1WRhIti_zdDl7WPXjd87exPwKJvPsMBZx8YyaBthySO6KoOh1usLmv2_fvEgSYDGZhs0_t96g8kXrll0993xoEmiLGwmyT1dC-OOfCN1k6jerM"/>
+</section>
+<!-- Bento Grid Services -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- PVC/UPVC Sheet Roofing -->
+<div class="md:col-span-8 group relative overflow-hidden bg-white rounded-xl service-card-shadow flex flex-col md:flex-row">
+<div class="md:w-1/2 overflow-hidden h-64 md:h-auto">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A macro close-up of high-quality white UPVC roofing sheets showing the corrugated texture and layered composition. The lighting is clinical and bright, emphasizing the clean, weather-resistant surface. Professional studio photography style with a focus on material quality and industrial precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuaue6Sn2CVdhlJ0sbPwjn39_Bc_FF6YKW5D29i0OPxmlLVnJ1CTmqXZ8D6aCgbg8n666c9XyjPyylkX1H5yKJFOUhJ7T5ksfn4LnFeJzsBLVaUb1CH4PTUJvxlgMw9P9gnvECttEx2qONiwKlOs9sooNMeZ0bSp-R1MSpDtirlcnGCjVPRpBVIHL5LCQYoFl8233YUryc_jMjNkb3OVa3_FZOppIIt0cTXyV08e6xtdg0bD5vlz-N"/>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-on-tertiary-container/10 text-on-tertiary-container rounded-full text-caption font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span> Verified Quality
+                            </span>
+<span class="text-secondary font-bold text-headline-md">PVC/UPVC</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2">PVC &amp; UPVC Sheet Roofing</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Corrosion-resistant and heat-insulating. Ideal for chemical plants, warehouses, and coastal residential properties requiring zero maintenance.</p>
+</div>
+<button class="w-full py-4 bg-primary text-white font-label-md text-label-md rounded-xl hover:bg-primary-container transition-all active:scale-95">Request Quotation</button>
+</div>
+</div>
+<!-- Industrial Roofing -->
+<div class="md:col-span-4 group relative overflow-hidden bg-white rounded-xl service-card-shadow flex flex-col">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A wide-angle interior shot of a massive industrial warehouse showing the high-strength metal roofing structure. Bright ambient light filters through, highlighting the repetitive structural beams and sleek metal panels. Corporate blue and silver color palette with sharp architectural lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiz_BaGvXmtg_1Id8wEWw39-YmRFYlKLzTqU2z7MNL93GFVbICpMyo8OxYsXwgoc5YY9sB_OcPqpH1NXukUpKK4I3Tcl5wHvbdHxb3G_KnXIy4I0ZCSDGQKiicdtkmsAA3yZmDD8htOGbam9atV2ueW-faOZ68ZueWSonZu1IINuaYPa2uCyubJjKCJNvgJ-ukeRl5JnnJwQ5nK4MZfhFrlkW7YPQOVHPETyXV6C599bcxWRmPWgPM"/>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-headline-md font-headline-md text-primary">Industrial Roofing</h3>
+<span class="material-symbols-outlined text-secondary">factory</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Heavy-duty structural roofing systems designed for large-span industrial buildings and manufacturing units.</p>
+</div>
+<button class="w-full py-4 border-2 border-primary text-primary font-label-md text-label-md rounded-xl hover:bg-primary hover:text-white transition-all active:scale-95">Request Quotation</button>
+</div>
+</div>
+<!-- Polycarbonate Roofing -->
+<div class="md:col-span-4 group relative overflow-hidden bg-white rounded-xl service-card-shadow flex flex-col">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Elegant translucent polycarbonate roofing installed over a modern outdoor walkway. Soft, diffused natural light passes through the panels, creating a bright and airy atmosphere. The surrounding architecture is minimalist with navy accents, reflecting a sophisticated corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjRCTuSh-GuCMwn_JeIYZPX6sLAMLWgkOH16GWiJJ8DTQ1r4ILC8roOF0b0OPancUxhoDjMMxvoX7yS_9Q92MYAL4fBbO5Vv-swVFOKvoz69ZCDYm6hOHwjkwVOUxwrTmryTXDFD6oiFNg08rN-xWd4imfeULYZcMmRKEVDx-_hrQHIx2sB1NSvQsA_F9b_GzK9XrhHj4clxnp41DAPQhGz6dWlCyDeft5y-Wupl5WJb8wzVr_zpHa"/>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-headline-md font-headline-md text-primary">Polycarbonate</h3>
+<span class="material-symbols-outlined text-secondary">wb_sunny</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Impact-resistant panels that offer superior natural lighting for skylights, walkways, and greenhouse applications.</p>
+</div>
+<button class="w-full py-4 border-2 border-primary text-primary font-label-md text-label-md rounded-xl hover:bg-primary hover:text-white transition-all active:scale-95">Request Quotation</button>
+</div>
+</div>
+<!-- Car Parking Sheds -->
+<div class="md:col-span-8 group relative overflow-hidden bg-white rounded-xl service-card-shadow flex flex-col md:flex-row-reverse">
+<div class="md:w-1/2 overflow-hidden h-64 md:h-auto">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A modern car parking shed design featuring a cantilevered steel structure and tensile fabric or polycarbonate roofing. A luxury vehicle is parked underneath. The setting is a corporate office complex at dusk with subtle warm lighting against cool blue shadows, exuding premium reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuW5eX_cAFZ89Qdtgu7gSXtc4le-ZAizHINK9RWbujO4pMTyTs9QBESP7wkcuf5eN_heV_OiLzn_iy76JK1pyj_estzH_qu-EbE0beMKhx3aidGpUINW8ewVVggptvP2hGjb3qnVLREf7nkn04XCQFS6E7yz-IkqGXZJ1SdClRSs-TEhmfpYn8_ZIp5Zb_Rkcp1ceEz8A-et8JMOfzD_gOybIOJ12rgVTt0Vpqc4xakoli6HCcvoHJ"/>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-on-tertiary-container/10 text-on-tertiary-container rounded-full text-caption font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span> Professional Install
+                            </span>
+<span class="text-secondary font-bold text-headline-md">Sheds</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2">Car Parking Sheds</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Modular and custom-designed parking solutions. Protect your vehicles from UV rays, rain, and debris with high-tensile structures.</p>
+</div>
+<button class="w-full py-4 bg-primary text-white font-label-md text-label-md rounded-xl hover:bg-primary-container transition-all active:scale-95">Request Quotation</button>
+</div>
+</div>
+</div>
+<!-- Emergency/Quick Action Section -->
+<section class="mt-16 bg-primary text-white rounded-xl p-8 md:p-12 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-1/3 h-full opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[240px] rotate-12">handyman</span>
+</div>
+<div class="relative z-10 md:flex items-center justify-between gap-8">
+<div class="mb-8 md:mb-0">
+<h2 class="text-headline-lg font-headline-lg mb-4">Urgent Roof Repair Needed?</h2>
+<p class="text-primary-fixed opacity-90 max-w-md font-body-md text-body-md">Our emergency response team is available 24/7 for storm damage and critical leaks. Don't wait for the next rain.</p>
+</div>
+<button class="px-10 py-5 bg-secondary text-white font-label-md text-label-md font-bold rounded-xl flex items-center gap-3 hover:brightness-110 transition-all shadow-lg active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    CALL EMERGENCY TEAM
+                </button>
+</div>
+</section>
+<!-- Technical Features Grid -->
+<section class="mt-24">
+<h2 class="text-headline-lg font-headline-lg text-primary text-center mb-12">Engineered Performance</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="p-6 bg-surface-container-high rounded-xl text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">water_drop</span>
+<h4 class="font-bold text-primary mb-2">100% Waterproof</h4>
+<p class="text-caption text-on-surface-variant">Zero leakage guarantee with precision seam technology.</p>
+</div>
+<div class="p-6 bg-surface-container-high rounded-xl text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">thermostat</span>
+<h4 class="font-bold text-primary mb-2">Heat Insulated</h4>
+<p class="text-caption text-on-surface-variant">Reduces indoor temperature by up to 8°C in peak summer.</p>
+</div>
+<div class="p-6 bg-surface-container-high rounded-xl text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">shield</span>
+<h4 class="font-bold text-primary mb-2">Corrosion Proof</h4>
+<p class="text-caption text-on-surface-variant">Acid and alkali resistant materials for long life.</p>
+</div>
+<div class="p-6 bg-surface-container-high rounded-xl text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">speed</span>
+<h4 class="font-bold text-primary mb-2">Rapid Install</h4>
+<p class="text-caption text-on-surface-variant">Pre-fabricated components for 2x faster deployment.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest dark:bg-on-surface border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,32,69,0.15)] flex justify-around items-center h-20 px-margin-mobile pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="font-label-md text-label-md">Services</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">emergency_home</span>
+<span class="font-label-md text-label-md">SOS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+
+        // Sticky header background transition
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('glass-effect');
+            } else {
+                header.classList.remove('glass-effect');
+            }
+        });
+    </script>
+</body></html>

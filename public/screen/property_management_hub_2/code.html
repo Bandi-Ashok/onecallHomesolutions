@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Property Management &amp; AMC | One Call Home Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#455f88",
+                    "on-surface-variant": "#43474e",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-background": "#181c1e",
+                    "tertiary-container": "#003d3c",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#181c1e",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#410006",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001b3c",
+                    "secondary-container": "#fe6c6b",
+                    "surface-variant": "#e0e3e5",
+                    "on-tertiary-fixed-variant": "#00504e",
+                    "background": "#f7fafc",
+                    "secondary-fixed": "#ffdad8",
+                    "on-secondary-container": "#6d0010",
+                    "inverse-surface": "#2d3133",
+                    "surface-bright": "#f7fafc",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary-fixed": "#00201f",
+                    "inverse-primary": "#adc7f7",
+                    "on-primary-container": "#86a0cd",
+                    "primary": "#002045",
+                    "tertiary": "#002625",
+                    "surface-dim": "#d7dadc",
+                    "surface-container": "#ebeef0",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f1f4f6",
+                    "surface": "#f7fafc",
+                    "surface-container-high": "#e5e9eb",
+                    "on-tertiary-container": "#4cadab",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#ffb3b0",
+                    "primary-container": "#1a365d",
+                    "outline-variant": "#c4c6cf",
+                    "on-secondary-fixed-variant": "#8c1620",
+                    "tertiary-fixed": "#94f2f0",
+                    "primary-fixed-dim": "#adc7f7",
+                    "outline": "#74777f",
+                    "tertiary-fixed-dim": "#77d6d3",
+                    "secondary": "#ad3035",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "caption": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Montserrat"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .tonal-shadow {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.08);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #002045 0%, #1a365d 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">location_on</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed">One Call Home Solutions</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-surface-variant">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Hero & Context -->
+<section class="mt-8 mb-12">
+<div class="hero-gradient rounded-xl p-8 md:p-12 text-white relative overflow-hidden">
+<div class="relative z-10 max-w-2xl">
+<h2 class="font-headline-xl text-headline-xl mb-4">Professional Guardian for Your Property</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed opacity-90 mb-8">Comprehensive Annual Maintenance Contracts (AMC) designed for peace of mind. Reliable, fast, and technically superior property care.</p>
+<div class="flex flex-wrap gap-4">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-4 py-2 rounded-full font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                            Verified Contractors
+                        </span>
+<span class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                            60-Min Emergency Response
+                        </span>
+</div>
+</div>
+
+</div>
+</section>
+<!-- Subscription Plans -->
+<section class="mb-16">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary">AMC Subscription Plans</h3>
+<p class="text-on-surface-variant font-body-md">Choose the shield that fits your property portfolio</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Essential Guardian -->
+<div class="bg-white rounded-xl p-8 border border-outline-variant flex flex-col tonal-shadow relative group hover:border-primary transition-all">
+<div class="mb-6">
+<h4 class="font-headline-md text-headline-md text-primary">Essential Guardian</h4>
+<div class="flex items-baseline gap-1 mt-2">
+<span class="text-headline-lg font-bold text-primary">$49</span>
+<span class="text-on-surface-variant font-body-md">/month</span>
+</div>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">Quarterly Health Checkups</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">Priority Dispatch (4h Window)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">Electrical &amp; Plumbing Audit</span>
+</li>
+</ul>
+<button class="w-full py-4 bg-primary text-white rounded-xl font-label-md hover:opacity-90 active:scale-95 transition-all">Select Essential</button>
+</div>
+<!-- Premium Shield -->
+<div class="bg-white rounded-xl p-8 border-2 border-primary flex flex-col tonal-shadow relative group transform md:-translate-y-4 shadow-xl">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full font-label-md text-[12px] uppercase tracking-wider">Most Popular</div>
+<div class="mb-6">
+<h4 class="font-headline-md text-headline-md text-primary">Premium Shield</h4>
+<div class="flex items-baseline gap-1 mt-2">
+<span class="text-headline-lg font-bold text-primary">$99</span>
+<span class="text-on-surface-variant font-body-md">/month</span>
+</div>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">Bi-Monthly Health Checkups</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">SOS Emergency Dispatch (60m)</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">HVAC Maintenance &amp; Cleaning</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">Dedicated Relationship Manager</span>
+</li>
+</ul>
+<button class="w-full py-4 bg-primary text-white rounded-xl font-label-md hover:opacity-90 active:scale-95 transition-all">Protect Now</button>
+</div>
+<!-- Elite Portfolio -->
+<div class="bg-white rounded-xl p-8 border border-outline-variant flex flex-col tonal-shadow relative group hover:border-primary transition-all">
+<div class="mb-6">
+<h4 class="font-headline-md text-headline-md text-primary">Elite Portfolio</h4>
+<div class="flex items-baseline gap-1 mt-2">
+<span class="text-headline-lg font-bold text-primary">$249</span>
+<span class="text-on-surface-variant font-body-md">/month</span>
+</div>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">Up to 5 Properties Included</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">Dedicated Asset Manager</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">End-to-End Tenant Coordination</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-tertiary-container mt-1">check_circle</span>
+<span class="font-body-md">Smart Leak Sensors Included</span>
+</li>
+</ul>
+<button class="w-full py-4 bg-primary text-white rounded-xl font-label-md hover:opacity-90 active:scale-95 transition-all">Manage Portfolio</button>
+</div>
+</div>
+</section>
+<!-- Property Onboarding Section -->
+<section class="mb-16">
+<div class="bg-surface-container-low rounded-2xl p-8 md:p-12">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+<div class="max-w-md">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-4">Property Onboarding</h3>
+<p class="text-on-surface-variant font-body-md mb-6">Easily manage multiple rental units or personal residences. Add a property to start a specialized health audit.</p>
+<button class="flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-xl border border-outline-variant font-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">add_business</span>
+                            Add New Property
+                        </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:w-auto">
+<!-- Active Property 1 -->
+<div class="bg-white p-4 rounded-xl tonal-shadow flex items-center gap-4 border border-outline-variant">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A clean architectural photograph of a modern luxury apartment interior with floor-to-ceiling windows and high-end finishes, reflecting a professional and premium property management aesthetic. The lighting is soft and natural, emphasizing the corporate modern style of the One Call Home Solutions brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFsKp3yEMOuo3F8Iugt_K9WpkdBbLVwwCaDsGf1T5szU6RunNjIO0ESZGNOTWueGgXCtaDkLLrERrk1krR4H6WQCPH_O7o1Q3jJya08ZqJBzUATvl8ZlubhCi5MtiGfIn4C6MlVHMBa3Vi0kZvA69pzo8MzzWyqqvwFo__MT8iDQo-XN4NLBmVvG2Mvr9fezqXzD_BgivFMSJzQ42IjVWBnMcT9UwPiuqk2IrlTNJ6bA_61-3NFVfS"/>
+</div>
+<div>
+<h5 class="font-label-md text-primary">Skyline Loft #402</h5>
+<div class="flex items-center gap-1 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[12px] font-semibold">Active Shield</span>
+</div>
+</div>
+</div>
+<!-- Add Property Placeholder -->
+<div class="border-2 border-dashed border-outline-variant p-4 rounded-xl flex items-center justify-center gap-4 hover:bg-surface-container-highest cursor-pointer transition-colors group">
+<div class="w-12 h-12 rounded-full bg-outline-variant/20 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-outline group-hover:text-primary">add</span>
+</div>
+<span class="text-outline font-label-md group-hover:text-primary">Onboard Unit</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust & Certification -->
+<section class="mb-16 border-t border-outline-variant pt-12">
+<h4 class="text-center text-on-surface-variant font-label-md uppercase tracking-widest mb-8">Our Certified Maintenance Partners</h4>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-40 grayscale">
+<div class="h-8 w-24 bg-on-surface-variant rounded"></div>
+<div class="h-8 w-32 bg-on-surface-variant rounded"></div>
+<div class="h-8 w-28 bg-on-surface-variant rounded"></div>
+<div class="h-8 w-36 bg-on-surface-variant rounded"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest dark:bg-on-surface border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,32,69,0.15)] flex justify-around items-center w-full h-20 px-margin-mobile pb-safe md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-secondary-fixed-dim text-on-primary-container dark:text-on-secondary-fixed-variant rounded-xl px-4 py-1 active:scale-90 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">emergency_home</span>
+<span class="font-label-md text-label-md">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</a>
+</nav>
+<!-- Desktop Navigation Side Rail (Optional, but good for UI design) -->
+<div class="hidden md:flex fixed left-0 top-16 bottom-0 w-20 flex-col items-center py-8 gap-8 border-r border-outline-variant bg-surface">
+<span class="material-symbols-outlined text-primary-container p-3 bg-primary/10 rounded-xl">grid_view</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">history</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">settings</span>
+</div>
+<!-- Emergency FAB (Only on relevant screens) -->
+<button class="fixed right-6 bottom-24 md:bottom-12 bg-secondary text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</button>
+<script>
+        // Micro-interaction for plan selection
+        const planButtons = document.querySelectorAll('button');
+        planButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.innerText.includes('Select') || this.innerText.includes('Protect')) {
+                    const originalText = this.innerText;
+                    this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span>';
+                    setTimeout(() => {
+                        this.innerHTML = '<span class="material-symbols-outlined">check</span> Activated';
+                        this.classList.replace('bg-primary', 'bg-tertiary-container');
+                    }, 800);
+                }
+            });
+        });
+    </script>
+</body></html>

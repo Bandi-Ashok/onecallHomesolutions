@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account &amp; Property Dashboard | One Call Home Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Montserrat:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "outline-variant": "#c4c6cf",
+                "on-primary-fixed": "#001b3c",
+                "on-tertiary-container": "#4cadab",
+                "secondary-fixed-dim": "#ffb3b0",
+                "on-tertiary-fixed": "#00201f",
+                "secondary-fixed": "#ffdad8",
+                "tertiary-fixed-dim": "#77d6d3",
+                "surface-variant": "#e0e3e5",
+                "surface-container-low": "#f1f4f6",
+                "on-tertiary": "#ffffff",
+                "on-error": "#ffffff",
+                "on-secondary-fixed": "#410006",
+                "background": "#f7fafc",
+                "surface-dim": "#d7dadc",
+                "on-secondary": "#ffffff",
+                "on-secondary-fixed-variant": "#8c1620",
+                "tertiary-fixed": "#94f2f0",
+                "on-surface": "#181c1e",
+                "outline": "#74777f",
+                "error": "#ba1a1a",
+                "primary-fixed": "#d6e3ff",
+                "primary": "#002045",
+                "on-secondary-container": "#6d0010",
+                "on-error-container": "#93000a",
+                "surface-container-highest": "#e0e3e5",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-fixed-variant": "#2d476f",
+                "error-container": "#ffdad6",
+                "surface": "#f7fafc",
+                "on-tertiary-fixed-variant": "#00504e",
+                "primary-container": "#1a365d",
+                "primary-fixed-dim": "#adc7f7",
+                "surface-container": "#ebeef0",
+                "on-surface-variant": "#43474e",
+                "tertiary": "#002625",
+                "surface-bright": "#f7fafc",
+                "secondary": "#ad3035",
+                "on-background": "#181c1e",
+                "inverse-surface": "#2d3133",
+                "tertiary-container": "#003d3c",
+                "on-primary": "#ffffff",
+                "inverse-primary": "#adc7f7",
+                "inverse-on-surface": "#eef1f3",
+                "surface-tint": "#455f88",
+                "surface-container-high": "#e5e9eb",
+                "secondary-container": "#fe6c6b",
+                "on-primary-container": "#86a0cd"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "base": "8px",
+                "margin-mobile": "16px",
+                "margin-desktop": "40px",
+                "container-max": "1280px"
+            },
+            "fontFamily": {
+                "headline-lg": ["Montserrat"],
+                "body-md": ["Inter"],
+                "headline-lg-mobile": ["Montserrat"],
+                "body-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "caption": ["Inter"],
+                "headline-xl": ["Montserrat"],
+                "headline-md": ["Montserrat"]
+            },
+            "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .tonal-elevation-1 {
+            box-shadow: 0 4px 20px rgba(0, 32, 69, 0.1);
+        }
+        .emergency-accent {
+            background-color: #fe6c6b; /* Safety Orange derived from secondary-container */
+        }
+        body {
+            background-color: #F7FAFC;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-on-background pb-24 md:pb-0 md:pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-inverse-surface shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="location_on">location_on</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">One Call Home Solutions</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Bookings</a>
+<a class="text-label-md font-label-md text-primary font-bold" href="#">Account</a>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 mt-16 md:mt-0">
+<!-- Hero Account Summary Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-10">
+<div class="lg:col-span-8 flex flex-col justify-center">
+<div class="flex items-center gap-6 mb-4">
+<div class="w-20 h-20 rounded-full bg-primary-container flex items-center justify-center border-4 border-white shadow-md overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged homeowner with a friendly, confident expression, set against a blurred clean modern home interior background. The lighting is soft and natural, emphasizing a corporate modern aesthetic with high-quality textures and a calm, trustworthy professional mood. The colors are dominated by soft whites and deep navy accents from the design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2l_ZVO098fvaJQ2kDPQenQ3IrLA8guZJH3wOwZuV96z17NA6viD5izJF_TZESYPt3kh3aJwE3XU6S3V4CltieK4lQ0mLqHN60SknM3hfqxAb6C_jp7UC2frYSTuRGsrhckRgPW-zznfQjZZ1QQdYbEwGdwrJg2D7PQoYxvvdiiI9rZYDipMXMVhG0EXwRnUTt3Xb4uXF5mY7Wf_ZQes_R0osETWYzOquQdAKAfEn16NPcIEds-iYw"/>
+</div>
+<div>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-primary">Alex Henderson</h2>
+<p class="text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            Premium Member since 2021
+                        </p>
+</div>
+</div>
+</div>
+<!-- Loyalty Points Bento Card -->
+<div class="lg:col-span-4 bg-primary text-on-primary p-6 rounded-xl tonal-elevation-1 flex flex-col justify-between relative overflow-hidden">
+
+<div class="relative z-10">
+<span class="text-label-md font-label-md uppercase tracking-widest opacity-80">Guardian Points</span>
+<div class="text-headline-xl font-headline-xl mt-2">12,450</div>
+</div>
+<div class="relative z-10 mt-4 flex justify-between items-end">
+<p class="text-caption opacity-90 max-w-[150px]">2,550 points until your next free safety inspection.</p>
+<button class="bg-secondary-container text-on-secondary-fixed font-bold py-2 px-4 rounded-lg text-label-md transition-all active:scale-95">Redeem</button>
+</div>
+</div>
+</section>
+<!-- Main Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Properties Management -->
+<div class="lg:col-span-8 space-y-gutter">
+<div class="flex items-center justify-between">
+<h3 class="text-headline-md font-headline-md text-primary">My Properties</h3>
+<button class="flex items-center gap-2 text-primary font-bold text-label-md hover:underline">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                        Add Property
+                    </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Property Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl tonal-elevation-1 border border-outline-variant hover:border-primary transition-colors group relative">
+<div class="absolute top-4 right-4 bg-on-tertiary-container/10 text-on-tertiary-container px-3 py-1 rounded-full text-caption font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Verified
+                        </div>
+<div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A modern suburban family home with clean architectural lines, a well-manicured lawn, and large windows reflecting a bright blue sky. The photo is captured in professional architectural photography style with high clarity, bright daylight, and a focus on reliability and property value. The aesthetic is clean and institutional yet approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUyMIkvSR63wmqTbOzCgXHIzDjVhuVFqY7q4i3XTR8SLS7RzQJAAWaqz68AbALOHiz2ifbzHlT80P7-pfkx4ho2CMN6Ws7v6CG6F7Y4oT2gmoiO--LqANo_PkyWJNOXVnY2dtlwYtkcYc64iI7xJ2SiC9aCnpBc2O0BMObKwlIqZxGifFmfjiaCb4fWH5mJPMLm9ibYY6t_aIo4X631U8VY96mvJ7o_fSLk-pLdGZKtNxAda-jQ4x4"/>
+</div>
+<h4 class="text-body-lg font-bold text-primary">Main Residence</h4>
+<p class="text-caption text-on-surface-variant mb-4">452 Oak Ridge Lane, Seattle, WA</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="plumbing">plumbing</span>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+</div>
+</div>
+<button class="text-primary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="edit_square">edit_square</span>
+</button>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl tonal-elevation-1 border border-outline-variant hover:border-primary transition-colors group relative">
+<div class="absolute top-4 right-4 bg-on-tertiary-container/10 text-on-tertiary-container px-3 py-1 rounded-full text-caption font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Verified
+                        </div>
+<div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A contemporary downtown office building with a glass facade, reflecting the surrounding city skyline during a clear morning. The image is crisp, professional, and emphasizes technical competence and corporate management. Soft natural morning light creates a sophisticated and high-contrast look consistent with a modern design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4NtLYPM3Aoozn0fop6Xxk3KUe-e5oy7DiIknupkgcoicRWGJ86OPSrua54fTV7SHHP_5HatuL-jFF76GhPLZxn2Nv1PHZg1mOwTZDzxxRPjii4M_z_Cjwv5LSQkQO2MDs8G6kniHR11DZCObVc3qMdsZIrjAU3Twz-2SZD9IKWDpbjvmkIqfdKLHo1F2yC6WDHT-7HsY_ezDk_3s8DOueeHwtlzDl39cihFsOFvfN1IeKFDtuleOe"/>
+</div>
+<h4 class="text-body-lg font-bold text-primary">Downtown Office</h4>
+<p class="text-caption text-on-surface-variant mb-4">800 Liberty Ave, Ste 400, Seattle, WA</p>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="ac_unit">ac_unit</span>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="security">security</span>
+</div>
+</div>
+<button class="text-primary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="edit_square">edit_square</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Service History / Invoices -->
+<div class="bg-white rounded-xl tonal-elevation-1 overflow-hidden border border-outline-variant">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md text-primary">Service History</h3>
+<button class="text-label-md text-on-surface-variant hover:text-primary font-bold transition-colors">View All</button>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- History Item 1 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+</div>
+<div>
+<h5 class="font-bold text-on-surface">Emergency HVAC Repair</h5>
+<p class="text-caption text-on-surface-variant">Oct 12, 2023 • Main Residence</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:block text-right">
+<span class="block font-bold text-primary">$450.00</span>
+<span class="text-[10px] uppercase font-bold text-on-tertiary-container bg-on-tertiary-container/10 px-2 py-0.5 rounded">Paid</span>
+</div>
+<button class="p-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-white hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- History Item 2 -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="electric_bolt">electric_bolt</span>
+</div>
+<div>
+<h5 class="font-bold text-on-surface">Panel Upgrade</h5>
+<p class="text-caption text-on-surface-variant">Aug 24, 2023 • Downtown Office</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:block text-right">
+<span class="block font-bold text-primary">$1,200.00</span>
+<span class="text-[10px] uppercase font-bold text-on-tertiary-container bg-on-tertiary-container/10 px-2 py-0.5 rounded">Paid</span>
+</div>
+<button class="p-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-white hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Activity Feed & Quick Actions -->
+<aside class="lg:col-span-4 space-y-gutter">
+<!-- Quick Emergency Action -->
+<div class="emergency-accent p-6 rounded-xl tonal-elevation-1 text-white relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="text-headline-md font-headline-md mb-2">Need Help Now?</h4>
+<p class="text-body-md opacity-90 mb-4">Instant dispatch for emergency repairs 24/7.</p>
+<button class="w-full bg-white text-secondary font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-transform active:scale-95 group-hover:shadow-lg">
+<span class="material-symbols-outlined" data-icon="sos">sos</span>
+                            One-Tap SOS Dispatch
+                        </button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]" data-icon="emergency_home">emergency_home</span>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="bg-white rounded-xl tonal-elevation-1 border border-outline-variant p-6">
+<h3 class="text-headline-md font-headline-md text-primary mb-6">Recent Activity</h3>
+<div class="space-y-6 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container">
+<!-- Activity 1 -->
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="history">history</span>
+</div>
+<p class="text-body-md font-bold text-on-surface">Quote requested</p>
+<p class="text-caption text-on-surface-variant">For "Main Residence" Roofing Repair</p>
+<span class="text-[10px] text-outline font-medium mt-1 block">2 hours ago</span>
+</div>
+<!-- Activity 2 -->
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-on-tertiary-container text-white flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="task_alt">task_alt</span>
+</div>
+<p class="text-body-md font-bold text-on-surface">Points earned</p>
+<p class="text-caption text-on-surface-variant">+200 points for HVAC Review</p>
+<span class="text-[10px] text-outline font-medium mt-1 block">Yesterday</span>
+</div>
+<!-- Activity 3 -->
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary-fixed-dim text-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_month">calendar_month</span>
+</div>
+<p class="text-body-md font-bold text-on-surface">Scheduled visit</p>
+<p class="text-caption text-on-surface-variant">Annual inspection on Nov 5th</p>
+<span class="text-[10px] text-outline font-medium mt-1 block">3 days ago</span>
+</div>
+</div>
+<button class="w-full mt-8 py-2 text-label-md text-primary font-bold border border-primary rounded-lg hover:bg-primary/5 transition-colors">
+                        View Full Logs
+                    </button>
+</div>
+<!-- Trust Certificate Bar -->
+<div class="bg-surface-container rounded-xl p-4 flex flex-col items-center gap-4 text-center">
+<p class="text-caption text-on-surface-variant font-bold uppercase tracking-widest">Authorized Security &amp; Insurance Partner</p>
+<div class="flex items-center gap-6 grayscale opacity-60">
+<span class="material-symbols-outlined text-4xl" data-icon="shield_with_house">shield_with_house</span>
+<span class="material-symbols-outlined text-4xl" data-icon="verified_user">verified_user</span>
+<span class="material-symbols-outlined text-4xl" data-icon="assured_workload">assured_workload</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface dark:bg-inverse-surface rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-md font-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-label-md font-label-md mt-1">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="text-label-md font-label-md mt-1">SOS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container dark:bg-primary-container rounded-xl px-3 py-1 scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md mt-1">Account</span>
+</a>
+</nav>
+<script>
+        // Simple interaction handling
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('click', function(e) {
+                // Prevent default if href is #
+                if(this.getAttribute('href') === '#') e.preventDefault();
+                
+                // Add a little tap ripple effect logic if desired
+                this.classList.add('active:scale-95');
+            });
+        });
+
+        // Dynamic Greeting based on time of day
+        const updateGreeting = () => {
+            const hour = new Date().getHours();
+            const header = document.querySelector('h2');
+            let greet = "Good morning";
+            if (hour >= 12 && hour < 17) greet = "Good afternoon";
+            if (hour >= 17) greet = "Good evening";
+            // Optional: Insert greeting if we wanted to change the headline
+        }
+        updateGreeting();
+    </script>
+</body></html>
